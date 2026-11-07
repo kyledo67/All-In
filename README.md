@@ -102,3 +102,5 @@ Git preserves the pinned, patched Dynamax Python source, license and citation in
 network access. The local upstream checkout, its Git metadata, feature caches,
 virtual environment, credentials and MLflow file store are excluded from Git.
 MLflow run identifiers and exported experiment artifacts remain versioned.
+
+<!-- Remote repository description preserved: # All-In all in on black -->
