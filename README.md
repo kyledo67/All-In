@@ -18,6 +18,11 @@ unchanged in [phase-two results](docs/phase2-results.md) and
 [evaluation protocol](docs/phase2-protocol.md). The active selection and checksums
 are recorded in `artifacts/active_champion.json`.
 
+The first subsequent targeted calibration test is recorded in
+[calibration cycle 01](docs/calibration-cycle-01.md). It gained only 0.0144
+exploratory OOF points, worsened drift and one fold, and was rejected. The
+verified blend release remains unchanged.
+
 Predicts payout probabilities in order **0, 1, 2, 5, 20** using the released
 main participant kit. The controlled Dynamax partial-pooling experiment is
 complete. Its small holdout advantage did not pass the frozen retention gate,

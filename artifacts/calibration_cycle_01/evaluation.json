@@ -1,0 +1,536 @@
+{
+  "status": "exploratory development evidence; public validation previously inspected",
+  "hypothesis": "A systematic sharpness bias may be corrected by one regularized scalar power transform.",
+  "intervention": "For each held fold, optimize gamma in [0.8,1.2] on the other three folds using that fold recipe and the exact organizer score.",
+  "base": {
+    "contest_version": "evidence-contest-v1",
+    "technical_points": 31.70233166770079,
+    "max_points": 60.0,
+    "mean_loss_ratio": 0.8926052704549067,
+    "by_condition": {
+      "stable": {
+        "error": 0.1721217549075403,
+        "reference_error": 0.19625080289290195,
+        "loss_ratio": 0.8770499400273569,
+        "episodes": 24,
+        "queries": 192
+      },
+      "short_history": {
+        "error": 0.1693359016010175,
+        "reference_error": 0.1773414479878668,
+        "loss_ratio": 0.9548580070948951,
+        "episodes": 24,
+        "queries": 192
+      },
+      "drift": {
+        "error": 0.17750261801609332,
+        "reference_error": 0.18983393064179913,
+        "loss_ratio": 0.9350415777410521,
+        "episodes": 24,
+        "queries": 192
+      },
+      "shared_change": {
+        "error": 0.16516374210997953,
+        "reference_error": 0.20556264957983816,
+        "loss_ratio": 0.8034715569563227,
+        "episodes": 24,
+        "queries": 192
+      }
+    }
+  },
+  "candidate": {
+    "contest_version": "evidence-contest-v1",
+    "technical_points": 31.716775177352456,
+    "max_points": 60.0,
+    "mean_loss_ratio": 0.8917433964990029,
+    "by_condition": {
+      "stable": {
+        "error": 0.17197321048543102,
+        "reference_error": 0.19625080289290195,
+        "loss_ratio": 0.8762930288712261,
+        "episodes": 24,
+        "queries": 192
+      },
+      "short_history": {
+        "error": 0.16906135162662006,
+        "reference_error": 0.1773414479878668,
+        "loss_ratio": 0.9533098637955565,
+        "episodes": 24,
+        "queries": 192
+      },
+      "drift": {
+        "error": 0.17778671559716439,
+        "reference_error": 0.18983393064179913,
+        "loss_ratio": 0.9365381362335755,
+        "episodes": 24,
+        "queries": 192
+      },
+      "shared_change": {
+        "error": 0.16462126230637952,
+        "reference_error": 0.20556264957983816,
+        "loss_ratio": 0.8008325570956534,
+        "episodes": 24,
+        "queries": 192
+      }
+    }
+  },
+  "delta_normalized_error": -0.000861873955903758,
+  "relative_error_reduction": 0.0009655712154427603,
+  "folds": [
+    {
+      "fold": 0,
+      "gamma": 0.9621155907963942,
+      "episodes": 24,
+      "base": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.692278233353797,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8932056432867742,
+        "by_condition": {
+          "stable": {
+            "error": 0.15416186290684772,
+            "reference_error": 0.17973940052835688,
+            "loss_ratio": 0.8576965454078396,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.17930820227950464,
+            "reference_error": 0.18268514304143602,
+            "loss_ratio": 0.9815149677433516,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.1758758144661394,
+            "reference_error": 0.20025279346147581,
+            "loss_ratio": 0.8782689690667111,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.17882304704730653,
+            "reference_error": 0.20906611394868158,
+            "loss_ratio": 0.8553420909291944,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      },
+      "candidate": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.713417156428303,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8919437064774968,
+        "by_condition": {
+          "stable": {
+            "error": 0.1557230302063272,
+            "reference_error": 0.17973940052835688,
+            "loss_ratio": 0.8663822720481328,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.17844444769816406,
+            "reference_error": 0.18268514304143602,
+            "loss_ratio": 0.976786862507423,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.17520223839044222,
+            "reference_error": 0.20025279346147581,
+            "loss_ratio": 0.8749053402051404,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.1776435504356124,
+            "reference_error": 0.20906611394868158,
+            "loss_ratio": 0.8497003511492909,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "gamma": 0.9479093190281026,
+      "episodes": 24,
+      "base": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.650300309716663,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8957166097277112,
+        "by_condition": {
+          "stable": {
+            "error": 0.19313233688883635,
+            "reference_error": 0.21201299059004963,
+            "loss_ratio": 0.910945769649931,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.17161341933219657,
+            "reference_error": 0.18131199482753635,
+            "loss_ratio": 0.9465089140706601,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.18422737509436327,
+            "reference_error": 0.20429664315698015,
+            "loss_ratio": 0.9017640830877687,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.1717219103517812,
+            "reference_error": 0.2084895230911479,
+            "loss_ratio": 0.8236476721024847,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      },
+      "candidate": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.667736534593956,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8946728300096777,
+        "by_condition": {
+          "stable": {
+            "error": 0.190200814918792,
+            "reference_error": 0.21201299059004963,
+            "loss_ratio": 0.897118683102613,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.17304250779511823,
+            "reference_error": 0.18131199482753635,
+            "loss_ratio": 0.9543908441342558,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.18241202659671496,
+            "reference_error": 0.20429664315698015,
+            "loss_ratio": 0.8928782371453396,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.17394355043207313,
+            "reference_error": 0.2084895230911479,
+            "loss_ratio": 0.8343035556565023,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "gamma": 0.937620994002916,
+      "episodes": 24,
+      "base": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.67664315637334,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8941400988673889,
+        "by_condition": {
+          "stable": {
+            "error": 0.17817860916715844,
+            "reference_error": 0.2089949079519309,
+            "loss_ratio": 0.8525500018791834,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.1477321738361195,
+            "reference_error": 0.15993122002535945,
+            "loss_ratio": 0.9237231718278295,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.1838432163400678,
+            "reference_error": 0.17607298148113112,
+            "loss_ratio": 1.044130762105425,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.14687542352302854,
+            "reference_error": 0.19423946148609217,
+            "loss_ratio": 0.7561564596571179,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      },
+      "candidate": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.61415042777472,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8978843077588065,
+        "by_condition": {
+          "stable": {
+            "error": 0.17936457952786725,
+            "reference_error": 0.2089949079519309,
+            "loss_ratio": 0.8582246394688302,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.1463180370375599,
+            "reference_error": 0.15993122002535945,
+            "loss_ratio": 0.914881015816418,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.18829023202603343,
+            "reference_error": 0.17607298148113112,
+            "loss_ratio": 1.0693874235679457,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.14549393274914435,
+            "reference_error": 0.19423946148609217,
+            "loss_ratio": 0.7490441521820319,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "gamma": 0.9751859282261629,
+      "episodes": 24,
+      "base": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.774719773961603,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8882936002843411,
+        "by_condition": {
+          "stable": {
+            "error": 0.16301421066731867,
+            "reference_error": 0.18425591250127027,
+            "loss_ratio": 0.8847163081738006,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.17868981095624925,
+            "reference_error": 0.18543743405713534,
+            "loss_ratio": 0.9636124004023532,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.16606406616380276,
+            "reference_error": 0.1787133044676095,
+            "loss_ratio": 0.9292205001665149,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.16323458751780184,
+            "reference_error": 0.21045549979343103,
+            "loss_ratio": 0.775625192394696,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      },
+      "candidate": {
+        "contest_version": "evidence-contest-v1",
+        "technical_points": 31.84582615656479,
+        "max_points": 60.0,
+        "mean_loss_ratio": 0.8840773577366096,
+        "by_condition": {
+          "stable": {
+            "error": 0.16260441728873756,
+            "reference_error": 0.18425591250127027,
+            "loss_ratio": 0.8824922635121224,
+            "episodes": 6,
+            "queries": 48
+          },
+          "short_history": {
+            "error": 0.17844041397563806,
+            "reference_error": 0.18543743405713534,
+            "loss_ratio": 0.9622674886703759,
+            "episodes": 6,
+            "queries": 48
+          },
+          "drift": {
+            "error": 0.16524236537546697,
+            "reference_error": 0.1787133044676095,
+            "loss_ratio": 0.924622628783723,
+            "episodes": 6,
+            "queries": 48
+          },
+          "shared_change": {
+            "error": 0.1614040156086882,
+            "reference_error": 0.21045549979343103,
+            "loss_ratio": 0.7669270499802169,
+            "episodes": 6,
+            "queries": 48
+          }
+        }
+      }
+    }
+  ],
+  "paired_delta_ratio_ci95": [
+    -0.005555962740736251,
+    0.004206614969086816
+  ],
+  "diagnostics": {
+    "category_normalized_contribution": {
+      "drift": [
+        0.15951319801406655,
+        0.03802355124228185,
+        0.02783433000216724,
+        0.0077662263561118095,
+        0.0006230888206355942
+      ],
+      "shared_change": [
+        0.1342042689435102,
+        0.03769817221564652,
+        0.0215355120402598,
+        0.006830067894281127,
+        0.0005998681453830104
+      ],
+      "short_history": [
+        0.1604273865990124,
+        0.043926119242757994,
+        0.025013531175395967,
+        0.00863024681325011,
+        0.0007172179433072331
+      ],
+      "stable": [
+        0.14667464711208736,
+        0.04345848789672444,
+        0.023440832746058224,
+        0.005289734746537977,
+        0.0003987825054313108
+      ]
+    },
+    "category_bias": {
+      "drift": [
+        0.010958911734312536,
+        0.003999259451329642,
+        -0.014161575756050808,
+        -0.003180111855322782,
+        0.002383516425731425
+      ],
+      "shared_change": [
+        0.03744207658755694,
+        -0.020562660723405467,
+        -0.011406355672175976,
+        -0.006246760483934056,
+        0.000773700291958581
+      ],
+      "short_history": [
+        0.0038107772226803785,
+        -0.004504412647175293,
+        0.001343673064989337,
+        -0.005006252445045181,
+        0.004356214804550778
+      ],
+      "stable": [
+        0.010674979885503004,
+        -0.005613179978500291,
+        -0.005624451048245697,
+        -0.0018542131140266754,
+        0.002416864255269684
+      ]
+    },
+    "confidence_quartiles": [
+      {
+        "mean_max_probability": 0.4188785941929923,
+        "mean_error": 0.2290881901373524
+      },
+      {
+        "mean_max_probability": 0.5070057130379876,
+        "mean_error": 0.225934643079749
+      },
+      {
+        "mean_max_probability": 0.610296806666207,
+        "mean_error": 0.17721891266986053
+      },
+      {
+        "mean_max_probability": 0.8359114775165639,
+        "mean_error": 0.05188227074766863
+      }
+    ],
+    "machine_type": {
+      "balanced": {
+        "count": 234,
+        "mean_squared_error": 0.19770445902133366
+      },
+      "jackpot": {
+        "count": 265,
+        "mean_squared_error": 0.08680989561535761
+      },
+      "steady": {
+        "count": 269,
+        "mean_squared_error": 0.23079682321482245
+      }
+    },
+    "signal": {
+      "-1": {
+        "count": 247,
+        "mean_squared_error": 0.16179443353047107
+      },
+      "0": {
+        "count": 259,
+        "mean_squared_error": 0.17526153162061067
+      },
+      "1": {
+        "count": 262,
+        "mean_squared_error": 0.17555667718352885
+      }
+    },
+    "history": {
+      "False": {
+        "count": 576,
+        "mean_squared_error": 0.1715960383445377
+      },
+      "True": {
+        "count": 192,
+        "mean_squared_error": 0.1693359016010175
+      }
+    }
+  },
+  "by_condition_errors": {
+    "drift": {
+      "base_error": 0.17750261801609332,
+      "candidate_error": 0.17778671559716439
+    },
+    "shared_change": {
+      "base_error": 0.16516374210997953,
+      "candidate_error": 0.16462126230637952
+    },
+    "short_history": {
+      "base_error": 0.1693359016010175,
+      "candidate_error": 0.1690613516266201
+    },
+    "stable": {
+      "base_error": 0.1721217549075403,
+      "candidate_error": 0.17197321048543102
+    }
+  },
+  "seconds": 11.384056833994691,
+  "input_hashes": {
+    "validation/targets.csv": "93b6e978f6818d2456dcb677fddb6ba243e864cef56e33a4bf94bde5ba4b51f3",
+    "validation/conditions.csv": "ebcca7597bbdfa532c5254b92903e66522a710502a6f70689c3de311f75c29b1",
+    "validation/reference.csv": "bb396d9e4d20bf4004374f9ab781f41aaa8b730e61887c1969be534efeb1e6c6"
+  },
+  "source_hash": "f8ab70935bf5d11ab75ef693568f2fc3f766d1958dc95599e95f7870ce74c474"
+}
