@@ -1,0 +1,24 @@
+{
+  "all_four_recipes_valid_for_inference": true,
+  "checkpoint_prior_schema_and_recipe_hashes_match": true,
+  "recipes_match_original_evaluation": true,
+  "base_fitting_data": "public/train observed outcomes; no validation target probabilities in base fits",
+  "learned_upstream_features": "Owning training episode excluded; earlier cross-fitting provenance verified against disjoint train episodes.",
+  "local_adaptation": "Pre-cutoff observations only; actual tick distances; no fabricated historical signals.",
+  "weight_fitting": "Previously selected on other validation folds as permitted model selection; reused unchanged.",
+  "prediction_inputs": "Test queries and histories; no test conditions, labels, targets or reference forecasts.",
+  "inference_class_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "independent_validation_for_deployed_average": false,
+  "source_evidence": [
+    "artifacts/phase2/causality_tests.json",
+    "artifacts/phase2/upstream_feature_provenance.json",
+    "docs/phase2-protocol.md"
+  ],
+  "rules_review": "Released organizer/RULES.md permits organizer data, strictly prior observations, model selection and offline prediction. Existing audited causal feature code is reused."
+}

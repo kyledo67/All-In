@@ -1,0 +1,64 @@
+{
+  "active": {
+    "champion_id": "frozen-fold-mean-a3f79eb791f1",
+    "status": "verified local submission candidate; not uploaded",
+    "deployment": "Equal-weight ensemble of four frozen fold recipes",
+    "recipe_identifiers": [
+      {
+        "recipe_id": "fold0-8f6f88ac207d",
+        "fold": 0,
+        "recipe_sha256": "8f6f88ac207d060cfddd085a43fadfcfd56855344123f6b5820c604690f4adeb",
+        "deployment_weight": 0.25
+      },
+      {
+        "recipe_id": "fold1-33b73b81eda7",
+        "fold": 1,
+        "recipe_sha256": "33b73b81eda7628520b6ff60a596097253715fb0fc26ed28a005e14695569b0e",
+        "deployment_weight": 0.25
+      },
+      {
+        "recipe_id": "fold2-a69eceb838eb",
+        "fold": 2,
+        "recipe_sha256": "a69eceb838ebeea5ba80e2a93377bb3eac88f268862951af4de864d1dcd7be56",
+        "deployment_weight": 0.25
+      },
+      {
+        "recipe_id": "fold3-063bbc8e6f94",
+        "fold": 3,
+        "recipe_sha256": "063bbc8e6f9477417ad980308e97bd9e3bfaad0c779f583daaeb5e1840765fa8",
+        "deployment_weight": 0.25
+      }
+    ],
+    "fixed_deployment_weights": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "submission": "/Users/kyledo/Documents/All_In/artifacts/blend_release/submission.csv",
+    "entry": "/Users/kyledo/Documents/All_In/artifacts/blend_release/entry.zip",
+    "sha256": {
+      "submission.csv": "a3f79eb791f1a49adf0a0fb4f8f24ac334f1c5b4586720604f7b596ee5e1aec8",
+      "entry.zip": "a09330dec7116a14136014df536f4d2ac339570120390e58727e79d4218c22b7"
+    },
+    "model": "/Users/kyledo/Documents/All_In/artifacts/blend_release/model",
+    "reproduction": "/Users/kyledo/Documents/All_In/artifacts/blend_release/reproduction.json",
+    "reproduction_seconds": 5.751400791996275,
+    "existing_combined_oof_points": 31.70233166770079,
+    "deployed_average_independent_validation_score": null,
+    "policy_change": "/Users/kyledo/Documents/All_In/artifacts/blend_release/policy_change.json",
+    "fallback": {
+      "champion_id": "shared-hmm-33c2e30e55e6",
+      "submission": "/Users/kyledo/Documents/All_In/artifacts/final/submission.csv",
+      "entry": "/Users/kyledo/Documents/All_In/artifacts/final/entry.zip",
+      "hashes_unchanged": true
+    },
+    "recorded_unix": 1794092021.5782
+  },
+  "mlflow": {
+    "status": "logged",
+    "run_id": "a878e66d81a14e869c6e96985df21e9d",
+    "tracking_uri": "file:///Users/kyledo/Documents/All_In/artifacts/mlruns",
+    "parent_run_id": "d7d610eb9d7a4919a5e6f9b491ffc451"
+  }
+}

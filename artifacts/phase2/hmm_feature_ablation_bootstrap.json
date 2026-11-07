@@ -1,0 +1,28 @@
+{
+  "delta_loss_ratio_ci95": [
+    -0.0305973482914126,
+    0.011325889360525152
+  ],
+  "by_condition_ci95": {
+    "stable": [
+      -0.08769278311186092,
+      -0.008848215738634103
+    ],
+    "short_history": [
+      -0.034075496622624005,
+      0.03524233705010904
+    ],
+    "drift": [
+      -0.03657563049452221,
+      0.05481989559672632
+    ],
+    "shared_change": [
+      -0.040208637442545714,
+      0.05064999270151591
+    ]
+  },
+  "repeats": 2000,
+  "seed": 314159,
+  "interpretation": "negative favors first model",
+  "unit": "whole episode, stratified by condition"
+}

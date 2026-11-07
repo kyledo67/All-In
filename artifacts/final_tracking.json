@@ -1,0 +1,6 @@
+{
+  "status": "logged",
+  "run_id": "b7be5ecdcd7d41f09d03ac334124996c",
+  "tracking_uri": "file:///Users/kyledo/Documents/All_In/artifacts/mlruns",
+  "databricks": "No configured integration found; existing local MLflow fallback reused."
+}

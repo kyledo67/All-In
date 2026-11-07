@@ -1,0 +1,8 @@
+{
+  "best_pool": "pooled_30",
+  "config_sha256": "4e5f7415e0863cc66380e85b50b05378f3d6b8124058585d2e4ca81690b6db72",
+  "fallback": "upstream",
+  "finalist": "pooled_30",
+  "frozen_at_unix": 1794087642.160098,
+  "retention_rule": "partial pooling must beat upstream and unshrunk in paired holdout ratio CI; otherwise frozen development fallback"
+}

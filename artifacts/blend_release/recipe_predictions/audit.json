@@ -1,0 +1,27 @@
+{
+  "mode": "mean",
+  "query_ids_unique": true,
+  "query_count": 1536,
+  "component_alignment": "Every component uses the same query-ID-indexed feature rows; serialized recipe CSVs retain those IDs.",
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "recipe_order": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "deployment_weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "recipe_max_sum_error": 4.440892098500626e-16,
+  "ensemble_max_sum_error": 4.440892098500626e-16
+}

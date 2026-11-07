@@ -1,0 +1,9 @@
+2026/11/07 16:17:36 INFO mlflow.tracking.fluent: Experiment with name 'round-one-feature-challengers' does not exist. Creating a new experiment.
+{
+  "status": "logged",
+  "run_id": "d7d610eb9d7a4919a5e6f9b491ffc451",
+  "tracking_uri": "file:///Users/kyledo/Documents/All_In/artifacts/mlruns",
+  "parent_champion": "shared-hmm-33c2e30e55e6",
+  "parent_run_id": "b7be5ecdcd7d41f09d03ac334124996c",
+  "databricks": "Existing integration unchanged; local fallback reused."
+}

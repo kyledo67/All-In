@@ -1,0 +1,11 @@
+Preparing training cross-fit features
+Preparing nested early-stopping features
+Preparing validation features
+cb_observable_0_20261108 trees 214 seconds 7.027351458003977
+cb_observable_0_20261109 trees 307 seconds 8.464339750004001
+cb_observable_1_20261108 trees 400 seconds 29.60841104100109
+cb_observable_1_20261109 trees 396 seconds 28.543894207992707
+cb_hmm_0_20261108 trees 278 seconds 8.644877958009602
+cb_hmm_0_20261109 trees 335 seconds 10.138935250011855
+cb_hmm_1_20261108 trees 400 seconds 33.0707775829942
+cb_hmm_1_20261109 trees 390 seconds 53.872117333012284

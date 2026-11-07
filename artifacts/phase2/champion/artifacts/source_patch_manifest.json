@@ -1,0 +1,11 @@
+{
+  "artifacts/dynamax.patch": "6df486cf2f0916e26fcda8cd2701ffce4340aa6ca0b727ecbb9430d4888c4430",
+  "artifacts/splits.json": "e8bde9836b0570b0c12ec4452393a5bc676264da7e82ea21d3da6dd1a7adcf90",
+  "requirements-training.lock": "fc96c98bd06d271517e26292bf1984f6db4fd2c5721d20c25e534e671360a0e1",
+  "research/rea_reference/WORKFLOW.md": "a9dae7fd12d9eeaf5aa26f1c22efb70f5db40c15957321bc2d263ce54b82ac47",
+  "research/rea_reference/README.md": "ba9dc145e9b829d2892404dd4240ffba15895610f5973db0b2bcd8a31901b39c",
+  "rea_current_HEAD_verified": "015a02d57b567bc9a1ed792d1e4b3ec083fa0ae3",
+  "rea_readme_and_workflow_match_current_upstream": true,
+  "rea_tools_used": [],
+  "verification_unix": 1794088066.825995
+}

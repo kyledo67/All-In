@@ -1,0 +1,9 @@
+VALID FORMAT: 768 queries | main | validation
+Season: 5fffdc4d0c700bbf61c3f911
+SHA-256: 34bf7536a87640630ac78efbf2a717dd9317ac233d55fcbdffa1392e5eba1c6a
+Validation points: 31.702332 / 60
+  stable: loss ratio 0.877050 (lower is better)
+  short_history: loss ratio 0.954858 (lower is better)
+  drift: loss ratio 0.935042 (lower is better)
+  shared_change: loss ratio 0.803472 (lower is better)
+Local check only. Nothing was uploaded. Acceptance and code reproduction are separate.

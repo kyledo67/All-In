@@ -1,0 +1,33 @@
+.venv/
+__pycache__/
+.pytest_cache/
+artifacts/cache/
+artifacts/phase2/cache/
+artifacts/mlruns/
+research/vendor/dynamax/.git/
+dist/
+*.pyc
+# Local credentials, editor state, and generated caches
+.env
+.env.*
+!.env.example
+.aws/
+.azure/
+.config/
+.databrickscfg
+.databricks/
+.netrc
+*credentials*.json
+*.pem
+*.key
+.DS_Store
+.idea/
+.vscode/
+catboost_info/
+**/.ipynb_checkpoints/
+artifacts/**/cache/
+# Keep upstream Python source/notices, not its bulky reference documentation.
+research/vendor/dynamax/docs/
+research/vendor/dynamax/paper/
+research/vendor/dynamax/logo/
+research/vendor/dynamax/.github/

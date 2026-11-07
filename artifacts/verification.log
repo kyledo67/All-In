@@ -1,0 +1,162 @@
+Synthetic: identical
+Synthetic: opposite_lag
+Synthetic: short_history
+Synthetic: changing_regimes
+{
+  "source": {
+    "original_sha256": "98decd327db1ac53aa82f925e54f08077ee3bc521df52d2508cd2715425cf120",
+    "modified_sha256": "c5ca9462d7cc8b1d5dafe5fce848565dcbabe88d5ce16c28321d2dbfd407bcbd",
+    "unchanged_original_classes": [
+      "ParamsCategoricalRegressionHMMEmissions",
+      "ParamsCategoricalRegressionHMM",
+      "CategoricalRegressionHMMEmissions",
+      "CategoricalRegressionHMM"
+    ],
+    "original_source": "/Users/kyledo/Documents/All_In/research/upstream_categorical_glm_hmm.py",
+    "modified_source": "/Users/kyledo/Documents/All_In/research/vendor/dynamax/dynamax/hidden_markov_model/models/categorical_glm_hmm.py"
+  },
+  "tiny": {
+    "filter_max_abs": 1.6653345369377348e-16,
+    "loglik_abs": 2.220446049250313e-16,
+    "enumeration_loglik_abs": 0.0,
+    "smoother_max_abs": 2.7755575615628914e-16,
+    "next_forecast_max_abs": 2.220446049250313e-16
+  },
+  "objective": {
+    "finite_difference_max_abs": 2.445776914328235e-10,
+    "objective_penalty_error": 4.440892098500626e-16,
+    "gradient_penalty_error": 4.440892098500626e-16,
+    "frozen_parameter_max_abs": 0.0,
+    "actual_objective": "HMMEmissions.m_step.neg_expected_log_joint",
+    "epsilon": 1e-05
+  },
+  "causal": {
+    "post_cutoff_probability_max_abs": 0.0,
+    "missing_lags_rejected": true,
+    "sparse_older_rows_ignored": true,
+    "historical_signal_unused": true,
+    "episode_identity_isolated": true,
+    "limitation": "Discarding old observations loses information; it does not integrate unknown autoregressive inputs."
+  },
+  "synthetic": {
+    "identical": {
+      "shared": {
+        "squared_probability_error": 3.851859888774472e-34,
+        "deviation_rms": 0.0,
+        "seconds": 0.10900408400630113,
+        "optimizer_decreases": 0
+      },
+      "unshrunk": {
+        "squared_probability_error": 0.06399331325290307,
+        "deviation_rms": 1.2194701705102946,
+        "seconds": 0.46601425000699237,
+        "optimizer_decreases": 0
+      },
+      "pooled_30": {
+        "squared_probability_error": 0.0022404028940021282,
+        "deviation_rms": 0.05439248460988059,
+        "seconds": 0.4523167500010459,
+        "optimizer_decreases": 0
+      },
+      "shrinkage_reduces_deviations": true,
+      "pooling_beats_shared": false,
+      "machines": 64,
+      "observations": 32
+    },
+    "opposite_lag": {
+      "shared": {
+        "squared_probability_error": 0.17422047371157245,
+        "deviation_rms": 0.0,
+        "seconds": 0.09481624999898486,
+        "optimizer_decreases": 0
+      },
+      "unshrunk": {
+        "squared_probability_error": 0.07641707591420183,
+        "deviation_rms": 1.3442068560003217,
+        "seconds": 0.6156000000046333,
+        "optimizer_decreases": 0
+      },
+      "pooled_30": {
+        "squared_probability_error": 0.09605616529567934,
+        "deviation_rms": 0.0970615240969471,
+        "seconds": 0.4465908749989467,
+        "optimizer_decreases": 0
+      },
+      "shrinkage_reduces_deviations": true,
+      "pooling_beats_shared": true,
+      "machines": 64,
+      "observations": 32
+    },
+    "short_history": {
+      "shared": {
+        "squared_probability_error": 3.851859888774472e-34,
+        "deviation_rms": 0.0,
+        "seconds": 0.10777087500900961,
+        "optimizer_decreases": 0
+      },
+      "unshrunk": {
+        "squared_probability_error": 0.410951261040166,
+        "deviation_rms": 1.5598653645099056,
+        "seconds": 0.46793791599338874,
+        "optimizer_decreases": 0
+      },
+      "pooled_30": {
+        "squared_probability_error": 0.0012019100743243236,
+        "deviation_rms": 0.03073660471826508,
+        "seconds": 0.4200735829945188,
+        "optimizer_decreases": 0
+      },
+      "shrinkage_reduces_deviations": true,
+      "pooling_beats_shared": false,
+      "machines": 64,
+      "observations": 8
+    },
+    "changing_regimes": {
+      "shared": {
+        "squared_probability_error": 6.662137743172331e-33,
+        "deviation_rms": 0.0,
+        "seconds": 0.08893470799375791,
+        "optimizer_decreases": 0
+      },
+      "unshrunk": {
+        "squared_probability_error": 0.07801865253891457,
+        "deviation_rms": 1.2503080857918512,
+        "seconds": 0.45923650001350325,
+        "optimizer_decreases": 0
+      },
+      "pooled_30": {
+        "squared_probability_error": 0.0014537736684529113,
+        "deviation_rms": 0.04918071341546808,
+        "seconds": 0.48672425000404473,
+        "optimizer_decreases": 0
+      },
+      "shrinkage_reduces_deviations": true,
+      "pooling_beats_shared": false,
+      "machines": 64,
+      "observations": 32
+    }
+  },
+  "competition_replay": {
+    "source": "/Users/kyledo/Documents/All_In/research/upstream_categorical_glm_hmm.py",
+    "max_parameter_difference": 0.0,
+    "seconds": 5.145252042013453,
+    "log_joint": [
+      -139301.8447851642,
+      -124978.78603984919,
+      -124379.5926006734,
+      -123823.54216052509,
+      -123216.87167520133,
+      -122782.9208143236,
+      -122571.88176782471,
+      -122479.96636156032,
+      -122429.83629595778,
+      -122391.66115252917,
+      -122355.90728239164,
+      -122319.77198958368,
+      -122282.37310973265,
+      -122242.76600982308,
+      -122200.68855947746
+    ],
+    "note": "Clean upstream class trained on permitted train histories; no validation labels/targets read."
+  }
+}

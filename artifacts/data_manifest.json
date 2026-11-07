@@ -1,0 +1,18 @@
+{
+  "metadata.json": "7979323052df471e6b8b2c985cb48faa89e287ac6b0fd7789f24bccd544ce7bf",
+  "test/history.csv": "7f3695122e0f0bf18fe603a6515d190d9c8578a8c702f11881befb40c636cf9e",
+  "test/queries.csv": "3d8065626e161fd3e7b988b735583a23d4c989eb64c8ae90f200b726c02e42b9",
+  "test/sample_submission.csv": "3f4f634d82c4229dbe234c7f65b963cfddabdb8ef36115002e4adfddaef7ba95",
+  "train/labels.csv": "f6b3a2ca73888b91bb9a38d0ca52f449062ce70534bef9776ad4f53fc713b46a",
+  "train/history.csv": "46a1e783a1b222dc2de33bc72259207e3d013135d1229af9669ffcd454116217",
+  "train/conditions.csv": "18891aa27d581b36ef7e7a18a7154f697d70054725cafec6a9c4a8665a5a4894",
+  "train/queries.csv": "96cbf59fe0b340981f3f2958dde3305162215ae911d0559d6f34764e74460846",
+  "train/sample_submission.csv": "1a8c90c3a66f4d01299de089e2aea2834d7e8bdfb963aa3ffabfa6e2b1f6c870",
+  "validation/labels.csv": "3881ed7e2451573f023d09d85b737cdc99a00b4b224eb020f371c02b9f9a91e2",
+  "validation/history.csv": "4b7ef4789750b7459eb085be3449ea8bd9dfd31441a928ad391a1376a44f8fe4",
+  "validation/conditions.csv": "ebcca7597bbdfa532c5254b92903e66522a710502a6f70689c3de311f75c29b1",
+  "validation/queries.csv": "168b7f6365a4f51084437c0071636b102ca3fb4bf0347b912778c51714fc48f2",
+  "validation/reference.csv": "bb396d9e4d20bf4004374f9ab781f41aaa8b730e61887c1969be534efeb1e6c6",
+  "validation/targets.csv": "93b6e978f6818d2456dcb677fddb6ba243e864cef56e33a4bf94bde5ba4b51f3",
+  "validation/sample_submission.csv": "6fda54420c0573d025b0639a4b091fedce07689a83621292bf777351e853e48f"
+}

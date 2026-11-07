@@ -1,0 +1,58 @@
+[
+  {
+    "fold": 0,
+    "config_indices": {
+      "local": 0,
+      "observable": 0,
+      "hmm": 1
+    },
+    "weights": {
+      "hmm": 0.13017963076849223,
+      "local": 0.15956357511839142,
+      "cat_observable": 0.05473799087054383,
+      "cat_hmm": 0.6555188032425726
+    }
+  },
+  {
+    "fold": 1,
+    "config_indices": {
+      "local": 0,
+      "observable": 0,
+      "hmm": 1
+    },
+    "weights": {
+      "hmm": 0.3112993896833916,
+      "local": 0.19660876722342205,
+      "cat_observable": 7.865547948203433e-18,
+      "cat_hmm": 0.4920918430931864
+    }
+  },
+  {
+    "fold": 2,
+    "config_indices": {
+      "local": 0,
+      "observable": 0,
+      "hmm": 0
+    },
+    "weights": {
+      "hmm": 0.29112772490743316,
+      "local": 0.13513682436253996,
+      "cat_observable": 0.15514464324702326,
+      "cat_hmm": 0.4185908074830036
+    }
+  },
+  {
+    "fold": 3,
+    "config_indices": {
+      "local": 0,
+      "observable": 0,
+      "hmm": 0
+    },
+    "weights": {
+      "hmm": 0.3319876182610961,
+      "local": 0.0960493452526935,
+      "cat_observable": 0.042703351469832514,
+      "cat_hmm": 0.529259685016378
+    }
+  }
+]

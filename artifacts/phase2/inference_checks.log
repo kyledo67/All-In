@@ -1,0 +1,21 @@
+{
+  "validation_queries": 768,
+  "load_index_seconds": 0.6860884160123533,
+  "local_expert_seconds": 0.030788207994191907,
+  "observable_features_seconds": 1.0945395410089986,
+  "hmm_summary_seconds": 0.6275109999987762,
+  "observable_features_exact_match": true,
+  "portable_vs_jax_hmm_summary_max_abs": 6.661338147750939e-16,
+  "catboost": {
+    "observable": {
+      "load_and_predict_two_models_seconds": 0.08182145800674334,
+      "total_with_required_features_seconds": 1.8624494150280952,
+      "last_seed_max_abs_difference": 2.220446049250313e-16
+    },
+    "hmm": {
+      "load_and_predict_two_models_seconds": 0.06425179200596176,
+      "total_with_required_features_seconds": 2.47239074902609,
+      "last_seed_max_abs_difference": 2.220446049250313e-16
+    }
+  }
+}

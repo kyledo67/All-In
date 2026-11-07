@@ -1,0 +1,14 @@
+{
+  "queries": 1536,
+  "seconds": 5.427566458994988,
+  "mode": "mean",
+  "split": "test",
+  "recipes": 4,
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ]
+}

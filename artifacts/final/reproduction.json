@@ -1,0 +1,21 @@
+{
+  "fresh_extracted_package_max_probability_difference": 0.0,
+  "fresh_extracted_package_byte_identical": true,
+  "dynamax_test_max_probability_difference": 2.220446049250313e-16,
+  "dynamax_validation_max_probability_difference": 4.440892098500626e-16,
+  "test_queries": 1536,
+  "seconds": 2.287278582996805,
+  "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7",
+  "peak_child_rss_bytes": 188055552,
+  "network": "socket construction disabled in fresh subprocess",
+  "site_packages": "disabled with -S; no third-party inference dependencies",
+  "source_tree_unchanged": true,
+  "submission_sha256": "655c228fc0c767e66b58c9f57f7c35452aef0e2f9b520c8bbb89d1e30792f236",
+  "stdout": "1536 test forecasts written to /var/folders/sz/3tlvmlyn7sx3yvzzc5d6ybs00000gn/T/all-in-package-u35ek5sg/output.csv; model=upstream; engine=portable\n",
+  "limitations": "Local macOS test, not organizer Linux container; pure stdlib final inference.",
+  "budget": "30 minutes, two CPU cores, 16 GiB RAM; portable path single-threaded",
+  "entry_zip_sha256": "a35ecc99d4ffe7bc05af1da1a2b5da61ebc5472bf62b712264099802bff75738",
+  "entry_zip_bytes": 1122355,
+  "entry_zip": "/Users/kyledo/Documents/All_In/artifacts/final/entry.zip"
+}

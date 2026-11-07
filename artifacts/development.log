@@ -1,0 +1,12 @@
+Training upstream control (3768, 32, 15)
+Forecasting upstream
+upstream 31.524493622459335
+Forecasting unshrunk
+unshrunk 27.78412556227333
+Forecasting pooled_0.3
+pooled_0.3 28.65059828986188
+Forecasting pooled_3
+pooled_3 30.4633741954314
+Forecasting pooled_30
+pooled_30 31.5532015297644
+2026/11/07 15:40:43 INFO mlflow.tracking.fluent: Experiment with name 'round-one-controlled-dynamax' does not exist. Creating a new experiment.

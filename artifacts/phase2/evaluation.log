@@ -1,0 +1,6 @@
+hmm 31.163114 {'stable': 0.9051, 'short_history': 1.0108, 'drift': 0.9762, 'shared_change': 0.8093}
+local 30.912771 {'stable': 0.9698, 'short_history': 1.0028, 'drift': 0.9394, 'shared_change': 0.8517}
+cat_observable 31.398446 {'stable': 0.9145, 'short_history': 0.965, 'drift': 0.9495, 'shared_change': 0.8146}
+cat_hmm 31.551951 {'stable': 0.8664, 'short_history': 0.9656, 'drift': 0.9581, 'shared_change': 0.8165}
+ensemble 31.702332 {'stable': 0.877, 'short_history': 0.9549, 'drift': 0.935, 'shared_change': 0.8035}
+DECISION hmm checks {'points_gain': 0.3888365581279878, 'folds_improved': 3, 'worst_condition_ratio_regression': 0.00713982648277478, 'seed_consistent': True} release weights {'hmm': 1.0, 'local': 0.0, 'cat_observable': 0.0, 'cat_hmm': 0.0}

@@ -1,0 +1,182 @@
+{
+  "authorized_by": "User instruction: select the existing 31.702-point blend; compare complete candidate directly against deployed champion.",
+  "previous_rule": "Required 0.25 additional points over the best individual plus its own paired interval; then compared against HMM.",
+  "revised_rule": "Judge the complete existing blend directly against deployed HMM; do not require an incremental win over CatBoost. No training, optimization, configuration selection or search.",
+  "post_evaluation_policy_change": true,
+  "original_evaluation_preserved": true,
+  "parent_champion": "shared-hmm-33c2e30e55e6",
+  "hmm_score": {
+    "contest_version": "temporal-adaptation-v3-60-40",
+    "technical_points": 31.163114396193993,
+    "max_points": 60.0,
+    "mean_loss_ratio": 0.925353135029659,
+    "by_condition": {
+      "stable": {
+        "error": 0.1776173564379283,
+        "reference_error": 0.19625080289290195,
+        "loss_ratio": 0.9050528905854093,
+        "episodes": 24,
+        "queries": 192
+      },
+      "short_history": {
+        "error": 0.1792585118182728,
+        "reference_error": 0.1773414479878668,
+        "loss_ratio": 1.0108100156627635,
+        "episodes": 24,
+        "queries": 192
+      },
+      "drift": {
+        "error": 0.18532056212663148,
+        "reference_error": 0.18983393064179913,
+        "loss_ratio": 0.9762246480389009,
+        "episodes": 24,
+        "queries": 192
+      },
+      "shared_change": {
+        "error": 0.16636698845870096,
+        "reference_error": 0.20556264957983816,
+        "loss_ratio": 0.8093249858315624,
+        "episodes": 24,
+        "queries": 192
+      }
+    }
+  },
+  "blend_oof_score": {
+    "contest_version": "temporal-adaptation-v3-60-40",
+    "technical_points": 31.70233166770079,
+    "max_points": 60.0,
+    "mean_loss_ratio": 0.8926052704549067,
+    "by_condition": {
+      "stable": {
+        "error": 0.1721217549075403,
+        "reference_error": 0.19625080289290195,
+        "loss_ratio": 0.8770499400273569,
+        "episodes": 24,
+        "queries": 192
+      },
+      "short_history": {
+        "error": 0.1693359016010175,
+        "reference_error": 0.1773414479878668,
+        "loss_ratio": 0.9548580070948951,
+        "episodes": 24,
+        "queries": 192
+      },
+      "drift": {
+        "error": 0.17750261801609332,
+        "reference_error": 0.18983393064179913,
+        "loss_ratio": 0.9350415777410521,
+        "episodes": 24,
+        "queries": 192
+      },
+      "shared_change": {
+        "error": 0.16516374210997953,
+        "reference_error": 0.20556264957983816,
+        "loss_ratio": 0.8034715569563227,
+        "episodes": 24,
+        "queries": 192
+      }
+    }
+  },
+  "gain_points": 0.5392172715067964,
+  "existing_blend_minus_hmm_interval": {
+    "delta_loss_ratio_ci95": [
+      -0.05459994256378038,
+      -0.01149250872744677
+    ],
+    "by_condition_ci95": {
+      "stable": [
+        -0.07486210804111126,
+        0.018664922822649452
+      ],
+      "short_history": [
+        -0.09881874363157662,
+        -0.010980087170680792
+      ],
+      "drift": [
+        -0.08239552009384851,
+        0.0022117756568865907
+      ],
+      "shared_change": [
+        -0.04349551774497594,
+        0.03023055920178345
+      ]
+    },
+    "repeats": 2000,
+    "seed": 314159,
+    "interpretation": "negative favors first model",
+    "unit": "whole episode, stratified by condition"
+  },
+  "folds_improved": 3,
+  "all_condition_errors_improved": true,
+  "uncertainty": "Exploratory, selected on previously inspected development episodes. Policy changed after results were known; no new independent evidence.",
+  "deployment_resolution": {
+    "mode": "mean",
+    "deployment": "Equal-weight ensemble of four frozen fold recipes",
+    "recipes": [
+      {
+        "recipe_id": "fold0-8f6f88ac207d",
+        "fold": 0,
+        "recipe_sha256": "8f6f88ac207d060cfddd085a43fadfcfd56855344123f6b5820c604690f4adeb",
+        "deployment_weight": 0.25
+      },
+      {
+        "recipe_id": "fold1-33b73b81eda7",
+        "fold": 1,
+        "recipe_sha256": "33b73b81eda7628520b6ff60a596097253715fb0fc26ed28a005e14695569b0e",
+        "deployment_weight": 0.25
+      },
+      {
+        "recipe_id": "fold2-a69eceb838eb",
+        "fold": 2,
+        "recipe_sha256": "a69eceb838ebeea5ba80e2a93377bb3eac88f268862951af4de864d1dcd7be56",
+        "deployment_weight": 0.25
+      },
+      {
+        "recipe_id": "fold3-063bbc8e6f94",
+        "fold": 3,
+        "recipe_sha256": "063bbc8e6f9477417ad980308e97bd9e3bfaad0c779f583daaeb5e1840765fa8",
+        "deployment_weight": 0.25
+      }
+    ],
+    "aggregation": "For each query ID, arithmetic mean of four five-category probability vectors, in payout order 0,1,2,5,20.",
+    "fixed_deployment_weights": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "aggregation_fitted": false,
+    "authorization": "User explicitly selected equal averaging of the four unchanged recipes.",
+    "cv_evidence_points": 31.70233166770079,
+    "cv_evidence_scope": "Official score on combined held-out OOF predictions, not mean fold points. Previously inspected development data.",
+    "independent_validation_score_for_deployed_average": null,
+    "no_retraining_or_retuning": true,
+    "authorized_unix": 1794091740.335247
+  },
+  "preservation": "Every original fold weight, selected configuration, model checkpoint, seed and feature setting remains unchanged.",
+  "fallback": {
+    "csv": "/Users/kyledo/Documents/All_In/artifacts/final/submission.csv",
+    "entry": "/Users/kyledo/Documents/All_In/artifacts/final/entry.zip",
+    "hashes": {
+      "artifacts/final/submission.csv": "655c228fc0c767e66b58c9f57f7c35452aef0e2f9b520c8bbb89d1e30792f236",
+      "artifacts/final/entry.zip": "a35ecc99d4ffe7bc05af1da1a2b5da61ebc5472bf62b712264099802bff75738",
+      "artifacts/final/validation_predictions.csv": "b1d1e9b48cb402ded12744ab62f028a3fbe789724bd4945c6d2518c3dd9c4394",
+      "artifacts/final/reproduction.json": "e23e9435a29fd96679829062a736ea4a11785d3c8bb092c42d9bd6c6170145ac",
+      "artifacts/final/validation_score.json": "4db9676b89c15b62fd04de1d8b7fbe3e3df162c9ffca6175024c135d94c3dad9",
+      "artifacts/experiment/population.json": "33c2e30e55e62f4ce73b8e9c1fa33ab851ef7aa50524b1c851413494db4b8806",
+      "artifacts/experiment/config.json": "4e5f7415e0863cc66380e85b50b05378f3d6b8124058585d2e4ca81690b6db72",
+      "artifacts/experiment/holdout.json": "f5cd3af8e87f6ede601d709abfcfd02e52951c71680c0d7d516857e4c4796227",
+      "requirements-training.lock": "fc96c98bd06d271517e26292bf1984f6db4fd2c5721d20c25e534e671360a0e1",
+      "artifacts/environment.json": "a9fc235ce3e6da6859dfd806b1eb2d39af63760ca53ecb5ce5532a0a01677c54",
+      "artifacts/upstream.json": "7933e78c4f3445f893d67c3903991fb61bac43fb11f86d86dca38054170c9601",
+      "artifacts/source_patch_manifest.json": "5ca8e979ae6774bed3b5c2309491b81d8c93914b185359514125c0894452c70c",
+      "predict.py": "f32b78dba94a7d1281564bc3fcc722e04e1bd051e8c60dd3dd30e02a3e6e8456",
+      "scripts/package_entry.py": "ca71e980f72b484a48afb84befcdb1432f3b702458c9ae693e56ca677536d735"
+    }
+  },
+  "frozen_unix": 1794090817.614142,
+  "status": "authorized_equal_weight_deployment",
+  "deployed_average_has_independent_validation_score": false,
+  "source_recipe_weights_changed": false,
+  "new_fitted_parameters": false
+}

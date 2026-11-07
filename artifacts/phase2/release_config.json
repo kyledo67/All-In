@@ -1,0 +1,52 @@
+{
+  "selected": "hmm",
+  "config_indices": {
+    "local": 0,
+    "observable": 0,
+    "hmm": 0
+  },
+  "weights": {
+    "hmm": 1.0,
+    "local": 0.0,
+    "cat_observable": 0.0,
+    "cat_hmm": 0.0
+  },
+  "validation_descriptive_score": {
+    "contest_version": "temporal-adaptation-v3-60-40",
+    "technical_points": 31.163114396193993,
+    "max_points": 60.0,
+    "mean_loss_ratio": 0.925353135029659,
+    "by_condition": {
+      "stable": {
+        "error": 0.1776173564379283,
+        "reference_error": 0.19625080289290195,
+        "loss_ratio": 0.9050528905854093,
+        "episodes": 24,
+        "queries": 192
+      },
+      "short_history": {
+        "error": 0.1792585118182728,
+        "reference_error": 0.1773414479878668,
+        "loss_ratio": 1.0108100156627635,
+        "episodes": 24,
+        "queries": 192
+      },
+      "drift": {
+        "error": 0.18532056212663148,
+        "reference_error": 0.18983393064179913,
+        "loss_ratio": 0.9762246480389009,
+        "episodes": 24,
+        "queries": 192
+      },
+      "shared_change": {
+        "error": 0.16636698845870096,
+        "reference_error": 0.20556264957983816,
+        "loss_ratio": 0.8093249858315624,
+        "episodes": 24,
+        "queries": 192
+      }
+    }
+  },
+  "population_training": "public/train only",
+  "blend_fit": "all public validation after fold-held evaluation; no base model fitted to probability targets"
+}

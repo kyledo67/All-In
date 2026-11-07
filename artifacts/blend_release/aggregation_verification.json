@@ -1,0 +1,20 @@
+{
+  "queries": 1536,
+  "query_ids_aligned": true,
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "deployment_weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "max_difference_from_id_aligned_mean_of_serialized_recipes": 1.1102230246251565e-16,
+  "max_sum_error": 2.220446049250313e-16,
+  "all_finite_and_nonnegative": true
+}

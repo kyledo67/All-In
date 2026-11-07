@@ -1,0 +1,14 @@
+Synthetic: identical
+Synthetic: opposite_lag
+Synthetic: short_history
+Synthetic: changing_regimes
+Traceback (most recent call last):
+  File "/Users/kyledo/Documents/All_In/scripts/verify.py", line 258, in <module>
+    report['competition_replay']=competition_replay(module,args.data,args.out)
+                                 ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyledo/Documents/All_In/scripts/verify.py", line 242, in competition_replay
+    return dict(source=inspect.getfile(type(m)), max_parameter_difference=diff,
+                       ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/inspect.py", line 932, in getfile
+    raise TypeError('{!r} is a built-in class'.format(object))
+TypeError: <class 'clean_categorical.CategoricalRegressionHMM'> is a built-in class

@@ -1,0 +1,74 @@
+{
+  "version": "phase2-v1",
+  "seeds": [
+    20261108,
+    20261109
+  ],
+  "folds": 4,
+  "local": [
+    {
+      "half_life": 16,
+      "strength": 8
+    },
+    {
+      "half_life": 16,
+      "strength": 32
+    },
+    {
+      "half_life": 48,
+      "strength": 8
+    },
+    {
+      "half_life": 48,
+      "strength": 32
+    },
+    {
+      "half_life": 128,
+      "strength": 8
+    },
+    {
+      "half_life": 128,
+      "strength": 32
+    }
+  ],
+  "catboost": [
+    {
+      "depth": 4,
+      "l2_leaf_reg": 8
+    },
+    {
+      "depth": 6,
+      "l2_leaf_reg": 16
+    }
+  ],
+  "learning_rate": 0.04,
+  "max_iterations": 400,
+  "early_stopping_rounds": 50,
+  "thread_count": 2,
+  "classes": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "historical_cutoffs": "192..cutoff-1 every8; max8; only observed labels and complete preceding40 ticks; alternate thinning to last40+24 old",
+  "train_weights": "equal episode, equal machine within episode, divided over that machine examples; no class/value weighting",
+  "base_training": "Only public/train observed outcomes and histories. No validation probability target in base fits.",
+  "prior_and_hmm_crossfit": "Four train-episode folds; early-stop fold0 uses nested crossfit within other3 folds; validation/test upstream models fitted on all train only.",
+  "evaluation": "Four stratified episode development folds; all validation previously exposed. Configs and convex weights selected on other3 folds; concatenate held-fold predictions and call official scorer.",
+  "independent_evaluation": "None available. Hidden test remains only unexamined generalization evaluation.",
+  "ensemble": "Global simplex weights on four predeclared components, only if residual complementarity is present; optimizer fits other3 development folds, no condition input.",
+  "replacement_gate": {
+    "minimum_points_gain": 0.5,
+    "minimum_folds_improved": 3,
+    "max_condition_ratio_regression": 0.1,
+    "both_seeds_improve": true
+  },
+  "ensemble_gate": {
+    "minimum_points_gain_over_best_single": 0.25,
+    "minimum_folds_improved": 3,
+    "bootstrap_upper_delta_ratio_below": 0
+  },
+  "budget": "6 local configs; 2 CatBoost configs x2 feature variants x2 seeds; 8 early-stop plus8 full-train fits. No additional architectures."
+}

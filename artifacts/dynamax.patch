@@ -1,0 +1,53 @@
+diff --git a/dynamax/hidden_markov_model/models/categorical_glm_hmm.py b/dynamax/hidden_markov_model/models/categorical_glm_hmm.py
+index 1b4db81..cd84541 100644
+--- a/dynamax/hidden_markov_model/models/categorical_glm_hmm.py
++++ b/dynamax/hidden_markov_model/models/categorical_glm_hmm.py
+@@ -3,6 +3,7 @@ This module contains a Hidden Markov Model (HMM) with categorical emissions
+ from a regression model.
+ """
+ import jax.random as jr
++import jax.numpy as jnp
+ import tensorflow_probability.substrates.jax.distributions as tfd
+ from jaxtyping import Float, Array
+ from dynamax.parameters import ParameterProperties
+@@ -191,3 +192,40 @@ class CategoricalRegressionHMM(HMM):
+         params["transitions"], props["transitions"] = self.transition_component.initialize(key2, method=method, transition_matrix=transition_matrix)
+         params["emissions"], props["emissions"] = self.emission_component.initialize(key=key3, method=method, emission_weights=emission_weights, emission_biases=emission_biases)
+         return ParamsCategoricalRegressionHMM(**params), ParamsCategoricalRegressionHMM(**props)
++
++
++# All-In extension: original classes above remain unchanged in behavior.
++class ParamsPartiallyPooledEmissions(NamedTuple):
++    """Population weights/biases plus one machine's state-shared deviations."""
++    weights: Array
++    biases: Array
++    deviations: Array
++
++
++class PartiallyPooledCategoricalEmissions(CategoricalRegressionHMMEmissions):
++    """MAP adaptation of a small coefficient subset using inherited EM updates.
++
++    Deviations have shape (C, 1 + len(columns)), with the first column an
++    intercept. Precision zero is the matched unshrunk control. Positive precision
++    defines independent zero-centered Gaussian deviations. Population coefficients
++    are fixed during new-machine adaptation. This is a point estimate, not a
++    posterior over coefficients. The upstream M-step calls this log_prior.
++    """
++    def __init__(self, num_states, num_classes, input_dim, columns, precision,
++                 m_step_optimizer=optax.adam(1e-2), m_step_num_iters=50):
++        super().__init__(num_states, num_classes, input_dim,
++                         m_step_optimizer, m_step_num_iters)
++        if precision < 0:
++            raise ValueError('precision must be nonnegative')
++        self.columns = tuple(columns)
++        self.precision = precision
++
++    def log_prior(self, params):
++        return -0.5 * self.precision * jnp.sum(params.deviations ** 2)
++
++    def distribution(self, params, state, inputs):
++        selected = jnp.concatenate((jnp.ones((1,), dtype=inputs.dtype),
++                                    inputs[jnp.asarray(self.columns)]))
++        logits = (params.weights[state] @ inputs + params.biases[state]
++                  + params.deviations @ selected)
++        return tfd.Categorical(logits=logits)

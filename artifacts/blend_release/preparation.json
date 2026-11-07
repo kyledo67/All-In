@@ -1,0 +1,10 @@
+{
+  "status": "authorized_equal_weight_average",
+  "source": {
+    "scripts/freeze_saved_blend.py": "f4aae466c21137711957def8a2a86fe17c9adae5082c727f531f5bc3ecdbfc79",
+    "scripts/package_frozen_blend.py": "8bd0b071d01f2ef8693e1fd6d99ec5edad79d5f76d6cfd94b1c4038ca7f75712",
+    "slot_model/frozen_blend.py": "35ed4cfbb58f17ec35195e2dd31d0ee18346858a5027ca432d38b75e708f4f8e",
+    "predict_blend.py": "d0cd41766668c7f2c8b4fe18c1cf88ccb7c6b1bb9aaeafff86bf7e6af517b2ae"
+  },
+  "no_training_or_optimization": true
+}

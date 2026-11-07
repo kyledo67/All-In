@@ -1,0 +1,238 @@
+{
+  "holdout": {
+    "baseline": {
+      "contest_version": "temporal-adaptation-v3-60-40",
+      "technical_points": 30.0,
+      "max_points": 60.0,
+      "mean_loss_ratio": 1.0,
+      "by_condition": {
+        "stable": {
+          "error": 0.18491989649352614,
+          "reference_error": 0.18491989649352614,
+          "loss_ratio": 1.0,
+          "episodes": 12,
+          "queries": 96
+        },
+        "short_history": {
+          "error": 0.1658487304519447,
+          "reference_error": 0.1658487304519447,
+          "loss_ratio": 1.0,
+          "episodes": 12,
+          "queries": 96
+        },
+        "drift": {
+          "error": 0.17770977879531302,
+          "reference_error": 0.17770977879531302,
+          "loss_ratio": 1.0,
+          "episodes": 12,
+          "queries": 96
+        },
+        "shared_change": {
+          "error": 0.19967645662485792,
+          "reference_error": 0.19967645662485792,
+          "loss_ratio": 1.0,
+          "episodes": 12,
+          "queries": 96
+        }
+      }
+    },
+    "upstream": {
+      "contest_version": "temporal-adaptation-v3-60-40",
+      "technical_points": 30.75992058161217,
+      "max_points": 60.0,
+      "mean_loss_ratio": 0.9505902117272409,
+      "by_condition": {
+        "stable": {
+          "error": 0.1708145381970796,
+          "reference_error": 0.18491989649352614,
+          "loss_ratio": 0.9237217921710206,
+          "episodes": 12,
+          "queries": 96
+        },
+        "short_history": {
+          "error": 0.1806383948679862,
+          "reference_error": 0.1658487304519447,
+          "loss_ratio": 1.0891756263417816,
+          "episodes": 12,
+          "queries": 96
+        },
+        "drift": {
+          "error": 0.1758822133926123,
+          "reference_error": 0.17770977879531302,
+          "loss_ratio": 0.9897160110428942,
+          "episodes": 12,
+          "queries": 96
+        },
+        "shared_change": {
+          "error": 0.15969073049198182,
+          "reference_error": 0.19967645662485792,
+          "loss_ratio": 0.7997474173532673,
+          "episodes": 12,
+          "queries": 96
+        }
+      }
+    },
+    "unshrunk": {
+      "contest_version": "temporal-adaptation-v3-60-40",
+      "technical_points": 27.562197820632008,
+      "max_points": 60.0,
+      "mean_loss_ratio": 1.1768946145175074,
+      "by_condition": {
+        "stable": {
+          "error": 0.21928789639363847,
+          "reference_error": 0.18491989649352614,
+          "loss_ratio": 1.185853445474514,
+          "episodes": 12,
+          "queries": 96
+        },
+        "short_history": {
+          "error": 0.2115155381490357,
+          "reference_error": 0.1658487304519447,
+          "loss_ratio": 1.2753521692487306,
+          "episodes": 12,
+          "queries": 96
+        },
+        "drift": {
+          "error": 0.21681463142899213,
+          "reference_error": 0.17770977879531302,
+          "loss_ratio": 1.2200489635335163,
+          "episodes": 12,
+          "queries": 96
+        },
+        "shared_change": {
+          "error": 0.20493271567059002,
+          "reference_error": 0.19967645662485792,
+          "loss_ratio": 1.0263238798132686,
+          "episodes": 12,
+          "queries": 96
+        }
+      }
+    },
+    "pooled_30": {
+      "contest_version": "temporal-adaptation-v3-60-40",
+      "technical_points": 30.78053755268194,
+      "max_points": 60.0,
+      "mean_loss_ratio": 0.9492836958194105,
+      "by_condition": {
+        "stable": {
+          "error": 0.1742705429005167,
+          "reference_error": 0.18491989649352614,
+          "loss_ratio": 0.9424109909482765,
+          "episodes": 12,
+          "queries": 96
+        },
+        "short_history": {
+          "error": 0.17748587564020793,
+          "reference_error": 0.1658487304519447,
+          "loss_ratio": 1.070167225016143,
+          "episodes": 12,
+          "queries": 96
+        },
+        "drift": {
+          "error": 0.17532276401846872,
+          "reference_error": 0.17770977879531302,
+          "loss_ratio": 0.9865679041804802,
+          "episodes": 12,
+          "queries": 96
+        },
+        "shared_change": {
+          "error": 0.1593395486811534,
+          "reference_error": 0.19967645662485792,
+          "loss_ratio": 0.7979886631327425,
+          "episodes": 12,
+          "queries": 96
+        }
+      }
+    }
+  },
+  "paired_bootstrap": {
+    "upstream": {
+      "delta_loss_ratio_ci95": [
+        -0.019957572641808762,
+        0.017785145016117637
+      ],
+      "by_condition_ci95": {
+        "stable": [
+          -0.01205934262877859,
+          0.0517091365625657
+        ],
+        "short_history": [
+          -0.06644708163703919,
+          0.0237541752248316
+        ],
+        "drift": [
+          -0.04716963328372165,
+          0.04389453251080805
+        ],
+        "shared_change": [
+          -0.018343192500105084,
+          0.017025146396796975
+        ]
+      },
+      "repeats": 2000,
+      "seed": 314159,
+      "interpretation": "negative favors first model",
+      "unit": "whole episode, stratified by condition"
+    },
+    "unshrunk": {
+      "delta_loss_ratio_ci95": [
+        -0.29708049717305013,
+        -0.16460259105588787
+      ],
+      "by_condition_ci95": {
+        "stable": [
+          -0.364121589131412,
+          -0.10950766946438996
+        ],
+        "short_history": [
+          -0.35643428917224906,
+          -0.0476869359378279
+        ],
+        "drift": [
+          -0.33527281814221527,
+          -0.1319786715092975
+        ],
+        "shared_change": [
+          -0.3908797032343938,
+          -0.12073665574048884
+        ]
+      },
+      "repeats": 2000,
+      "seed": 314159,
+      "interpretation": "negative favors first model",
+      "unit": "whole episode, stratified by condition"
+    },
+    "baseline": {
+      "delta_loss_ratio_ci95": [
+        -0.11829049778405058,
+        0.018546084874493007
+      ],
+      "by_condition_ci95": {
+        "stable": [
+          -0.16552236481765945,
+          0.0699483405223342
+        ],
+        "short_history": [
+          -0.04536095155324294,
+          0.20217338555641154
+        ],
+        "drift": [
+          -0.16931691245990105,
+          0.13212684784541065
+        ],
+        "shared_change": [
+          -0.3542782489799811,
+          -0.04299621372980141
+        ]
+      },
+      "repeats": 2000,
+      "seed": 314159,
+      "interpretation": "negative favors first model",
+      "unit": "whole episode, stratified by condition"
+    }
+  },
+  "retain_modification": false,
+  "deployment": "upstream",
+  "holdout_used_for_tuning": false,
+  "decision": "Predeclared confirmatory retention gate; no retuning or refit on holdout targets"
+}

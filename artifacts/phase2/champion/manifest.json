@@ -1,0 +1,30 @@
+{
+  "champion_id": "shared-hmm-33c2e30e55e6",
+  "repository_head": "d611ff6a46ab207b18b8e08185386dd2ce385413",
+  "source_note": "HEAD is initial scaffold; deployed work is uncommitted. Exact authoritative source is preserved entry.zip and its source_manifest.json, not HEAD alone.",
+  "hashes": {
+    "artifacts/final/submission.csv": "655c228fc0c767e66b58c9f57f7c35452aef0e2f9b520c8bbb89d1e30792f236",
+    "artifacts/final/entry.zip": "a35ecc99d4ffe7bc05af1da1a2b5da61ebc5472bf62b712264099802bff75738",
+    "artifacts/final/validation_predictions.csv": "b1d1e9b48cb402ded12744ab62f028a3fbe789724bd4945c6d2518c3dd9c4394",
+    "artifacts/final/reproduction.json": "e23e9435a29fd96679829062a736ea4a11785d3c8bb092c42d9bd6c6170145ac",
+    "artifacts/final/validation_score.json": "4db9676b89c15b62fd04de1d8b7fbe3e3df162c9ffca6175024c135d94c3dad9",
+    "artifacts/experiment/population.json": "33c2e30e55e62f4ce73b8e9c1fa33ab851ef7aa50524b1c851413494db4b8806",
+    "artifacts/experiment/config.json": "4e5f7415e0863cc66380e85b50b05378f3d6b8124058585d2e4ca81690b6db72",
+    "artifacts/experiment/holdout.json": "f5cd3af8e87f6ede601d709abfcfd02e52951c71680c0d7d516857e4c4796227",
+    "requirements-training.lock": "fc96c98bd06d271517e26292bf1984f6db4fd2c5721d20c25e534e671360a0e1",
+    "artifacts/environment.json": "a9fc235ce3e6da6859dfd806b1eb2d39af63760ca53ecb5ce5532a0a01677c54",
+    "artifacts/upstream.json": "7933e78c4f3445f893d67c3903991fb61bac43fb11f86d86dca38054170c9601",
+    "artifacts/source_patch_manifest.json": "5ca8e979ae6774bed3b5c2309491b81d8c93914b185359514125c0894452c70c",
+    "predict.py": "f32b78dba94a7d1281564bc3fcc722e04e1bd051e8c60dd3dd30e02a3e6e8456",
+    "scripts/package_entry.py": "ca71e980f72b484a48afb84befcdb1432f3b702458c9ae693e56ca677536d735"
+  },
+  "scores": {
+    "previous_holdout": 30.75992058161217,
+    "previous_baseline": 30.0,
+    "partial_pooling": 30.78053755268194,
+    "full_validation": 31.163114
+  },
+  "package_command": "python scripts/package_entry.py --data <public>",
+  "reproduce_command": "python predict.py --data <public> --out <submission.csv>",
+  "frozen_unix": 1794089087.64192
+}

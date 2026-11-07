@@ -1,0 +1,37 @@
+{
+  "adaptation_em_iters": 8,
+  "classes": 5,
+  "deviation_columns": [
+    3,
+    11
+  ],
+  "features": [
+    "type_steady",
+    "type_balanced",
+    "type_jackpot",
+    "win_lag_1",
+    "win_lag_2",
+    "win_lag_3",
+    "win_lag_4",
+    "win_lag_5",
+    "win_lag_6",
+    "win_lag_7",
+    "win_lag_8",
+    "win_pair_1_2",
+    "win_pair_2_4",
+    "win_pair_4_8",
+    "win_pair_1_8"
+  ],
+  "learning_rate": 0.03,
+  "m_step_iters": 30,
+  "population_em_iters": 15,
+  "precisions": [
+    0.0,
+    0.3,
+    3.0,
+    30.0
+  ],
+  "seed": 20261107,
+  "states": 2,
+  "window": 32
+}

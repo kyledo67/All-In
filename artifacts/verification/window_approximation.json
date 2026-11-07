@@ -1,0 +1,38 @@
+{
+  "seed": 617,
+  "machines": 256,
+  "full_history_ticks": 128,
+  "transition": [
+    [
+      0.99,
+      0.01
+    ],
+    [
+      0.01,
+      0.99
+    ]
+  ],
+  "emission": [
+    [
+      0.65,
+      0.16,
+      0.1,
+      0.07,
+      0.02
+    ],
+    [
+      0.45,
+      0.25,
+      0.16,
+      0.1,
+      0.04
+    ]
+  ],
+  "mean_squared_difference_from_full_history": {
+    "8": 0.002694843321269763,
+    "16": 0.0013701514654235534,
+    "32": 0.0004053774092149807
+  },
+  "scope": "Synthetic sensitivity only; the competition window stays frozen at 32.",
+  "conclusion": "Restarting the state prior discards information. Missing AR inputs are avoided, not marginalized."
+}

@@ -1,0 +1,30 @@
+{
+  "mode": "mean",
+  "rows": 1536,
+  "byte_identical": true,
+  "max_probability_difference": 0.0,
+  "seconds": 5.751400791996275,
+  "python": "3.13.7",
+  "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+  "peak_child_rss_bytes": 276365312,
+  "source_tree_unchanged": true,
+  "network": "Python audit hook rejects socket connection/DNS/bind; tool execution sandbox restricts network. No network-dependent inference.",
+  "dependencies": "Pinned installed packages, isolated Python -I, no project PYTHONPATH",
+  "submission_sha256": "a3f79eb791f1a49adf0a0fb4f8f24ac334f1c5b4586720604f7b596ee5e1aec8",
+  "stdout": "{\"queries\": 1536, \"seconds\": 5.122862000003806, \"mode\": \"mean\", \"split\": \"test\", \"recipes\": 4, \"payout_order\": [0, 1, 2, 5, 20]}\n",
+  "limitations": "Local macOS clean-extraction check; organizer Linux was not executed.",
+  "read_only_code_and_data": true,
+  "available_data_files": [
+    "test/queries.csv",
+    "test/history.csv"
+  ],
+  "training_validation_targets_or_labels_available": false,
+  "deployment_weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "entry_sha256": "a09330dec7116a14136014df536f4d2ac339570120390e58727e79d4218c22b7",
+  "entry_bytes": 2444504
+}
