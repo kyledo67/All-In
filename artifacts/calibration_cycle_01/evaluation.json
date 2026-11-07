@@ -506,7 +506,27 @@
         "count": 192,
         "mean_squared_error": 0.1693359016010175
       }
-    }
+    },
+    "distribution_change_quartiles": [
+      {
+        "mean_change": 0.10388303521628743,
+        "mean_squared_error": 0.12870672698140884
+      },
+      {
+        "mean_change": 0.25700567395700297,
+        "mean_squared_error": 0.1919528767640539
+      },
+      {
+        "mean_change": 0.3728584187537132,
+        "mean_squared_error": 0.1797235571247371
+      },
+      {
+        "mean_change": 0.6227761457193031,
+        "mean_squared_error": 0.1837408557644308
+      }
+    ],
+    "missingness": "All validation queries have complete recent 40 ticks; short histories have only 24 sampled older ticks, so recent missingness cannot be separated from condition in this kit.",
+    "component_complementarity": "Prior phase-two evaluation records component error correlations and positive blend weights in all four folds; no component refit in this cycle."
   },
   "by_condition_errors": {
     "drift": {
@@ -532,5 +552,11 @@
     "validation/conditions.csv": "ebcca7597bbdfa532c5254b92903e66522a710502a6f70689c3de311f75c29b1",
     "validation/reference.csv": "bb396d9e4d20bf4004374f9ab781f41aaa8b730e61887c1969be534efeb1e6c6"
   },
-  "source_hash": "f8ab70935bf5d11ab75ef693568f2fc3f766d1958dc95599e95f7870ce74c474"
+  "source_hash": "f8ab70935bf5d11ab75ef693568f2fc3f766d1958dc95599e95f7870ce74c474",
+  "deployment_decision": "Reject scalar calibration; frozen four-recipe equal average remains active. No new submission/ZIP produced.",
+  "artifact_size_bytes": {
+    "release_entry_zip": 2444504,
+    "calibration_parameters_if_retained": 32
+  },
+  "reproduction_requirements": "Existing blend release only; no new inference dependency. The calibration experiment used saved recipes and scipy optimizer."
 }

@@ -20,6 +20,14 @@ dominates; 20× contributes less than 0.001 to the normalized mean in each
 condition. The strongest raw-error machine types are steady and balanced.
 The overall 0× bias is positive in all four conditions; this is observed bias,
 not proof about hidden simulator behavior.
+Mean squared error by machine type is 0.2308 steady, 0.1977 balanced, and
+0.0868 jackpot; by signal it ranges from 0.1618 at -1 to 0.1756 at +1.
+Across increasing quartiles of recent-versus-older distribution change, mean
+error is 0.1287, 0.1920, 0.1797, and 0.1837. All validation queries have a
+complete recent 40-tick suffix, so missing recent observations cannot be
+isolated here. Short histories have sampled older rows. The previous phase-two
+report contains component error correlations and lag diagnostics; the blend
+retained positive local and CatBoost components in every fold.
 
 **One testable hypothesis:** The recipe vectors may be slightly too sharp.
 We tested one scalar power transformation, `p' = p**gamma / sum(p**gamma)`,
@@ -50,6 +58,9 @@ interval for candidate-minus-champion normalized error is
 The small and inconsistent gain does not justify an added deployment
 calibration artifact. The existing blend remains the release; no test
 predictions or package were regenerated for this rejected candidate.
+This cycle reused the two frozen CatBoost seeds; it did not introduce a new
+training seed. The proposed four floating-point calibration parameters would
+be small, but the measured gain does not support their deployment.
 
 The organizer scorer independently reproduced the saved control result. The
 combined OOF predictions, per-episode errors, condition/category diagnostics,
