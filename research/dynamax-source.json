@@ -1,0 +1,5 @@
+{
+  "upstream_commit": "ffc626bf89bf07c7ae7064922f6a373d013c4b17",
+  "archive_sha256": "44680a3d654b179f5fe47b6ba19d7a5b82427271e8e98eab342521d9edd5e6a2",
+  "contents": "Pinned Python source with existing artifacts/dynamax.patch applied; license and citation included. No git metadata or caches."
+}

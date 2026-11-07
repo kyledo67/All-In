@@ -59,6 +59,7 @@ From this project root, install the exact training environment and set the kit p
 ```sh
 python3.13 -m venv .venv
 .venv/bin/python -m pip install -r requirements-training.lock
+.venv/bin/python scripts/restore_vendor.py
 DATA=/absolute/path/to/main-participants-60-40/public
 .venv/bin/python organizer/run_starter.py --data "$DATA" --out artifacts/baseline-replay
 .venv/bin/python scripts/verify.py --data "$DATA" --out artifacts/verification-replay
@@ -95,3 +96,9 @@ Upstream Dynamax is pinned to `ffc626bf89bf07c7ae7064922f6a373d013c4b17`.
 The readable patch is `artifacts/dynamax.patch`; the original categorical module
 is `research/upstream_categorical_glm_hmm.py`. MIT attribution and citation are in
 `THIRD_PARTY_NOTICES.md` and the vendored license files.
+
+Git preserves the pinned, patched Dynamax Python source, license and citation in
+`research/dynamax-source.tar.gz`; `scripts/restore_vendor.py` restores it without
+network access. The local upstream checkout, its Git metadata, feature caches,
+virtual environment, credentials and MLflow file store are excluded from Git.
+MLflow run identifiers and exported experiment artifacts remain versioned.
