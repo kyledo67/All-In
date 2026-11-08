@@ -254,3 +254,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Organizer participant kit data. Released per round; never committed.
+main-participants-60-40/
+adaptation-participants-*/
+# TabPFN component: HuggingFace checkpoint cache and rebuilt feature cache.
+artifacts/tabpfn/cache/
+# The 28 MB pre-trained TabPFN checkpoint is not committed: it is upstream model
+# weights, re-downloadable once with scripts/tabpfn_fetch_checkpoint.py, and it ships
+# inside the entry archive alongside research/tabpfn/LICENSE instead.
+artifacts/tabpfn/checkpoints/

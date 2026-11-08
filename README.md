@@ -23,16 +23,41 @@ The first subsequent targeted calibration test is recorded in
 exploratory OOF points, worsened drift and one fold, and was rejected. The
 verified blend release remains unchanged.
 
-An experimental [MTDg stack addition](docs/mtd-investigation.md) uses a fixed
-0.25 changepoint MTD contribution on top of the frozen mean blend. Its
-combined OOF procedure scores 31.9023/60; the deployed candidate has no
-independent validation score. The separate CSV and ZIP are under
-`artifacts/mtd_01/`, and the original blend remains the active champion.
+## TabPFN third model class
 
-The subsequent [structural interaction and shared-state checks](docs/mtd-pairs-investigation.md)
-found no useful replacement: lag-7 pair corrections added only 0.0025 exploratory
-OOF points, and a two-state episode-neighbor correction reduced points. Both
-are preserved as rejected experiments; neither changed a release.
+A TabPFN component now sits alongside CatBoost and the Dynamax HMM, wired additively
+into the same blend. On the four-fold development protocol it earns a free-simplex weight
+of 0.48-0.65 (mean 0.566), well past the 0.15 retention bar, and every fixed weight in
+{0.15, 0.25, 0.35} improves all four folds over the 31.702332 blend with paired
+whole-episode intervals below zero:
+
+| Variant | Points / 60 | vs bar |
+| --- | ---: | ---: |
+| current CatBoost + Dynamax blend | 31.702332 | - |
+| TabPFN alone | 31.914042 | +0.211710 |
+| blend, TabPFN w=0.15 | 31.857008 | +0.154676 |
+| blend, TabPFN w=0.25 | 31.936596 | +0.234264 |
+| blend, TabPFN w=0.35 | 31.997015 | +0.294683 |
+| free five-component simplex | 32.076118 | +0.373786 |
+
+It does **not** clear this project's own predeclared 0.5-point replacement gate, and
+TabPFN's standalone interval spans zero, so the component is complementary rather than
+individually better. Its gain also depends on the HMM summary features: on observable
+features alone it scores 31.296775, below the bar. Nothing was promoted; the deployed
+default is unchanged and `--tabpfn-weight` defaults to 0, where `predict_blend.py`
+reproduces `artifacts/blend_release/submission.csv` byte-for-byte.
+
+Full numbers, cost, leakage audit and limitations: [TabPFN component](docs/tabpfn-component.md).
+
+```sh
+.venv/bin/python -m pip install -r requirements-tabpfn.lock
+.venv/bin/python scripts/tabpfn_fetch_checkpoint.py          # once, needs network
+HF_HUB_OFFLINE=1 .venv/bin/python predict_blend.py --data "$DATA" \
+  --out /tmp/submission.csv --split test --tabpfn-weight 0.35
+```
+
+TabPFN is under the Prior Labs License v1.1, not Apache-2.0; see
+`THIRD_PARTY_NOTICES.md` and `research/tabpfn/LICENSE`. Built with PriorLabs-TabPFN.
 
 Predicts payout probabilities in order **0, 1, 2, 5, 20** using the released
 main participant kit. The controlled Dynamax partial-pooling experiment is

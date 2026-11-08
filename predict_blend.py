@@ -12,5 +12,7 @@ def main():
     ap.add_argument('--split',choices=['test','validation'],default='test');ap.add_argument('--model',type=Path,default=ROOT/'artifacts/blend_release/model')
     ap.add_argument('--mode',choices=['heldfold','mean','fold0','fold1','fold2','fold3'])
     ap.add_argument('--audit-dir',type=Path)
-    args=ap.parse_args();print(json.dumps(predict(args.data,args.out,args.model,split=args.split,mode=args.mode,audit_dir=args.audit_dir)))
+    ap.add_argument('--tabpfn-weight',type=float,default=0.,help='Fixed weight for the TabPFN component; 0 keeps the frozen blend unchanged.')
+    ap.add_argument('--tabpfn-model',type=Path,help='Saved TabPFN context directory; defaults to <model>/tabpfn.')
+    args=ap.parse_args();print(json.dumps(predict(args.data,args.out,args.model,split=args.split,mode=args.mode,audit_dir=args.audit_dir,tabpfn_weight=args.tabpfn_weight,tabpfn_model=args.tabpfn_model)))
 if __name__=='__main__':main()

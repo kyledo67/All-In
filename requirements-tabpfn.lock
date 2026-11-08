@@ -1,0 +1,68 @@
+# Additional inference requirements for the TabPFN blend component.
+#
+# Separation follows the existing split: requirements-training.lock holds the
+# JAX/Dynamax training environment, artifacts/blend_release/requirements.txt holds the
+# frozen-blend inference environment, and this file holds the extra closure the TabPFN
+# component needs. It is required only when predict_blend.py runs with
+# --tabpfn-weight > 0; at weight 0 the import never happens and none of this is loaded.
+#
+# Local `tabpfn` package only. `tabpfn-client` is deliberately absent: it would post
+# features to a remote API, and the competition requires offline inference.
+#
+# Model weights are not a pip dependency. The 28 MB v2 classifier checkpoint is cached
+# at artifacts/tabpfn/checkpoints/ and read with HF_HUB_OFFLINE=1, so no network call
+# is made at prediction time.
+#
+# Overlap note: tabpfn 2.2.1 constrains pandas below 3, so installing this file over
+# artifacts/blend_release/requirements.txt moves pandas 3.1.1 -> 2.3.3, packaging
+# 25.0 -> 26.3 and scikit-learn 1.6.1 (unchanged). The committed CatBoost checkpoints
+# were re-verified under this resolution and reproduce their frozen predictions to
+# 4.4e-16; see artifacts/tabpfn/rebuild_verification.json.
+tabpfn==2.2.1
+tabpfn-common-utils==0.2.23
+torch==2.15.0
+einops==0.8.2
+huggingface_hub==0.36.2
+hf-xet==1.8.0
+safetensors==0.8.0
+scikit-learn==1.6.1
+pandas==2.3.3
+pytz==2026.6
+tzdata==2026.6
+python-dateutil==4.0.0
+numpy==2.2.6
+scipy==1.15.3
+joblib==1.6.0
+threadpoolctl==3.8.0
+networkx==3.7
+sympy==1.14.0
+mpmath==1.3.0
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+filelock==4.2.4
+fsspec==2026.9.0
+typing_extensions==4.16.0
+typing-inspection==0.4.5
+annotated-types==0.8.0
+eval_type_backport==0.4.0
+pydantic==2.14.3
+pydantic_core==2.50.4
+pydantic-settings==2.16.2
+python-dotenv==1.2.4
+packaging==26.3
+PyYAML==6.0.3
+requests==2.34.2
+urllib3==2.8.0
+certifi==2026.10.23
+charset-normalizer==3.5.2
+idna==3.20
+tqdm==4.70.1
+cloudpickle==3.1.2
+platformdirs==4.14.5
+setuptools==78.1.0
+nvidia-ml-py==13.615.71
+# Pulled in by tabpfn-common-utils' telemetry module. Disabled at runtime by
+# TABPFN_DISABLE_TELEMETRY=1, set in slot_model/tabpfn_model.py before the import.
+posthog==7.86.0
+backoff==2.2.1
+distro==1.9.0

@@ -10,8 +10,9 @@ from slot_forecasting.io import load_inputs,write_submission
 
 NAMES=('hmm','local','cat_observable','cat_hmm')
 
-def predict(data,output,model,*,split='test',mode=None,audit_dir=None):
+def predict(data,output,model,*,split='test',mode=None,audit_dir=None,tabpfn_weight=0.,tabpfn_model=None):
     start=time.perf_counter();model=Path(model)
+    if not 0<=tabpfn_weight<1:raise ValueError('TabPFN blend weight must be in [0,1)')
     if mode is None:
         deployment=json.loads((model/'deployment.json').read_text());mode=deployment['mode']
     if mode not in ('heldfold','mean','fold0','fold1','fold2','fold3'):raise ValueError('Unknown frozen recipe routing')
@@ -52,6 +53,17 @@ def predict(data,output,model,*,split='test',mode=None,audit_dir=None):
         assignment=np.array([folds[e['q'].episode_id] for e in es]);pred=stack[assignment,np.arange(len(es))]
     elif mode=='mean':pred=np.mean(stack,axis=0)
     else:pred=stack[int(mode[-1])]
+    tabpfn=None
+    if tabpfn_weight>0:
+        # Fixed post-hoc weight over the frozen four-recipe output. The saved recipes and
+        # their internal weights are never refitted; at weight 0 torch is never imported.
+        from .tabpfn_model import TabPFNEnsemble
+        component=TabPFNEnsemble.load(Path(tabpfn_model) if tabpfn_model is not None else model/'tabpfn')
+        values=x if component.variant=='observable' else np.column_stack((x,hsummary))
+        tabpfn=component.predict_proba(values)
+        if tabpfn.shape!=pred.shape:raise ValueError('TabPFN prediction shape does not match the blend')
+        pred=(1-tabpfn_weight)*pred+tabpfn_weight*tabpfn
+        pred/=pred.sum(1,keepdims=True)
     if not np.isfinite(pred).all() or np.min(pred)<0:raise ValueError('Invalid probabilities')
     assert np.max(abs(pred.sum(1)-1))<1e-12
     write_submission(output,{e['q'].query_id:p.tolist() for e,p in zip(es,pred)})
@@ -59,10 +71,12 @@ def predict(data,output,model,*,split='test',mode=None,audit_dir=None):
         audit_dir=Path(audit_dir);audit_dir.mkdir(parents=True,exist_ok=True)
         for recipe,values in zip(recipes,stack):
             write_submission(audit_dir/f'fold{recipe["fold"]}.csv',dict(zip(query_ids,values.tolist())))
+        if tabpfn is not None:
+            write_submission(audit_dir/'tabpfn.csv',dict(zip(query_ids,tabpfn.tolist())))
         (audit_dir/'audit.json').write_text(json.dumps({'mode':mode,'query_ids_unique':True,
             'query_count':len(query_ids),'component_alignment':'Every component uses the same query-ID-indexed feature rows; serialized recipe CSVs retain those IDs.',
             'payout_order':[0,1,2,5,20],'recipe_order':[r['fold'] for r in recipes],
             'deployment_weights':[0.25]*4 if mode=='mean' else None,
             'recipe_max_sum_error':float(np.max(abs(stack.sum(2)-1))),
             'ensemble_max_sum_error':float(np.max(abs(pred.sum(1)-1)))},indent=2)+'\n')
-    return {'queries':len(es),'seconds':time.perf_counter()-start,'mode':mode,'split':split,'recipes':len(recipes),'payout_order':[0,1,2,5,20]}
+    return {'queries':len(es),'seconds':time.perf_counter()-start,'mode':mode,'split':split,'recipes':len(recipes),'payout_order':[0,1,2,5,20],'tabpfn_weight':tabpfn_weight}

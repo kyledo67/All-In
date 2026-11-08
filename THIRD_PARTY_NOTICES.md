@@ -23,3 +23,29 @@ Its original notices, rules and reproduction contract are retained in `organizer
 Training libraries are installed separately using `requirements-training.lock`;
 their distributions carry their own notices and licenses. The final shared-model
 inference uses Python's standard library and the supplied organizer reader/writer.
+
+## Built with PriorLabs-TabPFN
+
+TabPFN, https://github.com/priorlabs/tabpfn, pinned to `tabpfn==2.2.1`, is reused for
+the optional TabPFN blend component. **It is not Apache-2.0.** It is distributed under
+the **Prior Labs License Version 1.1 (May 2025)**, an Apache-2.0 derivative whose added
+Paragraph 10 requires that anyone distributing or making available the work, its model
+weights, or a derivative of either must (A) ship a copy of that license and (B)
+prominently display "Built with PriorLabs-TabPFN". The complete license is preserved at
+`research/tabpfn/LICENSE`, and this heading satisfies (B) for this repository.
+
+Authors include Noah Hollmann, Samuel Müller, Lennart Purucker, Arjun Krishnakumar,
+Max Körfer, Shi Bin Hoo, Robin Tibor Schirrmeister, Frank Hutter, Eddie Bergman,
+Leo Grinsztajn, Felix Jabloski, Klemens Flöge, Oscar Key, Felix Birkel, Philipp Jund,
+Brendan Roof, Dominik Safaric and Benjamin Jaeger.
+
+Paragraph 10 also exempts "internal benchmarking and testing without external
+communication". Measuring the component against our own blend on public validation is
+that exempt case. Shipping the 28 MB pre-trained classifier checkpoint
+(`artifacts/tabpfn/checkpoints/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt`) inside a
+submission archive is not: any such archive must carry `research/tabpfn/LICENSE` and
+the attribution line above. Our own fitted artifacts under `artifacts/tabpfn/models/`
+hold only the derived feature context and its labels, never redistributed weights.
+
+The `tabpfn-client` package is deliberately never installed or imported; it would send
+features to a remote API, which the competition's offline-inference rule forbids.

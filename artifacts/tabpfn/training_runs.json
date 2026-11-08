@@ -1,0 +1,131 @@
+{
+  "cache_key": "45eaa29447ae7570",
+  "checkpoint_dir": "/Users/ayan/Downloads/All-In/artifacts/tabpfn/checkpoints",
+  "n_estimators": 1,
+  "package": "tabpfn (local); tabpfn_client never imported",
+  "provenance": {
+    "hmm_features": 7,
+    "observable_features": 182,
+    "train_model_keys": [
+      "31a573ded8ac999c",
+      "5c640565ea14690f",
+      "842ce57246be7636",
+      "8e08785c8a049acb"
+    ],
+    "train_rows": 3134,
+    "validation_model_keys": [
+      "243be1a99bcbf51a"
+    ],
+    "validation_rows": 768
+  },
+  "rebuild_verification": {
+    "conclusion": "JAX-free feature rebuild reproduces every committed CatBoost prediction",
+    "max_abs_deviation": 4.440892098500626e-16,
+    "per_model": {
+      "cb_hmm_0_20261108": 4.440892098500626e-16,
+      "cb_hmm_0_20261109": 2.220446049250313e-16,
+      "cb_hmm_1_20261108": 3.3306690738754696e-16,
+      "cb_hmm_1_20261109": 3.3306690738754696e-16,
+      "cb_observable_0_20261108": 3.3306690738754696e-16,
+      "cb_observable_0_20261109": 2.220446049250313e-16,
+      "cb_observable_1_20261108": 2.220446049250313e-16,
+      "cb_observable_1_20261109": 3.3306690738754696e-16
+    },
+    "tolerance": 1e-09
+  },
+  "runs": [
+    {
+      "context_rows": 3134,
+      "context_sha256": "72efa63b6661acba7d443e82eb1e7a230f462f2b8eb5c70c8cb3357dfe365e43",
+      "features": 182,
+      "fit_seconds": 3.669803917000536,
+      "max_sum_error": 2.220446049250313e-16,
+      "n_estimators": 1,
+      "name": "tabpfn_observable_20261108",
+      "probability_min": 9.235888399024244e-05,
+      "seed": 20261108,
+      "subsample": {
+        "budget": 10000,
+        "kept_rows": 3134,
+        "offered_rows": 3134,
+        "seed": 20261108,
+        "subsampled": false
+      },
+      "validation_inference_seconds": 249.75504808299593,
+      "variant": "observable",
+      "weight_handling": "unweighted context rows; CatBoost Pool weights not applicable to TabPFN"
+    },
+    {
+      "context_rows": 3134,
+      "context_sha256": "72efa63b6661acba7d443e82eb1e7a230f462f2b8eb5c70c8cb3357dfe365e43",
+      "features": 182,
+      "fit_seconds": 0.8842109589895699,
+      "max_sum_error": 2.220446049250313e-16,
+      "n_estimators": 1,
+      "name": "tabpfn_observable_20261109",
+      "probability_min": 0.0003419985718428592,
+      "seed": 20261109,
+      "subsample": {
+        "budget": 10000,
+        "kept_rows": 3134,
+        "offered_rows": 3134,
+        "seed": 20261109,
+        "subsampled": false
+      },
+      "validation_inference_seconds": 215.7370926660078,
+      "variant": "observable",
+      "weight_handling": "unweighted context rows; CatBoost Pool weights not applicable to TabPFN"
+    },
+    {
+      "context_rows": 3134,
+      "context_sha256": "cd2c985bc48c62624fada3306e3d4684081fd6a8a65bfd22f078f6985b897ca2",
+      "features": 189,
+      "fit_seconds": 0.39772666699718684,
+      "max_sum_error": 2.220446049250313e-16,
+      "n_estimators": 1,
+      "name": "tabpfn_hmm_20261108",
+      "probability_min": 5.5835919121023455e-05,
+      "seed": 20261108,
+      "subsample": {
+        "budget": 10000,
+        "kept_rows": 3134,
+        "offered_rows": 3134,
+        "seed": 20261108,
+        "subsampled": false
+      },
+      "validation_inference_seconds": 245.27410070801852,
+      "variant": "hmm",
+      "weight_handling": "unweighted context rows; CatBoost Pool weights not applicable to TabPFN"
+    },
+    {
+      "context_rows": 3134,
+      "context_sha256": "cd2c985bc48c62624fada3306e3d4684081fd6a8a65bfd22f078f6985b897ca2",
+      "features": 189,
+      "fit_seconds": 0.42810683298739605,
+      "max_sum_error": 2.220446049250313e-16,
+      "n_estimators": 1,
+      "name": "tabpfn_hmm_20261109",
+      "probability_min": 0.0003058169305355577,
+      "seed": 20261109,
+      "subsample": {
+        "budget": 10000,
+        "kept_rows": 3134,
+        "offered_rows": 3134,
+        "seed": 20261109,
+        "subsampled": false
+      },
+      "validation_inference_seconds": 213.74192470801063,
+      "variant": "hmm",
+      "weight_handling": "unweighted context rows; CatBoost Pool weights not applicable to TabPFN"
+    }
+  ],
+  "seeds": [
+    20261108,
+    20261109
+  ],
+  "total_seconds": 973.4303656250122,
+  "variants": [
+    "observable",
+    "hmm"
+  ]
+}
