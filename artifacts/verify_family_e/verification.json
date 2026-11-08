@@ -1,0 +1,232 @@
+{
+  "E0a_equals_protected_maxabs": 7.771561172376096e-16,
+  "E0a_zero_correction": {
+    "R": 0.12080571088225599,
+    "by_condition": {
+      "drift": 0.12076667137596732,
+      "shared_change": 0.13106166086284635,
+      "short_history": 0.14575610520224477,
+      "stable": 0.08563840608796551
+    },
+    "chosen": [
+      {
+        "blend": 0.0,
+        "config": [],
+        "fold": 0,
+        "inner_objective": 0.13030999766675128,
+        "inner_zero_correction": 0.13030999766675128
+      },
+      {
+        "blend": 0.0,
+        "config": [],
+        "fold": 1,
+        "inner_objective": 0.10701219485147598,
+        "inner_zero_correction": 0.10701219485147598
+      },
+      {
+        "blend": 0.0,
+        "config": [],
+        "fold": 2,
+        "inner_objective": 0.11731354222367364,
+        "inner_zero_correction": 0.11731354222367364
+      },
+      {
+        "blend": 0.0,
+        "config": [],
+        "fold": 3,
+        "inner_objective": 0.12863559561933635,
+        "inner_zero_correction": 0.12863559561933635
+      }
+    ],
+    "paired_vs_protected_ci95": [
+      -4.6195373340518314e-17,
+      2.672935817318286e-17
+    ],
+    "points": 53.532917808538166,
+    "seconds": 0.04995324998162687
+  },
+  "E2_calibrator": {
+    "R": 0.11823114161907226,
+    "by_condition": {
+      "drift": 0.11562828048101242,
+      "shared_change": 0.12925556716780728,
+      "short_history": 0.14888375145797875,
+      "stable": 0.0791569673694906
+    },
+    "chosen": [
+      {
+        "blend": 0.625,
+        "config": [
+          "F6_lagall",
+          "0.3"
+        ],
+        "fold": 0,
+        "inner_objective": 0.12491591971735304,
+        "inner_zero_correction": 0.13030999766675128
+      },
+      {
+        "blend": 0.5,
+        "config": [
+          "F6_lagall",
+          "0.3"
+        ],
+        "fold": 1,
+        "inner_objective": 0.10431885413388664,
+        "inner_zero_correction": 0.10701219485147598
+      },
+      {
+        "blend": 0.625,
+        "config": [
+          "F5_lag1",
+          "0.3"
+        ],
+        "fold": 2,
+        "inner_objective": 0.1147242238223847,
+        "inner_zero_correction": 0.11731354222367364
+      },
+      {
+        "blend": 0.625,
+        "config": [
+          "F8_wide",
+          "0.3"
+        ],
+        "fold": 3,
+        "inner_objective": 0.12426707639532578,
+        "inner_zero_correction": 0.12863559561933635
+      }
+    ],
+    "paired_vs_protected_ci95": [
+      -0.0048415374526294295,
+      -0.00023258146869815753
+    ],
+    "points": 53.656169790734666,
+    "seconds": 1.0121784579823725
+  },
+  "E2r_calibrator_direct": {
+    "R": 0.11769413785723258,
+    "by_condition": {
+      "drift": 0.11511398079200379,
+      "shared_change": 0.12977039093265882,
+      "short_history": 0.14693864455298036,
+      "stable": 0.07895353515128735
+    },
+    "chosen": [
+      {
+        "blend": 0.75,
+        "config": [
+          "F6_lagall",
+          "0.3"
+        ],
+        "fold": 0,
+        "inner_objective": 0.12500644253914062,
+        "inner_zero_correction": 0.13030999766675128
+      },
+      {
+        "blend": 0.625,
+        "config": [
+          "F6_lagall",
+          "1.0"
+        ],
+        "fold": 1,
+        "inner_objective": 0.1042352436157786,
+        "inner_zero_correction": 0.10701219485147598
+      },
+      {
+        "blend": 0.75,
+        "config": [
+          "F5_lag1",
+          "1.0"
+        ],
+        "fold": 2,
+        "inner_objective": 0.11441813762806372,
+        "inner_zero_correction": 0.11731354222367364
+      },
+      {
+        "blend": 0.75,
+        "config": [
+          "F8_wide",
+          "1.0"
+        ],
+        "fold": 3,
+        "inner_objective": 0.12443630332531257,
+        "inner_zero_correction": 0.12863559561933635
+      }
+    ],
+    "paired_vs_protected_ci95": [
+      -0.005234385306801964,
+      -0.0009635379380658234
+    ],
+    "points": 53.68194926299599,
+    "seconds": 1.8763627499865834
+  },
+  "held_target_perturbation_probe": {
+    "E2_calibrator": [
+      {
+        "fold": 0,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.19196519206551554,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      },
+      {
+        "fold": 1,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.1278979487955064,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      },
+      {
+        "fold": 2,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.15207712249737895,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      },
+      {
+        "fold": 3,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.13969094351279843,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      }
+    ],
+    "E2r_calibrator_direct": [
+      {
+        "fold": 0,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.197860891496209,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      },
+      {
+        "fold": 1,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.14998768514872385,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      },
+      {
+        "fold": 2,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.20543063417192453,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      },
+      {
+        "fold": 3,
+        "max_abs_delta_P_on_held": 0.0,
+        "max_abs_delta_P_on_other_folds_sanity": 0.2104514984411151,
+        "max_abs_delta_u_on_held": 0.0,
+        "selected_config_unchanged": true
+      }
+    ]
+  },
+  "paired_E2r_vs_E0a": [
+    -0.005234385306801953,
+    -0.0009635379380657991
+  ],
+  "protected": {
+    "R": 0.120805710882256,
+    "points": 53.532917808538166
+  }
+}

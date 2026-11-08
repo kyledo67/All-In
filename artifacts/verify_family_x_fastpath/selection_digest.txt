@@ -1,0 +1,22 @@
+Xnull 7e978ecfe2ff6a58e440374edc858ee48177b381b917c6cc36b94e956b53deaa
+X0 46dacba5a477beca7ad328e2845c2e027063f5a880bccd887504cefb8b033dc4
+X1 622c058b3c0d6c1ee8d0aaf36fc02ee9fa59171fe4e58a9381f198842264044d
+X2 aadb6bef93b996c8d0b46da2ce3cb145d38d9bf38ef0e649fda02c38dda83c8d
+X3 b05df7b89b10712b67ced8921ce67e0a974316a38ea04a8c593ec8eda113bf59
+X1full c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35
+X2full a438703f2bd1864ecb8c8c6e39778439e7d84ca9da9b1f297d4e6a582996fcfd
+X4 a438703f2bd1864ecb8c8c6e39778439e7d84ca9da9b1f297d4e6a582996fcfd
+X5 9412ba65745215c6553c53af85a34289e8d79c7e9e804d0f675ad9aaf21352ee
+fold0 X0 artifacts/beta_memory/predictions/oof_beta_memory.csv artifacts/dense_catboost_01/validation_sparse.csv X1 2x2 X2 2x2 X3 mixture 2x2 lam=0.0 X4 mixture 15x10 lam=0.0 X5 pooled lam=0.0
+fold1 X0 artifacts/beta_subsets/predictions/oof_parity_templates.csv artifacts/beta_cells/predictions/oof_beta_average.csv X1 2x2 X2 2x2 X3 no_change -x- lam=- X4 mixture 15x10 lam=0.0 X5 pertype lam=0.0
+fold2 X0 artifacts/beta_templates/predictions/oof_parity_templates.csv artifacts/dense_catboost_01/validation_sparse.csv X1 2x2 X2 2x2 X3 no_change -x- lam=- X4 mixture 15x10 lam=0.0 X5 pertype lam=0.0
+fold3 X0 artifacts/beta_subsets/predictions/oof_parity_templates.csv artifacts/beta_cells/predictions/oof_beta_average.csv X1 2x2 X2 2x2 X3 no_change -x- lam=- X4 mixture 15x10 lam=0.0 X5 pooled lam=0.0
+Xnull points 53.532917809 R 0.120805710882
+X0 points 53.223821620 R 0.127314765716
+X1 points 53.566357014 R 0.120106039401
+X2 points 53.566047771 R 0.120112505906
+X3 points 53.421843519 R 0.123136081569
+X1full points 53.909890267 R 0.112968319962
+X2full points 53.910693960 R 0.112951727987
+X4 points 53.910693960 R 0.112951727987
+X5 points 53.982019792 R 0.111481197470

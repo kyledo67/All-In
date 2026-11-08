@@ -1,0 +1,200 @@
+{
+  "arms_vs_protected": {
+    "boost_diag_only": {
+      "ci90": [
+        -0.001155352693683602,
+        0.0031517681107816452
+      ],
+      "ci95": [
+        -0.0015669346311622714,
+        0.0036331514198514664
+      ],
+      "median_delta": 0.0009359739823519898,
+      "p_delta_negative": 0.2352,
+      "repeats": 20000
+    },
+    "boost_enriched": {
+      "ci90": [
+        -0.00837164506731615,
+        -0.0006712687912088025
+      ],
+      "ci95": [
+        -0.009070412067475811,
+        3.245337501031203e-05
+      ],
+      "median_delta": -0.004600772862636672,
+      "p_delta_negative": 0.97425,
+      "repeats": 20000
+    },
+    "boost_enriched_noother": {
+      "ci90": [
+        -0.008776373678776461,
+        -0.0006072427703309831
+      ],
+      "ci95": [
+        -0.009551770569363554,
+        0.0002692081890409216
+      ],
+      "median_delta": -0.004754491862905793,
+      "p_delta_negative": 0.96915,
+      "repeats": 20000
+    },
+    "boost_enriched_nopool": {
+      "ci90": [
+        -0.003484518206207487,
+        0.004159367382931288
+      ],
+      "ci95": [
+        -0.004233510915646954,
+        0.005030692500020421
+      ],
+      "median_delta": 0.00016055188131791905,
+      "p_delta_negative": 0.4733,
+      "repeats": 20000
+    },
+    "boost_enriched_nopreq": {
+      "ci90": [
+        -0.010389027069358616,
+        -0.003207264779138733
+      ],
+      "ci95": [
+        -0.011078655240315188,
+        -0.0025151432275985035
+      ],
+      "median_delta": -0.006846735258581858,
+      "p_delta_negative": 0.99885,
+      "repeats": 20000
+    },
+    "boost_old8": {
+      "ci90": [
+        -0.0028441610023438525,
+        -0.0002534821702513267
+      ],
+      "ci95": [
+        -0.0030987256716281286,
+        2.119484794735355e-05
+      ],
+      "median_delta": -0.001551005621695623,
+      "p_delta_negative": 0.97345,
+      "repeats": 20000
+    },
+    "boost_q_only_enriched": {
+      "ci90": [
+        -0.00930003910836081,
+        -0.0014378766514309541
+      ],
+      "ci95": [
+        -0.010031774415242728,
+        -0.0006218346237419045
+      ],
+      "median_delta": -0.005490692797237552,
+      "p_delta_negative": 0.98635,
+      "repeats": 20000
+    },
+    "boost_q_only_old8": {
+      "ci90": [
+        -0.0012631477988722982,
+        0.00024003587011372745
+      ],
+      "ci95": [
+        -0.0013917317504533626,
+        0.00042964131983062626
+      ],
+      "median_delta": -0.0005666347021027943,
+      "p_delta_negative": 0.88005,
+      "repeats": 20000
+    },
+    "boost_recal_only": {
+      "ci90": [
+        -0.004748533423478648,
+        0.001546221928868645
+      ],
+      "ci95": [
+        -0.005342460910888297,
+        0.0021557183572863043
+      ],
+      "median_delta": -0.0016560007240002208,
+      "p_delta_negative": 0.8088,
+      "repeats": 20000
+    },
+    "boost_subset_nested": {
+      "ci90": [
+        -0.008776373678776461,
+        -0.0006072427703309831
+      ],
+      "ci95": [
+        -0.009551770569363554,
+        0.0002692081890409216
+      ],
+      "median_delta": -0.004754491862905793,
+      "p_delta_negative": 0.96915,
+      "repeats": 20000
+    },
+    "linear_old8_log_published": {
+      "ci90": [
+        -0.005438324647481537,
+        0.0012471487897729855
+      ],
+      "ci95": [
+        -0.006096905436189359,
+        0.0019390198976278594
+      ],
+      "median_delta": -0.0020933923825903564,
+      "p_delta_negative": 0.8482,
+      "repeats": 20000
+    },
+    "ridge_enriched": {
+      "ci90": [
+        0.0017005111978661857,
+        0.006076484946970458
+      ],
+      "ci95": [
+        0.001333175541098369,
+        0.006530687988217425
+      ],
+      "median_delta": 0.003806961372309914,
+      "p_delta_negative": 0.0009,
+      "repeats": 20000
+    },
+    "ridge_old8_additive": {
+      "ci90": [
+        -0.0030329274293229573,
+        0.0005575807908083192
+      ],
+      "ci95": [
+        -0.003363081211533799,
+        0.0009109535439029924
+      ],
+      "median_delta": -0.0012735851414168316,
+      "p_delta_negative": 0.87725,
+      "repeats": 20000
+    },
+    "ridge_q_only_enriched": {
+      "ci90": [
+        -0.0002755181045382157,
+        0.0011597582437059652
+      ],
+      "ci95": [
+        -0.00040961173218026167,
+        0.001301825489415297
+      ],
+      "median_delta": 0.0004503874831894341,
+      "p_delta_negative": 0.15305,
+      "repeats": 20000
+    },
+    "ridge_recal_only": {
+      "ci90": [
+        0.0003497232281923954,
+        0.0033682341600185404
+      ],
+      "ci95": [
+        0.00010885569050083288,
+        0.00371390520889657
+      ],
+      "median_delta": 0.0017680175659876849,
+      "p_delta_negative": 0.01685,
+      "repeats": 20000
+    }
+  },
+  "note": "Extra quantiles and the one-sided mass of the SAME stratified episode bootstrap.\n\n    The resampling construction below is copied line for line from\n    slot_model.official_score.paired_bootstrap, so at repeats=2000 and seed 314159 it must\n    reproduce the official 95% interval exactly; that equality is asserted. The only\n    additions are more repeats, a 90% interval and P(delta R < 0). This is reported as\n    SUPPLEMENTARY colour on an interval that is already published at 95%, never as a\n    replacement decision rule.\n    "
+}

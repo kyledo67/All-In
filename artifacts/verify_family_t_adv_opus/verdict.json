@@ -1,0 +1,61 @@
+{
+  "abs_points_error": 0.0,
+  "checks": {
+    "1_reproduce": "PASS - exact. Three independent runs of the family's script (mine default-seed, mine PYTHONHASHSEED=777, and the family's two) give byte-identical selection_table.csv, summary.csv and all 17 prediction CSVs. An independent reimplementation of the T2MAP candidates + nested() also gives 54.616050274313196 exactly (error 0.0e0).",
+    "2_nesting": "PARTIAL FAIL. The family's own fitted quantities are correctly nested: the only target-dependent choices are the discrete (kappa, hazard) index and the gate, both selected on inner held partitions strictly inside each outer fold's fitting episodes (verified structurally AND behaviourally - replacing every held-fold target with a certain-20x vector leaves all four per-fold choices bit-identical). FAIL on tail constants: the r head applied to every held fold carries per-type {2,5,20} tail constants fitted on ALL 96 validation episodes, each fold's own held episodes included.",
+    "3_provenance": "FAIL. bundle.protected = artifacts/win_head_release_exact/validation_submission.csv, listed in DEPLOY_FIT_FILES at scripts/stack_manifest.py:117, so classify() returns DEPLOY_FIT and it is not one of the 15 RAW_SOURCES (lines 31-49). Its tail block is ONE distinct row per machine type over all 768 queries, equal to the validation TRUTH constant to <=2.6e-15.",
+    "4_causality": "PASS. max(tick)-cutoff = -1 over all 768 queries; injecting a fabricated 20x AT the cutoff tick plus a loss after it changes T2MAP's q by exactly 0.0 at both selected settings; inverting every neighbour machine's whole pre-cutoff history changes q by exactly 0.0. Missing lags drop the transition (slot_model/win_head.py:111), ticks >= cutoff are dropped (slot_model/features.py:30); gaps are ACTUAL tick differences.",
+    "5_paired": "PASS. Recomputed b.paired(arm, protected) = [-0.035196057956168744, -0.010915770434336447]; upper bound < 0. Bootstrap is seeded (314159) so this is exactly reproducible. Driven by drift [-0.0638,-0.0012] and shared_change [-0.0485,-0.0178]; stable and short_history straddle zero.",
+    "6_concatenated": "PASS. 96 episodes scored once; each fold's rows equal that fold's chosen candidate to 0.0; the single concatenated score 54.616050 differs from the mean of per-fold scores (54.629046) and from the in-sample best single setting (54.643249)."
+  },
+  "failed_check": "check 3 (and the 'tail constants' item of check 2)",
+  "materiality_of_the_failure": {
+    "conclusion": "The truth-derived tail constant is worth about +0.011 points of ABSOLUTE score and about 0.000 of the GAIN. It is shared bit-identically by the arm, the family's control C1 and the protected baseline, so it does not manufacture the delta.",
+    "honest_r_train_history_tail": {
+      "T2MAP": 54.605797,
+      "gain": 1.084151,
+      "paired_ci95": [
+        -0.035249,
+        -0.010954
+      ],
+      "protected": 53.521646,
+      "significant": true
+    },
+    "honest_r_train_label_tail": {
+      "T2MAP": 54.509716,
+      "gain": 1.077478,
+      "paired_ci95": [
+        -0.03516,
+        -0.010882
+      ],
+      "protected": 53.432238,
+      "significant": true
+    }
+  },
+  "other_findings": {
+    "family_audit_gap": "scripts/family_t_causality_audit.py recomputes T3B7, not the T2MAP arm under claim; I ran both invariance probes on T2MAP's own two selected settings.",
+    "grid_bound_exposure_bounded": {
+      "declared_grid": 1.083132,
+      "endpoints_only_0_and_1e-1": 0.0,
+      "no_hazard_finer_than_1e-2": 0.460221,
+      "no_hazard_finer_than_1e-3": 0.943603,
+      "note": "significance survives a 1e-3 floor; the gate correctly falls back to control on all four folds when only the catastrophic endpoints are offered"
+    },
+    "mislabeled_field": "scripts/family_t_joint_structure_memory.py:519,524-526 - the reported field 'official_objective_argmin_all_fitting_episodes' is computed with w_all = row_weights(np.ones(...)), i.e. over ALL 96 episodes including every held fold. Reporting defect only; it does not enter the nested score.",
+    "runtime": "reported 195.5 s is clock['changepoint_full_bank'] alone; total wall time 239.9 s (family) / 240.0 s (my default-seed rerun) / 434.1 s (my hashseed-777 rerun, loaded machine).",
+    "target_free_rule_loses": {
+      "note": "the fixed-structure prequential log score is the only target-free setting rule in the family; its argmax scores BELOW the protected release, and across the informative grid the prequential ranking is anti-correlated with the official score. The hazard behaves as a knob fitted to the official squared-error target, not as an inferred hazard, so the family's mechanistic conclusion is not supported by the model's own evidence.",
+      "paired_ci95": [
+        -0.00991,
+        0.023486
+      ],
+      "points": 53.268402,
+      "setting": "k1_h0.01",
+      "significant": false
+    }
+  },
+  "refuted": true,
+  "reproduced_R": 0.09857815969198636,
+  "reproduced_points": 54.616050274313196,
+  "target": "Family T arm T2MAP, claimed 54.616050274313196 / R 0.09857815969198636, paired vs protected [-0.035196, -0.010916], significant"
+}

@@ -1,0 +1,229 @@
+{
+  "check1_reproduce": {
+    "abs_R_error_vs_claim": 0.0,
+    "abs_points_error_vs_claim": 0.0,
+    "candidate_seconds": 89.80890941701364,
+    "claimed_points": 54.616050274313196,
+    "control_max_abs_q_deviation_from_protected": 1.8388068845354155e-16,
+    "forced": {
+      "R": 0.09857815969198636,
+      "by_condition": {
+        "drift": 0.09403282384870265,
+        "shared_change": 0.09908779631496938,
+        "short_history": 0.1311265809220735,
+        "stable": 0.07006543768219989
+      },
+      "points": 54.616050274313196,
+      "selected_per_fold": [
+        "k1_h0.0001",
+        "k1_h0.0001",
+        "k0.5_h0.0001",
+        "k1_h0.0001"
+      ]
+    },
+    "gated": {
+      "R": 0.09857815969198636,
+      "by_condition": {
+        "drift": 0.09403282384870265,
+        "shared_change": 0.09908779631496938,
+        "short_history": 0.1311265809220735,
+        "stable": 0.07006543768219989
+      },
+      "points": 54.616050274313196,
+      "selected_per_fold": [
+        "k1_h0.0001",
+        "k1_h0.0001",
+        "k0.5_h0.0001",
+        "k1_h0.0001"
+      ]
+    },
+    "reproduced_to_1e-4": true
+  },
+  "check2_nesting": {
+    "behavioural": {
+      "all_unchanged": true,
+      "per_fold": {
+        "fold0": {
+          "clean": "k1_h0.0001",
+          "held_truth_destroyed": "k1_h0.0001",
+          "unchanged": true
+        },
+        "fold1": {
+          "clean": "k1_h0.0001",
+          "held_truth_destroyed": "k1_h0.0001",
+          "unchanged": true
+        },
+        "fold2": {
+          "clean": "k0.5_h0.0001",
+          "held_truth_destroyed": "k0.5_h0.0001",
+          "unchanged": true
+        },
+        "fold3": {
+          "clean": "k1_h0.0001",
+          "held_truth_destroyed": "k1_h0.0001",
+          "unchanged": true
+        }
+      }
+    },
+    "structural": {
+      "inner_partitions_and_row_weights_inside_fitting_episodes": true
+    }
+  },
+  "check3_provenance": {
+    "inputs": {
+      "artifacts/phase2/folds.json": {
+        "classify": "UNCLASSIFIED",
+        "is_RAW_pool_member": false,
+        "role": "the 4 frozen outer folds"
+      },
+      "artifacts/win_head_release_exact/code/model/win_head/beta_templates_deploy.json": {
+        "classify": "UNCLASSIFIED",
+        "is_RAW_pool_member": false,
+        "role": "kappa, mu_type, 57-candidate bank, smoothed log prior, train argmax counts"
+      },
+      "artifacts/win_head_release_exact/code/model/win_head/population_averaged.json": {
+        "classify": "UNCLASSIFIED",
+        "is_RAW_pool_member": false,
+        "role": "dense per-machine half-life selector"
+      },
+      "artifacts/win_head_release_exact/validation_submission.csv": {
+        "classify": "DEPLOY_FIT",
+        "is_RAW_pool_member": false,
+        "role": "bundle.protected -> the conditional-payout head r used by EVERY Family T arm"
+      }
+    },
+    "protected_r_head_tail_block": {
+      "per_type": {
+        "balanced": {
+          "distinct_tail_rows_in_protected_r": 1,
+          "distinct_tail_rows_in_validation_TRUTH": 1,
+          "max_abs_protected_r_tail_minus_validation_truth": 9.992007221626409e-16,
+          "protected_r_tail": [
+            0.6956521739130436,
+            0.26086956521739113,
+            0.04347826086956522
+          ],
+          "queries": 234,
+          "validation_truth_tail_constant": [
+            0.6956521739130428,
+            0.2608695652173908,
+            0.043478260869565175
+          ]
+        },
+        "jackpot": {
+          "distinct_tail_rows_in_protected_r": 1,
+          "distinct_tail_rows_in_validation_TRUTH": 1,
+          "max_abs_protected_r_tail_minus_validation_truth": 7.216449660063518e-16,
+          "protected_r_tail": [
+            0.3684210526315792,
+            0.4736842105263158,
+            0.1578947368421051
+          ],
+          "queries": 265,
+          "validation_truth_tail_constant": [
+            0.3684210526315787,
+            0.47368421052631515,
+            0.15789473684210487
+          ]
+        },
+        "steady": {
+          "distinct_tail_rows_in_protected_r": 1,
+          "distinct_tail_rows_in_validation_TRUTH": 1,
+          "max_abs_protected_r_tail_minus_validation_truth": 2.55351295663786e-15,
+          "protected_r_tail": [
+            0.800000000000001,
+            0.19599999999999904,
+            0.003999999999999992
+          ],
+          "queries": 269,
+          "validation_truth_tail_constant": [
+            0.8000000000000034,
+            0.1959999999999996,
+            0.004000000000000003
+          ]
+        }
+      },
+      "tail_crossfit_deploy_json_formula": "r = [a, (1-a)*tail_type]; a = P(1x|positive) preserved from the base forecast",
+      "tail_crossfit_deploy_json_tail_provenance": "Fitted on ALL released validation probability targets AFTER the method was frozen. This is a deployment-constant fit, NOT the held-fold evaluation protocol: the held-fold number 53.532918 comes from fold-wise constants that never saw their own held fold."
+    }
+  },
+  "check4_causality": {
+    "B_target_tick_injection_max_abs_dq": {
+      "k0.5_h0.0001": 0.0,
+      "k1_h0.0001": 0.0
+    },
+    "C_neighbour_inversion_max_abs_dq": {
+      "k0.5_h0.0001": 0.0,
+      "k1_h0.0001": 0.0
+    },
+    "max_tick_minus_cutoff_over_all_queries": -1,
+    "missing_lag_policy": "win_head.design line 111 drops a transition when any of t-1..t-8 is unobserved; causal_index features.py:30 drops every tick >= cutoff",
+    "settings_probed": [
+      "k0.5_h0.0001",
+      "k1_h0.0001"
+    ]
+  },
+  "check5_paired": {
+    "bootstrap_is_seeded": 314159,
+    "claimed_ci95": [
+      -0.035196,
+      -0.010916
+    ],
+    "max_abs_dev_my_forecast_vs_saved_submission": 3.3306690738754696e-16,
+    "recomputed_vs_family_control_C1_ci95": [
+      -0.035196057956168744,
+      -0.01091577043433644
+    ],
+    "recomputed_vs_protected_by_condition": {
+      "drift": [
+        -0.06377067599709871,
+        -0.0011788569106400834
+      ],
+      "shared_change": [
+        -0.048489428141759855,
+        -0.017790523588759335
+      ],
+      "short_history": [
+        -0.03083364065983388,
+        0.0007516989079762201
+      ],
+      "stable": [
+        -0.04768628133006045,
+        0.004787491033676596
+      ]
+    },
+    "recomputed_vs_protected_ci95": [
+      -0.035196057956168744,
+      -0.010915770434336447
+    ],
+    "saved_submission_vs_protected_ci95": [
+      -0.035196057956168744,
+      -0.010915770434336452
+    ],
+    "upper_bound_below_zero": true
+  },
+  "check6_concatenated_held_folds": {
+    "episodes_scored_once": 96,
+    "in_sample_best_single_setting_points": 54.64324929011977,
+    "mean_of_per_fold_points": 54.629046492706316,
+    "per_fold_max_abs_dev_from_chosen_candidate": {
+      "fold0:k1_h0.0001": 0.0,
+      "fold1:k1_h0.0001": 0.0,
+      "fold2:k0.5_h0.0001": 0.0,
+      "fold3:k1_h0.0001": 0.0
+    },
+    "per_fold_points": [
+      55.30073066743291,
+      53.258081639811,
+      54.44490720381743,
+      55.51246645976392
+    ],
+    "single_concatenated_score": 54.616050274313196
+  },
+  "preregistration": "ADVERSARIAL VERIFICATION of Family T's claimed T2MAP gain.\n\nSix independent checks, each a recomputed number rather than a reading of the family's\nown report. Writes artifacts/verify_family_t_adv/verification.json.\n\n  1 REPRODUCE   recompute the T2MAP candidate q arrays and the nested held-fold forecast\n                from scratch and score with harness.official.\n  2 NESTING     (a) structural: inner held partitions and their row weights lie strictly\n                inside each outer fold's fitting episodes;\n                (b) behavioural: corrupt bundle.truth on an outer fold's HELD episodes and\n                confirm the per-fold setting choice is bit-identical.\n  3 PROVENANCE  classify every file the family reads through scripts.stack_manifest.classify\n                and measure, numerically, what the protected r head's tail block is.\n  4 CAUSALITY   inject a fabricated 20x win AT the cutoff tick and a loss after it, and\n                separately invert every neighbour machine's whole pre-cutoff history, and\n                recompute T2MAP's q.\n  5 PAIRED      recompute harness.paired(arm, protected) from the saved submission CSV.\n  6 CONCAT      confirm the scored forecast is the concatenation of the four held folds,\n                each equal to its fold's chosen candidate, scored once over all 96 episodes.\n\nDeterminism: every reduction iterates sorted(...) or an index range.\n",
+  "protected": {
+    "R": 0.120805710882256,
+    "points": 53.532917808538166
+  },
+  "seconds": 364.75435758402455
+}

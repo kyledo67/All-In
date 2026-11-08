@@ -1,0 +1,129 @@
+{
+  "C1_reproduction": {
+    "abs_error_vs_claim": 0.0,
+    "all_9_arms_and_selection_digest_byte_identical": true,
+    "claimed_points": 53.90989026717447,
+    "fastpath_same_code_path_PYTHONHASHSEED_12345": {
+      "R": 0.11296831996213086,
+      "by_condition": {
+        "drift": 0.10352308367341605,
+        "shared_change": 0.11820297942296919,
+        "short_history": 0.1519490023659858,
+        "stable": 0.07819821438615239
+      },
+      "points": 53.90989026717447
+    },
+    "independent_reimplementation_max_abs_forecast_diff": 1.6017537383117286e-06,
+    "independent_reimplementation_points": 53.90989020004186,
+    "oof_X1full_sha256": {
+      "artifacts/general_convex_crossed": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35",
+      "artifacts/general_convex_crossed_det777": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35",
+      "artifacts/verify_family_x_fastpath": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35",
+      "artifacts/verify_family_x_rerun_a": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35",
+      "artifacts/verify_family_x_rerun_b": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35"
+    },
+    "rerun_a_PYTHONHASHSEED_0": {
+      "R": 0.11296831996213086,
+      "by_condition": {
+        "drift": 0.10352308367341605,
+        "shared_change": 0.11820297942296919,
+        "short_history": 0.1519490023659858,
+        "stable": 0.07819821438615239
+      },
+      "points": 53.90989026717447
+    },
+    "rerun_b_PYTHONHASHSEED_777": {
+      "R": 0.11296831996213086,
+      "by_condition": {
+        "drift": 0.10352308367341605,
+        "shared_change": 0.11820297942296919,
+        "short_history": 0.1519490023659858,
+        "stable": 0.07819821438615239
+      },
+      "points": 53.90989026717447
+    }
+  },
+  "C2_nesting": {
+    "X1full_has_no_inner_fold_selection": "general_convex_crossed.py:413-419",
+    "X1full_uses_lam_0_so_protected_shrinkage_Gram_never_added": "general_convex_crossed.py:317 and :414",
+    "null_calibration_points": {
+      "global_permutation": 31.41159468912443,
+      "protected": 53.532917808538166,
+      "reversed_rows": 31.471824720403863,
+      "row_reversed_vector": 28.533515492741483
+    },
+    "row_weights_max_on_held_rows_all_folds": 0.0,
+    "tail_constant_is_an_exact_structural_constant": {
+      "distinct_tail_rows_per_type": 1,
+      "fold_refit_vs_all_episode_maxabs": 1.1379786002407855e-15
+    },
+    "truth_permutation_probe_all_4_folds": "self fold held forecast max abs diff 0.000e+00; other folds moved 0.154-0.323"
+  },
+  "C3_pool": {
+    "all_classify_RAW": true,
+    "caveat_fallback_rows_read_from_DEPLOY_FIT_files": {
+      "beta_memory.py:112,126,137 <- win_head_release_parity": 313,
+      "beta_subsets.py:205,217 <- win_head_release_nofx": 33,
+      "beta_templates.py:189,201 <- win_head_release_nofx": 38
+    },
+    "caveat_shared_a_head": "6 of 15 collapse to one a head (beta_cells x2, beta_memory, beta_subsets, beta_templates, two_head_01) because all compose with two_head_01 r: beta_cells.py:213, beta_templates.py:212, beta_subsets.py:228, beta_memory.py:164",
+    "direction_resolved": "release q head == member q head, member -> release: nofx q == beta_cells/oof_beta_hard q (3.3e-16); parity q == exact q == beta_templates/oof_parity_templates q (3.3e-16 / 2.2e-16); win_head_release_exact/packaging.json win_model = beta_template_dictionary, 57 candidates, kappa 0.5, select hard; beta_templates.py never reads release_exact or release_parity",
+    "kappa_and_prior_mean_from_train_OOF_Brier": "beta_cells.py:163-169",
+    "members": 15,
+    "skipped": [],
+    "widened": false
+  },
+  "C4_causality": {
+    "machine_type_in_test_queries_csv": true,
+    "uses_condition_label": false,
+    "uses_cutoffs": false,
+    "uses_history": false,
+    "uses_lags": false,
+    "uses_machine_type": true,
+    "uses_query_signal": false
+  },
+  "C5_paired_interval": {
+    "disclosed_arm_set_extension": "general_convex_crossed.py:56-61 - X1full was added after X2full held-fold number was read; no interval corrects for it; the submitted claim text omits this",
+    "fraction_of_400_alternative_seeds_with_upper_bound_below_zero": 0.9875,
+    "one_sided_bootstrap_mass_at_or_above_zero": 0.017,
+    "recomputed": [
+      -0.016256326901433932,
+      -0.0005134190458736868
+    ],
+    "survives_bonferroni_4_arms": false,
+    "survives_bonferroni_9_arms": false,
+    "upper_bound_at_200000_repeats": -0.0004087348411796046,
+    "upper_bound_below_zero": true,
+    "upper_bound_bonferroni_9_arms": 0.00125840783658507
+  },
+  "C6_scoring": {
+    "mean_of_4_per_fold_scores_NOT_what_is_reported": 53.931604722188105,
+    "objective_identity_max_abs_weighted_SSE_minus_official_R": 2.7755575615628914e-17,
+    "official_on_96_concatenated_held_episodes": 53.90989026717447,
+    "organizer_contest_score_direct": 53.90989020004186
+  },
+  "framing_finding_gain_is_entirely_r_side": {
+    "nested_sensitivity": {
+      "drop_all_3_protected_overlapping_q_heads": {
+        "paired_vs_protected": [
+          0.021963042927303174,
+          0.057885040744947915
+        ],
+        "points": 51.735188021820356
+      },
+      "drop_beta_templates": 53.921091574391156,
+      "full_bank": 53.90989020004186
+    },
+    "q_head_rows_identical_to_protected_release_q_head_of_768": {
+      "beta_cells/oof_beta_average": 17,
+      "beta_cells/oof_beta_hard": 38,
+      "beta_memory/oof_beta_memory": 313,
+      "beta_subsets/oof_parity_templates": 734,
+      "beta_templates/oof_parity_templates": 768
+    },
+    "q_weight_concentration": "~100% of X1full q weight on the 4 beta q heads in every fold",
+    "reading": "X1full reuses the protected release own q head (RAW; the release packaged it) and replaces the release Dirichlet-blend r head with a nested a-head mixture plus the exact per-type tail"
+  },
+  "test_recipe_caveat": "recipe is deterministic but no test-split CSV exists for any of the 15 members; deployment requires re-running all 15 member models on test",
+  "verdict": "NOT REFUTED - all six checks confirmed for arm X1full"
+}

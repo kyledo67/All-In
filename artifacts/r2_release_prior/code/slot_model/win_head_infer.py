@@ -1,0 +1,641 @@
+"""The one offline inference path for the win-head candidate packages.
+
+This module is used unchanged by the evaluation replay (``--split validation``) and by
+the final prediction (``--split test``). It imports no training script, reads no data
+path at import time, runs no fitting of blend weights or hyperparameters, and performs
+no network access. Everything it needs is read from a frozen model directory.
+
+What it computes
+----------------
+The five-vector is  ``[1 - q, q*r_1, q*r_2, q*r_5, q*r_20]``:
+
+* ``q`` is the hierarchical logistic autoregressive win probability from
+  ``slot_model.win_head``: pooled per-machine-type effects on the predeclared 37-dim
+  sign/pair basis, plus regularized machine-specific deviations fitted from that
+  machine's own pre-cutoff outcomes, averaged over recency half-lives by each
+  machine's own held-out recent block, with the Laplace predictive logit scaling.
+  MAP (penalized maximum likelihood) plus a one-dimensional Laplace integral; this is
+  not posterior inference.
+* ``r`` are the positive-payout proportions of a reference predictor, taken from
+  ``deployment.json``:
+
+  - ``three_component``: a fixed convex combination of the raw two-seed TabPFN(hmm)
+    average, PairMTD(lag-7) over the saved changepoint MTD, and the two-head CatBoost.
+  - ``two_head``: the two-head CatBoost alone (no torch, no TabPFN, no checkpoint).
+
+``alpha`` in ``deployment.json`` is the frozen blend between the reference predictor's
+own win mass and ``q``; the measured candidate used ``alpha = 1`` (q only). It is kept
+as an explicit frozen constant rather than being re-derived here.
+
+Determinism
+-----------
+No RNG is drawn anywhere in this path. CatBoost inference, the MTD EM recursion, the
+HMM forward pass and the Newton/IRLS solves are all deterministic given their inputs.
+TabPFN's forward pass is seeded from the saved per-component seed and runs on CPU with
+a fixed thread count.
+"""
+import json
+import time
+from pathlib import Path
+
+import numpy as np
+from slot_model import pair_dict as PD
+
+from . import win_head as W
+from .features import causal_index
+from .two_head_infer import SEEDS as TWO_HEAD_SEEDS, feature_table, predict_proba as two_head_predict
+from slot_forecasting.io import load_inputs, write_submission
+
+PAYOUT_ORDER = (0, 1, 2, 5, 20)
+PROPORTION_FLOOR = 1e-12
+
+
+# --------------------------------------------------------------------- win head
+def load_win_head(path):
+    """Read the frozen half-life-averaged win head and assert its declared shape."""
+    payload = json.loads(Path(path).read_text())
+    selected = payload['selected']
+    if list(payload['basis']) != list(W.basis_names()):
+        raise ValueError('Saved win-head basis does not match slot_model.win_head')
+    if int(payload['dim']) != W.DIM:
+        raise ValueError(f"Saved win-head dim {payload['dim']} != {W.DIM}")
+    lam = W.penalty(selected['lam_intercept'], selected['lam_main'], selected['lam_inter'])
+    beta = {}
+    for key, table in payload['beta_by_half_life'].items():
+        half_life = float(key)
+        coefficients = {t: np.asarray(v, dtype=np.float64) for t, v in table.items()}
+        for value in coefficients.values():
+            if value.shape != (W.DIM,):
+                raise ValueError('Saved win-head coefficient block has the wrong width')
+        beta[None if half_life == 0.0 else half_life] = coefficients
+    if sorted(h if h else 0.0 for h in beta) != sorted(payload['half_lives']):
+        raise ValueError('Saved half-life set does not match beta_by_half_life')
+    return beta, lam, selected
+
+
+def win_probabilities(queries, index, beta_by_half_life, lam, fallback):
+    """Per-query win probability in the order of `queries`.
+
+    `fallback[i]` is used only when the prediction tick's own basis row cannot be built
+    (a lag within 1..8 is unobserved) or the machine offers no complete transition. A
+    missing lag is never imputed as an observed loss; the row is simply unavailable, so
+    the reference predictor's win mass is used for that query instead.
+    """
+    values = np.empty(len(queries), dtype=np.float64)
+    details = []
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        if star is None or len(labels) == 0:
+            values[i] = fallback[i]
+            details.append({'transitions': int(len(labels)), 'adapted': False, 'fallback': True})
+            continue
+        by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                   for h, table in beta_by_half_life.items()}
+        value, detail = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff,
+                                             star, lam, adapt='full')
+        if not np.isfinite(value) or not 0.0 < value < 1.0:
+            value = fallback[i]
+            detail['fallback'] = True
+        details.append(detail)
+        values[i] = value
+    return values, details
+
+
+def load_pair_dict(path):
+    """Read the frozen compact pair-dictionary settings and assert their shape."""
+    payload = json.loads(Path(path).read_text())
+    names = list(payload['candidates'])
+    if names != list(PD.candidate_names()):
+        raise ValueError('Saved pair-dictionary candidate set does not match slot_model.pair_dict')
+    log_prior = np.asarray(payload['log_prior'], dtype=np.float64)
+    if log_prior.shape != (len(PD.CANDIDATES),):
+        raise ValueError('Saved pair-identity log prior has the wrong length')
+    return float(payload['lam_scale']), float(payload['lam_intercept_scale']), log_prior, payload
+
+
+def pair_win_probabilities(queries, index, beta_by_half_life, lam, fallback,
+                           lam_scale, lam_intercept_scale, log_prior, select='hard'):
+    """Compact pair-model win probability per query, in the order of `queries`.
+
+    The per-machine half-life comes from the SAME verified averaging procedure used by
+    the dense model, so the only thing that differs here is the local model: four
+    coefficients for one lag pair instead of 37 coefficients for all of them.
+
+    `select='hard'` takes the single highest-evidence candidate, which is what scored
+    best on both the train surrogate and validation. `select='average'` averages
+    PROBABILITIES across all 29 candidates.
+    """
+    values = np.empty(len(queries), dtype=np.float64)
+    details = []
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        if star is None or len(labels) == 0:
+            values[i] = fallback[i]
+            details.append({'transitions': int(len(labels)), 'fallback': True})
+            continue
+        by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                   for h, table in beta_by_half_life.items()}
+        _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                      lam, adapt='full')
+        picked = mix['selected_half_life']
+        half_life = None if picked == 0.0 else picked
+        weights = (np.ones(len(labels)) if not half_life else
+                   2.0 ** (-(query.cutoff - 1 - np.asarray(used, dtype=np.float64)) / half_life))
+        beta = by_type[half_life]
+        population = (phi @ beta, float(beta @ star))
+        omega, qs, _ = PD.machine_posterior(phi, labels, weights, star, population,
+                                            lam_scale * lam_intercept_scale, lam_scale,
+                                            log_prior=log_prior)
+        index_best = int(np.argmax(omega))
+        value = float(qs[index_best]) if select == 'hard' else PD.average(omega, qs)
+        detail = {'transitions': int(len(labels)), 'half_life': picked,
+                  'candidate': PD.candidate_names()[index_best],
+                  'max_weight': float(omega.max()), 'fallback': False}
+        if not np.isfinite(value) or not 0.0 < value < 1.0:
+            value = fallback[i]
+            detail['fallback'] = True
+        values[i] = value
+        details.append(detail)
+    return values, details
+
+
+def load_beta_cells(path):
+    """Read the frozen four-cell Beta-Bernoulli settings and assert their shape."""
+    payload = json.loads(Path(path).read_text())
+    if list(payload['candidates']) != list(PD.candidate_names()):
+        raise ValueError('Saved beta-cell candidate set does not match slot_model.pair_dict')
+    log_prior = np.asarray(payload['log_prior'], dtype=np.float64)
+    if log_prior.shape != (len(PD.CANDIDATES),):
+        raise ValueError('Saved pair-identity log prior has the wrong length')
+    return float(payload['kappa']), dict(payload['prior_mean_by_type']), log_prior, payload
+
+
+def _cells(signs, candidate):
+    if candidate is None:
+        return np.zeros(len(signs), dtype=np.int64), 1
+    i, j = candidate
+    return ((signs[:, i - 1] > 0).astype(np.int64) * 2
+            + (signs[:, j - 1] > 0).astype(np.int64)), 4
+
+
+def beta_cell_win_probabilities(queries, index, beta_by_half_life, lam, fallback,
+                                kappa, prior_mean, log_prior):
+    """Four-cell conjugate win probability per query, in the order of `queries`.
+
+    The per-machine half-life comes from the same frozen dense averaged selector the
+    logistic compact model used, so memory policy is unchanged; only the local estimator
+    differs. A cell with no observed weight falls back to its prior mean, which is how
+    empty, all-win and all-loss cells are handled.
+    """
+    from scipy.special import betaln
+    values = np.empty(len(queries), dtype=np.float64)
+    details = []
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        if star is None or len(labels) == 0:
+            values[i] = fallback[i]
+            details.append({'transitions': int(len(labels)), 'fallback': True})
+            continue
+        by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                   for h, table in beta_by_half_life.items()}
+        _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                      lam, adapt='full')
+        picked = mix['selected_half_life']
+        half_life = None if picked == 0.0 else picked
+        weights = (np.ones(len(labels)) if not half_life else
+                   2.0 ** (-(query.cutoff - 1 - np.asarray(used, dtype=np.float64)) / half_life))
+        mu = float(prior_mean.get(query.machine_type, 0.44))
+        a0, b0 = kappa * mu, kappa * (1.0 - mu)
+        signs = PD.signs_from(phi)
+        star_signs = star[1:1 + W.HORIZON][None, :]
+        best_score, best_q, best_index = -np.inf, fallback[i], 0
+        for index_c, candidate in enumerate(PD.CANDIDATES):
+            idx, ncell = _cells(signs, candidate)
+            star_idx, _ = _cells(star_signs, candidate)
+            wins = np.bincount(idx, weights=weights * labels, minlength=ncell)
+            losses = np.bincount(idx, weights=weights * (1.0 - labels), minlength=ncell)
+            evidence = float(np.sum(betaln(a0 + wins, b0 + losses) - betaln(a0, b0)))
+            score_c = evidence + float(log_prior[index_c])
+            if np.isfinite(score_c) and score_c > best_score:
+                c = int(star_idx[0])
+                best_score = score_c
+                best_index = index_c
+                best_q = float((a0 + wins[c]) / (a0 + b0 + wins[c] + losses[c]))
+        detail = {'transitions': int(len(labels)), 'half_life': picked,
+                  'candidate': PD.candidate_names()[best_index],
+                  'log_evidence_plus_prior': best_score, 'fallback': False}
+        if not np.isfinite(best_q) or not 0.0 < best_q < 1.0:
+            best_q = fallback[i]
+            detail['fallback'] = True
+        values[i] = best_q
+        details.append(detail)
+    return values, details
+
+
+def load_beta_templates(path):
+    """Read the frozen template-dictionary settings (null / full 4-cell / parity 2-cell)."""
+    payload = json.loads(Path(path).read_text())
+    log_prior = np.asarray(payload['log_prior'], dtype=np.float64)
+    expected = 1 + 2 * len(PD.PAIRS)
+    if log_prior.shape != (expected,) or len(payload['candidates']) != expected:
+        raise ValueError(f'Saved template dictionary must hold {expected} candidates')
+    return float(payload['kappa']), dict(payload['prior_mean_by_type']), log_prior, payload
+
+
+def _template_cells(signs, subset, template):
+    if subset is None:
+        return np.zeros(len(signs), dtype=np.int64), 1
+    i, j = subset
+    a = signs[:, i - 1] > 0
+    b = signs[:, j - 1] > 0
+    if template == 'full':
+        return (a.astype(np.int64) * 2 + b.astype(np.int64)), 4
+    # Parity: agree vs differ. Both cell probabilities free; they do not sum to one.
+    return (a != b).astype(np.int64), 2
+
+
+def beta_template_win_probabilities(queries, index, beta_by_half_life, lam, fallback,
+                                    kappa, prior_mean, log_prior):
+    """Template-dictionary conjugate win probability per query, in `queries` order.
+
+    Memory policy is unchanged from the protected candidate: the per-machine half-life
+    still comes from the frozen dense averaged selector. Only the local cell structure
+    differs - a parity template estimates two free probabilities instead of four, which
+    doubles the observation mass behind the queried cell.
+    """
+    from scipy.special import betaln
+    templates = [(None, 'null')] + [(p, k) for p in PD.PAIRS for k in ('full', 'parity')]
+    values = np.empty(len(queries), dtype=np.float64)
+    details = []
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        if star is None or len(labels) == 0:
+            values[i] = fallback[i]
+            details.append({'transitions': int(len(labels)), 'fallback': True})
+            continue
+        by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                   for h, table in beta_by_half_life.items()}
+        _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                      lam, adapt='full')
+        picked = mix['selected_half_life']
+        half_life = None if picked == 0.0 else picked
+        weights = (np.ones(len(labels)) if not half_life else
+                   2.0 ** (-(query.cutoff - 1 - np.asarray(used, dtype=np.float64)) / half_life))
+        mu = float(prior_mean.get(query.machine_type, 0.44))
+        a0, b0 = kappa * mu, kappa * (1.0 - mu)
+        signs = PD.signs_from(phi)
+        star_signs = star[1:1 + W.HORIZON][None, :]
+        best_score, best_q, best_index = -np.inf, fallback[i], 0
+        for index_t, (subset, template) in enumerate(templates):
+            idx, ncell = _template_cells(signs, subset, template)
+            sidx, _ = _template_cells(star_signs, subset, template)
+            wins = np.bincount(idx, weights=weights * labels, minlength=ncell)
+            losses = np.bincount(idx, weights=weights * (1.0 - labels), minlength=ncell)
+            evidence = float(np.sum(betaln(a0 + wins, b0 + losses) - betaln(a0, b0)))
+            score_t = evidence + float(log_prior[index_t])
+            if np.isfinite(score_t) and score_t > best_score:
+                c = int(sidx[0])
+                best_score = score_t
+                best_index = index_t
+                best_q = float((a0 + wins[c]) / (a0 + b0 + wins[c] + losses[c]))
+        subset, template = templates[best_index]
+        detail = {'transitions': int(len(labels)), 'half_life': picked, 'template': template,
+                  'subset': None if subset is None else list(subset),
+                  'log_evidence_plus_prior': best_score, 'fallback': False}
+        if not np.isfinite(best_q) or not 0.0 < best_q < 1.0:
+            best_q = fallback[i]
+            detail['fallback'] = True
+        values[i] = best_q
+        details.append(detail)
+    return values, details
+
+
+def load_dirichlet_r(path):
+    """Read the frozen conjugate conditional-positive settings."""
+    payload = json.loads(Path(path).read_text())
+    prior = {k: np.asarray(v, dtype=np.float64) for k, v in payload['population_prior_by_type'].items()}
+    for v in prior.values():
+        if v.shape != (4,):
+            raise ValueError('Conditional-positive prior must hold four categories')
+    return float(payload['tau']), prior, float(payload['deployment_blend_weight']), payload
+
+
+def dirichlet_proportions(queries, index, beta_by_half_life, lam, tau, prior, pooled_r, weight):
+    """Blend a per-machine Dirichlet conditional-positive estimate into `pooled_r`.
+
+    Counts are the machine's decayed PRE-CUTOFF positive outcomes by payout category,
+    using the same per-machine half-life the win head selected. The prior is the
+    population conditional-positive distribution for that machine type, so a machine
+    with no positive history returns the population distribution exactly.
+    """
+    out = np.array(pooled_r, dtype=np.float64, copy=True)
+    support = np.zeros(len(queries))
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        half_life = None
+        if star is not None and len(labels):
+            by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                       for h, table in beta_by_half_life.items()}
+            _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                          lam, adapt='full')
+            picked = mix['selected_half_life']
+            half_life = None if picked == 0.0 else picked
+        counts = np.zeros(4)
+        for tick, value in ticks.items():
+            if tick >= query.cutoff or value <= 0:
+                continue
+            w = 1.0 if not half_life else 2.0 ** (-(query.cutoff - 1 - tick) / half_life)
+            counts[value - 1] += w
+        support[i] = counts.sum()
+        m = prior.get(query.machine_type, np.full(4, 0.25))
+        conj = (tau * m + counts) / (tau + counts.sum())
+        blended = (1.0 - weight) * out[i] + weight * conj
+        total = blended.sum()
+        if not np.isfinite(total) or total <= 0:
+            continue
+        out[i] = blended / total
+    return out, support
+
+
+def load_tail_projection(path):
+    """Read the frozen type-specific tail split among {2x, 5x, 20x}."""
+    payload = json.loads(Path(path).read_text())
+    tail = {k: np.asarray(v, dtype=np.float64) for k, v in payload['tail_by_type'].items()}
+    for v in tail.values():
+        if v.shape != (3,) or not np.isfinite(v).all() or v.min() < 0:
+            raise ValueError('Tail split must hold three finite nonnegative entries')
+    return tail, payload
+
+
+def project_tail(queries, proportions_in, tail_by_type):
+    """Keep each forecast's own P(1x | positive); replace the split among 2x/5x/20x.
+
+    Justification measured, not assumed: in the organizer targets the true conditional
+    positive-payout vector takes exactly two values per machine type, and those two share
+    an identical tail split to within 1e-9, differing only in P(1x | positive). So the
+    tail split is a fixed type constant and estimating it per machine only adds variance.
+    The deployed numbers come from TRAIN sampled outcomes.
+    """
+    out = np.array(proportions_in, dtype=np.float64, copy=True)
+    for i, query in enumerate(queries):
+        tail = tail_by_type.get(query.machine_type)
+        if tail is None:
+            continue
+        u = float(out[i, 0])
+        total = float(tail.sum())
+        if not np.isfinite(total) or total <= 0:
+            continue
+        row = np.empty(4)
+        row[0] = u
+        row[1:] = (1.0 - u) * (tail / total)
+        s = row.sum()
+        if np.isfinite(s) and s > 0:
+            out[i] = row / s
+    return out
+
+
+def proportions(vectors):
+    """Positive-payout proportions of a reference five-vector block.
+
+    Deliberately NOT renormalized here: `win_head.compose` normalizes the assembled
+    five-vector, which is the composition the measured candidate used.
+    """
+    vectors = np.asarray(vectors, dtype=np.float64)
+    mass = np.maximum(1.0 - vectors[:, 0], PROPORTION_FLOOR)
+    return vectors[:, 1:] / mass[:, None]
+
+
+# ------------------------------------------------------------- reference blocks
+def two_head_component(rows, x, model):
+    return two_head_predict(x, Path(model) / 'two_head')
+
+
+def tabpfn_component(rows, x, model, threads=2):
+    """Raw two-seed TabPFN average on the 182 observable + 7 HMM summary columns."""
+    from .phase2_predict import hmm_summary
+    from .tabpfn_model import TabPFNEnsemble
+    population = json.loads((Path(model) / 'population.json').read_text())
+    _, summary = hmm_summary(population, rows)
+    values = np.column_stack((x, summary))
+    ensemble = TabPFNEnsemble.load(Path(model) / 'tabpfn',
+                                   checkpoints=Path(model) / 'tabpfn_checkpoints')
+    if ensemble.variant != 'hmm':
+        raise ValueError(f'Saved TabPFN variant is {ensemble.variant!r}, expected hmm')
+    out = ensemble.predict_proba(values)
+    return out, {'seeds': ensemble.seeds, 'variant': ensemble.variant,
+                 'hmm_summary_columns': int(summary.shape[1])}
+
+
+def mtd_component(rows, queries, history, model):
+    """PairMTD(lag-7) over the saved changepoint MTD. Predict-only; nothing is refitted."""
+    from .mtd import MTDModel
+    from .mtd_pairs import PairMTDModel, LAG7_PAIRS
+    base = MTDModel.load(Path(model) / 'mtd' / 'change.json')
+    if not base.changepoint:
+        raise ValueError('Saved MTD base is not the changepoint variant')
+    predictions = PairMTDModel(pairs=LAG7_PAIRS, prior=40.0, base=base).predict(queries, history)
+    return np.array([predictions[e['q'].query_id] for e in rows], dtype=np.float64)
+
+
+def reference_vectors(variant, weights, rows, x, queries, history, model, threads=2):
+    """The reference five-vectors whose positive-payout proportions become r."""
+    notes = {}
+    if variant == 'two_head':
+        block = two_head_component(rows, x, model)
+        notes['two_head'] = {'seeds': list(TWO_HEAD_SEEDS)}
+        return block, notes
+    if variant != 'three_component':
+        raise ValueError(f'Unknown reference variant {variant!r}')
+    # ORDER MATTERS, measured. TabPFN must run before CatBoost touches anything.
+    # With CatBoost's native runtime initialized first, the TabPFN forward pass deviated
+    # from the measured component CSVs by 3.975e-04 (max abs, 768 validation rows);
+    # running TabPFN first on the same saved context and the same bitwise-identical
+    # 189-column table reproduces them to 1.110e-16. CatBoost loads its own OpenMP
+    # runtime, which changes how torch partitions its intra-op work and therefore the
+    # reduction order inside the transformer. The components themselves are unchanged.
+    components = {}
+    components['tabpfn_raw'], notes['tabpfn'] = tabpfn_component(rows, x, model, threads=threads)
+    components['two_head'] = two_head_component(rows, x, model)
+    components['mtd_lag7'] = mtd_component(rows, queries, history, model)
+    if sorted(weights) != sorted(components):
+        raise ValueError(f'Deployment weights {sorted(weights)} do not match '
+                         f'the available components {sorted(components)}')
+    total = sum(weights.values())
+    if abs(total - 1.0) > 1e-9 or any(w < 0 for w in weights.values()):
+        raise ValueError('Deployment weights are not a convex combination')
+    block = np.zeros_like(components['two_head'])
+    for name in sorted(components):
+        part = components[name]
+        if not np.isfinite(part).all() or part.min() < 0 or np.max(abs(part.sum(1) - 1)) > 1e-9:
+            raise ValueError(f'Component {name} is not a valid simplex block')
+        block = block + weights[name] * part
+    block = block / block.sum(1, keepdims=True)
+    notes['weights'] = {name: float(weights[name]) for name in sorted(weights)}
+    return block, notes
+
+
+# ------------------------------------------------------------------- entry point
+def predict(data, out, model, *, split='test', threads=2, diagnostics=None):
+    """Write the candidate submission CSV for `split` and return a report dict."""
+    start = time.perf_counter()
+    model = Path(model)
+    deployment = json.loads((model / 'deployment.json').read_text())
+    variant = deployment['reference_variant']
+    # `alpha` is the blend between the reference predictor's own win mass and the local
+    # win head's `q`. Round 1 deployed the scalar 1.0 (local head only). Round 2 permits a
+    # two-valued alpha keyed on the machine's OWN pre-cutoff observation count, because the
+    # adaptation round's released targets show the local head needs more shrinkage toward
+    # the reference when a machine has a short history. The key is an observable count, not
+    # a condition label: condition labels do not exist for test queries.
+    alpha_spec = deployment['alpha']
+    if isinstance(alpha_spec, dict):
+        alpha_long = float(alpha_spec['long'])
+        alpha_short = float(alpha_spec['short'])
+        min_obs = int(alpha_spec['min_observations'])
+        if not (0.0 <= alpha_long <= 1.0 and 0.0 <= alpha_short <= 1.0):
+            raise ValueError('alpha long/short must be in [0, 1]')
+        if min_obs < 1:
+            raise ValueError('alpha min_observations must be positive')
+        alpha = {'long': alpha_long, 'short': alpha_short, 'min_observations': min_obs}
+    else:
+        alpha = float(alpha_spec)
+        if not 0.0 <= alpha <= 1.0:
+            raise ValueError('alpha must be in [0, 1]')
+
+    queries, history = load_inputs(Path(data) / split)
+    index = causal_index(queries, history)
+    prior = json.loads((model / 'population_prior.json').read_text())
+    schema = json.loads((model / 'feature_schema.json').read_text())['observable']
+    rows, x, names = feature_table(queries, index, prior, schema=schema)
+    ordered = [e['q'] for e in rows]
+    ids = [q.query_id for q in ordered]
+    if len(set(ids)) != len(ids) or set(ids) != {q.query_id for q in queries}:
+        raise ValueError('Query alignment changed')
+    feature_seconds = time.perf_counter() - start
+
+    reference, notes = reference_vectors(variant, deployment.get('weights', {}), rows, x,
+                                         queries, history, model, threads=threads)
+    reference_seconds = time.perf_counter() - start - feature_seconds
+
+    beta, lam, selected = load_win_head(model / 'win_head' / deployment['win_head'])
+    r = proportions(reference)
+    reference_q = 1.0 - reference[:, 0]
+    dirichlet_name = deployment.get('dirichlet_r')
+    r_model = {'formulation': 'pooled reference conditional-positive distribution'}
+    template_name = deployment.get('beta_templates')
+    beta_name = deployment.get('beta_cells')
+    pair_name = deployment.get('pair_dict')
+    if template_name:
+        kappa, prior_mean, log_prior, tpl_payload = load_beta_templates(
+            model / 'win_head' / template_name)
+        # Round-2 adaptation. The Round-1 prior puts 79.15% of its mass on three lag pairs
+        # -- (1,3), (2,5), (4,7) parity -- that the adaptation round's own TRAIN histories do
+        # not support; its three leading pairs are (3,8), (1,4) and (2,6). Under hard
+        # selection a confidently wrong prior overrides the local evidence, so when
+        # deployment.json names a `template_prior` file its log-prior replaces the inherited
+        # one. The candidate order is checked against the dictionary before use; nothing else
+        # about the local estimator changes.
+        prior_override = deployment.get('template_prior')
+        template_prior_source = template_name
+        if prior_override:
+            payload = json.loads((model / 'win_head' / prior_override).read_text())
+            replacement = np.asarray(payload['log_prior'], dtype=np.float64)
+            if replacement.shape != log_prior.shape:
+                raise ValueError('Replacement template prior has the wrong candidate count')
+            if list(payload['candidates']) != list(tpl_payload['candidates']):
+                raise ValueError('Replacement template prior candidate order does not match '
+                                 'the dictionary it is applied to')
+            if not np.isfinite(replacement).all():
+                raise ValueError('Replacement template prior is not finite')
+            mass = float(np.exp(replacement).sum())
+            if abs(mass - 1.0) > 1e-9:
+                raise ValueError(f'Replacement template prior sums to {mass}, not one')
+            log_prior = replacement
+            template_prior_source = prior_override
+        q, details = beta_template_win_probabilities(ordered, index, beta, lam, reference_q,
+                                                     kappa, prior_mean, log_prior)
+        win_model = {'local_model': 'beta_template_dictionary', 'select': 'hard',
+                     'kappa': kappa, 'candidates': len(log_prior),
+                     'template_prior_source': template_prior_source}
+    elif beta_name:
+        kappa, prior_mean, log_prior, beta_payload = load_beta_cells(
+            model / 'win_head' / beta_name)
+        q, details = beta_cell_win_probabilities(ordered, index, beta, lam, reference_q,
+                                                 kappa, prior_mean, log_prior)
+        win_model = {'local_model': 'four_cell_beta_bernoulli', 'select': 'hard',
+                     'kappa': kappa, 'candidates': len(log_prior)}
+    elif pair_name:
+        scale, intercept_scale, log_prior, pair_payload = load_pair_dict(
+            model / 'win_head' / pair_name)
+        q, details = pair_win_probabilities(ordered, index, beta, lam, reference_q,
+                                            scale, intercept_scale, log_prior,
+                                            select=deployment.get('pair_select', 'hard'))
+        win_model = {'local_model': 'compact_pair_dictionary',
+                     'select': deployment.get('pair_select', 'hard'),
+                     'lam_scale': scale, 'candidates': len(log_prior)}
+    else:
+        q, details = win_probabilities(ordered, index, beta, lam, reference_q)
+        win_model = {'local_model': 'dense_37_coefficient'}
+    if dirichlet_name:
+        tau, prior, weight, dir_payload = load_dirichlet_r(model / 'win_head' / dirichlet_name)
+        r, support = dirichlet_proportions(ordered, index, beta, lam, tau, prior, r, weight)
+        r_model = {'formulation': 'pooled reference blended with a per-machine Dirichlet '
+                                  'conditional-positive estimate',
+                   'tau': tau, 'deployment_blend_weight': weight,
+                   'median_positive_support': float(np.median(support))}
+    tail_name = deployment.get('tail_projection')
+    if tail_name:
+        tail_by_type, tail_payload = load_tail_projection(model / 'win_head' / tail_name)
+        r = project_tail(ordered, r, tail_by_type)
+        r_model = {**r_model, 'tail_projection': 'type-specific fixed tail split from train',
+                   'tail_by_type': {k: v.tolist() for k, v in tail_by_type.items()}}
+    if isinstance(alpha, dict):
+        observed = np.array([len(index[(qq.episode_id, qq.machine_id)]) for qq in ordered],
+                            dtype=float)
+        alpha_vec = np.where(observed < alpha['min_observations'],
+                             alpha['short'], alpha['long'])
+    else:
+        alpha_vec = np.full(len(ordered), alpha, dtype=float)
+    blended = (1.0 - alpha_vec) * reference_q + alpha_vec * q
+    vectors = np.array([W.compose(blended[i], r[i]) for i in range(len(ids))])
+    if not np.isfinite(vectors).all() or vectors.min() < 0 or vectors.max() > 1:
+        raise ValueError('Composed probabilities left the unit interval')
+    if np.max(abs(vectors.sum(1) - 1.0)) > 1e-12:
+        raise ValueError('Composed probabilities do not sum to one')
+    write_submission(out, dict(zip(ids, vectors.tolist())))
+
+    fallbacks = [ids[i] for i, d in enumerate(details) if d.get('fallback')]
+    report = {'queries': len(ids), 'split': split, 'reference_variant': variant,
+              'alpha': alpha,
+              'alpha_short_queries': int((alpha_vec != alpha_vec.max()).sum())
+                                     if alpha_vec.min() != alpha_vec.max() else 0,
+              'payout_order': list(PAYOUT_ORDER),
+              'win_head': {k: selected[k] for k in sorted(selected)},
+              'win_model': win_model, 'r_model': r_model,
+              'reference_notes': notes,
+              'win_head_fallback_queries': fallbacks,
+              'win_head_fallbacks': len(fallbacks),
+              'max_abs_sum_error': float(np.max(abs(vectors.sum(1) - 1.0))),
+              'min_probability': float(vectors.min()),
+              'feature_seconds': feature_seconds,
+              'reference_seconds': reference_seconds,
+              'seconds': time.perf_counter() - start}
+    if diagnostics is not None:
+        diagnostics = Path(diagnostics)
+        diagnostics.parent.mkdir(parents=True, exist_ok=True)
+        write_submission(diagnostics.with_name(diagnostics.stem + '_reference.csv'),
+                         dict(zip(ids, reference.tolist())))
+        diagnostics.write_text(json.dumps(
+            {**report, 'q': dict(zip(ids, q.tolist())),
+             'blended_q': dict(zip(ids, blended.tolist()))}, indent=2, sort_keys=True) + '\n')
+    return report

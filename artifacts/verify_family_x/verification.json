@@ -1,0 +1,308 @@
+{
+  "C1_C5_C6_theirs": {
+    "published": {
+      "R": 0.11296831996213086,
+      "by_condition": {
+        "drift": 0.10352308367341605,
+        "shared_change": 0.11820297942296919,
+        "short_history": 0.1519490023659858,
+        "stable": 0.07819821438615239
+      },
+      "contest_score_points": 53.90989026717447,
+      "max_abs_diff_vs_mine": 1.6017537383117286e-06,
+      "paired_vs_mine": [
+        -3.268792309280087e-08,
+        3.20795284246269e-08
+      ],
+      "paired_vs_protected": [
+        -0.01625632690143393,
+        -0.0005134190458736834
+      ],
+      "path": "artifacts/general_convex_crossed/predictions/oof_X1full.csv",
+      "points": 53.90989026717447,
+      "sha256": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35",
+      "upper_bound_below_zero": true
+    }
+  },
+  "C2a_weight_and_tail_confinement": [
+    {
+      "fold": 0,
+      "held_rows": 192,
+      "max_weight_on_held_rows": 0.0,
+      "tail_fit_vs_all_maxabs": 1.1379786002407855e-15
+    },
+    {
+      "fold": 1,
+      "held_rows": 192,
+      "max_weight_on_held_rows": 0.0,
+      "tail_fit_vs_all_maxabs": 1.1102230246251565e-15
+    },
+    {
+      "fold": 2,
+      "held_rows": 192,
+      "max_weight_on_held_rows": 0.0,
+      "tail_fit_vs_all_maxabs": 9.159339953157541e-16
+    },
+    {
+      "fold": 3,
+      "held_rows": 192,
+      "max_weight_on_held_rows": 0.0,
+      "tail_fit_vs_all_maxabs": 9.992007221626409e-16
+    }
+  ],
+  "C2c_truth_permutation_probe": [
+    {
+      "fold0_held_maxabsdiff": 0.0,
+      "fold1_held_maxabsdiff": 0.16110272222492017,
+      "fold2_held_maxabsdiff": 0.15452379999355859,
+      "fold3_held_maxabsdiff": 0.18022965622642573,
+      "n_episodes": 24,
+      "other_folds_moved": true,
+      "perturbed_fold": 0,
+      "self_fold_unchanged": true,
+      "truth_moved_maxabs": 0.9653111303186014
+    },
+    {
+      "fold0_held_maxabsdiff": 0.18921263333029603,
+      "fold1_held_maxabsdiff": 0.0,
+      "fold2_held_maxabsdiff": 0.19401744260683024,
+      "fold3_held_maxabsdiff": 0.2036879043447939,
+      "n_episodes": 24,
+      "other_folds_moved": true,
+      "perturbed_fold": 1,
+      "self_fold_unchanged": true,
+      "truth_moved_maxabs": 0.9768721227853466
+    },
+    {
+      "fold0_held_maxabsdiff": 0.22668006840288535,
+      "fold1_held_maxabsdiff": 0.3174376667626045,
+      "fold2_held_maxabsdiff": 0.0,
+      "fold3_held_maxabsdiff": 0.3031985060874958,
+      "n_episodes": 24,
+      "other_folds_moved": true,
+      "perturbed_fold": 2,
+      "self_fold_unchanged": true,
+      "truth_moved_maxabs": 0.9720129191547872
+    },
+    {
+      "fold0_held_maxabsdiff": 0.32341367899163176,
+      "fold1_held_maxabsdiff": 0.17448689161456293,
+      "fold2_held_maxabsdiff": 0.1806233148327867,
+      "fold3_held_maxabsdiff": 0.0,
+      "n_episodes": 24,
+      "other_folds_moved": true,
+      "perturbed_fold": 3,
+      "self_fold_unchanged": true,
+      "truth_moved_maxabs": 0.9755079986208911
+    }
+  ],
+  "C3_pool": {
+    "classify_RAW": 15,
+    "distinct_q_heads": 15,
+    "distinct_r_heads": 10,
+    "member_sha256": {
+      "artifacts/beta_cells/predictions/oof_beta_average.csv": "c3bbb789a5189d1f",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv": "2a06d22aa76af27e",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv": "d7f9eb20831804e4",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv": "f312b2a230b33a3e",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv": "c5ce3f8f46238aeb",
+      "artifacts/dense_catboost_01/validation_dense.csv": "fe7a5ae4836eff55",
+      "artifacts/dense_catboost_01/validation_sparse.csv": "7dc540abead85bd1",
+      "artifacts/mtd_pairs_01/validation_additive.csv": "a39c62bca85b3359",
+      "artifacts/mtd_pairs_01/validation_control.csv": "7ed6d8b4266fea51",
+      "artifacts/mtd_pairs_01/validation_lag7.csv": "49301c79b5c198b7",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv": "c859f01459d93ba4",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv": "30fee7d9dfc1982f",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv": "3639737ee125933c",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv": "d7300ca31f57d648",
+      "artifacts/two_head_01/validation.csv": "fef4f159c38bba58"
+    },
+    "nonraw_in_pool": [],
+    "pool_equals_raw_sources": true,
+    "pool_used": [
+      "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/dense_catboost_01/validation_dense.csv",
+      "artifacts/dense_catboost_01/validation_sparse.csv",
+      "artifacts/mtd_pairs_01/validation_additive.csv",
+      "artifacts/mtd_pairs_01/validation_control.csv",
+      "artifacts/mtd_pairs_01/validation_lag7.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+      "artifacts/two_head_01/validation.csv"
+    ],
+    "raw_sources_total": 15,
+    "skipped": []
+  },
+  "C4_causality": {
+    "note": "machine_type is a released query attribute; condition label is not used.",
+    "uses_b_index": false,
+    "uses_cutoffs": false,
+    "uses_groups_condition_label": false,
+    "uses_signals": false,
+    "uses_types": true
+  },
+  "dedup": {
+    "NQ": 15,
+    "NR": 15,
+    "a_sources": [
+      "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/dense_catboost_01/validation_dense.csv",
+      "artifacts/dense_catboost_01/validation_sparse.csv",
+      "artifacts/mtd_pairs_01/validation_additive.csv",
+      "artifacts/mtd_pairs_01/validation_control.csv",
+      "artifacts/mtd_pairs_01/validation_lag7.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+      "artifacts/two_head_01/validation.csv"
+    ],
+    "bank_members": 225,
+    "q_sources": [
+      "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/dense_catboost_01/validation_dense.csv",
+      "artifacts/dense_catboost_01/validation_sparse.csv",
+      "artifacts/mtd_pairs_01/validation_additive.csv",
+      "artifacts/mtd_pairs_01/validation_control.csv",
+      "artifacts/mtd_pairs_01/validation_lag7.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+      "artifacts/two_head_01/validation.csv"
+    ]
+  },
+  "my_x1full": {
+    "contest_score": {
+      "R": 0.11296832134808199,
+      "points": 53.90989020004186
+    },
+    "fold_diagnostics": [
+      {
+        "bcd_rounds": 16,
+        "fold": 0,
+        "objective": 0.11557673194032952,
+        "support": 40,
+        "tails": {
+          "balanced": [
+            0.6956521739130443,
+            0.2608695652173904,
+            0.04347826086956528
+          ],
+          "jackpot": [
+            0.3684210526315796,
+            0.4736842105263149,
+            0.15789473684210545
+          ],
+          "steady": [
+            0.7999999999999999,
+            0.19600000000000017,
+            0.004000000000000001
+          ]
+        }
+      },
+      {
+        "bcd_rounds": 12,
+        "fold": 1,
+        "objective": 0.09779648303202215,
+        "support": 44,
+        "tails": {
+          "balanced": [
+            0.6956521739130442,
+            0.26086956521739035,
+            0.043478260869565265
+          ],
+          "jackpot": [
+            0.36842105263157954,
+            0.47368421052631504,
+            0.15789473684210542
+          ],
+          "steady": [
+            0.7999999999999999,
+            0.19600000000000004,
+            0.004
+          ]
+        }
+      },
+      {
+        "bcd_rounds": 29,
+        "fold": 2,
+        "objective": 0.10671560271184713,
+        "support": 44,
+        "tails": {
+          "balanced": [
+            0.6956521739130443,
+            0.2608695652173904,
+            0.04347826086956528
+          ],
+          "jackpot": [
+            0.3684210526315797,
+            0.4736842105263149,
+            0.15789473684210542
+          ],
+          "steady": [
+            0.8000000000000002,
+            0.19599999999999995,
+            0.003999999999999999
+          ]
+        }
+      },
+      {
+        "bcd_rounds": 21,
+        "fold": 3,
+        "objective": 0.11781509457270738,
+        "support": 40,
+        "tails": {
+          "balanced": [
+            0.6956521739130443,
+            0.2608695652173904,
+            0.04347826086956528
+          ],
+          "jackpot": [
+            0.36842105263157976,
+            0.47368421052631476,
+            0.15789473684210537
+          ],
+          "steady": [
+            0.8000000000000002,
+            0.19599999999999984,
+            0.003999999999999998
+          ]
+        }
+      }
+    ],
+    "official": {
+      "R": 0.11296832134808199,
+      "by_condition": {
+        "drift": 0.10352310276939537,
+        "shared_change": 0.11820301061844568,
+        "short_history": 0.15194895374417364,
+        "stable": 0.07819821826031326
+      },
+      "points": 53.90989020004186
+    },
+    "paired_vs_protected": [
+      -0.01625630626683208,
+      -0.000513441269842087
+    ]
+  },
+  "protected": {
+    "R": 0.120805710882256,
+    "points": 53.532917808538166
+  },
+  "seconds": 57.324504624994006
+}

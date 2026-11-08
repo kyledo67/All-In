@@ -1,0 +1,37 @@
+{
+  "model": "per-machine Dirichlet-multinomial over the four positive payout categories, blended with the pooled two-head conditional distribution",
+  "formula": "r = (1-w)*r_two_head + w*(tau*m_type + decayed_positive_counts)/(tau + total)",
+  "tau": 32.0,
+  "population_prior_by_type": {
+    "balanced": [
+      0.4032258064516129,
+      0.4032258064516129,
+      0.1532258064516129,
+      0.04032258064516129
+    ],
+    "jackpot": [
+      0.21666666666666667,
+      0.35,
+      0.31666666666666665,
+      0.11666666666666667
+    ],
+    "steady": [
+      0.6405228758169934,
+      0.2875816993464052,
+      0.0718954248366013,
+      0.0
+    ]
+  },
+  "deployment_blend_weight": 0.42,
+  "fold_blend_weights": [
+    0.35000000000000003,
+    0.41000000000000003,
+    0.48,
+    0.44
+  ],
+  "weight_provenance": "arithmetic mean of the four outer-fold fitted weights; not tuned further. Fold-specific weights are recorded separately and are NOT the deployment weight.",
+  "half_life": "same per-machine dense-selected half-life as q",
+  "validation_points": 53.359682608369106,
+  "validation_R": 0.12444446943898056,
+  "q_held_fixed": "parity template dictionary, unchanged"
+}

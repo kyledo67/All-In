@@ -1,0 +1,211 @@
+{
+  "every_setting": {
+    "k0.5_h0": {
+      "paired_vs_protected_ci95": [
+        0.7106951092962822,
+        0.7896070311910282
+      ],
+      "points_all_episodes": 32.10574339920602,
+      "prequential_logscore_fixed_structure": -65001.72925551889,
+      "significant": false
+    },
+    "k0.5_h0.0001": {
+      "paired_vs_protected_ci95": [
+        -0.035101097194865746,
+        -0.01091269204958573
+      ],
+      "points_all_episodes": 54.61031167274356,
+      "prequential_logscore_fixed_structure": -47612.67936771183,
+      "significant": true
+    },
+    "k0.5_h0.001": {
+      "paired_vs_protected_ci95": [
+        -0.027789916646997936,
+        -0.008034499750389818
+      ],
+      "points_all_episodes": 54.36189476555637,
+      "prequential_logscore_fixed_structure": -46747.32555401272,
+      "significant": true
+    },
+    "k0.5_h0.01": {
+      "paired_vs_protected_ci95": [
+        -0.007389378938391488,
+        0.04000553715188971
+      ],
+      "points_all_episodes": 52.809624701565994,
+      "prequential_logscore_fixed_structure": -46408.2752113778,
+      "significant": false
+    },
+    "k0.5_h0.1": {
+      "paired_vs_protected_ci95": [
+        0.6359708992590585,
+        0.757990710140209
+      ],
+      "points_all_episodes": 33.01320829077186,
+      "prequential_logscore_fixed_structure": -51631.669279250105,
+      "significant": false
+    },
+    "k0.5_h1e-05": {
+      "paired_vs_protected_ci95": [
+        -0.03435448175473935,
+        -0.010179935904190954
+      ],
+      "points_all_episodes": 54.57810440637673,
+      "prequential_logscore_fixed_structure": -48493.05170272378,
+      "significant": true
+    },
+    "k0.5_h1e-06": {
+      "paired_vs_protected_ci95": [
+        -0.0335734130906607,
+        -0.009184988662324927
+      ],
+      "points_all_episodes": 54.52956655809897,
+      "prequential_logscore_fixed_structure": -49361.337089984925,
+      "significant": true
+    },
+    "k1_h0": {
+      "paired_vs_protected_ci95": [
+        0.7078506973404703,
+        0.7870203838337019
+      ],
+      "points_all_episodes": 32.14663851305578,
+      "prequential_logscore_fixed_structure": -64535.58953777345,
+      "significant": false
+    },
+    "k1_h0.0001": {
+      "paired_vs_protected_ci95": [
+        -0.03585773853849594,
+        -0.011546858382963114
+      ],
+      "points_all_episodes": 54.64324929011977,
+      "prequential_logscore_fixed_structure": -47224.92136706187,
+      "significant": true
+    },
+    "k1_h0.001": {
+      "paired_vs_protected_ci95": [
+        -0.03026976164770961,
+        -0.010418506972456587
+      ],
+      "points_all_episodes": 54.476520517205834,
+      "prequential_logscore_fixed_structure": -46369.13132393394,
+      "significant": true
+    },
+    "k1_h0.01": {
+      "paired_vs_protected_ci95": [
+        -0.009909847009051693,
+        0.02348559678118835
+      ],
+      "points_all_episodes": 53.26840174208297,
+      "prequential_logscore_fixed_structure": -46077.783826330895,
+      "significant": false
+    },
+    "k1_h0.1": {
+      "paired_vs_protected_ci95": [
+        0.6358634592229064,
+        0.7399170739959071
+      ],
+      "points_all_episodes": 33.17655144422554,
+      "prequential_logscore_fixed_structure": -51762.285716839535,
+      "significant": false
+    },
+    "k1_h1e-05": {
+      "paired_vs_protected_ci95": [
+        -0.03498622725395158,
+        -0.01069302715318513
+      ],
+      "points_all_episodes": 54.60022168902342,
+      "prequential_logscore_fixed_structure": -48102.62321535951,
+      "significant": true
+    },
+    "k1_h1e-06": {
+      "paired_vs_protected_ci95": [
+        -0.033980264951623936,
+        -0.009467688740437425
+      ],
+      "points_all_episodes": 54.545274570305224,
+      "prequential_logscore_fixed_structure": -48969.33612637978,
+      "significant": true
+    },
+    "k2_h0": {
+      "paired_vs_protected_ci95": [
+        0.7053175340905351,
+        0.7842866074189805
+      ],
+      "points_all_episodes": 32.1908436612297,
+      "prequential_logscore_fixed_structure": -64347.8938398529,
+      "significant": false
+    },
+    "k2_h0.0001": {
+      "paired_vs_protected_ci95": [
+        -0.03486984114171953,
+        -0.0108890920564478
+      ],
+      "points_all_episodes": 54.59580073072463,
+      "prequential_logscore_fixed_structure": -47449.17692952935,
+      "significant": true
+    },
+    "k2_h0.001": {
+      "paired_vs_protected_ci95": [
+        -0.02916591580201915,
+        -0.008913583592763778
+      ],
+      "points_all_episodes": 54.42278024079839,
+      "prequential_logscore_fixed_structure": -46615.75091602946,
+      "significant": true
+    },
+    "k2_h0.01": {
+      "paired_vs_protected_ci95": [
+        -0.022984424579433546,
+        0.0037999780763849967
+      ],
+      "points_all_episodes": 53.99313918731602,
+      "prequential_logscore_fixed_structure": -46436.813921108034,
+      "significant": false
+    },
+    "k2_h0.1": {
+      "paired_vs_protected_ci95": [
+        0.6115670447971929,
+        0.7029311215080366
+      ],
+      "points_all_episodes": 33.74314631440103,
+      "prequential_logscore_fixed_structure": -53094.88002787639,
+      "significant": false
+    },
+    "k2_h1e-05": {
+      "paired_vs_protected_ci95": [
+        -0.03409051388504591,
+        -0.009953429893632851
+      ],
+      "points_all_episodes": 54.54934620941194,
+      "prequential_logscore_fixed_structure": -48320.92784371672,
+      "significant": true
+    },
+    "k2_h1e-06": {
+      "paired_vs_protected_ci95": [
+        -0.03264006258732371,
+        -0.007745524610953079
+      ],
+      "points_all_episodes": 54.45892067498915,
+      "prequential_logscore_fixed_structure": -49184.161884447356,
+      "significant": true
+    }
+  },
+  "nested_official_objective_choice_per_fold": [
+    "k1_h0.0001",
+    "k1_h0.0001",
+    "k0.5_h0.0001",
+    "k1_h0.0001"
+  ],
+  "preregistration": "Target-free setting rule for T2/T2MAP: does the gain survive without the official target?\n\nThe family's own report records, per (kappa, hazard), the PREQUENTIAL log score of the\nfixed-structure run-length model (the sequential marginal likelihood of the data under that\nsetting).  That quantity needs no validation probability target at all, so it is the only\nsetting rule in this family that is genuinely target-free and would transfer to test.  Here\nthe T2MAP forecast is scored at the setting that criterion selects, and compared with the\nsetting the official row-weighted objective selects on the inner held partitions.\n",
+  "protected_points": 53.532917808538166,
+  "target_free_choice": {
+    "paired_vs_protected_ci95": [
+      -0.009909847009051693,
+      0.02348559678118835
+    ],
+    "points_all_episodes": 53.26840174208297,
+    "prequential_logscore_fixed_structure": -46077.783826330895,
+    "significant": false
+  },
+  "target_free_prequential_argmax_setting": "k1_h0.01"
+}

@@ -1,0 +1,229 @@
+{
+  "A_honest_r_sensitivity": {
+    "scores": {
+      "protected_truth_derived_tail": {
+        "T2MAP_R": 0.09857815969198636,
+        "T2MAP_points": 54.616050274313196,
+        "gain_points": 1.08313246577503,
+        "paired_T2MAP_vs_protected_ci95": [
+          -0.03519605795616874,
+          -0.010915770434336433
+        ],
+        "protected_R": 0.120805710882256,
+        "protected_points": 53.532917808538166,
+        "selected_per_fold": [
+          "k1_h0.0001",
+          "k1_h0.0001",
+          "k0.5_h0.0001",
+          "k1_h0.0001"
+        ],
+        "significant": true
+      },
+      "train_history_tail": {
+        "T2MAP_R": 0.09878443841003384,
+        "T2MAP_points": 54.60579700857556,
+        "gain_points": 1.0841514039712692,
+        "paired_T2MAP_vs_protected_ci95": [
+          -0.035249338513711315,
+          -0.010953690134781209
+        ],
+        "protected_R": 0.12104176398564258,
+        "protected_points": 53.52164560460429,
+        "selected_per_fold": [
+          "k1_h0.0001",
+          "k1_h0.0001",
+          "k0.5_h0.0001",
+          "k1_h0.0001"
+        ],
+        "significant": true
+      },
+      "train_label_tail": {
+        "T2MAP_R": 0.10072120566757511,
+        "T2MAP_points": 54.509715712809104,
+        "gain_points": 1.0774777380400948,
+        "paired_T2MAP_vs_protected_ci95": [
+          -0.0351596732856505,
+          -0.010882172858216006
+        ],
+        "protected_R": 0.1229175919663393,
+        "protected_points": 53.43223797476901,
+        "selected_per_fold": [
+          "k1_h0.0001",
+          "k1_h0.0001",
+          "k0.5_h0.0001",
+          "k1_h0.0001"
+        ],
+        "significant": true
+      }
+    },
+    "tail_estimates": {
+      "train_history_tail": {
+        "balanced": [
+          0.6908548707753479,
+          0.26403119743079984,
+          0.04511393179385227
+        ],
+        "jackpot": [
+          0.3760599208592425,
+          0.4608535895986433,
+          0.1630864895421142
+        ],
+        "steady": [
+          0.7904727793696275,
+          0.20531876790830947,
+          0.0042084527220630375
+        ]
+      },
+      "train_history_tail_observation_counts": {
+        "balanced": 13078,
+        "jackpot": 7076,
+        "steady": 11168
+      },
+      "train_label_tail": {
+        "balanced": [
+          0.6756756756756757,
+          0.25675675675675674,
+          0.06756756756756757
+        ],
+        "jackpot": [
+          0.44680851063829785,
+          0.40425531914893614,
+          0.14893617021276595
+        ],
+        "steady": [
+          0.8,
+          0.2,
+          0.0
+        ]
+      },
+      "train_label_tail_observation_counts": {
+        "balanced": 74,
+        "jackpot": 47,
+        "steady": 55
+      },
+      "validation_TRUTH_constant_used_by_the_release": {
+        "balanced": [
+          0.6956521739130428,
+          0.2608695652173908,
+          0.043478260869565175
+        ],
+        "jackpot": [
+          0.3684210526315787,
+          0.47368421052631515,
+          0.15789473684210487
+        ],
+        "steady": [
+          0.8000000000000034,
+          0.1959999999999996,
+          0.004000000000000003
+        ]
+      }
+    }
+  },
+  "B_grid_robustness": {
+    "decades_1e-2_and_coarser": {
+      "R": 0.1112522980344715,
+      "paired_vs_protected_ci95": [
+        -0.022984424579433546,
+        0.0037999780763849967
+      ],
+      "points": 53.99313918731602,
+      "points_minus_protected": 0.4602213787778524,
+      "selected_per_fold": [
+        "k2_h0.01",
+        "k2_h0.01",
+        "k2_h0.01",
+        "k2_h0.01"
+      ],
+      "settings": 9,
+      "significant_vs_protected": false
+    },
+    "decades_1e-3_and_coarser": {
+      "R": 0.1013919286759447,
+      "paired_vs_protected_ci95": [
+        -0.03026976164770961,
+        -0.010418506972456587
+      ],
+      "points": 54.476520517205834,
+      "points_minus_protected": 0.9436027086676688,
+      "selected_per_fold": [
+        "k1_h0.001",
+        "k1_h0.001",
+        "k1_h0.001",
+        "k1_h0.001"
+      ],
+      "settings": 12,
+      "significant_vs_protected": true
+    },
+    "declared_grid": {
+      "R": 0.09857815969198636,
+      "paired_vs_protected_ci95": [
+        -0.035196057956168744,
+        -0.010915770434336447
+      ],
+      "points": 54.616050274313196,
+      "points_minus_protected": 1.08313246577503,
+      "selected_per_fold": [
+        "k1_h0.0001",
+        "k1_h0.0001",
+        "k0.5_h0.0001",
+        "k1_h0.0001"
+      ],
+      "settings": 21,
+      "significant_vs_protected": true
+    },
+    "endpoints_only_0_and_1e-1": {
+      "R": 0.120805710882256,
+      "paired_vs_protected_ci95": [
+        -1.8530712966232625e-17,
+        9.85554039038812e-18
+      ],
+      "points": 53.532917808538166,
+      "points_minus_protected": 0.0,
+      "selected_per_fold": [
+        "control",
+        "control",
+        "control",
+        "control"
+      ],
+      "settings": 6,
+      "significant_vs_protected": false
+    },
+    "kappa_half_only": {
+      "R": 0.0986936013028922,
+      "paired_vs_protected_ci95": [
+        -0.035101097194865746,
+        -0.01091269204958573
+      ],
+      "points": 54.61031167274356,
+      "points_minus_protected": 1.0773938642053977,
+      "selected_per_fold": [
+        "k0.5_h0.0001",
+        "k0.5_h0.0001",
+        "k0.5_h0.0001",
+        "k0.5_h0.0001"
+      ],
+      "settings": 7,
+      "significant_vs_protected": true
+    },
+    "two_point_0_and_1e-2": {
+      "R": 0.1112522980344715,
+      "paired_vs_protected_ci95": [
+        -0.022984424579433546,
+        0.0037999780763849967
+      ],
+      "points": 53.99313918731602,
+      "points_minus_protected": 0.4602213787778524,
+      "selected_per_fold": [
+        "k2_h0.01",
+        "k2_h0.01",
+        "k2_h0.01",
+        "k2_h0.01"
+      ],
+      "settings": 6,
+      "significant_vs_protected": false
+    }
+  },
+  "preregistration": "Two sensitivity analyses that decide whether Family T's T2MAP gain is an artifact.\n\nA. HONEST-r SENSITIVITY. The protected release's conditional-payout head r carries, per\n   machine type, a tail split over {2,5,20} that is EXACTLY the validation TRUTH constant\n   (artifacts/win_head_release_exact/code/model/win_head/tail_crossfit_deploy.json:\n   \"Fitted on ALL released validation probability targets\"). Family T inherits that r\n   unchanged for every arm AND for its control, so the question is not whether the leak is\n   present -- it is -- but whether the measured GAIN depends on it. Rebuild r with a\n   TRAIN-ONLY tail estimate (from public/train tick payouts, and separately from the 768\n   train labels), keep each query's a = P(1x | positive) from the protected head, and\n   re-score both the protected release and the nested T2MAP arm under the honest head.\n\nB. GRID ROBUSTNESS. The family declares that the hazard/kappa grid BOUNDS were informed by\n   an exploratory public-validation sweep. Re-run the identical nested protocol on\n   deliberately coarser sub-grids that no exploratory sweep could have tuned, including one\n   with no hazard finer than 1e-2, and report how much of the gain survives.\n\nDeterminism: sorted(...) everywhere; no set is summed over.\n",
+  "seconds": 125.55185083299875
+}

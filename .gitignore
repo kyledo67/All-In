@@ -273,3 +273,7 @@ artifacts/**/entry.zip.d/
 # The verified torch-free candidate (artifacts/win_head_release_nofx/entry.zip) is committed instead.
 artifacts/win_head_release/entry.zip
 artifacts/audit/**/freshcache/
+
+# Regenerable evidence caches for the Round-2 template-prior experiment.
+# scripts/r2_prior_cache.py rebuilds any of these in about 20 seconds.
+artifacts/r2_prior_experiment/cache_*.npz

@@ -1,0 +1,107 @@
+{
+  "R": 0.11328781091745505,
+  "arm": "X4legal",
+  "by_condition": {
+    "drift": 0.10406418967358361,
+    "shared_change": 0.11903499260224029,
+    "short_history": 0.15183310036630243,
+    "stable": 0.07821896102769382
+  },
+  "description": "general mixture, complete crossed bank, shrinkage toward the fitting-side best single crossed member (nested, RAW-only), lam and the no-change option by inner folds",
+  "fold_provenance": [
+    {
+      "choice": "mixture",
+      "fold": 0,
+      "inner_no_change": 0.38844384277120136,
+      "inner_table": {
+        "0.0": 0.36492835848334754,
+        "0.1": 0.3646179850465845,
+        "0.3": 0.36509656732439655,
+        "1.0": 0.36928046207813886,
+        "10.0": 0.38385792642125066,
+        "3.0": 0.3770107426606133
+      },
+      "kkt": 4.0356190611490206e-11,
+      "lam": 0.1,
+      "nested_baseline_member": [
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv"
+      ],
+      "support": 10
+    },
+    {
+      "choice": "mixture",
+      "fold": 1,
+      "inner_no_change": 0.33632965982995894,
+      "inner_table": {
+        "0.0": 0.30687683216734374,
+        "0.1": 0.3072950452393734,
+        "0.3": 0.3087908648386723,
+        "1.0": 0.31473143883947635,
+        "10.0": 0.33138106594668615,
+        "3.0": 0.32381361892213134
+      },
+      "kkt": 5.119016321941672e-12,
+      "lam": 0.0,
+      "nested_baseline_member": [
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv"
+      ],
+      "support": 8
+    },
+    {
+      "choice": "mixture",
+      "fold": 2,
+      "inner_no_change": 0.3871057152749544,
+      "inner_table": {
+        "0.0": 0.33687378806883095,
+        "0.1": 0.3390586774958976,
+        "0.3": 0.34335015671806074,
+        "1.0": 0.35478526114102343,
+        "10.0": 0.3801575267275121,
+        "3.0": 0.3691443654043691
+      },
+      "kkt": 1.4564915939985212e-10,
+      "lam": 0.0,
+      "nested_baseline_member": [
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv"
+      ],
+      "support": 10
+    },
+    {
+      "choice": "mixture",
+      "fold": 3,
+      "inner_no_change": 0.3936292346243476,
+      "inner_table": {
+        "0.0": 0.3700457299394022,
+        "0.1": 0.3696300247682397,
+        "0.3": 0.369921043405962,
+        "1.0": 0.3739934413479061,
+        "10.0": 0.3888917235127727,
+        "3.0": 0.3818495131307887
+      },
+      "kkt": 3.0012298202208854e-11,
+      "lam": 0.1,
+      "nested_baseline_member": [
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv"
+      ],
+      "support": 8
+    }
+  ],
+  "paired_vs_protected": [
+    -0.015817401373900683,
+    -7.98333986637691e-05
+  ],
+  "paired_vs_separable_rescaled": [
+    -0.001279122188855267,
+    0.0013147067664584164
+  ],
+  "paired_vs_their_X4": [
+    -0.0012745184162165247,
+    0.0010374901313137505
+  ],
+  "points": 53.89441922529834,
+  "seconds": 239.76624083300703
+}

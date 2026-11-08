@@ -1,0 +1,17 @@
+{
+  "boost_enriched": {
+    "fold0_held_identical_under_corrupted_fold0_truth": true,
+    "max_abs_fold0_difference": 0.0,
+    "other_folds_did_move": true
+  },
+  "boost_q_only_enriched": {
+    "fold0_held_identical_under_corrupted_fold0_truth": true,
+    "max_abs_fold0_difference": 0.0,
+    "other_folds_did_move": true
+  },
+  "ridge_enriched": {
+    "fold0_held_identical_under_corrupted_fold0_truth": true,
+    "max_abs_fold0_difference": 0.0,
+    "other_folds_did_move": true
+  }
+}

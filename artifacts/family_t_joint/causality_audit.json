@@ -1,0 +1,26 @@
+{
+  "check_A_index_strictly_before_cutoff": {
+    "max_tick_minus_cutoff_over_all_queries": -1,
+    "passed": true
+  },
+  "max_abs_q_change": {
+    "B_target_tick_injection": {
+      "k0.5_h0.0001": 0.0,
+      "k1_h1e-05": 0.0
+    },
+    "C_neighbour_history_inversion": {
+      "k0.5_h0.0001": 0.0,
+      "k1_h1e-05": 0.0
+    }
+  },
+  "max_abs_q_vs_saved_nested_forecast_by_fold": {
+    "fold0:T3B7|k1_h1e-05": 1.942890293094024e-16,
+    "fold1:T3B7|k1_h1e-05": 2.498001805406602e-16,
+    "fold2:T3B7|k0.5_h0.0001": 2.636779683484747e-16,
+    "fold3:T3B7|k1_h1e-05": 2.0816681711721685e-16
+  },
+  "neighbours_flipped_per_query": 7,
+  "passed": true,
+  "preregistration": "Independent causality audit of the FAMILY T changepoint forecast.\n\nThree checks, each an assertion on recomputed numbers rather than a claim about code.\n\nA. The causal index holds no tick at or after a query's cutoff.\nB. Target-tick invariance. A fabricated outcome is injected AT the cutoff tick and at\n   cutoff+1 for every machine, and the arm's q is recomputed. Bit-identical q proves the\n   forecast cannot see its own target or anything after it.\nC. Cross-machine invariance. Every OTHER machine in the same episode has its whole\n   pre-cutoff history inverted (win <-> loss), and the arm's q is recomputed. Bit-identical\n   q proves this family uses no neighbour information, so the shared_change gain comes from\n   the machine's own run-length posterior and not from a neighbour channel.\n\nThe recomputed arm is T3B7 at the two settings the nested run selected\n(kappa=1, h=1e-5 and kappa=0.5, h=1e-4), and the clean recomputation is additionally\ncompared bit-for-bit against the saved nested forecast of the TALL arm on the folds where\nthat setting was chosen.\n",
+  "seconds": 35.24597212500521
+}

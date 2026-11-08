@@ -1,0 +1,505 @@
+{
+  "a_head_groups": {
+    "093a5f713e63": [
+      "artifacts/dense_catboost_01/validation_sparse.csv"
+    ],
+    "0afb58d97d5d": [
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv"
+    ],
+    "2caf43cbfed0": [
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv"
+    ],
+    "31c0edb5fdec": [
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv"
+    ],
+    "31fdb495bac2": [
+      "artifacts/mtd_pairs_01/validation_additive.csv"
+    ],
+    "561894a02017": [
+      "artifacts/dense_catboost_01/validation_dense.csv"
+    ],
+    "652bf811eb61": [
+      "artifacts/mtd_pairs_01/validation_control.csv"
+    ],
+    "7a4f716baa8c": [
+      "artifacts/mtd_pairs_01/validation_lag7.csv"
+    ],
+    "923e85650b0a": [
+      "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/two_head_01/validation.csv"
+    ],
+    "c4bf52d7d4fa": [
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv"
+    ]
+  },
+  "fallback_rows": {
+    "artifacts/beta_cells/predictions/oof_beta_average.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "by_condition": {
+          "drift": 0,
+          "shared_change": 0,
+          "short_history": 17,
+          "stable": 82
+        },
+        "by_type": {
+          "balanced": 36,
+          "jackpot": 27,
+          "steady": 36
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.12890625,
+        "q_rows_identical": 99,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "by_condition": {
+          "drift": 0,
+          "shared_change": 0,
+          "short_history": 17,
+          "stable": 0
+        },
+        "by_type": {
+          "balanced": 2,
+          "jackpot": 15,
+          "steady": 0
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.022135416666666668,
+        "q_rows_identical": 17,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/beta_cells/predictions/oof_beta_hard.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "by_condition": {
+          "drift": 192,
+          "shared_change": 192,
+          "short_history": 192,
+          "stable": 192
+        },
+        "by_type": {
+          "balanced": 234,
+          "jackpot": 265,
+          "steady": 269
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 1.0,
+        "q_rows_identical": 768,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "by_condition": {
+          "drift": 0,
+          "shared_change": 3,
+          "short_history": 29,
+          "stable": 6
+        },
+        "by_type": {
+          "balanced": 5,
+          "jackpot": 26,
+          "steady": 7
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.049479166666666664,
+        "q_rows_identical": 38,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/beta_memory/predictions/oof_beta_memory.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "by_condition": {
+          "drift": 0,
+          "shared_change": 0,
+          "short_history": 26,
+          "stable": 5
+        },
+        "by_type": {
+          "balanced": 5,
+          "jackpot": 23,
+          "steady": 3
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.040364583333333336,
+        "q_rows_identical": 31,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "by_condition": {
+          "drift": 105,
+          "shared_change": 70,
+          "short_history": 99,
+          "stable": 39
+        },
+        "by_type": {
+          "balanced": 90,
+          "jackpot": 114,
+          "steady": 109
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.4075520833333333,
+        "q_rows_identical": 313,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/beta_subsets/predictions/oof_parity_templates.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "by_condition": {
+          "drift": 0,
+          "shared_change": 0,
+          "short_history": 28,
+          "stable": 5
+        },
+        "by_type": {
+          "balanced": 5,
+          "jackpot": 25,
+          "steady": 3
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.04296875,
+        "q_rows_identical": 33,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "by_condition": {
+          "drift": 179,
+          "shared_change": 175,
+          "short_history": 191,
+          "stable": 189
+        },
+        "by_type": {
+          "balanced": 229,
+          "jackpot": 243,
+          "steady": 262
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.9557291666666666,
+        "q_rows_identical": 734,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/beta_templates/predictions/oof_parity_templates.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "by_condition": {
+          "drift": 0,
+          "shared_change": 3,
+          "short_history": 29,
+          "stable": 6
+        },
+        "by_type": {
+          "balanced": 5,
+          "jackpot": 26,
+          "steady": 7
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.049479166666666664,
+        "q_rows_identical": 38,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "by_condition": {
+          "drift": 192,
+          "shared_change": 192,
+          "short_history": 192,
+          "stable": 192
+        },
+        "by_type": {
+          "balanced": 234,
+          "jackpot": 265,
+          "steady": 269
+        },
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 1.0,
+        "q_rows_identical": 768,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/dense_catboost_01/validation_dense.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/dense_catboost_01/validation_sparse.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/mtd_pairs_01/validation_additive.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/mtd_pairs_01/validation_control.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/mtd_pairs_01/validation_lag7.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    },
+    "artifacts/two_head_01/validation.csv": {
+      "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv": {
+        "class": "FOLD_FITTED",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_nofx/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      },
+      "artifacts/win_head_release_parity/validation_submission.csv": {
+        "class": "DEPLOY_FIT",
+        "q_frac_identical": 0.0,
+        "q_rows_identical": 0,
+        "q_rows_total": 768
+      }
+    }
+  },
+  "producer_reads": {
+    "scripts/beta_cells.py": [
+      {
+        "class": "FOLD_FITTED",
+        "exists": true,
+        "reads": "artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv"
+      },
+      {
+        "class": "RAW",
+        "exists": true,
+        "reads": "artifacts/two_head_01/validation.csv"
+      }
+    ],
+    "scripts/beta_memory.py": [
+      {
+        "class": "RAW",
+        "exists": true,
+        "reads": "artifacts/two_head_01/validation.csv"
+      },
+      {
+        "class": "DEPLOY_FIT",
+        "exists": true,
+        "reads": "artifacts/win_head_release_parity/validation_submission.csv"
+      }
+    ],
+    "scripts/beta_subsets.py": [
+      {
+        "class": "RAW",
+        "exists": true,
+        "reads": "artifacts/two_head_01/validation.csv"
+      },
+      {
+        "class": "DEPLOY_FIT",
+        "exists": true,
+        "reads": "artifacts/win_head_release_nofx/validation_submission.csv"
+      }
+    ],
+    "scripts/beta_templates.py": [
+      {
+        "class": "RAW",
+        "exists": true,
+        "reads": "artifacts/two_head_01/validation.csv"
+      },
+      {
+        "class": "DEPLOY_FIT",
+        "exists": true,
+        "reads": "artifacts/win_head_release_nofx/validation_submission.csv"
+      }
+    ],
+    "scripts/dense_catboost.py": [],
+    "scripts/evaluate_mtd_pairs.py": [],
+    "scripts/tabpfn_evaluate.py": [],
+    "scripts/two_head_catboost.py": []
+  }
+}

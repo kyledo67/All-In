@@ -1,0 +1,261 @@
+{
+  "Round-1 entry unchanged": {
+    "R": 0.370220957148501,
+    "basis": "no fitting on R2",
+    "by_condition": {
+      "drift": {
+        "episodes": 24,
+        "error": 0.10754684827945345,
+        "loss_ratio": 0.5330472781286439,
+        "reference_error": 0.20175855443257404
+      },
+      "shared_change": {
+        "episodes": 24,
+        "error": 0.06395357824289394,
+        "loss_ratio": 0.32261410295784587,
+        "reference_error": 0.1982355317282902
+      },
+      "short_history": {
+        "episodes": 24,
+        "error": 0.09118423520678016,
+        "loss_ratio": 0.520619378229432,
+        "reference_error": 0.17514568035651593
+      },
+      "stable": {
+        "episodes": 24,
+        "error": 0.019017931958037894,
+        "loss_ratio": 0.1046030692780822,
+        "reference_error": 0.18181045823311018
+      }
+    },
+    "points_20": 14.596186035295364,
+    "points_40": 29.19237207059073
+  },
+  "Round-2 candidate, OUT-OF-FOLD": {
+    "R": 0.3640584516934052,
+    "basis": "honest estimate",
+    "by_condition": {
+      "drift": {
+        "episodes": 24,
+        "error": 0.10611905000749167,
+        "loss_ratio": 0.5259705111683665,
+        "reference_error": 0.20175855443257404
+      },
+      "shared_change": {
+        "episodes": 24,
+        "error": 0.06411512545627476,
+        "loss_ratio": 0.3234290285767417,
+        "reference_error": 0.1982355317282902
+      },
+      "short_history": {
+        "episodes": 24,
+        "error": 0.08764641723083223,
+        "loss_ratio": 0.5004200905921545,
+        "reference_error": 0.17514568035651593
+      },
+      "stable": {
+        "episodes": 24,
+        "error": 0.019347210180393305,
+        "loss_ratio": 0.10641417643635812,
+        "reference_error": 0.18181045823311018
+      }
+    },
+    "points_20": 14.662128279892313,
+    "points_40": 29.324256559784626
+  },
+  "Round-2 candidate, as deployed": {
+    "R": 0.3630326831000303,
+    "basis": "replay: alphas saw these episodes",
+    "by_condition": {
+      "drift": {
+        "episodes": 24,
+        "error": 0.10569112204431963,
+        "loss_ratio": 0.5238495207381191,
+        "reference_error": 0.20175855443257404
+      },
+      "shared_change": {
+        "episodes": 24,
+        "error": 0.06409210419155363,
+        "loss_ratio": 0.3233128977069606,
+        "reference_error": 0.1982355317282902
+      },
+      "short_history": {
+        "episodes": 24,
+        "error": 0.08723031409144645,
+        "loss_ratio": 0.4980443360857414,
+        "reference_error": 0.17514568035651593
+      },
+      "stable": {
+        "episodes": 24,
+        "error": 0.019439897412524363,
+        "loss_ratio": 0.1069239778693,
+        "reference_error": 0.18181045823311018
+      }
+    },
+    "points_20": 14.67316246189545,
+    "points_40": 29.3463249237909
+  },
+  "bootstrap": {
+    "ci95": [
+      -0.012903061625262214,
+      -0.00032008008597824556
+    ],
+    "excludes_zero": true,
+    "mean_dR": -0.006185584292931076,
+    "p_improve": 0.9795,
+    "repeats": 4000
+  },
+  "calibration": {
+    "p_0": {
+      "bias": 0.006829061196566011,
+      "mean_forecast": 0.5970038332838387,
+      "mean_true": 0.5901747720872726,
+      "rmse": 0.21000955646838468
+    },
+    "p_1": {
+      "bias": 0.0036665125631337447,
+      "mean_forecast": 0.18354358387704525,
+      "mean_true": 0.1798770713139115,
+      "rmse": 0.11540878516006585
+    },
+    "p_2": {
+      "bias": -0.007085269135883254,
+      "mean_forecast": 0.13879929585155526,
+      "mean_true": 0.14588456498743851,
+      "rmse": 0.09298806854793513
+    },
+    "p_20": {
+      "bias": -0.0005220690335549852,
+      "mean_forecast": 0.014211089101380062,
+      "mean_true": 0.014733158134935047,
+      "rmse": 0.016108070640697622
+    },
+    "p_5": {
+      "bias": -0.0028882355902614537,
+      "mean_forecast": 0.06644219788618082,
+      "mean_true": 0.06933043347644227,
+      "rmse": 0.05456645843865009
+    }
+  },
+  "deployed_alpha": {
+    "long": 0.94,
+    "min_observations": 128,
+    "short": 0.83
+  },
+  "episode_paired": {
+    "better": 45,
+    "max_regression": 0.009643770495468704,
+    "mean_dE": -0.0011186977030433684,
+    "worse": 51
+  },
+  "fold_stability": [
+    {
+      "R_candidate": 0.3831119830986737,
+      "R_frozen": 0.3910199375221374,
+      "dR": -0.007907954423463648,
+      "fold": 0
+    },
+    {
+      "R_candidate": 0.2830014975775623,
+      "R_frozen": 0.280350506304468,
+      "dR": 0.0026509912730943164,
+      "fold": 1
+    },
+    {
+      "R_candidate": 0.38306068429279583,
+      "R_frozen": 0.39387745758498544,
+      "dR": -0.010816773292189608,
+      "fold": 2
+    },
+    {
+      "R_candidate": 0.445038703833172,
+      "R_frozen": 0.45593162468524867,
+      "dR": -0.01089292085207666,
+      "fold": 3
+    }
+  ],
+  "kit": "adaptation-participants",
+  "note": "R is scale-free; points shown at both released allocations",
+  "per_fold_alpha_refit": [
+    {
+      "alpha_long": 0.95,
+      "alpha_short": 0.83,
+      "fold": 0
+    },
+    {
+      "alpha_long": 0.93,
+      "alpha_short": 0.79,
+      "fold": 1
+    },
+    {
+      "alpha_long": 0.96,
+      "alpha_short": 0.84,
+      "fold": 2
+    },
+    {
+      "alpha_long": 0.94,
+      "alpha_short": 0.84,
+      "fold": 3
+    }
+  ],
+  "pooled reference": {
+    "R": 1.0,
+    "basis": "frozen ref",
+    "by_condition": {
+      "drift": {
+        "episodes": 24,
+        "error": 0.20175855443257404,
+        "loss_ratio": 1.0,
+        "reference_error": 0.20175855443257404
+      },
+      "shared_change": {
+        "episodes": 24,
+        "error": 0.1982355317282902,
+        "loss_ratio": 1.0,
+        "reference_error": 0.1982355317282902
+      },
+      "short_history": {
+        "episodes": 24,
+        "error": 0.17514568035651593,
+        "loss_ratio": 1.0,
+        "reference_error": 0.17514568035651593
+      },
+      "stable": {
+        "episodes": 24,
+        "error": 0.18181045823311018,
+        "loss_ratio": 1.0,
+        "reference_error": 0.18181045823311018
+      }
+    },
+    "points_20": 10.0,
+    "points_40": 20.0
+  },
+  "split": "validation",
+  "subgroups": {
+    "drift episodes": {
+      "candidate": 0.10045913717333828,
+      "frozen": 0.10186034399081412,
+      "n": 192
+    },
+    "long history": {
+      "candidate": 0.05610465871385019,
+      "frozen": 0.05638561082483289,
+      "n": 576
+    },
+    "shared_change episodes": {
+      "candidate": 0.05542576971756078,
+      "frozen": 0.05524225600178232,
+      "n": 192
+    },
+    "short history (n_obs=64)": {
+      "candidate": 0.08094664175839825,
+      "frozen": 0.08483326350919128,
+      "n": 192
+    },
+    "stable episodes": {
+      "candidate": 0.012429069250651443,
+      "frozen": 0.012054232481902209,
+      "n": 192
+    }
+  }
+}

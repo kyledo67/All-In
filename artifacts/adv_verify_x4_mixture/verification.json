@@ -1,0 +1,646 @@
+{
+  "A1_clean_counterfactual": {
+    "X4clean": {
+      "R": 0.11333311957904221,
+      "by_condition": {
+        "drift": 0.10437407979181905,
+        "shared_change": 0.11851235569549232,
+        "short_history": 0.15206707694167926,
+        "stable": 0.07837896588717823
+      },
+      "paired_vs_protected": [
+        -0.01595922688463327,
+        -0.00011321326814756133
+      ],
+      "paired_vs_their_X2full": [
+        -0.00016863011124476008,
+        0.0009719772048593326
+      ],
+      "paired_vs_their_X4": [
+        -0.0014563258854849782,
+        0.0011744348868099744
+      ],
+      "points": 53.89222591589331
+    },
+    "X4clean_narrow": {
+      "R": 0.11760331944590323,
+      "by_condition": {
+        "drift": 0.11207543658965936,
+        "shared_change": 0.12110715681018717,
+        "short_history": 0.15440216367551468,
+        "stable": 0.08282852070825171
+      },
+      "paired_vs_protected": [
+        -0.011365617244269433,
+        0.003412723329214536
+      ],
+      "paired_vs_their_X2full": [
+        0.0017578877918658327,
+        0.0074501988420149585
+      ],
+      "paired_vs_their_X4": [
+        0.0015756507930681197,
+        0.006733209209647037
+      ],
+      "points": 53.68631155260653
+    },
+    "fold_provenance": [
+      {
+        "X4clean": {
+          "inner_table": {
+            "15x10": 0.3649283591684904,
+            "15x2": 0.37740840437393064,
+            "15x4": 0.37630951890624753,
+            "15x6": 0.3758734932316731,
+            "2x10": 0.3645952010421446,
+            "2x2": 0.376917947384118,
+            "2x4": 0.3758441585636124,
+            "2x6": 0.375428900944496,
+            "4x10": 0.3649283601982058,
+            "4x2": 0.37740840459182345,
+            "4x4": 0.37630951891245473,
+            "4x6": 0.3758734931784641,
+            "6x10": 0.36492835885787633,
+            "6x2": 0.3774084043516093,
+            "6x4": 0.3763095186918192,
+            "6x6": 0.3758734932286109
+          },
+          "kkt": 6.750155989720952e-14,
+          "nq": 2,
+          "nr": 10,
+          "support": 6
+        },
+        "X4clean_narrow": {
+          "inner_table": {
+            "2x2": 0.376917947384118,
+            "2x4": 0.3758441585636124,
+            "2x6": 0.375428900944496,
+            "4x2": 0.37740840459182345,
+            "4x4": 0.37630951891245473,
+            "4x6": 0.3758734931784641,
+            "6x2": 0.3774084043516093,
+            "6x4": 0.3763095186918192,
+            "6x6": 0.3758734932286109
+          },
+          "kkt": 5.204374931011557e-09,
+          "nq": 2,
+          "nr": 6,
+          "support": 6
+        },
+        "fold": 0
+      },
+      {
+        "X4clean": {
+          "inner_table": {
+            "15x10": 0.3068768322072517,
+            "15x2": 0.32445085912901417,
+            "15x4": 0.32335698247603795,
+            "15x6": 0.3218092319351059,
+            "2x10": 0.31273385352912286,
+            "2x2": 0.32962413051433026,
+            "2x4": 0.3285458794594076,
+            "2x6": 0.32701109032165077,
+            "4x10": 0.3068768321343942,
+            "4x2": 0.3244508593544194,
+            "4x4": 0.32335698241952077,
+            "4x6": 0.3218092318152867,
+            "6x10": 0.30687683222745277,
+            "6x2": 0.324450859102585,
+            "6x4": 0.3233569821408422,
+            "6x6": 0.3218092320352244
+          },
+          "kkt": 5.210878617489811e-09,
+          "nq": 4,
+          "nr": 10,
+          "support": 8
+        },
+        "X4clean_narrow": {
+          "inner_table": {
+            "2x2": 0.32962413051433026,
+            "2x4": 0.3285458794594076,
+            "2x6": 0.32701109032165077,
+            "4x2": 0.3244508593544194,
+            "4x4": 0.32335698241952077,
+            "4x6": 0.3218092318152867,
+            "6x2": 0.324450859102585,
+            "6x4": 0.3233569821408422,
+            "6x6": 0.3218092320352244
+          },
+          "kkt": 4.137135078963183e-12,
+          "nq": 4,
+          "nr": 6,
+          "support": 8
+        },
+        "fold": 1
+      },
+      {
+        "X4clean": {
+          "inner_table": {
+            "15x10": 0.33687378787789957,
+            "15x2": 0.35660286166128563,
+            "15x4": 0.3584138665197988,
+            "15x6": 0.3538616480077394,
+            "2x10": 0.3527390770166235,
+            "2x2": 0.37118789787664985,
+            "2x4": 0.3730060884414439,
+            "2x6": 0.3686976799796586,
+            "4x10": 0.3368737881480774,
+            "4x2": 0.35660286145090425,
+            "4x4": 0.35841386657604923,
+            "4x6": 0.35386164851037016,
+            "6x10": 0.33687378791332456,
+            "6x2": 0.3566028617676623,
+            "6x4": 0.35841386601783065,
+            "6x6": 0.3538616486230006
+          },
+          "kkt": 3.8187727979810404e-10,
+          "nq": 15,
+          "nr": 10,
+          "support": 10
+        },
+        "X4clean_narrow": {
+          "inner_table": {
+            "2x2": 0.37118789787664985,
+            "2x4": 0.3730060884414439,
+            "2x6": 0.3686976799796586,
+            "4x2": 0.35660286145090425,
+            "4x4": 0.35841386657604923,
+            "4x6": 0.35386164851037016,
+            "6x2": 0.3566028617676623,
+            "6x4": 0.35841386601783065,
+            "6x6": 0.3538616486230006
+          },
+          "kkt": 1.4869612208201488e-09,
+          "nq": 4,
+          "nr": 6,
+          "support": 7
+        },
+        "fold": 2
+      },
+      {
+        "X4clean": {
+          "inner_table": {
+            "15x10": 0.3700457298261311,
+            "15x2": 0.3776210925288121,
+            "15x4": 0.37878868227821055,
+            "15x6": 0.3773458183857175,
+            "2x10": 0.37862456497331737,
+            "2x2": 0.38552230943887966,
+            "2x4": 0.38624279747238066,
+            "2x6": 0.3847848138099348,
+            "4x10": 0.36986607845509645,
+            "4x2": 0.3773860982638815,
+            "4x4": 0.3785305134815902,
+            "4x6": 0.3770876495591162,
+            "6x10": 0.3698660783889647,
+            "6x2": 0.37738609822822483,
+            "6x4": 0.37853051440506885,
+            "6x6": 0.3770876489297286
+          },
+          "kkt": 3.506417378673632e-12,
+          "nq": 6,
+          "nr": 10,
+          "support": 8
+        },
+        "X4clean_narrow": {
+          "inner_table": {
+            "2x2": 0.38552230943887966,
+            "2x4": 0.38624279747238066,
+            "2x6": 0.3847848138099348,
+            "4x2": 0.3773860982638815,
+            "4x4": 0.3785305134815902,
+            "4x6": 0.3770876495591162,
+            "6x2": 0.37738609822822483,
+            "6x4": 0.37853051440506885,
+            "6x6": 0.3770876489297286
+          },
+          "kkt": 4.167055589476831e-12,
+          "nq": 6,
+          "nr": 6,
+          "support": 7
+        },
+        "fold": 3
+      }
+    ]
+  },
+  "C1_rescore": {
+    "X4_abs_diff_vs_claim": 0.0,
+    "X4_harness_vs_organizer_abs_diff": 0.0,
+    "arms": {
+      "X0": {
+        "by_condition": {
+          "drift": 0.11990187143037442,
+          "shared_change": 0.13620011869204068,
+          "short_history": 0.16621751656992662,
+          "stable": 0.08693955617211303
+        },
+        "harness_R": 0.1273147657161137,
+        "harness_points": 53.223821619940985,
+        "organizer_R": 0.1273147657161137,
+        "organizer_points": 53.223821619940985,
+        "sha256_file": "46dacba5a477beca7ad328e2845c2e027063f5a880bccd887504cefb8b033dc4"
+      },
+      "X1": {
+        "by_condition": {
+          "drift": 0.11201727168861839,
+          "shared_change": 0.12115655033765149,
+          "short_history": 0.15456868583924357,
+          "stable": 0.0827574915628397
+        },
+        "harness_R": 0.11762499985708828,
+        "harness_points": 53.68527011088,
+        "organizer_R": 0.11762499985708828,
+        "organizer_points": 53.68527011088,
+        "sha256_file": "9d5309830f69179673962f3637caa87454b74cebc5940e84ae8b38b73f70c154"
+      },
+      "X1full": {
+        "by_condition": {
+          "drift": 0.10352308367341605,
+          "shared_change": 0.11820297942296919,
+          "short_history": 0.1519490023659858,
+          "stable": 0.07819821438615239
+        },
+        "harness_R": 0.11296831996213086,
+        "harness_points": 53.90989026717447,
+        "organizer_R": 0.11296831996213086,
+        "organizer_points": 53.90989026717447,
+        "sha256_file": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35"
+      },
+      "X2": {
+        "by_condition": {
+          "drift": 0.11207543658965936,
+          "shared_change": 0.12110715681018717,
+          "short_history": 0.15440216367551465,
+          "stable": 0.08282852070825171
+        },
+        "harness_R": 0.11760331944590323,
+        "harness_points": 53.68631155260653,
+        "organizer_R": 0.11760331944590323,
+        "organizer_points": 53.68631155260653,
+        "sha256_file": "64d3abf7be52e2fa8a426853c684fa63c15198e48f2753dea7e297a9b7938ea8"
+      },
+      "X2full": {
+        "by_condition": {
+          "drift": 0.10358707430458589,
+          "shared_change": 0.11817590637625214,
+          "short_history": 0.15194220930138277,
+          "stable": 0.07810172196404078
+        },
+        "harness_R": 0.11295172798656539,
+        "harness_points": 53.9106939602364,
+        "organizer_R": 0.11295172798656539,
+        "organizer_points": 53.9106939602364,
+        "sha256_file": "a438703f2bd1864ecb8c8c6e39778439e7d84ca9da9b1f297d4e6a582996fcfd"
+      },
+      "X3": {
+        "by_condition": {
+          "drift": 0.11422478765526319,
+          "shared_change": 0.12281401447833823,
+          "short_history": 0.15013441801642105,
+          "stable": 0.08277581301168946
+        },
+        "harness_R": 0.11748725829042798,
+        "harness_points": 53.6918873614632,
+        "organizer_R": 0.11748725829042798,
+        "organizer_points": 53.6918873614632,
+        "sha256_file": "9585652999259c1094fd0dd7faa9dabeb63fe4d12a42eaa40af8ae790ba0be27"
+      },
+      "X4": {
+        "by_condition": {
+          "drift": 0.10620967343419847,
+          "shared_change": 0.11832315369700076,
+          "short_history": 0.15077554132577586,
+          "stable": 0.07843088441051221
+        },
+        "harness_R": 0.11343481321687182,
+        "harness_points": 53.88730376289515,
+        "organizer_R": 0.11343481321687182,
+        "organizer_points": 53.88730376289515,
+        "sha256_file": "b85e939a96a5ac828ee2a97ddb5e15aef103a535f8e814b7f528f3b628aaeac7"
+      },
+      "X5": {
+        "by_condition": {
+          "drift": 0.1054241557467832,
+          "shared_change": 0.1088095469436185,
+          "short_history": 0.15460948235483157,
+          "stable": 0.07808056246953755
+        },
+        "harness_R": 0.1117309368786927,
+        "harness_points": 53.96989326253403,
+        "organizer_R": 0.1117309368786927,
+        "organizer_points": 53.96989326253403,
+        "sha256_file": "a7f3e2344efec1ad90afc4bfb3587cec5133d4b50a17ac53e158673a26345bc4"
+      },
+      "Xnull": {
+        "by_condition": {
+          "drift": 0.12076667137596732,
+          "shared_change": 0.13106166086284637,
+          "short_history": 0.14575610520224477,
+          "stable": 0.08563840608796552
+        },
+        "harness_R": 0.120805710882256,
+        "harness_points": 53.532917808538166,
+        "organizer_R": 0.120805710882256,
+        "organizer_points": 53.532917808538166,
+        "sha256_file": "7e978ecfe2ff6a58e440374edc858ee48177b381b917c6cc36b94e956b53deaa"
+      }
+    },
+    "claimed_points": 53.88730376289515,
+    "protected_R": 0.120805710882256,
+    "protected_points": 53.532917808538166
+  },
+  "C2_provenance": {
+    "harness_load_package_default": "artifacts/win_head_release_exact",
+    "pool_is_exactly_raw_sources": true,
+    "pool_members_classify": {
+      "artifacts/beta_cells/predictions/oof_beta_average.csv": "RAW",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv": "RAW",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv": "RAW",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv": "RAW",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv": "RAW",
+      "artifacts/dense_catboost_01/validation_dense.csv": "RAW",
+      "artifacts/dense_catboost_01/validation_sparse.csv": "RAW",
+      "artifacts/mtd_pairs_01/validation_additive.csv": "RAW",
+      "artifacts/mtd_pairs_01/validation_control.csv": "RAW",
+      "artifacts/mtd_pairs_01/validation_lag7.csv": "RAW",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv": "RAW",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv": "RAW",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv": "RAW",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv": "RAW",
+      "artifacts/two_head_01/validation.csv": "RAW"
+    },
+    "pool_members_used": [
+      "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/dense_catboost_01/validation_dense.csv",
+      "artifacts/dense_catboost_01/validation_sparse.csv",
+      "artifacts/mtd_pairs_01/validation_additive.csv",
+      "artifacts/mtd_pairs_01/validation_control.csv",
+      "artifacts/mtd_pairs_01/validation_lag7.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+      "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+      "artifacts/two_head_01/validation.csv"
+    ],
+    "pool_skipped": [],
+    "raw_sources_all_classify_RAW": true,
+    "raw_sources_declared": 15,
+    "shrinkage_baseline_classify": "DEPLOY_FIT",
+    "shrinkage_baseline_path": "artifacts/win_head_release_exact/validation_submission.csv"
+  },
+  "C3_folds": {
+    "X4_max_abs_diff_vs_protected": 0.3235594567537553,
+    "X4_rows_equal_protected": 0,
+    "episodes_per_fold": {
+      "0": 24,
+      "1": 24,
+      "2": 24,
+      "3": 24
+    },
+    "every_query_in_exactly_one_fold": true,
+    "mean_of_per_fold_points": 53.907214309660255,
+    "n_episodes": 96,
+    "n_queries": 768,
+    "per_fold_official": {
+      "0": {
+        "held_queries": 192,
+        "official_points_on_this_fold_only": 54.81768443549383
+      },
+      "1": {
+        "held_queries": 192,
+        "official_points_on_this_fold_only": 52.33807627113428
+      },
+      "2": {
+        "held_queries": 192,
+        "official_points_on_this_fold_only": 53.45128508188043
+      },
+      "3": {
+        "held_queries": 192,
+        "official_points_on_this_fold_only": 55.02181145013247
+      }
+    }
+  },
+  "C5_paired": {
+    "X2full_vs_protected": [
+      -0.016264154734717932,
+      -0.0005310852428043557
+    ],
+    "X4_vs_X2full": [
+      -0.0006749084806584638,
+      0.001650581259948692
+    ],
+    "X4_vs_protected": [
+      -0.015070768590162112,
+      -0.0007710162827451215
+    ],
+    "X4_vs_separable_rescaled": [
+      -0.0012827210339541953,
+      0.0016124177826676849
+    ],
+    "Xnull_vs_protected": [
+      -4.6890895583074795e-18,
+      9.42152563163589e-18
+    ],
+    "separable_rescaled_points": 53.89220191268386
+  },
+  "N1_truth_channel_fold0": {
+    "fitting_side_inputs_identical": [
+      {
+        "G": 0.0,
+        "H": 0.0,
+        "bank": 0.0,
+        "mask": "outer_fit",
+        "qrank_same": true,
+        "rrank_same": true,
+        "tails": 0.0,
+        "w": 0.0
+      },
+      {
+        "G": 0.0,
+        "H": 0.0,
+        "bank": 0.0,
+        "mask": "inner_train0",
+        "qrank_same": true,
+        "rrank_same": true,
+        "tails": 0.0,
+        "w": 0.0
+      },
+      {
+        "G": 0.0,
+        "H": 0.0,
+        "bank": 0.0,
+        "mask": "inner_train1",
+        "qrank_same": true,
+        "rrank_same": true,
+        "tails": 0.0,
+        "w": 0.0
+      },
+      {
+        "G": 0.0,
+        "H": 0.0,
+        "bank": 0.0,
+        "mask": "inner_train2",
+        "qrank_same": true,
+        "rrank_same": true,
+        "tails": 0.0,
+        "w": 0.0
+      }
+    ],
+    "held_episodes_fold0": 24,
+    "inner_held_objective_identical": [
+      {
+        "inner_held": 0,
+        "probe_wloss_diff": 0.0,
+        "w_maxdiff": 0.0
+      },
+      {
+        "inner_held": 1,
+        "probe_wloss_diff": 0.0,
+        "w_maxdiff": 0.0
+      },
+      {
+        "inner_held": 2,
+        "probe_wloss_diff": 0.0,
+        "w_maxdiff": 0.0
+      }
+    ],
+    "max_abs_truth_move_on_fitting": 0.0,
+    "max_abs_truth_move_on_held": 0.9653111303186014,
+    "verdict": "TRUTH channel is nested: every fitting-side input to fold 0 is bit-identical under a permutation of the fold-0 held truth"
+  },
+  "N2_baseline_channel_fold0": {
+    "held_R_fold0_protected_release": 0.09283319625824503,
+    "probes": {
+      "baseline_containing_FITTING_truth_only": {
+        "lam0.0": {
+          "W_sha": "bee97c68673801ba",
+          "fit_R": 0.11550614344900889,
+          "held_R_fold0": 0.09537061651388264,
+          "support": 10
+        },
+        "lam0.1": {
+          "W_sha": "09125b617bedfef1",
+          "fit_R": 0.11553229960595476,
+          "held_R_fold0": 0.09492878001115794,
+          "support": 10
+        },
+        "lam0.3": {
+          "W_sha": "91d6791459d52421",
+          "fit_R": 0.11567330251518536,
+          "held_R_fold0": 0.09434714919673415,
+          "support": 10
+        },
+        "lam1.0": {
+          "W_sha": "1065a32791b39536",
+          "fit_R": 0.11631020028497815,
+          "held_R_fold0": 0.09339178406559492,
+          "support": 11
+        },
+        "lam10.0": {
+          "W_sha": "e00726bbead115fd",
+          "fit_R": 0.11821852243858456,
+          "held_R_fold0": 0.09234215543072784,
+          "support": 12
+        },
+        "lam3.0": {
+          "W_sha": "779639e85a6ca69d",
+          "fit_R": 0.11733629508829979,
+          "held_R_fold0": 0.09266765846559305,
+          "support": 10
+        }
+      },
+      "baseline_containing_HELD_truth": {
+        "lam0.0": {
+          "W_sha": "bee97c68673801ba",
+          "fit_R": 0.11550614344900889,
+          "held_R_fold0": 0.09537061651388264,
+          "support": 10
+        },
+        "lam0.1": {
+          "W_sha": "09125b617bedfef1",
+          "fit_R": 0.11553229960595476,
+          "held_R_fold0": 0.09492878001115794,
+          "support": 10
+        },
+        "lam0.3": {
+          "W_sha": "91d6791459d52421",
+          "fit_R": 0.11567330251518536,
+          "held_R_fold0": 0.09434714919673415,
+          "support": 10
+        },
+        "lam1.0": {
+          "W_sha": "1065a32791b39536",
+          "fit_R": 0.11631020028497815,
+          "held_R_fold0": 0.09339178406559492,
+          "support": 11
+        },
+        "lam10.0": {
+          "W_sha": "e00726bbead115fd",
+          "fit_R": 0.11821852243858456,
+          "held_R_fold0": 0.09234215543072784,
+          "support": 12
+        },
+        "lam3.0": {
+          "W_sha": "779639e85a6ca69d",
+          "fit_R": 0.11733629508829979,
+          "held_R_fold0": 0.09266765846559305,
+          "support": 10
+        }
+      },
+      "real_protected_release": {
+        "lam0.0": {
+          "W_sha": "bee97c68673801ba",
+          "fit_R": 0.11550614344900889,
+          "held_R_fold0": 0.09537061651388264,
+          "support": 10
+        },
+        "lam0.1": {
+          "W_sha": "75a96b440bd95053",
+          "fit_R": 0.11560986743626986,
+          "held_R_fold0": 0.09453729418391632,
+          "support": 9
+        },
+        "lam0.3": {
+          "W_sha": "b78d711ef0c70fe4",
+          "fit_R": 0.11618759329284468,
+          "held_R_fold0": 0.0935384843461946,
+          "support": 11
+        },
+        "lam1.0": {
+          "W_sha": "05145d594e003750",
+          "fit_R": 0.11879964213922903,
+          "held_R_fold0": 0.09224364722266229,
+          "support": 12
+        },
+        "lam10.0": {
+          "W_sha": "b9495cc07ec8e4fc",
+          "fit_R": 0.12651385541818247,
+          "held_R_fold0": 0.09365042977686763,
+          "support": 10
+        },
+        "lam3.0": {
+          "W_sha": "d0819a4440346ae9",
+          "fit_R": 0.12298930521292503,
+          "held_R_fold0": 0.09263483453469962,
+          "support": 10
+        }
+      }
+    },
+    "verdict": "the shrinkage-baseline slot changes the fitted mixture and the fold-0 HELD loss at every lam > 0, so whatever target information the occupant carries reaches the held forecast"
+  },
+  "bank": {
+    "NQ": 15,
+    "NR": 10,
+    "members": 150
+  },
+  "replication_fidelity": {
+    "row_weights_maxdiff": 0.0,
+    "tail_constants_maxdiff": 0.0,
+    "wloss_maxdiff": 0.0
+  },
+  "seconds": 254.7609320420015
+}

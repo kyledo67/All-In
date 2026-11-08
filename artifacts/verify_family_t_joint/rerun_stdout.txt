@@ -1,0 +1,68 @@
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:301: RuntimeWarning: divide by zero encountered in matmul
+  u_fit, _ = _newton(phi[fit_idx], y[fit_idx], w[fit_idx], phi[fit_idx] @ beta, lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:301: RuntimeWarning: overflow encountered in matmul
+  u_fit, _ = _newton(phi[fit_idx], y[fit_idx], w[fit_idx], phi[fit_idx] @ beta, lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:301: RuntimeWarning: invalid value encountered in matmul
+  u_fit, _ = _newton(phi[fit_idx], y[fit_idx], w[fit_idx], phi[fit_idx] @ beta, lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:168: RuntimeWarning: divide by zero encountered in matmul
+  eta = np.clip(offset + phi @ theta, -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:168: RuntimeWarning: overflow encountered in matmul
+  eta = np.clip(offset + phi @ theta, -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:168: RuntimeWarning: invalid value encountered in matmul
+  eta = np.clip(offset + phi @ theta, -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:170: RuntimeWarning: divide by zero encountered in matmul
+  grad = phi.T @ (w * (p - y)) + lam * theta
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:170: RuntimeWarning: overflow encountered in matmul
+  grad = phi.T @ (w * (p - y)) + lam * theta
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:170: RuntimeWarning: invalid value encountered in matmul
+  grad = phi.T @ (w * (p - y)) + lam * theta
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:171: RuntimeWarning: divide by zero encountered in matmul
+  hess = phi.T @ (phi * (w * p * (1.0 - p))[:, None]) + np.diag(lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:171: RuntimeWarning: overflow encountered in matmul
+  hess = phi.T @ (phi * (w * p * (1.0 - p))[:, None]) + np.diag(lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:171: RuntimeWarning: invalid value encountered in matmul
+  hess = phi.T @ (phi * (w * p * (1.0 - p))[:, None]) + np.diag(lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:185: RuntimeWarning: divide by zero encountered in matmul
+  eta = np.clip(offset + phi @ theta, -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:185: RuntimeWarning: overflow encountered in matmul
+  eta = np.clip(offset + phi @ theta, -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:185: RuntimeWarning: invalid value encountered in matmul
+  eta = np.clip(offset + phi @ theta, -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:187: RuntimeWarning: divide by zero encountered in matmul
+  hess = phi.T @ (phi * (w * p * (1.0 - p))[:, None]) + np.diag(lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:187: RuntimeWarning: overflow encountered in matmul
+  hess = phi.T @ (phi * (w * p * (1.0 - p))[:, None]) + np.diag(lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:187: RuntimeWarning: invalid value encountered in matmul
+  hess = phi.T @ (phi * (w * p * (1.0 - p))[:, None]) + np.diag(lam)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:302: RuntimeWarning: divide by zero encountered in matmul
+  eta = np.clip(phi[val_idx] @ (beta + u_fit), -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:302: RuntimeWarning: overflow encountered in matmul
+  eta = np.clip(phi[val_idx] @ (beta + u_fit), -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:302: RuntimeWarning: invalid value encountered in matmul
+  eta = np.clip(phi[val_idx] @ (beta + u_fit), -ETA_CLIP, ETA_CLIP)
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:251: RuntimeWarning: divide by zero encountered in matmul
+  offset = phi @ beta
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:251: RuntimeWarning: overflow encountered in matmul
+  offset = phi @ beta
+/Users/ayan/Downloads/All-In/slot_model/win_head.py:251: RuntimeWarning: invalid value encountered in matmul
+  offset = phi @ beta
+protected                  53.532918  R=0.120806
+control C1 (reimpl)        53.532918  max|dq|=1.84e-16
+arm     mode          points         R  paired vs protected
+T1      forced     53.477203  0.121973  [+0.00023, +0.00230] overlaps zero  folds=['k1_lamhard', 'k0.5_lamhard', 'k0.5_lamhard', 'k0.5_lamhard']
+T1      gated      53.477203  0.121973  [+0.00023, +0.00230] overlaps zero  folds=['k1_lamhard', 'control', 'control', 'control']
+T2      forced     54.615640  0.098586  [-0.03446, -0.01117] SIGNIFICANT  folds=['k1_h1e-05', 'k1_h0.0001', 'k0.5_h0.0001', 'k1_h0.0001']
+T2      gated      54.615640  0.098586  [-0.03446, -0.01117] SIGNIFICANT  folds=['k1_h1e-05', 'k1_h0.0001', 'k0.5_h0.0001', 'k1_h0.0001']
+T2MAP   forced     54.616050  0.098578  [-0.03520, -0.01092] SIGNIFICANT  folds=['k1_h0.0001', 'k1_h0.0001', 'k0.5_h0.0001', 'k1_h0.0001']
+T2MAP   gated      54.616050  0.098578  [-0.03520, -0.01092] SIGNIFICANT  folds=['k1_h0.0001', 'k1_h0.0001', 'k0.5_h0.0001', 'k1_h0.0001']
+T3      forced     54.906013  0.092776  [-0.04216, -0.01466] SIGNIFICANT  folds=['k1_h1e-05', 'k1_h1e-05', 'k0.5_h0.0001', 'k1_h1e-05']
+T3      gated      54.906013  0.092776  [-0.04216, -0.01466] SIGNIFICANT  folds=['k1_h1e-05', 'k1_h1e-05', 'k0.5_h0.0001', 'k1_h1e-05']
+T3B7    forced     54.919878  0.092501  [-0.04249, -0.01507] SIGNIFICANT  folds=['k1_h1e-05', 'k1_h1e-05', 'k0.5_h0.0001', 'k1_h1e-05']
+T3B7    gated      54.919878  0.092501  [-0.04249, -0.01507] SIGNIFICANT  folds=['k1_h1e-05', 'k1_h1e-05', 'k0.5_h0.0001', 'k1_h1e-05']
+T3R     forced     54.856744  0.093758  [-0.04168, -0.01333] SIGNIFICANT  folds=['k1_h1e-06', 'k1_h1e-05', 'k0.5_h1e-05', 'k1_h1e-05']
+T3R     gated      54.856744  0.093758  [-0.04168, -0.01333] SIGNIFICANT  folds=['k1_h1e-06', 'k1_h1e-05', 'k0.5_h1e-05', 'k1_h1e-05']
+T3U     forced     54.919878  0.092501  [-0.04249, -0.01507] SIGNIFICANT  folds=['b7|k1_h1e-05', 'b7|k1_h1e-05', 'b7|k0.5_h0.0001', 'b7|k1_h1e-05']
+T3U     gated      54.919878  0.092501  [-0.04249, -0.01507] SIGNIFICANT  folds=['b7|k1_h1e-05', 'b7|k1_h1e-05', 'b7|k0.5_h0.0001', 'b7|k1_h1e-05']
+TALL    forced     54.919878  0.092501  [-0.04249, -0.01507] SIGNIFICANT  folds=['T3B7|k1_h1e-05', 'T3B7|k1_h1e-05', 'T3B7|k0.5_h0.0001', 'T3B7|k1_h1e-05']
+TALL    gated      54.919878  0.092501  [-0.04249, -0.01507] SIGNIFICANT  folds=['T3B7|k1_h1e-05', 'T3B7|k1_h1e-05', 'T3B7|k0.5_h0.0001', 'T3B7|k1_h1e-05']
+wrote /Users/ayan/Downloads/All-In/artifacts/verify_family_t_joint/evaluation.json in 239.8s

@@ -1,0 +1,1787 @@
+{
+  "arms": {
+    "T1": {
+      "forced": {
+        "R": 0.1219734035989204,
+        "arm": "T1_forced",
+        "by_condition": {
+          "drift": 0.12258367638736878,
+          "shared_change": 0.13202863395381098,
+          "short_history": 0.14757781989713853,
+          "stable": 0.08570348415736326
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              0.0001867306644527534,
+              0.0038821626880682345
+            ],
+            "shared_change": [
+              0.00014416569865156488,
+              0.0019605682772995373
+            ],
+            "short_history": [
+              -0.0015041420018097548,
+              0.005873930161038897
+            ],
+            "stable": [
+              -6.252689951101456e-05,
+              0.00023015893208069648
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            0.0002282693212841157,
+            0.002298110393938313
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              0.00018673066445271428,
+              0.0038821626880682337
+            ],
+            "shared_change": [
+              0.00014416569865156488,
+              0.0019605682772995373
+            ],
+            "short_history": [
+              -0.0015041420018097728,
+              0.005873930161038876
+            ],
+            "stable": [
+              -6.252689951101456e-05,
+              0.00023015893208069648
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            0.00022826932128411093,
+            0.0022981103939383163
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 53.47720347696283,
+        "selected_per_fold": [
+          "k1_lamhard",
+          "k0.5_lamhard",
+          "k0.5_lamhard",
+          "k0.5_lamhard"
+        ]
+      },
+      "gated": {
+        "R": 0.1219734035989204,
+        "arm": "T1_gated",
+        "by_condition": {
+          "drift": 0.12258367638736878,
+          "shared_change": 0.13202863395381098,
+          "short_history": 0.14757781989713853,
+          "stable": 0.08570348415736326
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              0.0001867306644527534,
+              0.0038821626880682345
+            ],
+            "shared_change": [
+              0.00014416569865156488,
+              0.0019605682772995373
+            ],
+            "short_history": [
+              -0.0015041420018097548,
+              0.005873930161038897
+            ],
+            "stable": [
+              -6.252689951101456e-05,
+              0.00023015893208069648
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            0.0002282693212841157,
+            0.002298110393938313
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              0.00018673066445271428,
+              0.0038821626880682337
+            ],
+            "shared_change": [
+              0.00014416569865156488,
+              0.0019605682772995373
+            ],
+            "short_history": [
+              -0.0015041420018097728,
+              0.005873930161038876
+            ],
+            "stable": [
+              -6.252689951101456e-05,
+              0.00023015893208069648
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            0.00022826932128411093,
+            0.0022981103939383163
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 53.47720347696283,
+        "selected_per_fold": [
+          "k1_lamhard",
+          "control",
+          "control",
+          "control"
+        ]
+      }
+    },
+    "T2": {
+      "forced": {
+        "R": 0.09858641487590603,
+        "arm": "T2_forced",
+        "by_condition": {
+          "drift": 0.09375573582071584,
+          "shared_change": 0.09939634455705727,
+          "short_history": 0.1312193033288776,
+          "stable": 0.06997427579697338
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06037650036974898,
+              -0.0035128255169893765
+            ],
+            "shared_change": [
+              -0.048029009208987845,
+              -0.01790989258312873
+            ],
+            "short_history": [
+              -0.030668727839291372,
+              0.0006907549109530888
+            ],
+            "stable": [
+              -0.04772892126950695,
+              0.0045609432238990595
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.03445507138439241,
+            -0.011170714609653638
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06037650036974898,
+              -0.0035128255169893942
+            ],
+            "shared_change": [
+              -0.04802900920898779,
+              -0.017909892583128768
+            ],
+            "short_history": [
+              -0.030668727839291372,
+              0.0006907549109530888
+            ],
+            "stable": [
+              -0.04772892126950695,
+              0.0045609432238990595
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.034455071384392404,
+            -0.011170714609653618
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.615639869147174,
+        "selected_per_fold": [
+          "k1_h1e-05",
+          "k1_h0.0001",
+          "k0.5_h0.0001",
+          "k1_h0.0001"
+        ]
+      },
+      "gated": {
+        "R": 0.09858641487590603,
+        "arm": "T2_gated",
+        "by_condition": {
+          "drift": 0.09375573582071584,
+          "shared_change": 0.09939634455705727,
+          "short_history": 0.1312193033288776,
+          "stable": 0.06997427579697338
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06037650036974898,
+              -0.0035128255169893765
+            ],
+            "shared_change": [
+              -0.048029009208987845,
+              -0.01790989258312873
+            ],
+            "short_history": [
+              -0.030668727839291372,
+              0.0006907549109530888
+            ],
+            "stable": [
+              -0.04772892126950695,
+              0.0045609432238990595
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.03445507138439241,
+            -0.011170714609653638
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06037650036974898,
+              -0.0035128255169893942
+            ],
+            "shared_change": [
+              -0.04802900920898779,
+              -0.017909892583128768
+            ],
+            "short_history": [
+              -0.030668727839291372,
+              0.0006907549109530888
+            ],
+            "stable": [
+              -0.04772892126950695,
+              0.0045609432238990595
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.034455071384392404,
+            -0.011170714609653618
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.615639869147174,
+        "selected_per_fold": [
+          "k1_h1e-05",
+          "k1_h0.0001",
+          "k0.5_h0.0001",
+          "k1_h0.0001"
+        ]
+      }
+    },
+    "T2MAP": {
+      "forced": {
+        "R": 0.09857815969198636,
+        "arm": "T2MAP_forced",
+        "by_condition": {
+          "drift": 0.09403282384870265,
+          "shared_change": 0.09908779631496938,
+          "short_history": 0.1311265809220735,
+          "stable": 0.07006543768219989
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06377067599709871,
+              -0.0011788569106400656
+            ],
+            "shared_change": [
+              -0.048489428141759855,
+              -0.0177905235887593
+            ],
+            "short_history": [
+              -0.03083364065983388,
+              0.0007516989079762201
+            ],
+            "stable": [
+              -0.04768628133006045,
+              0.004787491033676596
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.035196057956168744,
+            -0.01091577043433644
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06377067599709871,
+              -0.0011788569106400834
+            ],
+            "shared_change": [
+              -0.048489428141759855,
+              -0.017790523588759335
+            ],
+            "short_history": [
+              -0.03083364065983388,
+              0.0007516989079762201
+            ],
+            "stable": [
+              -0.04768628133006045,
+              0.004787491033676596
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.035196057956168744,
+            -0.010915770434336447
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.616050274313196,
+        "selected_per_fold": [
+          "k1_h0.0001",
+          "k1_h0.0001",
+          "k0.5_h0.0001",
+          "k1_h0.0001"
+        ]
+      },
+      "gated": {
+        "R": 0.09857815969198636,
+        "arm": "T2MAP_gated",
+        "by_condition": {
+          "drift": 0.09403282384870265,
+          "shared_change": 0.09908779631496938,
+          "short_history": 0.1311265809220735,
+          "stable": 0.07006543768219989
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06377067599709871,
+              -0.0011788569106400656
+            ],
+            "shared_change": [
+              -0.048489428141759855,
+              -0.0177905235887593
+            ],
+            "short_history": [
+              -0.03083364065983388,
+              0.0007516989079762201
+            ],
+            "stable": [
+              -0.04768628133006045,
+              0.004787491033676596
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.035196057956168744,
+            -0.01091577043433644
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06377067599709871,
+              -0.0011788569106400834
+            ],
+            "shared_change": [
+              -0.048489428141759855,
+              -0.017790523588759335
+            ],
+            "short_history": [
+              -0.03083364065983388,
+              0.0007516989079762201
+            ],
+            "stable": [
+              -0.04768628133006045,
+              0.004787491033676596
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.035196057956168744,
+            -0.010915770434336447
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.616050274313196,
+        "selected_per_fold": [
+          "k1_h0.0001",
+          "k1_h0.0001",
+          "k0.5_h0.0001",
+          "k1_h0.0001"
+        ]
+      }
+    },
+    "T3": {
+      "forced": {
+        "R": 0.09277648333233122,
+        "arm": "T3_forced",
+        "by_condition": {
+          "drift": 0.09351987714527885,
+          "shared_change": 0.0787012438625097,
+          "short_history": 0.13131580615671884,
+          "stable": 0.06756900616481752
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061332531112426855,
+              -0.003139994293585211
+            ],
+            "shared_change": [
+              -0.08499715233544274,
+              -0.027431219757575058
+            ],
+            "short_history": [
+              -0.03699094335706739,
+              0.0066467109771452025
+            ],
+            "stable": [
+              -0.05048133248711546,
+              0.002978284785754841
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.042161942182959294,
+            -0.01465558287357055
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061332531112426855,
+              -0.0031399942935852114
+            ],
+            "shared_change": [
+              -0.08499715233544274,
+              -0.027431219757575058
+            ],
+            "short_history": [
+              -0.03699094335706739,
+              0.0066467109771452025
+            ],
+            "stable": [
+              -0.05048133248711544,
+              0.0029782847857548413
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.042161942182959294,
+            -0.01465558287357055
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.90601318307562,
+        "selected_per_fold": [
+          "k1_h1e-05",
+          "k1_h1e-05",
+          "k0.5_h0.0001",
+          "k1_h1e-05"
+        ]
+      },
+      "gated": {
+        "R": 0.09277648333233122,
+        "arm": "T3_gated",
+        "by_condition": {
+          "drift": 0.09351987714527885,
+          "shared_change": 0.0787012438625097,
+          "short_history": 0.13131580615671884,
+          "stable": 0.06756900616481752
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061332531112426855,
+              -0.003139994293585211
+            ],
+            "shared_change": [
+              -0.08499715233544274,
+              -0.027431219757575058
+            ],
+            "short_history": [
+              -0.03699094335706739,
+              0.0066467109771452025
+            ],
+            "stable": [
+              -0.05048133248711546,
+              0.002978284785754841
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.042161942182959294,
+            -0.01465558287357055
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061332531112426855,
+              -0.0031399942935852114
+            ],
+            "shared_change": [
+              -0.08499715233544274,
+              -0.027431219757575058
+            ],
+            "short_history": [
+              -0.03699094335706739,
+              0.0066467109771452025
+            ],
+            "stable": [
+              -0.05048133248711544,
+              0.0029782847857548413
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.042161942182959294,
+            -0.01465558287357055
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.90601318307562,
+        "selected_per_fold": [
+          "k1_h1e-05",
+          "k1_h1e-05",
+          "k0.5_h0.0001",
+          "k1_h1e-05"
+        ]
+      }
+    },
+    "T3B7": {
+      "forced": {
+        "R": 0.09250060401583374,
+        "arm": "T3B7_forced",
+        "by_condition": {
+          "drift": 0.09350187494172013,
+          "shared_change": 0.07870129403635837,
+          "short_history": 0.1302220133735264,
+          "stable": 0.06757723371173005
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908773
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.0049822237215523
+            ],
+            "stable": [
+              -0.05048429549151218,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.04249070516574609,
+            -0.015074748295983889
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908778
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.004982223721552279
+            ],
+            "stable": [
+              -0.050484295491512156,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.0424907051657461,
+            -0.015074748295983894
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.919878102996826,
+        "selected_per_fold": [
+          "k1_h1e-05",
+          "k1_h1e-05",
+          "k0.5_h0.0001",
+          "k1_h1e-05"
+        ]
+      },
+      "gated": {
+        "R": 0.09250060401583374,
+        "arm": "T3B7_gated",
+        "by_condition": {
+          "drift": 0.09350187494172013,
+          "shared_change": 0.07870129403635837,
+          "short_history": 0.1302220133735264,
+          "stable": 0.06757723371173005
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908773
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.0049822237215523
+            ],
+            "stable": [
+              -0.05048429549151218,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.04249070516574609,
+            -0.015074748295983889
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908778
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.004982223721552279
+            ],
+            "stable": [
+              -0.050484295491512156,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.0424907051657461,
+            -0.015074748295983894
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.919878102996826,
+        "selected_per_fold": [
+          "k1_h1e-05",
+          "k1_h1e-05",
+          "k0.5_h0.0001",
+          "k1_h1e-05"
+        ]
+      }
+    },
+    "T3R": {
+      "forced": {
+        "R": 0.09375794307200176,
+        "arm": "T3R_forced",
+        "by_condition": {
+          "drift": 0.094398686243972,
+          "shared_change": 0.0817639344742714,
+          "short_history": 0.13130175929796656,
+          "stable": 0.06756739227179709
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06311711364709555,
+              -0.0008415271867753199
+            ],
+            "shared_change": [
+              -0.082784040144798,
+              -0.02221155207596335
+            ],
+            "short_history": [
+              -0.037059375980186715,
+              0.006710656540674322
+            ],
+            "stable": [
+              -0.050569534564690884,
+              0.00305626434310357
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.041683728387455814,
+            -0.013332102495848607
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06311711364709555,
+              -0.0008415271867753207
+            ],
+            "shared_change": [
+              -0.08278404014479795,
+              -0.02221155207596335
+            ],
+            "short_history": [
+              -0.037059375980186715,
+              0.006710656540674302
+            ],
+            "stable": [
+              -0.050569534564690884,
+              0.00305626434310357
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.041683728387455814,
+            -0.01333210249584861
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.85674447444924,
+        "selected_per_fold": [
+          "k1_h1e-06",
+          "k1_h1e-05",
+          "k0.5_h1e-05",
+          "k1_h1e-05"
+        ]
+      },
+      "gated": {
+        "R": 0.09375794307200176,
+        "arm": "T3R_gated",
+        "by_condition": {
+          "drift": 0.094398686243972,
+          "shared_change": 0.0817639344742714,
+          "short_history": 0.13130175929796656,
+          "stable": 0.06756739227179709
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06311711364709555,
+              -0.0008415271867753199
+            ],
+            "shared_change": [
+              -0.082784040144798,
+              -0.02221155207596335
+            ],
+            "short_history": [
+              -0.037059375980186715,
+              0.006710656540674322
+            ],
+            "stable": [
+              -0.050569534564690884,
+              0.00305626434310357
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.041683728387455814,
+            -0.013332102495848607
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.06311711364709555,
+              -0.0008415271867753207
+            ],
+            "shared_change": [
+              -0.08278404014479795,
+              -0.02221155207596335
+            ],
+            "short_history": [
+              -0.037059375980186715,
+              0.006710656540674302
+            ],
+            "stable": [
+              -0.050569534564690884,
+              0.00305626434310357
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.041683728387455814,
+            -0.01333210249584861
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.85674447444924,
+        "selected_per_fold": [
+          "k1_h1e-06",
+          "k1_h1e-05",
+          "k0.5_h1e-05",
+          "k1_h1e-05"
+        ]
+      }
+    },
+    "T3U": {
+      "forced": {
+        "R": 0.09250060401583374,
+        "arm": "T3U_forced",
+        "by_condition": {
+          "drift": 0.09350187494172013,
+          "shared_change": 0.07870129403635837,
+          "short_history": 0.1302220133735264,
+          "stable": 0.06757723371173005
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908773
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.0049822237215523
+            ],
+            "stable": [
+              -0.05048429549151218,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.04249070516574609,
+            -0.015074748295983889
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908778
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.004982223721552279
+            ],
+            "stable": [
+              -0.050484295491512156,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.0424907051657461,
+            -0.015074748295983894
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.919878102996826,
+        "selected_per_fold": [
+          "b7|k1_h1e-05",
+          "b7|k1_h1e-05",
+          "b7|k0.5_h0.0001",
+          "b7|k1_h1e-05"
+        ]
+      },
+      "gated": {
+        "R": 0.09250060401583374,
+        "arm": "T3U_gated",
+        "by_condition": {
+          "drift": 0.09350187494172013,
+          "shared_change": 0.07870129403635837,
+          "short_history": 0.1302220133735264,
+          "stable": 0.06757723371173005
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908773
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.0049822237215523
+            ],
+            "stable": [
+              -0.05048429549151218,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.04249070516574609,
+            -0.015074748295983889
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908778
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.004982223721552279
+            ],
+            "stable": [
+              -0.050484295491512156,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.0424907051657461,
+            -0.015074748295983894
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.919878102996826,
+        "selected_per_fold": [
+          "b7|k1_h1e-05",
+          "b7|k1_h1e-05",
+          "b7|k0.5_h0.0001",
+          "b7|k1_h1e-05"
+        ]
+      }
+    },
+    "TALL": {
+      "forced": {
+        "R": 0.09250060401583374,
+        "arm": "TALL_forced",
+        "by_condition": {
+          "drift": 0.09350187494172013,
+          "shared_change": 0.07870129403635837,
+          "short_history": 0.1302220133735264,
+          "stable": 0.06757723371173005
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908773
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.0049822237215523
+            ],
+            "stable": [
+              -0.05048429549151218,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.04249070516574609,
+            -0.015074748295983889
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908778
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.004982223721552279
+            ],
+            "stable": [
+              -0.050484295491512156,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.0424907051657461,
+            -0.015074748295983894
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.919878102996826,
+        "selected_per_fold": [
+          "T3B7|k1_h1e-05",
+          "T3B7|k1_h1e-05",
+          "T3B7|k0.5_h0.0001",
+          "T3B7|k1_h1e-05"
+        ]
+      },
+      "gated": {
+        "R": 0.09250060401583374,
+        "arm": "TALL_gated",
+        "by_condition": {
+          "drift": 0.09350187494172013,
+          "shared_change": 0.07870129403635837,
+          "short_history": 0.1302220133735264,
+          "stable": 0.06757723371173005
+        },
+        "paired_vs_control": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908773
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.0049822237215523
+            ],
+            "stable": [
+              -0.05048429549151218,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.04249070516574609,
+            -0.015074748295983889
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "paired_vs_protected": {
+          "by_condition_ci95": {
+            "drift": [
+              -0.061317135672876506,
+              -0.0031360963906908778
+            ],
+            "shared_change": [
+              -0.08499641243690166,
+              -0.027431737021912064
+            ],
+            "short_history": [
+              -0.037332061119939024,
+              0.004982223721552279
+            ],
+            "stable": [
+              -0.050484295491512156,
+              0.002972972159722703
+            ]
+          },
+          "delta_loss_ratio_ci95": [
+            -0.0424907051657461,
+            -0.015074748295983894
+          ],
+          "interpretation": "negative favors first model",
+          "repeats": 2000,
+          "seed": 314159,
+          "unit": "whole episode, stratified by condition"
+        },
+        "points": 54.919878102996826,
+        "selected_per_fold": [
+          "T3B7|k1_h1e-05",
+          "T3B7|k1_h1e-05",
+          "T3B7|k0.5_h0.0001",
+          "T3B7|k1_h1e-05"
+        ]
+      }
+    }
+  },
+  "bank": {
+    "control_hard_selection_histogram": {
+      "pair1_3:parity": 259,
+      "pair2_3:parity": 1,
+      "pair2_5:full": 1,
+      "pair2_5:parity": 264,
+      "pair4_7:full": 5,
+      "pair4_7:parity": 238
+    },
+    "full_bank_size": 57,
+    "small_bank": [
+      "null",
+      "pair1_3:full",
+      "pair1_3:parity",
+      "pair2_5:full",
+      "pair2_5:parity",
+      "pair4_7:full",
+      "pair4_7:parity"
+    ],
+    "small_bank_size": 7,
+    "small_bank_train_argmax_coverage": 0.9348958333333334
+  },
+  "control_C1": {
+    "R": 0.120805710882256,
+    "arm": "C1_control",
+    "by_condition": {
+      "drift": 0.12076667137596732,
+      "shared_change": 0.13106166086284637,
+      "short_history": 0.14575610520224477,
+      "stable": 0.08563840608796552
+    },
+    "max_abs_q_deviation_from_protected": 1.8388068845354155e-16,
+    "points": 53.532917808538166
+  },
+  "error_shares_by_coordinate": {
+    "C0_protected": {
+      "p0": 0.4564015092523064,
+      "p1": 0.2802683209253881,
+      "p2": 0.2020472503275768,
+      "p20": 0.004720763508240727,
+      "p5": 0.056562155986488
+    },
+    "T1_forced": {
+      "p0": 0.45893245481103495,
+      "p1": 0.27907369692395045,
+      "p2": 0.2003997217768932,
+      "p20": 0.0047688469401870786,
+      "p5": 0.056825279547934315
+    },
+    "T1_gated": {
+      "p0": 0.45893245481103495,
+      "p1": 0.27907369692395045,
+      "p2": 0.2003997217768932,
+      "p20": 0.0047688469401870786,
+      "p5": 0.056825279547934315
+    },
+    "T2MAP_forced": {
+      "p0": 0.40110913753962985,
+      "p1": 0.29695371842251456,
+      "p2": 0.23310051534907905,
+      "p20": 0.005259822099748045,
+      "p5": 0.06357680658902835
+    },
+    "T2MAP_gated": {
+      "p0": 0.40110913753962985,
+      "p1": 0.29695371842251456,
+      "p2": 0.23310051534907905,
+      "p20": 0.005259822099748045,
+      "p5": 0.06357680658902835
+    },
+    "T2_forced": {
+      "p0": 0.401286125582347,
+      "p1": 0.29751899972471113,
+      "p2": 0.23248978913813015,
+      "p20": 0.0052522693541842795,
+      "p5": 0.06345281620062747
+    },
+    "T2_gated": {
+      "p0": 0.401286125582347,
+      "p1": 0.29751899972471113,
+      "p2": 0.23248978913813015,
+      "p20": 0.0052522693541842795,
+      "p5": 0.06345281620062747
+    },
+    "T3B7_forced": {
+      "p0": 0.3799367628879169,
+      "p1": 0.30951457688050005,
+      "p2": 0.24320768869678364,
+      "p20": 0.005023541887023134,
+      "p5": 0.06231742964777614
+    },
+    "T3B7_gated": {
+      "p0": 0.3799367628879169,
+      "p1": 0.30951457688050005,
+      "p2": 0.24320768869678364,
+      "p20": 0.005023541887023134,
+      "p5": 0.06231742964777614
+    },
+    "T3R_forced": {
+      "p0": 0.3856421932385393,
+      "p1": 0.30569152152274626,
+      "p2": 0.2411388081194762,
+      "p20": 0.005060937392194854,
+      "p5": 0.062466539727043385
+    },
+    "T3R_gated": {
+      "p0": 0.3856421932385393,
+      "p1": 0.30569152152274626,
+      "p2": 0.2411388081194762,
+      "p20": 0.005060937392194854,
+      "p5": 0.062466539727043385
+    },
+    "T3U_forced": {
+      "p0": 0.3799367628879169,
+      "p1": 0.30951457688050005,
+      "p2": 0.24320768869678364,
+      "p20": 0.005023541887023134,
+      "p5": 0.06231742964777614
+    },
+    "T3U_gated": {
+      "p0": 0.3799367628879169,
+      "p1": 0.30951457688050005,
+      "p2": 0.24320768869678364,
+      "p20": 0.005023541887023134,
+      "p5": 0.06231742964777614
+    },
+    "T3_forced": {
+      "p0": 0.38105008333085194,
+      "p1": 0.3086620049944951,
+      "p2": 0.24280223912438983,
+      "p20": 0.005041797156341703,
+      "p5": 0.062443875393921454
+    },
+    "T3_gated": {
+      "p0": 0.38105008333085194,
+      "p1": 0.3086620049944951,
+      "p2": 0.24280223912438983,
+      "p20": 0.005041797156341703,
+      "p5": 0.062443875393921454
+    },
+    "TALL_forced": {
+      "p0": 0.3799367628879169,
+      "p1": 0.30951457688050005,
+      "p2": 0.24320768869678364,
+      "p20": 0.005023541887023134,
+      "p5": 0.06231742964777614
+    },
+    "TALL_gated": {
+      "p0": 0.3799367628879169,
+      "p1": 0.30951457688050005,
+      "p2": 0.24320768869678364,
+      "p20": 0.005023541887023134,
+      "p5": 0.06231742964777614
+    },
+    "control": {
+      "p0": 0.45640150925230644,
+      "p1": 0.2802683209253881,
+      "p2": 0.2020472503275768,
+      "p20": 0.0047207635082407275,
+      "p5": 0.056562155986488005
+    }
+  },
+  "exposure": "Repeatedly inspected public validation; the hazard and kappa grid bounds were informed by an exploratory public-validation sweep before this run.",
+  "gaps": {
+    "all_gaps_exactly_one_tick": true,
+    "final_gap_to_origin_histogram": {
+      "1.0": 768
+    },
+    "inter_observation_gap_histogram": {
+      "1.0": 129903
+    }
+  },
+  "grids": {
+    "hazards": [
+      0.0,
+      1e-06,
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "kappas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "lambdas": [
+      0.0,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      "hard"
+    ],
+    "settings_per_arm": {
+      "T1": 21,
+      "T2": 21,
+      "T2MAP": 21,
+      "T3": 21,
+      "T3B7": 21,
+      "T3R": 21,
+      "T3U": 42,
+      "TALL": 126
+    }
+  },
+  "preregistration": "FAMILY T. Infer temporal structure (which lag template) and memory (how far back the\ncurrent regime extends) JOINTLY, by a bounded Bayesian online changepoint recursion.\n\nWHY. The protected release HARD-SELECTS one lag template per machine by conjugate log\nevidence, and takes its memory from a different, dense model: the per-machine recency\nhalf-life chosen by the 37-coefficient logistic selector. Memory therefore enters as an\nexponential decay whose rate was never chosen by the estimator that uses it, and the\nstructural hypothesis is frozen once and never revised. A previous fixed-share experiment\n(scripts/memory_policies.py) froze the structure after a warmup prefix and lost 1.7\npoints; that is evidence against THAT procedure, not against joint inference.\n\nMODEL (declared in full).\n  Observations. For machine m, the scored observations are exactly the complete-lag\n  transitions of slot_model.win_head.design: tick t < cutoff with t and all of t-1..t-8\n  observed, label 1(Y_t > 0), in increasing ACTUAL tick order. Every arm and every control\n  in this script sees that identical observation set, so evidence is comparable across\n  arms. A missing tick is never imputed as a loss; it simply yields no row.\n  Structure. A template M assigns each observation a cell: `null` (one cell), `(i,j) full`\n  (four cells, the two lag signs), `(i,j) parity` (two cells, signs agree vs differ). The\n  bank is the UNCHANGED 57-candidate dictionary of the protected release\n  (1 + 28 pairs x {full, parity}) with its frozen TRAIN-learned smoothed log prior. Arm\n  T3B7 additionally restricts the bank to the candidates with TRAIN argmax support >= 10\n  machines (7 of 57), as a bank-robustness check; that support count is read from the\n  frozen train-fitted payload and never from a validation target.\n  Regime. Within a regime the per-cell win probabilities are independent\n  Beta(kappa*mu_type, kappa*(1-mu_type)) draws, mu_type being the frozen train-fitted\n  per-machine-type prior mean. A changepoint draws a fresh independent parameter vector\n  for every cell at once. This is the product-partition model of Barry and Hartigan, i.e.\n  the generative model of Adams and MacKay (arXiv:0710.3742).\n  Hazard convention. Constant per-ACTUAL-TICK changepoint hazard h. Because a constant\n  hazard is memoryless in elapsed time, the probability of no changepoint across a gap of\n  Delta actual ticks is exactly (1-h)^Delta, so the recursion need only track the number of\n  OBSERVATIONS in the current regime while the elapsed-tick gap enters through that factor.\n  Missing ticks therefore advance the hazard without any outcome being invented, and the\n  treatment is exact rather than approximate. MEASURED on this split: every consecutive\n  pair of scored observations, and the step from the last observation to the forecast\n  origin, is exactly 1 actual tick apart, so the gap factor is never larger than one tick\n  here; the general code path is retained and this fact is asserted and reported.\n  Initialization for truncated histories. A regime boundary is placed immediately before a\n  machine's FIRST scored observation: w(run length = 0) = prior. Nothing before the first\n  usable transition is assumed, so a short history is not credited with evidence it does\n  not have, and the 32-observation short_history machines start from the prior.\n  State pruning / approximation budget. NONE. The run-length support is the exact\n  0..n_i, with n_i <= 248 here, so the forward recursion is exact up to floating point;\n  there is no truncation, no particle approximation and no fixed-lag window. (A truncated\n  variant at M=64 was measured during development and was WORSE, because it caps the\n  stable machines' regimes; it is not an arm.) Cost is O(n_i^2 * |bank|) per machine.\n  Sequential, not tempered. Inside the recursion each observation enters its regime's\n  Beta-Bernoulli predictive exactly once with weight one and integer counts, and every\n  prediction is formed BEFORE its own outcome is multiplied in. That is a genuine\n  sequential posterior. Arm T1 is explicitly NOT: its evidence term uses the deployed\n  decay-weighted FRACTIONAL counts, which is a POWER (tempered) likelihood, so T1's\n  weights are generalized model weights and are reported as such.\n\nARMS (all compose with the protected release's conditional-payout head r, frozen).\n  C0  no-change / zero-correction: the protected release itself.\n  C1  matched control: this script's own reimplementation of the protected route - hard\n      template selection by conjugate log evidence plus train prior, decay weights at the\n      per-machine dense-selected half-life, kappa = 0.5. Asserted to reproduce the\n      protected q to 1e-12, so the family's control IS the protected release.\n  T1  stationary causal mixture over structures: omega_M proportional to\n      pi_M exp(lambda * logZ_M^power) with the deployed decay memory; lambda = None is the\n      hard argmax, which at kappa = 0.5 is exactly C1. No change inference.\n  T2  bounded changepoint / run-length inference with the STRUCTURE FIXED to C1's hard\n      selection. Replaces the decay memory and nothing else.\n  T2MAP as T2 but forecasting from the MAP run length instead of averaging over it.\n  T3  JOINT averaging over structure and run length. The structure posterior keeps being\n      revised as evidence accumulates, and each structure is scored under its own\n      run-length posterior.\n  T3R as T3 but the structural hypothesis is re-drawn from the prior at every changepoint,\n      so a change can revise the structure itself.\n  T3B7 as T3 on the reduced train-supported 7-member bank (bank robustness).\n  h = 0 inside T2/T3 is the stationary no-changepoint limit (the full-history estimator)\n  and is kept in every grid as an endpoint control.\n\nNESTING. The 4 frozen complete-episode outer folds of artifacts/phase2/folds.json. For\neach outer fold, every arm's (hazard, kappa) or (lambda, kappa) setting AND the decision\nto use the arm at all are chosen by minimising the official row-weighted full five-vector\nsquared error summed over the three complete-episode inner held partitions of that fold's\nFITTING episodes (harness.inner_folds), with the reference denominators recomputed on each\npartition by harness.row_weights. Held-fold forecasts are concatenated and scored ONCE.\nEach arm is reported twice: `forced` (its own settings only) and `gated` (C1 competes, and\nis listed first so ties keep the protected route). No arm fits any parameter on inner\nTRAINING data - there is nothing to fit, because every forecast is a deterministic causal\nfunction of pre-cutoff history plus train-fitted constants - so the inner partitions enter\nonly through the objective and its normalisation. No tail constants are estimated anywhere\nin this family: r is frozen at the protected head, so harness.tail_constants is never\ncalled and there is nothing to refit per inner partition.\n\nLEAKAGE. Target-dependent quantities fitted here: ONLY the discrete setting index per arm\nper outer fold (hazard, kappa, lambda) and the gate decision, each chosen on that fold's\nfitting episodes alone. mu_type, the template log prior, the 57-candidate bank, the train\nargmax support counts, kappa = 0.5 and the per-machine half-life selector are all read\nfrozen from the protected package (train-fitted, validation-target-free). r is the\nprotected release's own conditional-payout head, used unchanged.\n\nEXPOSURE, stated honestly. Public validation has been inspected repeatedly across this\ncampaign, and the hazard and kappa GRID BOUNDS for this script were informed by an\nexploratory sweep on public validation before the nested run. The objective surface is\nflat to within 0.1 point over three decades of hazard, which bounds how much that exposure\ncan inflate the nested number, but the nested figure is not blind.\n\nDETERMINISM. episode_id is a string; every reduction iterates a sorted sequence or an\nindex range, settings are iterated in a fixed declared order, ties go to the first\nsetting in that order, and no Python set is ever summed over. Verified by a second run\nunder PYTHONHASHSEED=777 with byte-identical output CSVs.\n",
+  "protected": {
+    "R": 0.120805710882256,
+    "arm": "C0_protected",
+    "by_condition": {
+      "drift": 0.12076667137596732,
+      "shared_change": 0.13106166086284637,
+      "short_history": 0.14575610520224477,
+      "stable": 0.08563840608796552
+    },
+    "points": 53.532917808538166
+  },
+  "public_diagnostics_PRIVILEGED": {
+    "T1/k0.5_lam0": {
+      "mean_max_weight": 0.27636363636363637,
+      "public_points": 38.34629331040391
+    },
+    "T1/k0.5_lam0.25": {
+      "mean_max_weight": 0.621191784721479,
+      "public_points": 48.542644369408926
+    },
+    "T1/k0.5_lam0.5": {
+      "mean_max_weight": 0.7521661777499246,
+      "public_points": 51.37454857038831
+    },
+    "T1/k0.5_lam1": {
+      "mean_max_weight": 0.8440464555284031,
+      "public_points": 52.73432856111673
+    },
+    "T1/k0.5_lam2": {
+      "mean_max_weight": 0.8905257441085735,
+      "public_points": 53.09229695314701
+    },
+    "T1/k0.5_lam4": {
+      "mean_max_weight": 0.9112902692991431,
+      "public_points": 52.94252946305485
+    },
+    "T1/k0.5_lamhard": {
+      "mean_max_weight": 1.0,
+      "public_points": 53.532917808538166
+    },
+    "T1/k1_lam0": {
+      "mean_max_weight": 0.27636363636363637,
+      "public_points": 38.05725257359411
+    },
+    "T1/k1_lam0.25": {
+      "mean_max_weight": 0.6017040552602954,
+      "public_points": 47.4684616869176
+    },
+    "T1/k1_lam0.5": {
+      "mean_max_weight": 0.7309650450036896,
+      "public_points": 50.52438606791744
+    },
+    "T1/k1_lam1": {
+      "mean_max_weight": 0.8301138013999116,
+      "public_points": 52.326716996130116
+    },
+    "T1/k1_lam2": {
+      "mean_max_weight": 0.8841491105550534,
+      "public_points": 52.94213183504392
+    },
+    "T1/k1_lam4": {
+      "mean_max_weight": 0.9101430471148074,
+      "public_points": 52.894524397941666
+    },
+    "T1/k1_lamhard": {
+      "mean_max_weight": 1.0,
+      "public_points": 53.418244440750875
+    },
+    "T1/k2_lam0": {
+      "mean_max_weight": 0.27636363636363637,
+      "public_points": 37.552096616930115
+    },
+    "T1/k2_lam0.25": {
+      "mean_max_weight": 0.5772397750288732,
+      "public_points": 45.768334997717695
+    },
+    "T1/k2_lam0.5": {
+      "mean_max_weight": 0.7024581429553297,
+      "public_points": 48.824122508941194
+    },
+    "T1/k2_lam1": {
+      "mean_max_weight": 0.8104660118465933,
+      "public_points": 51.12283141715093
+    },
+    "T1/k2_lam2": {
+      "mean_max_weight": 0.874317536285727,
+      "public_points": 52.11768692847963
+    },
+    "T1/k2_lam4": {
+      "mean_max_weight": 0.9046107207307061,
+      "public_points": 52.275253835173736
+    },
+    "T1/k2_lamhard": {
+      "mean_max_weight": 1.0,
+      "public_points": 52.68837159550913
+    },
+    "T2/k0.5_h0": {
+      "public_points": 32.10574339920602
+    },
+    "T2/k0.5_h0.0001": {
+      "public_points": 54.61912369905514
+    },
+    "T2/k0.5_h0.001": {
+      "public_points": 54.41496559381529
+    },
+    "T2/k0.5_h0.01": {
+      "public_points": 52.9845219507511
+    },
+    "T2/k0.5_h0.1": {
+      "public_points": 47.36440395176757
+    },
+    "T2/k0.5_h1e-05": {
+      "public_points": 54.617136520559086
+    },
+    "T2/k0.5_h1e-06": {
+      "public_points": 54.5821957308647
+    },
+    "T2/k1_h0": {
+      "public_points": 32.14663851305578
+    },
+    "T2/k1_h0.0001": {
+      "public_points": 54.6546600705017
+    },
+    "T2/k1_h0.001": {
+      "public_points": 54.52738669366418
+    },
+    "T2/k1_h0.01": {
+      "public_points": 53.48791015111733
+    },
+    "T2/k1_h0.1": {
+      "public_points": 47.84953390718659
+    },
+    "T2/k1_h1e-05": {
+      "public_points": 54.644545010425
+    },
+    "T2/k1_h1e-06": {
+      "public_points": 54.606912896391044
+    },
+    "T2/k2_h0": {
+      "public_points": 32.1908436612297
+    },
+    "T2/k2_h0.0001": {
+      "public_points": 54.56912744206021
+    },
+    "T2/k2_h0.001": {
+      "public_points": 54.50101748518376
+    },
+    "T2/k2_h0.01": {
+      "public_points": 53.714943761499754
+    },
+    "T2/k2_h0.1": {
+      "public_points": 47.45947115433923
+    },
+    "T2/k2_h1e-05": {
+      "public_points": 54.548678177573024
+    },
+    "T2/k2_h1e-06": {
+      "public_points": 54.50548585138854
+    },
+    "T3/k0.5_h0": {
+      "mean_max_structure_marginal": 0.8522020385710994,
+      "mean_posterior_run_length": 170.14453125,
+      "prequential_logscore_fixed_structure": -65001.72925551889,
+      "prequential_logscore_joint": -64461.33954505092,
+      "public_points": 33.558596815222025
+    },
+    "T3/k0.5_h0.0001": {
+      "mean_max_structure_marginal": 0.9386139029575337,
+      "mean_posterior_run_length": 95.66122611464293,
+      "prequential_logscore_fixed_structure": -47612.67936771183,
+      "prequential_logscore_joint": -47483.693707949824,
+      "public_points": 54.9107726472599
+    },
+    "T3/k0.5_h0.001": {
+      "mean_max_structure_marginal": 0.9387714327709666,
+      "mean_posterior_run_length": 91.7813263795702,
+      "prequential_logscore_fixed_structure": -46747.32555401272,
+      "prequential_logscore_joint": -46613.14633509685,
+      "public_points": 54.71751596541194
+    },
+    "T3/k0.5_h0.01": {
+      "mean_max_structure_marginal": 0.9364578423072475,
+      "mean_posterior_run_length": 72.58364710286762,
+      "prequential_logscore_fixed_structure": -46408.2752113778,
+      "prequential_logscore_joint": -46262.801654194875,
+      "public_points": 53.282409382613814
+    },
+    "T3/k0.5_h0.1": {
+      "mean_max_structure_marginal": 0.9359896746191897,
+      "mean_posterior_run_length": 16.166562392153406,
+      "prequential_logscore_fixed_structure": -51631.669279250105,
+      "prequential_logscore_joint": -51452.522904769816,
+      "public_points": 47.377467522893504
+    },
+    "T3/k0.5_h1e-05": {
+      "mean_max_structure_marginal": 0.9379991004701861,
+      "mean_posterior_run_length": 96.43748013226006,
+      "prequential_logscore_fixed_structure": -48493.05170272378,
+      "prequential_logscore_joint": -48371.45379252063,
+      "public_points": 54.9167648116526
+    },
+    "T3/k0.5_h1e-06": {
+      "mean_max_structure_marginal": 0.9375760251760901,
+      "mean_posterior_run_length": 96.7870370520507,
+      "prequential_logscore_fixed_structure": -49361.337089984925,
+      "prequential_logscore_joint": -49253.75830042567,
+      "public_points": 54.91111495794151
+    },
+    "T3/k1_h0": {
+      "mean_max_structure_marginal": 0.8483638122089779,
+      "mean_posterior_run_length": 170.14453125,
+      "prequential_logscore_fixed_structure": -64535.58953777345,
+      "prequential_logscore_joint": -63954.60163634523,
+      "public_points": 33.58822209070125
+    },
+    "T3/k1_h0.0001": {
+      "mean_max_structure_marginal": 0.939511099179958,
+      "mean_posterior_run_length": 95.79000216281882,
+      "prequential_logscore_fixed_structure": -47224.92136706187,
+      "prequential_logscore_joint": -47117.05600579671,
+      "public_points": 54.93306175386747
+    },
+    "T3/k1_h0.001": {
+      "mean_max_structure_marginal": 0.9399017326728082,
+      "mean_posterior_run_length": 92.24251524389278,
+      "prequential_logscore_fixed_structure": -46369.13132393394,
+      "prequential_logscore_joint": -46256.79787591081,
+      "public_points": 54.807067702290695
+    },
+    "T3/k1_h0.01": {
+      "mean_max_structure_marginal": 0.9393693433865872,
+      "mean_posterior_run_length": 73.92490077107975,
+      "prequential_logscore_fixed_structure": -46077.783826330895,
+      "prequential_logscore_joint": -45959.8119166076,
+      "public_points": 53.77107259632742
+    },
+    "T3/k1_h0.1": {
+      "mean_max_structure_marginal": 0.9382695218209102,
+      "mean_posterior_run_length": 17.578284235203668,
+      "prequential_logscore_fixed_structure": -51762.285716839535,
+      "prequential_logscore_joint": -51690.284941683996,
+      "public_points": 47.856883342305004
+    },
+    "T3/k1_h1e-05": {
+      "mean_max_structure_marginal": 0.938756638486646,
+      "mean_posterior_run_length": 96.50697507099069,
+      "prequential_logscore_fixed_structure": -48102.62321535951,
+      "prequential_logscore_joint": -48002.519308464085,
+      "public_points": 54.936758749622406
+    },
+    "T3/k1_h1e-06": {
+      "mean_max_structure_marginal": 0.9382607918313562,
+      "mean_posterior_run_length": 96.90300885771676,
+      "prequential_logscore_fixed_structure": -48969.33612637978,
+      "prequential_logscore_joint": -48883.9226532389,
+      "public_points": 54.9312404636695
+    },
+    "T3/k2_h0": {
+      "mean_max_structure_marginal": 0.8455122520726217,
+      "mean_posterior_run_length": 170.14453125,
+      "prequential_logscore_fixed_structure": -64347.8938398529,
+      "prequential_logscore_joint": -63748.261168241086,
+      "public_points": 33.650005867701125
+    },
+    "T3/k2_h0.0001": {
+      "mean_max_structure_marginal": 0.9452978314878505,
+      "mean_posterior_run_length": 96.07470948248859,
+      "prequential_logscore_fixed_structure": -47449.17692952935,
+      "prequential_logscore_joint": -47381.26517397184,
+      "public_points": 54.82398218147486
+    },
+    "T3/k2_h0.001": {
+      "mean_max_structure_marginal": 0.9456919121543668,
+      "mean_posterior_run_length": 93.28065779559468,
+      "prequential_logscore_fixed_structure": -46615.75091602946,
+      "prequential_logscore_joint": -46543.564654835856,
+      "public_points": 54.74435808375295
+    },
+    "T3/k2_h0.01": {
+      "mean_max_structure_marginal": 0.9449209386875378,
+      "mean_posterior_run_length": 78.0076486383238,
+      "prequential_logscore_fixed_structure": -46436.813921108034,
+      "prequential_logscore_joint": -46366.956688375685,
+      "public_points": 53.94605969059745
+    },
+    "T3/k2_h0.1": {
+      "mean_max_structure_marginal": 0.940002736592703,
+      "mean_posterior_run_length": 21.18879155276323,
+      "prequential_logscore_fixed_structure": -53094.88002787639,
+      "prequential_logscore_joint": -53162.99480330381,
+      "public_points": 47.438531197956884
+    },
+    "T3/k2_h1e-05": {
+      "mean_max_structure_marginal": 0.9443172653574141,
+      "mean_posterior_run_length": 96.66155034757303,
+      "prequential_logscore_fixed_structure": -48320.92784371672,
+      "prequential_logscore_joint": -48261.846389100756,
+      "public_points": 54.82421973507965
+    },
+    "T3/k2_h1e-06": {
+      "mean_max_structure_marginal": 0.9440026030383182,
+      "mean_posterior_run_length": 97.11577718673051,
+      "prequential_logscore_fixed_structure": -49184.161884447356,
+      "prequential_logscore_joint": -49141.16088017986,
+      "public_points": 54.81678265650328
+    }
+  },
+  "q_head_rms_change_vs_protected": {
+    "T1_forced": 0.009456031396094407,
+    "T1_gated": 0.009456031396094407,
+    "T2MAP_forced": 0.06914327820680827,
+    "T2MAP_gated": 0.06914327820680827,
+    "T2_forced": 0.06582283068772704,
+    "T2_gated": 0.06582283068772704,
+    "T3B7_forced": 0.07364439667233783,
+    "T3B7_gated": 0.07364439667233783,
+    "T3R_forced": 0.07443348249095542,
+    "T3R_gated": 0.07443348249095542,
+    "T3U_forced": 0.07364439667233783,
+    "T3U_gated": 0.07364439667233783,
+    "T3_forced": 0.07384242190937809,
+    "T3_gated": 0.07384242190937809,
+    "TALL_forced": 0.07364439667233783,
+    "TALL_gated": 0.07364439667233783,
+    "control": 2.5652018718461623e-17
+  },
+  "r_held_fixed": true,
+  "runtime_seconds": {
+    "T1": 16.69409220799571,
+    "changepoint_full_bank": 184.9479829169868,
+    "changepoint_small_bank": 29.037612374988385,
+    "control": 0.6376826670020819,
+    "half_life_selector": 4.80588687499403,
+    "nested": 1.027117041987367,
+    "scored_observations": 130671
+  },
+  "seconds": 239.98905716699664,
+  "test_time_recipe": {
+    "T1": {
+      "official_objective_argmin_all_fitting_episodes": "k0.5_lamhard"
+    },
+    "T2": {
+      "official_objective_argmin_all_fitting_episodes": "k1_h0.0001"
+    },
+    "T2MAP": {
+      "official_objective_argmin_all_fitting_episodes": "k1_h0.0001"
+    },
+    "T3": {
+      "official_objective_argmin_all_fitting_episodes": "k1_h1e-05",
+      "target_free_prequential_argmax": "k1_h0.01"
+    },
+    "T3B7": {
+      "official_objective_argmin_all_fitting_episodes": "k1_h1e-05"
+    },
+    "T3R": {
+      "official_objective_argmin_all_fitting_episodes": "k1_h1e-05"
+    },
+    "T3U": {
+      "official_objective_argmin_all_fitting_episodes": "b7|k1_h1e-05"
+    },
+    "TALL": {
+      "official_objective_argmin_all_fitting_episodes": "T3B7|k1_h1e-05"
+    },
+    "note": "Every forecast is a deterministic causal function of pre-cutoff history plus frozen train-fitted constants, so a test-time recipe exists for every arm: fix the setting by the stated rule, then run the recursion on the test histories. No RNG, no refitting, no validation target at inference."
+  },
+  "union_arms": {
+    "T3U": "T3 on both banks; hazard, kappa AND bank chosen on the inner held partitions",
+    "TALL": "the whole family as one nested procedure: control plus every setting of ['T1', 'T2', 'T2MAP', 'T3', 'T3B7', 'T3R'] competes on the inner held partitions, so the arm, its hyperparameters and the decision to deviate from the protected route are all chosen fitting-side"
+  },
+  "within_family_increments_gated": {
+    "T2_vs_T1": [
+      -0.03576514989502387,
+      -0.012433209498759097
+    ],
+    "T3B7_vs_T3": [
+      -0.0006014508629643839,
+      -2.752341536773535e-05
+    ],
+    "T3R_vs_T3": [
+      -0.00040531640338884156,
+      0.003245058999994476
+    ],
+    "T3_vs_T1": [
+      -0.043358468581391064,
+      -0.015890304431152906
+    ],
+    "T3_vs_T2": [
+      -0.015440181970743521,
+      0.0024879201682000552
+    ]
+  }
+}

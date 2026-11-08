@@ -1,0 +1,86 @@
+{
+  "X1full": {
+    "ci95": [
+      -0.01625632690143393,
+      -0.0005134190458736834
+    ],
+    "one_sided_mass_at_or_above_zero": 0.017,
+    "point_estimate_mean": -0.007925254337727033,
+    "reseed_400": {
+      "fraction_of_seeds_with_upper_bound_below_zero": 0.9875,
+      "upper_bound_max": 0.0001549285136451374,
+      "upper_bound_mean": -0.00044206057019531857,
+      "upper_bound_min": -0.0009861648988060872
+    },
+    "survives_bonferroni_4": false,
+    "survives_bonferroni_9": false,
+    "upper_bound_bonferroni_4_arms": 0.0009845183335461171,
+    "upper_bound_bonferroni_9_arms": 0.00125840783658507,
+    "upper_bound_repeats_2000": -0.0005134190458736834,
+    "upper_bound_repeats_20000": -0.0005073226147378051,
+    "upper_bound_repeats_200000": -0.0004087348411796046
+  },
+  "X2full": {
+    "ci95": [
+      -0.016264154734717932,
+      -0.0005310852428043557
+    ],
+    "one_sided_mass_at_or_above_zero": 0.0145,
+    "point_estimate_mean": -0.007941702310511565,
+    "reseed_400": {
+      "fraction_of_seeds_with_upper_bound_below_zero": 0.99,
+      "upper_bound_max": 6.678812861618222e-05,
+      "upper_bound_mean": -0.0004914679473981814,
+      "upper_bound_min": -0.0010337583042068874
+    },
+    "survives_bonferroni_4": false,
+    "survives_bonferroni_9": false,
+    "upper_bound_bonferroni_4_arms": 0.001006890260999773,
+    "upper_bound_bonferroni_9_arms": 0.0012310296669932395,
+    "upper_bound_repeats_2000": -0.0005310852428043557,
+    "upper_bound_repeats_20000": -0.0005796792361658038,
+    "upper_bound_repeats_200000": -0.0004564960754746278
+  },
+  "X4": {
+    "ci95": [
+      -0.015070768590162112,
+      -0.0007710162827451215
+    ],
+    "one_sided_mass_at_or_above_zero": 0.0105,
+    "point_estimate_mean": -0.007440392825789447,
+    "reseed_400": {
+      "fraction_of_seeds_with_upper_bound_below_zero": 1.0,
+      "upper_bound_max": -0.00035387313652541564,
+      "upper_bound_mean": -0.0008409330327882182,
+      "upper_bound_min": -0.0013054023157050563
+    },
+    "survives_bonferroni_4": false,
+    "survives_bonferroni_9": false,
+    "upper_bound_bonferroni_4_arms": 0.000397308519176941,
+    "upper_bound_bonferroni_9_arms": 0.0007313398913632458,
+    "upper_bound_repeats_2000": -0.0007710162827451215,
+    "upper_bound_repeats_20000": -0.0008972404711566161,
+    "upper_bound_repeats_200000": -0.0008286317633715377
+  },
+  "X5": {
+    "ci95": [
+      -0.01907717504402383,
+      -0.0003294730823775271
+    ],
+    "one_sided_mass_at_or_above_zero": 0.022,
+    "point_estimate_mean": -0.009140817180997948,
+    "reseed_400": {
+      "fraction_of_seeds_with_upper_bound_below_zero": 0.685,
+      "upper_bound_max": 0.000869535830403594,
+      "upper_bound_mean": -0.00013390718207697508,
+      "upper_bound_min": -0.0009181269094074371
+    },
+    "survives_bonferroni_4": false,
+    "survives_bonferroni_9": false,
+    "upper_bound_bonferroni_4_arms": 0.0020269086593212066,
+    "upper_bound_bonferroni_9_arms": 0.0027759570256614737,
+    "upper_bound_repeats_2000": -0.0003294730823775271,
+    "upper_bound_repeats_20000": -0.000200508318068989,
+    "upper_bound_repeats_200000": -0.0001750077955310543
+  }
+}

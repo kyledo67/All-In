@@ -1,0 +1,178 @@
+{
+  "check1_rescore_written_csv": {
+    "R": 0.11395873324910538,
+    "abs_points_diff": 5.622023167006773e-07,
+    "by_condition": {
+      "drift": 0.10818136647399282,
+      "shared_change": 0.12194784198590473,
+      "short_history": 0.14099965415075705,
+      "stable": 0.08470607038576695
+    },
+    "claimed_R": 0.11395873339532132,
+    "claimed_points": 53.861958780759,
+    "points": 53.86195934296131
+  },
+  "check2_features_truth_independent": {
+    "XO_bit_identical": true,
+    "X_bit_identical": true,
+    "max_abs_X_diff": 0.0,
+    "n_features": 29
+  },
+  "check3_independent_reimpl": {
+    "R": 0.11395873324910538,
+    "fold_picks": [
+      "d2|s0.5",
+      "d3|s0.75",
+      "d3|s0.75",
+      "d3|s0.5"
+    ],
+    "matches_family_points_to_1e-9": true,
+    "max_abs_diff_vs_family_csv": 2.220446049250313e-16,
+    "points": 53.86195934296131
+  },
+  "check4_per_fold_leaktest": {
+    "fold0": {
+      "held_rows_bit_identical": true,
+      "max_abs_held_diff": 0.0,
+      "other_folds_moved": true,
+      "picks_under_corruption": [
+        "d2|s0.5",
+        "d2|s0.5",
+        "d2|s0.5",
+        "d3|s0.75"
+      ]
+    },
+    "fold1": {
+      "held_rows_bit_identical": true,
+      "max_abs_held_diff": 0.0,
+      "other_folds_moved": true,
+      "picks_under_corruption": [
+        "d3|s0.5",
+        "d3|s0.75",
+        "d2|s0.75",
+        "d2|s0.5"
+      ]
+    },
+    "fold2": {
+      "held_rows_bit_identical": true,
+      "max_abs_held_diff": 0.0,
+      "other_folds_moved": true,
+      "picks_under_corruption": [
+        "d2|s0.75",
+        "d2|s0.5",
+        "d3|s0.75",
+        "d2|s0.5"
+      ]
+    },
+    "fold3": {
+      "held_rows_bit_identical": true,
+      "max_abs_held_diff": 0.0,
+      "other_folds_moved": true,
+      "picks_under_corruption": [
+        "d3|s0.75",
+        "d2|s0.75",
+        "d2|s0.75",
+        "d3|s0.5"
+      ]
+    }
+  },
+  "check5_paired": {
+    "arm_vs_control_boost_enriched": [
+      -0.003571111626070449,
+      -0.0010128542645956216
+    ],
+    "arm_vs_protected": [
+      -0.011098447580308273,
+      -0.002418851313384528
+    ],
+    "claimed_vs_protected": [
+      -0.011098,
+      -0.002419
+    ],
+    "control_vs_protected": [
+      -0.009045684914297802,
+      2.729248640942555e-05
+    ],
+    "nested_subset_vs_protected": [
+      -0.009640599934365626,
+      0.00020249794580509567
+    ]
+  },
+  "check6_multiplicity": {
+    "argmin_share": {
+      "all": 0.0001,
+      "diag_only": 0.0,
+      "noother": 0.00455,
+      "nopool": 0.0,
+      "nopreq": 0.99535
+    },
+    "best_of_five_ci95": [
+      -0.011091675577207843,
+      -0.0025151432275985135
+    ],
+    "best_of_five_upper_975": -0.0025151432275985135,
+    "p_best_of_five_negative": 0.99885,
+    "per_subset_ci95": {
+      "all": [
+        -0.009070412067475815,
+        3.2453375010307376e-05
+      ],
+      "diag_only": [
+        -0.0015669346311622762,
+        0.0036331514198514664
+      ],
+      "noother": [
+        -0.009551770569363552,
+        0.0002692081890409215
+      ],
+      "nopool": [
+        -0.004233510915646954,
+        0.005030692500020421
+      ],
+      "nopreq": [
+        -0.011078655240315184,
+        -0.0025151432275985135
+      ]
+    },
+    "repeats": 20000,
+    "seed": 314159
+  },
+  "nopreq_columns": [
+    "type_balanced",
+    "type_jackpot",
+    "signal_pos",
+    "signal_neg",
+    "logit_q",
+    "r1",
+    "rtail",
+    "entropy",
+    "log1p_transitions",
+    "log1p_cell_support",
+    "cell_post_sd",
+    "log1p_logit_var",
+    "mix_entropy",
+    "q_halflife_sd",
+    "template_margin",
+    "template_entropy",
+    "tmpl2_q_gap",
+    "pool_q_sd",
+    "pool_vec_sd",
+    "pool_q_gap",
+    "other_recent",
+    "log_history",
+    "run_signed",
+    "other_change"
+  ],
+  "outer_table_five_fixed_subsets": {
+    "all": 53.75316578588215,
+    "diag_only": 53.487884803960036,
+    "noother": 53.760541990030035,
+    "nopool": 53.523408343355115,
+    "nopreq": 53.86195934296131
+  },
+  "protected": {
+    "R": 0.120805710882256,
+    "points": 53.532917808538166
+  },
+  "seconds": 80.99252470801002
+}

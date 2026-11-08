@@ -1,0 +1,17 @@
+{
+  "distinct_actual_tick_gaps": [
+    1.0
+  ],
+  "max_abs_q_c1_minus_release_test_q": 2.498001805406602e-16,
+  "max_tick_minus_cutoff": -1,
+  "mean_abs_q_T2_minus_q_release": 0.032118295976359255,
+  "observation_count_min_median_max": [
+    32,
+    204,
+    248
+  ],
+  "seconds": 32.44479149999097,
+  "sha256_of_forecast": "b14b331e648c71f687d04dd26da24267",
+  "simplex_ok": true,
+  "test_queries": 1536
+}

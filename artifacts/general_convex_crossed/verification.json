@@ -1,0 +1,116 @@
+{
+  "determinism": {
+    "byte_identical": true,
+    "compared": "every predictions/*.csv and selection_digest.txt, byte for byte; evaluation.json is excluded only because it records a wall clock",
+    "files_compared": 10,
+    "runs": [
+      "artifacts/general_convex_crossed (default hash seed)",
+      "artifacts/general_convex_crossed_det777 (PYTHONHASHSEED=777)"
+    ],
+    "sha256_run_a": {
+      "predictions/oof_X0.csv": "46dacba5a477beca7ad328e2845c2e027063f5a880bccd887504cefb8b033dc4",
+      "predictions/oof_X1.csv": "9d5309830f69179673962f3637caa87454b74cebc5940e84ae8b38b73f70c154",
+      "predictions/oof_X1full.csv": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35",
+      "predictions/oof_X2.csv": "64d3abf7be52e2fa8a426853c684fa63c15198e48f2753dea7e297a9b7938ea8",
+      "predictions/oof_X2full.csv": "a438703f2bd1864ecb8c8c6e39778439e7d84ca9da9b1f297d4e6a582996fcfd",
+      "predictions/oof_X3.csv": "9585652999259c1094fd0dd7faa9dabeb63fe4d12a42eaa40af8ae790ba0be27",
+      "predictions/oof_X4.csv": "b85e939a96a5ac828ee2a97ddb5e15aef103a535f8e814b7f528f3b628aaeac7",
+      "predictions/oof_X5.csv": "a7f3e2344efec1ad90afc4bfb3587cec5133d4b50a17ac53e158673a26345bc4",
+      "predictions/oof_Xnull.csv": "7e978ecfe2ff6a58e440374edc858ee48177b381b917c6cc36b94e956b53deaa",
+      "selection_digest.txt": "1b2003708aa71eb6495407171da17f8296376fc2f063f2a4cd64dff433b0e2ae"
+    },
+    "sha256_run_b": {
+      "predictions/oof_X0.csv": "46dacba5a477beca7ad328e2845c2e027063f5a880bccd887504cefb8b033dc4",
+      "predictions/oof_X1.csv": "9d5309830f69179673962f3637caa87454b74cebc5940e84ae8b38b73f70c154",
+      "predictions/oof_X1full.csv": "c090ee83ff4226715f149f739eb33a2c6db5697040b6e9ef0f18048f3e832d35",
+      "predictions/oof_X2.csv": "64d3abf7be52e2fa8a426853c684fa63c15198e48f2753dea7e297a9b7938ea8",
+      "predictions/oof_X2full.csv": "a438703f2bd1864ecb8c8c6e39778439e7d84ca9da9b1f297d4e6a582996fcfd",
+      "predictions/oof_X3.csv": "9585652999259c1094fd0dd7faa9dabeb63fe4d12a42eaa40af8ae790ba0be27",
+      "predictions/oof_X4.csv": "b85e939a96a5ac828ee2a97ddb5e15aef103a535f8e814b7f528f3b628aaeac7",
+      "predictions/oof_X5.csv": "a7f3e2344efec1ad90afc4bfb3587cec5133d4b50a17ac53e158673a26345bc4",
+      "predictions/oof_Xnull.csv": "7e978ecfe2ff6a58e440374edc858ee48177b381b917c6cc36b94e956b53deaa",
+      "selection_digest.txt": "1b2003708aa71eb6495407171da17f8296376fc2f063f2a4cd64dff433b0e2ae"
+    }
+  },
+  "gain_attribution_diagnostic": {
+    "conclusion": "the fitting-side-fitted per-type tail vector carries the gain; the raw crossed product without it is not significant against the protected release",
+    "fitted_per_type_v_points": 53.910694,
+    "native_member_tails_points": 53.717168,
+    "paired_fitted_vs_native_ci95": [
+      -0.005844,
+      -0.002089
+    ],
+    "paired_native_vs_protected_ci95": [
+      -0.011807,
+      0.002767
+    ],
+    "recipe": "nested X2full, varying ONLY the tail transformation",
+    "uniform_tail_points": 49.055526
+  },
+  "in_sample_ceilings": {
+    "best_single_crossed_pair_points": 53.608288,
+    "conclusion": "the general-vs-rank-one question has an in-sample ceiling an order of magnitude below this evaluation noise floor, pooled and blockwise",
+    "general_per_type_points": 54.339431,
+    "general_pooled_points": 54.066735,
+    "rank_one_multistart_checked": "7 deterministic starts, best was the uniform start",
+    "rank_one_per_type_points": 54.334011,
+    "rank_one_pooled_points": 54.058587,
+    "rank_one_restriction_costs_points": 0.008148,
+    "rank_one_restriction_costs_points_within_type_blocks": 0.00542,
+    "what": "deliberately leaky, fitted and scored on all 96 episodes; NOT forecasts"
+  },
+  "independent_rescore": {
+    "agrees_with_harness_to": "all 9 arms, exact to 9 decimal places in points",
+    "scorer": "organizer slot_forecasting.contest.contest_score called directly, bypassing slot_model.harness"
+  },
+  "leak_test_result": [
+    "arm       fold0 held (must be IDENTICAL) folds1-3 (must CHANGE)",
+    "Xnull     max|d|=0.000e+00 OK          max|d|=0.000e+00 OK",
+    "X0        max|d|=0.000e+00 OK          max|d|=4.342e-01 OK",
+    "X1        max|d|=0.000e+00 OK          max|d|=1.687e-01 OK",
+    "X2        max|d|=0.000e+00 OK          max|d|=1.689e-01 OK",
+    "X3        max|d|=0.000e+00 OK          max|d|=1.957e-01 OK",
+    "X1full    max|d|=0.000e+00 OK          max|d|=2.322e-01 OK",
+    "X2full    max|d|=0.000e+00 OK          max|d|=2.324e-01 OK",
+    "X4        max|d|=0.000e+00 OK          max|d|=2.336e-01 OK",
+    "X5        max|d|=0.000e+00 OK          max|d|=3.698e-01 OK",
+    "",
+    "LEAK TEST PASSED"
+  ],
+  "nesting_leak_test": {
+    "design": "the real main() run twice on a reduced grid, differing only in a permutation of the TRUTH of the fold-0 held episodes",
+    "requirement_a": "fold 0's own held forecasts byte-identical (fitted on folds 1-3)",
+    "requirement_b": "folds 1-3's held forecasts must CHANGE, otherwise the perturbation never reached the pipeline and the test is vacuous",
+    "result": "see leak_test_result below"
+  },
+  "null_calibration": {
+    "conclusion": "the fitting machinery does not manufacture a gain from no signal",
+    "design": "the same nested recipe fitted against a global permutation of the truth, then scored against the REAL targets",
+    "real_truth_points": 53.910694,
+    "reversed_truth_points": 31.480343
+  },
+  "objective_identity": {
+    "claim": "b.row_weights(mask) weighted full-vector SSE equals the official R on exactly those episodes, so every QP minimises the official objective and not a surrogate",
+    "max_abs_difference_over_all_8_fold_subsets": 1.39e-17
+  },
+  "solver": {
+    "certified_frank_wolfe_duality_gap": {
+      "definition": "f(x) - f* <= g'x - min_j g_j with g = 2Gx, scaled by max diag G",
+      "rank_one_fits": "1.3e-04 to 1.6e-03, which is NOT solver error: it measures how far the rank-one point sits from the general optimum, i.e. the restriction being tested",
+      "worst_over_general_fits": 5.3e-09
+    },
+    "feasibility": {
+      "max_abs_sum_minus_one": 2.220446049250313e-16,
+      "min_weight": 0.0,
+      "note": "weights are exactly zero off support; the uniform point is always feasible so the QP is never infeasible"
+    },
+    "max_block_kkt_rank_one": 1.2302563412447398e-09,
+    "max_kkt_residual_general_fits": 5.204374931011557e-09,
+    "max_projected_gradient_norm": 3.8836698793128173e-10
+  },
+  "tail_transformation_held_fixed": {
+    "conclusion": "the convex mixture provably inherits the per-type tail ratio, so no second projection is applied anywhere in this family",
+    "max_deviation_for_a_random_convex_mixture": 3.885780586188048e-16,
+    "max_deviation_of_any_bank_member_tail_ratio_from_fitted_v": 2.220446049250313e-16
+  }
+}
