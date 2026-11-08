@@ -1,0 +1,81 @@
+{
+  "decomposition": {
+    "A_unreachable_given_this_r": 0.048108315487225106,
+    "B_experts_do_not_span": 0.041958337874133375,
+    "C_better_choice_among_experts": 0.03401501589716482,
+    "R_official": 0.12408166925852328,
+    "current_q_inside_expert_interval": {
+      "fraction": 1.0,
+      "of": 768,
+      "queries": 768
+    },
+    "identity_residual": 1.3877787807814457e-17,
+    "note": "A is not irreducible uncertainty. It is the error that cannot be removed by changing q alone while holding THIS r fixed, so improving r moves it.",
+    "shares": {
+      "A": 0.38771492819774833,
+      "B": 0.3381509785036295,
+      "C": 0.2741340932986223
+    },
+    "sum": 0.12408166925852329
+  },
+  "decomposition_by_condition": {
+    "drift": {
+      "A": 0.051090435942848456,
+      "B": 0.03660012992300815,
+      "C": 0.03554927121843567,
+      "ratio": 0.1232398370842923
+    },
+    "shared_change": {
+      "A": 0.04574971189725842,
+      "B": 0.05260337632128086,
+      "C": 0.03565704195082632,
+      "ratio": 0.13401013016936558
+    },
+    "short_history": {
+      "A": 0.05678359853992566,
+      "B": 0.06060567527326291,
+      "C": 0.03430650297187176,
+      "ratio": 0.1516957767850603
+    },
+    "stable": {
+      "A": 0.03880951556886787,
+      "B": 0.01802416997898157,
+      "C": 0.03054724744752553,
+      "ratio": 0.08738093299537494
+    }
+  },
+  "envelope_share_check": {
+    "claimed_fraction_of_R_removed": 0.274,
+    "envelope_points": 55.042506,
+    "measured_R_after_q_range": 0.09006665336135848,
+    "measured_fraction_of_R_remaining": 0.7258659067013778,
+    "measured_fraction_removed_by_q_range": 0.2741340932986223
+  },
+  "matched_control": {
+    "deployed_fixed_replay_points": 53.376904579876054,
+    "difference": 0.30046361963972146,
+    "global_H16_points": 53.677368199515776,
+    "heldfold_procedure_points": 53.359682608369106,
+    "max_abs_r_difference_deployed_vs_heldfold_procedure": 0.015142732195242758,
+    "note": "The reported 0.300463 compares global_H16 against the DEPLOYED FIXED REPLAY. Both share the identical w=0.42 deployment r, so the contrast is matched on r and isolates q. But global_H16 therefore inherits a deployment-replay r and is NOT a pure held-fold procedure, which is how it was previously labelled. Comparing it against the 53.359683 held-fold procedure would be UNMATCHED, because that prediction uses fold-specific r weights."
+  },
+  "oracle_refresh": {
+    "both_true": 60.0,
+    "current_candidate_points": 53.376904579876054,
+    "note": "PRIVILEGED. Gains do not add and are not ceilings.",
+    "stale_values_belonged_to": "53.191542 parity baseline (true_q 56.9418, true_r 55.7135)",
+    "true_q_with_current_r": 57.15951189676747,
+    "true_r_with_current_q": 55.713488347942885
+  },
+  "r_frozen_check": {
+    "interpretation": "If the r difference is zero, the H=16 comparison is a genuine q-only contrast and the Dirichlet r did NOT inherit the varied H. The r half-life comes from the dense averaged selector inside dirichlet_proportions, not from the q expert being varied.",
+    "max_abs_q_difference_deployed_vs_global_H16": 0.45438096056984434,
+    "max_abs_r_difference_deployed_vs_global_H16": 2.220446049250313e-16,
+    "r_was_frozen_across_memory_policies": true
+  },
+  "scalar_optimum_check": {
+    "abs_difference": 1.0439560432784489e-07,
+    "brute_force_grid": 0.39560449999999997,
+    "closed_form": 0.39560439560439564
+  }
+}

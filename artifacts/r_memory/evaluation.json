@@ -1,0 +1,122 @@
+{
+  "advanced": false,
+  "advancement_rule": "held-fold points improve AND paired interval upper bound < 0",
+  "control_deployed_inherited_memory": {
+    "R": 0.12408166925852328,
+    "by_condition": {
+      "drift": 0.1232398370842923,
+      "shared_change": 0.13401013016936558,
+      "short_history": 0.1516957767850603,
+      "stable": 0.08738093299537494
+    },
+    "points": 53.376904579876054
+  },
+  "decision_record": "DECISION RECORD and the single intervention: give r its own memory.\n\nSTRONGEST SUPPORTED EXPLANATION OF THE ~53/60 PLATEAU\nThe official R decomposes exactly (residual 1.39e-17) into\n    A = 0.048108  38.8%  error that cannot be removed by changing q at all, given this r\n    B = 0.041958  33.8%  the seven memory experts do not span the q the loss wants\n    C = 0.034015  27.4%  error recoverable by choosing better among the current experts\nTerm C is precisely the capacity the privileged envelope advertised, and the causal\nfixed-share experiment recovered none of it (51.71 against 53.38, monotonically worse in\nthe share rate). So the plateau is NOT mainly a weighting problem. The largest single\nshare, A, is unreachable through q by construction and moves only if r improves, and the\nrefreshed oracle gives true r a +2.3366 headroom on the current candidate.\n\nMEASUREMENTS THAT SELECT THE INTERVENTION\n  - r was verified frozen across every memory policy (max |dr| = 2.22e-16), so the\n    earlier q attribution was sound and no q/r factorial is needed.\n  - r nevertheless INHERITS q's selected half-life inside dirichlet_proportions. q's\n    selector overwhelmingly picks very short memory (H=8 for most machines, and a global\n    H=16 beats per-machine selection), so r is being estimated from a decayed positive\n    mass whose median is only 8.8 - while a positive outcome is roughly 40% of ticks, so\n    most of the machine's positive history is discarded by a half-life chosen for q.\n  - short_history carries both the largest A (0.0568) and the largest B (0.0606).\n\nCOMPETING EXPLANATIONS STILL CONSISTENT WITH THE DATA\n  - Term A may be dominated by genuine hidden-state uncertainty rather than by r's\n    estimation error. The decomposition cannot separate those: A is defined relative to\n    THIS r, not to the best possible r. If A is mostly hidden state, this intervention\n    will produce little.\n  - Term B could reflect a missing q representation rather than missing memory diversity.\n  - The within-parity residual question (++ vs -- and +- vs -+) was not measured, so an\n    omitted-structure explanation is not excluded.\n\nTHE SINGLE INTERVENTION\nGive r an independently selected memory, holding q, the Dirichlet prior (tau=32, the\nper-type population centre) and the blend form fixed. Candidates for the r half-life:\nthe existing grid 8, 16, 32, 64, 128, 256, and no decay. The deployed policy (inherit\nq's half-life) is the control, and no-decay is the hypothesis-driven extreme.\n\nFITTING PROTOCOL\nThe r half-life and the blend weight are selected on each outer fold's FITTING episodes\nby the exact official weighted five-vector objective, then applied to the held fold;\nheld-fold forecasts are concatenated and scored once. q is byte-identical throughout.\n\nADVANCEMENT RULE, fixed before seeing any result below: the policy replaces the deployed\nr only if held-fold points improve AND the paired whole-episode interval against the\ndeployed forecast lies below zero. This is the same rule that withheld global H=16, and\nit is not relaxed here.\n\nSTOPPING RULE: one batch. If it fails, the run ends with a quantified negative diagnosis\nand no new candidate.\n\nExposure: 96 repeatedly inspected validation episodes; exploratory research round.\n",
+  "exposure": "Repeatedly inspected public validation; exploratory research round.",
+  "gain": -0.03869389211970997,
+  "intervention_independent_r_memory": {
+    "R": 0.12489712771285097,
+    "by_condition": {
+      "drift": 0.12186672591822964,
+      "shared_change": 0.13636079928750847,
+      "short_history": 0.15279255499281272,
+      "stable": 0.08856843065285303
+    },
+    "points": 53.338210687756344
+  },
+  "paired_vs_control": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.004339962496161188,
+        0.001689722011413077
+      ],
+      "shared_change": [
+        -0.0004976177208663932,
+        0.005684494290424602
+      ],
+      "short_history": [
+        -0.000602219009155557,
+        0.0031289701778428668
+      ],
+      "stable": [
+        -0.0007429688108884043,
+        0.003318141769980148
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.00042328384226648105,
+      0.0021749576076016157
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "per_memory_at_frozen_weight": {
+    "128": 53.40043832283692,
+    "16": 53.377528521872826,
+    "256": 53.39769343453017,
+    "32": 53.39065601644432,
+    "64": 53.39978158522138,
+    "8": 53.36528605113783,
+    "inf": 53.391696805806966
+  },
+  "positive_support_mass": {
+    "128": {
+      "median": 43.70086122459967,
+      "p10": 13.013390189030648
+    },
+    "16": {
+      "median": 9.66918854333346,
+      "p10": 1.2884232350950549
+    },
+    "256": {
+      "median": 56.12504558879271,
+      "p10": 15.843761266384233
+    },
+    "32": {
+      "median": 17.447327925804238,
+      "p10": 4.260475231699738
+    },
+    "64": {
+      "median": 28.578390546530223,
+      "p10": 10.183465138479203
+    },
+    "8": {
+      "median": 5.084014406781181,
+      "p10": 0.31560896213685724
+    },
+    "inf": {
+      "median": 74.0,
+      "p10": 19.0
+    },
+    "inherited": {
+      "median": 8.796376338381346,
+      "p10": 1.6547600201888988
+    }
+  },
+  "q_byte_identical_to_deployed": true,
+  "seconds": 4.735259042005055,
+  "selected_per_fold": [
+    {
+      "blend_weight": 0.44,
+      "fold": 0,
+      "r_half_life": "inf"
+    },
+    {
+      "blend_weight": 0.42,
+      "fold": 1,
+      "r_half_life": "16"
+    },
+    {
+      "blend_weight": 0.54,
+      "fold": 2,
+      "r_half_life": "64"
+    },
+    {
+      "blend_weight": 0.48,
+      "fold": 3,
+      "r_half_life": "64"
+    }
+  ]
+}
