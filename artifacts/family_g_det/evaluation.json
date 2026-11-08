@@ -1,0 +1,432 @@
+{
+  "convexity_note": "Each alternation step is an exact simplex-constrained convex QP. The JOINT problem over (q weights, a weights) is NOT convex because the delivered vector contains the products q*a and q*(1-a)*v. Alternation guarantees only a monotone non-increasing objective from a fixed deterministic start set.",
+  "distinct_a_heads": 10,
+  "distinct_q_heads": 15,
+  "fold_provenance": [
+    {
+      "G2_a_members": [
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv"
+      ],
+      "G2_a_weights": [
+        0.12919536293385628,
+        0.2464755688607985,
+        0.286160577475045,
+        7.664324683671333e-19,
+        4.170340246026946e-18,
+        0.059811727160362635,
+        4.328206011571466e-18,
+        0.27835676356993766
+      ],
+      "G2_feasible": true,
+      "G2_objective_trace": [
+        0.11698406533757594,
+        0.11698406271044205
+      ],
+      "G2_q_members": [
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv"
+      ],
+      "G2_q_weights": [
+        0.5347923774491561,
+        0.4652076225508439
+      ],
+      "fold": 0,
+      "picks": {
+        "G0": [
+          2,
+          15
+        ],
+        "G1": [
+          2,
+          15
+        ],
+        "G2": [
+          2,
+          8
+        ]
+      },
+      "tail_constants": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315798,
+          0.4736842105263152,
+          0.15789473684210556
+        ],
+        "steady": [
+          0.8000000000000003,
+          0.19600000000000026,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "G2_a_members": [
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv"
+      ],
+      "G2_a_weights": [
+        0.42690745253357903,
+        0.0,
+        0.0074257887540045715,
+        0.07284512608389658,
+        0.0,
+        0.18103895146268684,
+        0.03364877079103666,
+        0.27813391037479634
+      ],
+      "G2_feasible": true,
+      "G2_objective_trace": [
+        0.09804739720190174,
+        0.09782949505468716
+      ],
+      "G2_q_members": [
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/two_head_01/validation.csv"
+      ],
+      "G2_q_weights": [
+        0.46347615314036567,
+        0.09484842300803911,
+        0.29854690266327194,
+        0.1431285211883234,
+        1.087346782302186e-17,
+        0.0,
+        0.0,
+        7.531181692274798e-18
+      ],
+      "fold": 1,
+      "picks": {
+        "G0": [
+          15,
+          15
+        ],
+        "G1": [
+          15,
+          15
+        ],
+        "G2": [
+          8,
+          8
+        ]
+      },
+      "tail_constants": {
+        "balanced": [
+          0.6956521739130457,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315796,
+          0.47368421052631515,
+          0.15789473684210545
+        ],
+        "steady": [
+          0.8000000000000005,
+          0.19600000000000017,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "G2_a_members": [
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv"
+      ],
+      "G2_a_weights": [
+        0.24477456287897983,
+        0.10184141191351194,
+        0.13619548211883242,
+        1.8748068435849074e-17,
+        0.0,
+        0.09805054347053067,
+        0.1023041772117871,
+        0.3168338224063581
+      ],
+      "G2_feasible": true,
+      "G2_objective_trace": [
+        0.10720724469292676,
+        0.10675094420686537
+      ],
+      "G2_q_members": [
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv"
+      ],
+      "G2_q_weights": [
+        0.32281448226042775,
+        0.11324368451501148,
+        0.4306633480506314,
+        0.1332784851739294,
+        5.710272613914866e-18,
+        7.250178512023184e-18,
+        0.0,
+        7.195968403398909e-18,
+        3.9725845226226686e-18,
+        0.0,
+        0.0,
+        1.417890802056336e-17
+      ],
+      "fold": 2,
+      "picks": {
+        "G0": [
+          5,
+          15
+        ],
+        "G1": [
+          15,
+          15
+        ],
+        "G2": [
+          12,
+          8
+        ]
+      },
+      "tail_constants": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315799,
+          0.4736842105263152,
+          0.15789473684210553
+        ],
+        "steady": [
+          0.8000000000000008,
+          0.19600000000000012,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "G2_a_members": [
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv"
+      ],
+      "G2_a_weights": [
+        0.3182817919636438,
+        0.0,
+        0.18560263231632732,
+        0.21065930817412426,
+        4.353987576903519e-18,
+        1.1905842167047242e-17,
+        0.031701036159540966,
+        0.2537552313863637
+      ],
+      "G2_feasible": true,
+      "G2_objective_trace": [
+        0.1180873149695927,
+        0.11785967152654067
+      ],
+      "G2_q_members": [
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv"
+      ],
+      "G2_q_weights": [
+        0.4121554662022529,
+        0.0870991576034871,
+        0.37914206181765653,
+        0.12160331437660356,
+        0.0,
+        1.0237240200515475e-17,
+        2.7791150999413598e-18,
+        7.792703114739564e-19,
+        1.824085451912136e-18,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fold": 3,
+      "picks": {
+        "G0": [
+          12,
+          15
+        ],
+        "G1": [
+          12,
+          15
+        ],
+        "G2": [
+          12,
+          8
+        ]
+      },
+      "tail_constants": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315801,
+          0.4736842105263152,
+          0.1578947368421055
+        ],
+        "steady": [
+          0.800000000000001,
+          0.19600000000000006,
+          0.004000000000000003
+        ]
+      }
+    }
+  ],
+  "paired_vs_protected": {
+    "G0": [
+      -0.01547008488519223,
+      -0.0006859912772349916
+    ],
+    "G1": [
+      -0.015470238133569562,
+      -0.0006855702655474356
+    ],
+    "G2": [
+      -0.016107587772055315,
+      -0.00011239540539322201
+    ]
+  },
+  "paired_within_family": {
+    "G1_vs_G0": [
+      -1.3999402450675563e-07,
+      3.621332736405675e-07
+    ],
+    "G2_vs_G0": [
+      -0.0010712631421872579,
+      0.0012629300843747962
+    ],
+    "G2_vs_G1": [
+      -0.001071226723177638,
+      0.001262977061719674
+    ]
+  },
+  "pool": [
+    "artifacts/beta_cells/predictions/oof_beta_average.csv",
+    "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+    "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+    "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+    "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+    "artifacts/dense_catboost_01/validation_dense.csv",
+    "artifacts/dense_catboost_01/validation_sparse.csv",
+    "artifacts/mtd_pairs_01/validation_additive.csv",
+    "artifacts/mtd_pairs_01/validation_control.csv",
+    "artifacts/mtd_pairs_01/validation_lag7.csv",
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+    "artifacts/two_head_01/validation.csv"
+  ],
+  "pool_info": {
+    "distinct_q_heads": 15,
+    "distinct_r_heads": 10,
+    "duplicate_q_groups": [],
+    "duplicate_r_groups": [
+      [
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/two_head_01/validation.csv"
+      ]
+    ],
+    "skipped": []
+  },
+  "protocol": "Family G: fit and select against the probability vector actually DELIVERED.\n\nscripts/separable_stack.py fits its head weights and chooses its inner-fold settings against\nthe UNPROJECTED q/r composition, and only afterwards applies the tail operator. If the\ndelivered vector is the rescaled one, then fitting and selecting against the unprojected\ncomposition optimises the wrong objective. This family tests whether aligning the stages\nhelps, and separates the two possible misalignments.\n\nPARAMETERISATION. With q = P(positive), a = P(1x | positive) and a per-type tail vector v\nover {2,5,20} summing to 1,\n    p(q,a,v) = [1-q, q a, q(1-a) v2, q(1-a) v5, q(1-a) v20].\nWriting p = e + q g with e = (1,0,0,0,0) and g = (-1, a, (1-a)v2, (1-a)v5, (1-a)v20),\n    ||p - t||^2 = ||e-t||^2 + 2 q g.(e-t) + q^2 ||g||^2,\nso at fixed (a, v) the official weighted loss is an exact convex quadratic in q, and\nsymmetrically it is an exact convex quadratic in a at fixed q. Both stacked heads are convex\ncombinations, so each alternation step is a simplex-constrained convex QP.\n\nTHE JOINT PROBLEM IS NOT CONVEX. The delivered vector contains the products q*a and\nq*(1-a)*v, so the joint objective over (q weights, a weights) is not jointly convex and\nalternation is not guaranteed to find a global optimum. What alternation does guarantee is a\nmonotone non-increasing objective, since each step solves its own subproblem exactly. Starts\nare a small deterministic set, the alternation count is fixed in advance, and the per-step\nobjective sequence and solver feasibility are recorded.\n\nARMS, matched on pool, folds, shortlist budgets and numerical safeguards:\n  G0  fit and select against the UNPROJECTED composition, then apply the declared rescale.\n      This reproduces the current procedure's objective alignment.\n  G1  identical fitting procedure to G0, but choose the inner-fold settings using the FINAL\n      rescaled five-vector score.\n  G2  fit the q and a weights AND choose settings using the final rescaled score throughout.\nInterpretation: G1 - G0 isolates misalignment of SELECTION; G2 - G1 isolates misalignment of\nFITTING. Confounding them would not identify which stage matters.\n\nThe brief's instruction is honoured: start with the rescaled formulation only. A\nprojection-aware variant is deliberately NOT included here, because the exact Euclidean\nprojection moves p0 and p1 by a shared multiplier (verified: dp0 = dp1 to 2.9e-16), so the\ndelivered operator is not a simple reparameterisation of (q, a, v) and would need the\noptimizer to evaluate the projection itself.\n\nNESTING. Tail constants v are refitted on each inner-TRAINING partition when scoring an\ninner-held partition, and on the outer fitting episodes for the held-fold forecast. All head\nweights, shortlists and the (kq, ka) choice come from fitting episodes only. Held folds are\nconcatenated and scored once.\n",
+  "results": {
+    "G0": {
+      "R": 0.11333363507537897,
+      "by_condition": {
+        "drift": 0.10615299371454599,
+        "shared_change": 0.11797356657714048,
+        "short_history": 0.1491119048256337,
+        "stable": 0.08009607518419572
+      },
+      "points": 53.89220096268597
+    },
+    "G1": {
+      "R": 0.11333371206238611,
+      "by_condition": {
+        "drift": 0.10615283381855371,
+        "shared_change": 0.11797353976297881,
+        "short_history": 0.14911243753953057,
+        "stable": 0.08009603712848135
+      },
+      "points": 53.89219723604119
+    },
+    "G2": {
+      "R": 0.11335028159648602,
+      "by_condition": {
+        "drift": 0.10439769614451476,
+        "shared_change": 0.11848706998710426,
+        "short_history": 0.15207351309639722,
+        "stable": 0.07844284715792788
+      },
+      "points": 53.89139518064624
+    },
+    "protected": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.14575610520224477,
+        "stable": 0.08563840608796552
+      },
+      "points": 53.532917808538166
+    }
+  },
+  "seconds": 13.558176000020467
+}
