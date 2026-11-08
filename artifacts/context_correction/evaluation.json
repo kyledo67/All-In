@@ -1,0 +1,90 @@
+{
+  "advanced": false,
+  "context_available_queries": 768,
+  "corr_signed_context_with_a_residual": -0.004578930000426585,
+  "exposure": "Repeatedly inspected public validation; exploratory.",
+  "fold_parameters": [
+    {
+      "beta": -0.0017514997145799329,
+      "fold": 0,
+      "intercept": -0.060759464921111735,
+      "ridge": 10.0
+    },
+    {
+      "beta": 0.0,
+      "fold": 1,
+      "intercept": 0.0,
+      "ridge": "inf"
+    },
+    {
+      "beta": -7.405347313435058e-05,
+      "fold": 2,
+      "intercept": -0.05397955293735835,
+      "ridge": 10.0
+    },
+    {
+      "beta": -0.0012672421976433804,
+      "fold": 3,
+      "intercept": -0.04965915124215912,
+      "ridge": 10.0
+    }
+  ],
+  "gain": 0.012434673721529066,
+  "no_correction_identity_max_abs": 0.0,
+  "paired_vs_control": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.003997701791069728,
+        -0.0008088024914025069
+      ],
+      "shared_change": [
+        -0.0009034329330637118,
+        0.0027006495228816254
+      ],
+      "short_history": [
+        -0.00020432484482177697,
+        0.0023098710954409093
+      ],
+      "stable": [
+        -0.0015811073389045305,
+        0.0008709192741507468
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.000982695904426486,
+      0.0005037178399806334
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "preregistration": "Does the already-selected q lag pair predict the remaining payout coordinate a?\n\nPREREGISTERED. The remaining conditional family is r(a) = (a, (1-a)v_2, (1-a)v_5,\n(1-a)v_20). Structural constants are now cross-fitted, which already gained 0.142352\npoints. This batch asks ONE question: does the parity of the SAME actual-tick lag pair the\nq model already selected carry information about a beyond the current forecast?\n\nContext is predeclared as that existing pair. No search over other pairs is run.\n\nCorrection, with the no-correction endpoint exactly reproducing the control:\n    logit(a') = logit(a) + beta * s * c_m + b\n  s   = parity sign of the selected pair at the QUERY tick, in {-1, +1}\n  c_m = the machine's own shrunk contrast between its two parity groups in the 1x rate\n        among positive outcomes, so the SIGN is machine-specific and opposite responses\n        between machines cannot cancel in a single pooled coefficient\n  beta, b = two global parameters fitted on fitting-side episodes only\nAt beta = b = 0 the output equals the control bit-for-bit, which is asserted.\n\nc_m construction, strictly pre-cutoff and by actual tick differences: within each parity\ngroup of the selected pair, count the machine's positive outcomes and how many were 1x,\nform p_g = (n1_g + kappa * a_pop) / (n_g + kappa) with the population a for that machine\ntype, then c_m = (p_same - p_diff) * n_eff / (n_eff + nu), where n_eff is the smaller\ngroup's positive count. The second factor is the support shrinkage, so a machine with an\nempty or tiny group contributes almost nothing.\n\nSUPERVISION, newly declared protocol. The released validation probability targets supply\nthe true a. beta and b, the ridge strength and the structural constants are all fitted on\neach outer fold's FITTING episodes only; the held fold is predicted from\ninference-available inputs alone. Ridge strength comes from a tiny predeclared grid\nincluding the no-correction endpoint, chosen by inner whole-episode folds.\nBoth matched arms use the SAME fold-fitted tail constants, so a gain cannot be\nmisattributed from better structural constants to the context.\n\nAdvancement: held-fold points improve AND the paired whole-episode interval against the\nmatched structural control lies below zero.\n\nExposure: 96 repeatedly inspected validation episodes; exploratory development result.\n",
+  "seconds": 37.460474916995736,
+  "selected_ridge_per_fold": [
+    10.0,
+    "none",
+    10.0,
+    10.0
+  ],
+  "structural_control_crossfit": {
+    "R": 0.12080571088225601,
+    "by_condition": {
+      "drift": 0.12076667137596737,
+      "shared_change": 0.13106166086284637,
+      "short_history": 0.14575610520224477,
+      "stable": 0.08563840608796552
+    },
+    "points": 53.532917808538166
+  },
+  "with_context_correction": {
+    "R": 0.12054542959407749,
+    "by_condition": {
+      "drift": 0.11842212441356512,
+      "shared_change": 0.13170965183708072,
+      "short_history": 0.14674762778919972,
+      "stable": 0.0853023143364644
+    },
+    "points": 53.545352482259695
+  }
+}

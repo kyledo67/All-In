@@ -1,0 +1,238 @@
+{
+  "csv": {
+    "test": {
+      "bytes": 201541,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 2.195365124993259,
+        "max_abs_sum_error": 4.440892098500626e-16,
+        "min_probability": 2.7640093464290072e-05,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_exact/test_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 1536,
+        "r_model": {
+          "deployment_blend_weight": 0.42,
+          "formulation": "pooled reference blended with a per-machine Dirichlet conditional-positive estimate",
+          "median_positive_support": 8.666120327758996,
+          "tail_by_type": {
+            "balanced": [
+              0.6956521739130428,
+              0.2608695652173908,
+              0.043478260869565175
+            ],
+            "jackpot": [
+              0.3684210526315787,
+              0.47368421052631515,
+              0.15789473684210487
+            ],
+            "steady": [
+              0.8000000000000034,
+              0.1959999999999996,
+              0.004000000000000003
+            ]
+          },
+          "tail_projection": "type-specific fixed tail split from train",
+          "tau": 32.0
+        },
+        "reference_notes": {
+          "two_head": {
+            "seeds": [
+              20261108,
+              20261109
+            ]
+          }
+        },
+        "reference_seconds": 0.4096904580073897,
+        "reference_variant": "two_head",
+        "seconds": 18.707290416990872,
+        "split": "test",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "candidates": 57,
+          "kappa": 0.5,
+          "local_model": "beta_template_dictionary",
+          "select": "hard"
+        }
+      },
+      "seconds": 18.823522125021555,
+      "sha256": "ad4b8943883455a3fbd41b3002caf9f224a18c154b2d4354fea54fbaa087e9e3"
+    },
+    "validation": {
+      "bytes": 105161,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 1.1149916250142269,
+        "max_abs_sum_error": 2.220446049250313e-16,
+        "min_probability": 2.0906872234008496e-05,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_exact/validation_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 768,
+        "r_model": {
+          "deployment_blend_weight": 0.42,
+          "formulation": "pooled reference blended with a per-machine Dirichlet conditional-positive estimate",
+          "median_positive_support": 8.796376338381346,
+          "tail_by_type": {
+            "balanced": [
+              0.6956521739130428,
+              0.2608695652173908,
+              0.043478260869565175
+            ],
+            "jackpot": [
+              0.3684210526315787,
+              0.47368421052631515,
+              0.15789473684210487
+            ],
+            "steady": [
+              0.8000000000000034,
+              0.1959999999999996,
+              0.004000000000000003
+            ]
+          },
+          "tail_projection": "type-specific fixed tail split from train",
+          "tau": 32.0
+        },
+        "reference_notes": {
+          "two_head": {
+            "seeds": [
+              20261108,
+              20261109
+            ]
+          }
+        },
+        "reference_seconds": 0.29069345898460597,
+        "reference_variant": "two_head",
+        "seconds": 9.434849959012354,
+        "split": "validation",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "candidates": 57,
+          "kappa": 0.5,
+          "local_model": "beta_template_dictionary",
+          "select": "hard"
+        }
+      },
+      "seconds": 9.545498042018153,
+      "sha256": "f2ef31933ab4f896c1d7c802be4adfe8d2d29102022a59447a461a6853014895"
+    }
+  },
+  "deployment": {
+    "alpha": 1.0,
+    "beta_templates": "beta_templates_deploy.json",
+    "candidate": "win_head_q_times_two_head_r",
+    "dirichlet_r": "dirichlet_r_deploy.json",
+    "local_win_model": "beta_templates",
+    "payout_order": [
+      0,
+      1,
+      2,
+      5,
+      20
+    ],
+    "reference_variant": "two_head",
+    "tail_projection": "tail_crossfit_deploy.json",
+    "win_head": "population_averaged.json"
+  },
+  "entry_zip_bytes": 481969,
+  "entry_zip_sha256": "b5b1a83c44d01f182ecdeea188d4355a810bbeb7a5c52d4101d559002e93d522",
+  "event_csv_limit_bytes": 10000000,
+  "event_zip_limit_bytes": 100000000,
+  "kit_enforced_zip_limit_bytes": 134217728,
+  "local_win_model": "beta_templates",
+  "package": "fallback",
+  "readme_bytes": 10110,
+  "reproduce_json_bytes": 145,
+  "requirements": [
+    "catboost==1.2.8",
+    "contourpy==1.4.0",
+    "cycler==0.12.1",
+    "fonttools==4.68.0",
+    "graphviz==0.21",
+    "kiwisolver==1.5.1",
+    "matplotlib==3.11.2",
+    "narwhals==2.28.0",
+    "numpy==2.2.6",
+    "packaging==25.0",
+    "pandas==3.1.1",
+    "pillow==13.0.0",
+    "plotly==7.1.0",
+    "pyparsing==3.3.3",
+    "python-dateutil==4.0.0",
+    "scipy==1.15.3",
+    "six==1.17.0",
+    "tzdata==2026.6"
+  ],
+  "requirements_conflicts_resolved": {},
+  "staged_bytes": 756104,
+  "staged_file_count": 31,
+  "two_head_rebuild_max_abs_deviation": 1.1102230246251565e-16,
+  "win_head_q_max_abs_deviation_vs_measured": 0.5591648570009949,
+  "within_event_zip_limit": true
+}

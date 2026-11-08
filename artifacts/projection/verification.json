@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "check": "projection_optimal",
+      "passed": true,
+      "detail": "over 300 random vectors the active-set solution is never worse than SLSQP; max excess squared distance 5.55e-17"
+    },
+    {
+      "check": "idempotent",
+      "passed": true,
+      "detail": "points already in conv(V) return unchanged to 2.22e-16"
+    },
+    {
+      "check": "boundary",
+      "passed": true,
+      "detail": "all three vertices are fixed points; an extreme 20x-only input maps to [0.2393 0.2393 0.3649 0.1303 0.0261] with weights [0.2393 0.2393 0.5213]"
+    },
+    {
+      "check": "rescale_is_not_projection",
+      "passed": true,
+      "detail": "the deployed rescale differs from the exact projection by mean max-abs 0.0903 (p90 0.1392) on random vectors, so the two operations are genuinely different"
+    }
+  ],
+  "passed": true
+}

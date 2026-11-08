@@ -1,0 +1,24 @@
+{
+  "tail_by_type": {
+    "balanced": [
+      0.6956521739130428,
+      0.2608695652173908,
+      0.043478260869565175
+    ],
+    "jackpot": [
+      0.3684210526315787,
+      0.47368421052631515,
+      0.15789473684210487
+    ],
+    "steady": [
+      0.8000000000000034,
+      0.1959999999999996,
+      0.004000000000000003
+    ]
+  },
+  "tail_provenance": "Fitted on ALL released validation probability targets AFTER the method was frozen. This is a deployment-constant fit, NOT the held-fold evaluation protocol: the held-fold number 53.532918 comes from fold-wise constants that never saw their own held fold.",
+  "formula": "r = [a, (1-a)*tail_type]; a = P(1x|positive) preserved from the base forecast",
+  "operator": "preserve-a rescale (measured 0.007264 BETTER than the exact Euclidean projection at identical constants, so the operator is not the source of gain)",
+  "heldfold_points": 53.532917808538166,
+  "heldfold_R": 0.12080571088225601
+}

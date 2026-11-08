@@ -1,0 +1,371 @@
+{
+  "attribution": "tail_projection_train vs tail_rescale_deployed isolates the OPERATOR at fixed constants. tail_projection_crossfit vs tail_projection_train isolates the CONSTANTS at a fixed operator. endpoint_projection_crossfit tests the richer geometry that hard snapping could not.",
+  "crossfit_parameters_per_fold": [
+    {
+      "balanced": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.499853108,
+          0.347928272,
+          0.130473102,
+          0.021745517
+        ],
+        "r_low": [
+          0.214066147,
+          0.546736593,
+          0.205026222,
+          0.034171037
+        ],
+        "tail": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ]
+      },
+      "jackpot": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.335146032,
+          0.244946199,
+          0.314930827,
+          0.104976942
+        ],
+        "r_low": [
+          0.12078673,
+          0.323920678,
+          0.416469444,
+          0.138823148
+        ],
+        "tail": [
+          0.3684210526315798,
+          0.4736842105263152,
+          0.15789473684210556
+        ]
+      },
+      "steady": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.75398939,
+          0.196808488,
+          0.04821808,
+          0.000984042
+        ],
+        "r_low": [
+          0.455122008,
+          0.435902394,
+          0.106796087,
+          0.002179512
+        ],
+        "tail": [
+          0.8000000000000003,
+          0.19600000000000026,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "balanced": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.499853108,
+          0.347928272,
+          0.130473102,
+          0.021745517
+        ],
+        "r_low": [
+          0.214066147,
+          0.546736593,
+          0.205026222,
+          0.034171037
+        ],
+        "tail": [
+          0.6956521739130457,
+          0.26086956521739085,
+          0.043478260869565355
+        ]
+      },
+      "jackpot": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.335146032,
+          0.244946199,
+          0.314930827,
+          0.104976942
+        ],
+        "r_low": [
+          0.12078673,
+          0.323920678,
+          0.416469444,
+          0.138823148
+        ],
+        "tail": [
+          0.3684210526315796,
+          0.47368421052631515,
+          0.15789473684210545
+        ]
+      },
+      "steady": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.75398939,
+          0.196808488,
+          0.04821808,
+          0.000984042
+        ],
+        "r_low": [
+          0.455122008,
+          0.435902394,
+          0.106796087,
+          0.002179512
+        ],
+        "tail": [
+          0.8000000000000005,
+          0.19600000000000017,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "balanced": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.499853108,
+          0.347928272,
+          0.130473102,
+          0.021745517
+        ],
+        "r_low": [
+          0.214066147,
+          0.546736593,
+          0.205026222,
+          0.034171037
+        ],
+        "tail": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ]
+      },
+      "jackpot": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.335146032,
+          0.244946199,
+          0.314930827,
+          0.104976942
+        ],
+        "r_low": [
+          0.12078673,
+          0.323920678,
+          0.416469444,
+          0.138823148
+        ],
+        "tail": [
+          0.3684210526315799,
+          0.4736842105263152,
+          0.15789473684210553
+        ]
+      },
+      "steady": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.75398939,
+          0.196808488,
+          0.04821808,
+          0.000984042
+        ],
+        "r_low": [
+          0.455122008,
+          0.435902394,
+          0.106796087,
+          0.002179512
+        ],
+        "tail": [
+          0.8000000000000008,
+          0.19600000000000012,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "balanced": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.499853108,
+          0.347928272,
+          0.130473102,
+          0.021745517
+        ],
+        "r_low": [
+          0.214066147,
+          0.546736593,
+          0.205026222,
+          0.034171037
+        ],
+        "tail": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ]
+      },
+      "jackpot": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.335146032,
+          0.244946199,
+          0.314930827,
+          0.104976942
+        ],
+        "r_low": [
+          0.12078673,
+          0.323920678,
+          0.416469444,
+          0.138823148
+        ],
+        "tail": [
+          0.3684210526315801,
+          0.4736842105263152,
+          0.1578947368421055
+        ]
+      },
+      "steady": {
+        "n_endpoints_seen": 2,
+        "r_high": [
+          0.75398939,
+          0.196808488,
+          0.04821808,
+          0.000984042
+        ],
+        "r_low": [
+          0.455122008,
+          0.435902394,
+          0.106796087,
+          0.002179512
+        ],
+        "tail": [
+          0.800000000000001,
+          0.19600000000000006,
+          0.004000000000000003
+        ]
+      }
+    }
+  ],
+  "exposure": "Repeatedly inspected public validation; exploratory. Cross-fitted arms use released probability supervision under the newly declared protocol.",
+  "paired_vs_original": {
+    "endpoint_projection_crossfit": [
+      -0.0040377865249449215,
+      -0.002331694101885506
+    ],
+    "tail_projection_crossfit": [
+      -0.003911990044184662,
+      -0.002263839520190043
+    ],
+    "tail_projection_train": [
+      -0.0018277107710575893,
+      -0.00040796732525719224
+    ],
+    "tail_rescale_deployed": [
+      -0.002377296176599742,
+      -0.00015897099033373608
+    ]
+  },
+  "protocol": "Verify the projection operator, then compare it against the deployed tail correction.\n\nPROTOCOL DECLARATION. Part A verifies the operator. Part B is a saved-prediction\ncomparison on the ORIGINAL win_head_release_dirichlet array using TRAIN-derived tail\nconstants, so nothing is retrained. Part C is a NEW PROTOCOL, declared explicitly rather\nthan slipped in: it uses legitimately released validation probability targets as\nsupervision, cross-fitted over complete-episode outer folds, with every target-dependent\nconstant fitted only on fitting-side episodes. That is a different rule from the train-only\nselection used previously, and results under it are labelled separately. The frozen base\nrecipe was itself selected on these same episodes, so every number here is conditional on\nthat recipe and is not a pristine evaluation of the whole research process.\n\nCandidates, q and all other components matched except where stated:\n  original          the win_head_release_dirichlet forecast            53.376905\n  tail_rescale      the DEPLOYED operation: preserve a = P(1x|pos), rescale the remainder\n  tail_projection   exact Euclidean projection onto conv{e0, e1, (0,0,v)} with the SAME\n                    train tail constants - isolates the projection operation\n  endpoint_proj     exact projection onto conv{e0, (0,r_L), (0,r_H)} with CROSS-FITTED\n                    endpoints - permits continuous uncertainty between endpoints, unlike\n                    the hard snap that previously lost 1.036641 points\n  tail_proj_crossfit exact projection with cross-fitted tail constants - isolates whether\n                    better structural constants, not the operator, carry the gain\n\nExposure: 96 repeatedly inspected validation episodes. Exploratory; new folds do not\ncreate an independent holdout.\n",
+  "results": {
+    "endpoint_projection_crossfit": {
+      "R": 0.12099151010153295,
+      "by_condition": {
+        "drift": 0.12168225893221954,
+        "shared_change": 0.1316791014826718,
+        "short_history": 0.1448064152893069,
+        "stable": 0.08579826470193355
+      },
+      "gain_over_original": 0.14714039220901753,
+      "points": 53.52404497208507
+    },
+    "original": {
+      "R": 0.12408166925852328,
+      "by_condition": {
+        "drift": 0.1232398370842923,
+        "shared_change": 0.13401013016936558,
+        "short_history": 0.1516957767850603,
+        "stable": 0.08738093299537494
+      },
+      "gain_over_original": 0.0,
+      "points": 53.376904579876054
+    },
+    "tail_projection_crossfit": {
+      "R": 0.1210917892984264,
+      "by_condition": {
+        "drift": 0.12182775300215844,
+        "shared_change": 0.13167915860609006,
+        "short_history": 0.14483192980416332,
+        "stable": 0.08602831578129377
+      },
+      "gain_over_original": 0.14235278400821016,
+      "points": 53.519257363884265
+    },
+    "tail_projection_train": {
+      "R": 0.12307027418755563,
+      "by_condition": {
+        "drift": 0.12401837255678283,
+        "shared_change": 0.1336211041582697,
+        "short_history": 0.1471958107730917,
+        "stable": 0.08744580926207829
+      },
+      "gain_over_original": 0.04806924324896755,
+      "points": 53.42497382312502
+    },
+    "tail_rescale_deployed": {
+      "R": 0.1229175919663393,
+      "by_condition": {
+        "drift": 0.12290750974918092,
+        "shared_change": 0.13328118144725878,
+        "short_history": 0.1479569695792634,
+        "stable": 0.08752470708965411
+      },
+      "gain_over_original": 0.05533339489295486,
+      "points": 53.43223797476901
+    }
+  },
+  "seconds": 1.4195210000034422,
+  "train_tail_constants": {
+    "balanced": [
+      0.6756756756756757,
+      0.25675675675675674,
+      0.06756756756756757
+    ],
+    "jackpot": [
+      0.44680851063829785,
+      0.40425531914893614,
+      0.14893617021276595
+    ],
+    "steady": [
+      0.8,
+      0.2,
+      0.0
+    ]
+  },
+  "verification": [
+    {
+      "check": "projection_optimal",
+      "detail": "over 300 random vectors the active-set solution is never worse than SLSQP; max excess squared distance 5.55e-17",
+      "passed": true
+    },
+    {
+      "check": "idempotent",
+      "detail": "points already in conv(V) return unchanged to 2.22e-16",
+      "passed": true
+    },
+    {
+      "check": "boundary",
+      "detail": "all three vertices are fixed points; an extreme 20x-only input maps to [0.2393 0.2393 0.3649 0.1303 0.0261] with weights [0.2393 0.2393 0.5213]",
+      "passed": true
+    },
+    {
+      "check": "rescale_is_not_projection",
+      "detail": "the deployed rescale differs from the exact projection by mean max-abs 0.0903 (p90 0.1392) on random vectors, so the two operations are genuinely different",
+      "passed": true
+    }
+  ],
+  "what_tail_train_actually_is": "It preserves a = P(1x | positive), hence p_0 and p_1, and rescales the remaining mass to the fixed tail ratio. It lands in the declared family but is NOT the nearest point in it. Confirmed numerically: it differs from the exact projection by a mean max-abs of about 0.08 on random probability vectors."
+}

@@ -121,7 +121,7 @@ def copy(source, target):
     return target
 
 
-def stage(name, code, win_model='dense', dirichlet_r=False, tail_projection=False):
+def stage(name, code, win_model='dense', dirichlet_r=False, tail_projection=None):
     """Create one package's source tree and return its description.
 
     `win_model` selects the LOCAL win model: 'dense' is the measured 37-coefficient
@@ -180,9 +180,9 @@ def stage(name, code, win_model='dense', dirichlet_r=False, tail_projection=Fals
              model / 'win_head/dirichlet_r_deploy.json')
         deployment['dirichlet_r'] = 'dirichlet_r_deploy.json'
     if tail_projection:
-        copy(ROOT / 'artifacts/win_head/tail_projection_deploy.json',
-             model / 'win_head/tail_projection_deploy.json')
-        deployment['tail_projection'] = 'tail_projection_deploy.json'
+        copy(ROOT / 'artifacts/win_head' / tail_projection,
+             model / 'win_head' / tail_projection)
+        deployment['tail_projection'] = tail_projection
     if primary:
         copy(ROOT / 'artifacts/blend_release/model/population.json', model / 'population.json')
         copy(ROOT / 'artifacts/mtd_01/change.json', model / 'mtd/change.json')
@@ -261,8 +261,11 @@ def main():
                         help='Permit writing into a protected candidate directory. Only for a '
                              'deliberate regeneration, and it does not guarantee byte-identical '
                              'archives if the staged file set has changed since.')
-    parser.add_argument('--tail-projection', action='store_true',
-                        help='Project r onto the type-specific fixed tail split estimated from train.')
+    parser.add_argument('--tail-projection', nargs='?', const='tail_projection_deploy.json',
+                        default=None,
+                        help='Config file under artifacts/win_head/ holding the type-specific '
+                             'fixed tail split. Default tail_projection_deploy.json (train-only '
+                             'constants); pass tail_crossfit_deploy.json for the target-fitted ones.')
     parser.add_argument('--dirichlet-r', action='store_true',
                         help='Blend the per-machine conjugate Dirichlet conditional-positive '
                              'distribution into r at the frozen deployment weight.')
