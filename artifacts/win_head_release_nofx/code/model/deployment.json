@@ -1,8 +1,8 @@
 {
   "alpha": 1.0,
+  "beta_cells": "beta_cells_deploy.json",
   "candidate": "win_head_q_times_two_head_r",
-  "pair_dict": "pair_dict_deploy.json",
-  "pair_select": "hard",
+  "local_win_model": "beta_cells",
   "payout_order": [
     0,
     1,

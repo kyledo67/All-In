@@ -1,0 +1,65 @@
+{
+  "compact_memory_selection": {
+    "R": 0.29660975569270315,
+    "by_condition": {
+      "drift": 0.41315571863744766,
+      "shared_change": 0.32500839804373854,
+      "short_history": 0.3180998879870635,
+      "stable": 0.13017501810256293
+    },
+    "points": 46.274524571925255
+  },
+  "exposure": "Repeatedly inspected public validation; exploratory, another adaptive round.",
+  "fallbacks": 0,
+  "frozen_baseline": {
+    "R": 0.23873415540347062,
+    "by_condition": {
+      "drift": 0.2796501929127278,
+      "shared_change": 0.23297832458218629,
+      "short_history": 0.3367841058796996,
+      "stable": 0.10552399823926885
+    },
+    "points": 48.43654285164784
+  },
+  "gain": -2.162018279722588,
+  "half_life_histogram": {
+    "0": 222,
+    "128": 16,
+    "16": 129,
+    "256": 9,
+    "32": 86,
+    "64": 56,
+    "8": 250
+  },
+  "paired_vs_frozen": {
+    "by_condition_ci95": {
+      "drift": [
+        0.06407898881114876,
+        0.21809303014705014
+      ],
+      "shared_change": [
+        0.04186558066105833,
+        0.14242030444205325
+      ],
+      "short_history": [
+        -0.05779681279663802,
+        0.02582804729144972
+      ],
+      "stable": [
+        0.007697509061201969,
+        0.047793240783433735
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      0.03277774417031712,
+      0.08457016014701396
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "preregistration": "Select the recency half-life with the COMPACT predictor, at historical origins.\n\nPREREGISTRATION. Hypothesis: the deployed compact pair model inherits its half-life from\nthe old dense 37-coefficient model's held-out likelihood, which is a procedure mismatch;\nselecting memory with the compact predictor itself should fit better. Candidates: the\nfrozen half-life set 8, 16, 32, 64, 128, 256, infinity. Primary metric: official points /\nR on concatenated held-fold predictions. Selection: the half-life is chosen per machine\nfrom that machine's own pre-cutoff history only; the pair prior and lambda come from\ntraining folds. Matched control: the frozen compact baseline at 48.436543 (two_head r,\nidentity calibration). A follow-up is justified only if held-fold points improve.\n\nCorrected procedure, per machine and per candidate half-life H:\n  1. split the machine's complete-lag transitions by ACTUAL tick into a prefix and a\n     held-out recent block (the same block for every H, so candidates are compared on\n     identical eligible target ticks)\n  2. anchor the decay at the historical origin, i.e. the first held-out tick, NOT at the\n     final cutoff - this is what the frozen implementation got wrong\n  3. fit all 29 compact candidates on the prefix alone and select by evidence + prior,\n     so pair identity is chosen without seeing the block it is scored on\n  4. predict every held-out tick and accumulate UNWEIGHTED binary log loss, which keeps\n     the comparison on a common scale across half-lives regardless of their total\n     observation weight\n  5. choose H, then refit on the full pre-cutoff history with decay anchored at the\n     cutoff and emit the prediction for the cutoff tick\n\nStep 3 is the part the frozen selector could not do: it chose pair identity from the\ncomplete final history and then scored earlier outcomes with it.\n",
+  "q_max_abs_change": 0.5937646354602143,
+  "seconds": 25.49134908299311
+}

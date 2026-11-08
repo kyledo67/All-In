@@ -1,0 +1,614 @@
+{
+  "baseline_two_head_identity": {
+    "R": 0.23873415540347062,
+    "points": 48.43654285164784
+  },
+  "best": {
+    "R": 0.22680341940379556,
+    "gain_over_baseline": 0.47104825138227824,
+    "gap_to_50": 1.0924088969698786,
+    "key": "affine+fitted_simplex",
+    "points": 48.90759110303012,
+    "target_50_met": false
+  },
+  "exposure": "Another adaptive round on repeatedly inspected public validation. Not independent, not confirmed. Paired intervals do not correct for research selection.",
+  "fitted_parameters": {
+    "affine+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.2189664327573331,
+          "tabpfn": 0.20538128374980505,
+          "two_head": 0.5756522834928619
+        },
+        {
+          "mtd_lag7": 0.18454058067032317,
+          "tabpfn": 0.3529019907193955,
+          "two_head": 0.4625574286102814
+        },
+        {
+          "mtd_lag7": 0.2243279437558474,
+          "tabpfn": 0.33089377242527557,
+          "two_head": 0.44477828381887713
+        },
+        {
+          "mtd_lag7": 0.19161602999580019,
+          "tabpfn": 0.3077498052457273,
+          "two_head": 0.5006341647584724
+        }
+      ],
+      "theta_per_fold": [
+        [
+          1.207141126174649,
+          -0.05053783869043792
+        ],
+        [
+          1.251037548225091,
+          0.001290330969858685
+        ],
+        [
+          1.1934845485692334,
+          -0.046452988695407114
+        ],
+        [
+          1.2002581712095148,
+          -0.1295244134664218
+        ]
+      ]
+    },
+    "affine+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.2087886949575137,
+          -0.049913710539513476
+        ],
+        [
+          1.2535956732605145,
+          0.0034025779046249005
+        ],
+        [
+          1.1960035449011004,
+          -0.04586538178375364
+        ],
+        [
+          1.201712920536626,
+          -0.12772380974079542
+        ]
+      ]
+    },
+    "affine+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.207141126174649,
+          -0.05053783869043792
+        ],
+        [
+          1.251037548225091,
+          0.001290330969858685
+        ],
+        [
+          1.1934845485692334,
+          -0.046452988695407114
+        ],
+        [
+          1.2002581712095148,
+          -0.1295244134664218
+        ]
+      ]
+    },
+    "affine+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.2092120217809408,
+          -0.05568054893654438
+        ],
+        [
+          1.251435228398945,
+          -0.005038138339171156
+        ],
+        [
+          1.1956103185700557,
+          -0.05263859792677187
+        ],
+        [
+          1.200375888781118,
+          -0.1345224464787457
+        ]
+      ]
+    },
+    "beta+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.2181341228547216,
+          "tabpfn": 0.2079536409874507,
+          "two_head": 0.5739122361578277
+        },
+        {
+          "mtd_lag7": 0.18390521693781467,
+          "tabpfn": 0.3558322077685678,
+          "two_head": 0.46026257529361764
+        },
+        {
+          "mtd_lag7": 0.22446590158021554,
+          "tabpfn": 0.33015744187598045,
+          "two_head": 0.44537665654380404
+        },
+        {
+          "mtd_lag7": 0.19183058606207118,
+          "tabpfn": 0.3066349407770216,
+          "two_head": 0.5015344731609074
+        }
+      ],
+      "theta_per_fold": [
+        [
+          1.3607343342517921,
+          1.0530461591512705,
+          0.19749852544912871
+        ],
+        [
+          1.427329531610702,
+          1.073859334296948,
+          0.2865887436148271
+        ],
+        [
+          1.1594891398527332,
+          1.228079214354926,
+          -0.10249802006553378
+        ],
+        [
+          1.1039427303876836,
+          1.296070804562314,
+          -0.28564684624250164
+        ]
+      ]
+    },
+    "beta+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.3657031510321804,
+          1.051099283774409,
+          0.20353294528373128
+        ],
+        [
+          1.4284276040915782,
+          1.0774455832292178,
+          0.286540258719336
+        ],
+        [
+          1.1642261024474818,
+          1.2283889533214474,
+          -0.09824154641740523
+        ],
+        [
+          1.1050007380064604,
+          1.2979857089881814,
+          -0.2844753142221473
+        ]
+      ]
+    },
+    "beta+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.3607343342517921,
+          1.0530461591512705,
+          0.19749852544912871
+        ],
+        [
+          1.427329531610702,
+          1.073859334296948,
+          0.2865887436148271
+        ],
+        [
+          1.1594891398527332,
+          1.228079214354926,
+          -0.10249802006553378
+        ],
+        [
+          1.1039427303876836,
+          1.296070804562314,
+          -0.28564684624250164
+        ]
+      ]
+    },
+    "beta+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.3520364082906213,
+          1.0658918260155898,
+          0.17485177154230844
+        ],
+        [
+          1.4167216697437541,
+          1.0853775215141839,
+          0.26238313673586333
+        ],
+        [
+          1.1525633368179076,
+          1.2394121324247227,
+          -0.12355008888482494
+        ],
+        [
+          1.0981091780880843,
+          1.3018802798838094,
+          -0.30008611872324786
+        ]
+      ]
+    },
+    "identity+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.21514259695145352,
+          "tabpfn": 0.21431897455939364,
+          "two_head": 0.5705384284891528
+        },
+        {
+          "mtd_lag7": 0.18600057381578008,
+          "tabpfn": 0.36248012908523725,
+          "two_head": 0.4515192970989827
+        },
+        {
+          "mtd_lag7": 0.22292292028179342,
+          "tabpfn": 0.34020186893651266,
+          "two_head": 0.436875210781694
+        },
+        {
+          "mtd_lag7": 0.18731881277891316,
+          "tabpfn": 0.3152604281239386,
+          "two_head": 0.4974207590971482
+        }
+      ],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "identity+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "identity+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "identity+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "signal+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.2192066320286897,
+          "tabpfn": 0.20521785652030028,
+          "two_head": 0.57557551145101
+        },
+        {
+          "mtd_lag7": 0.18442079207076711,
+          "tabpfn": 0.35280953037668356,
+          "two_head": 0.4627696775525494
+        },
+        {
+          "mtd_lag7": 0.22357296849514902,
+          "tabpfn": 0.3318845604612734,
+          "two_head": 0.4445424710435777
+        },
+        {
+          "mtd_lag7": 0.19216205344702272,
+          "tabpfn": 0.30655291929340295,
+          "two_head": 0.5012850272595744
+        }
+      ],
+      "theta_per_fold": [
+        [
+          1.2061470954653468,
+          -0.053035474722696485,
+          0.037230759241665454
+        ],
+        [
+          1.2507916417275098,
+          0.0002405858235781591,
+          0.06605130063737222
+        ],
+        [
+          1.1917359048574663,
+          -0.05521073259004208,
+          0.08122945266542367
+        ],
+        [
+          1.2028582321688281,
+          -0.126590373257106,
+          -0.044484306213900274
+        ]
+      ]
+    },
+    "signal+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.2077860193977916,
+          -0.05245192043642288,
+          0.03818575772781645
+        ],
+        [
+          1.2533811124709762,
+          0.0024318804900865312,
+          0.06682017843300853
+        ],
+        [
+          1.194329854653889,
+          -0.05446856648129429,
+          0.08028192375263232
+        ],
+        [
+          1.2042850685903042,
+          -0.12485098573463753,
+          -0.04387373752689111
+        ]
+      ]
+    },
+    "signal+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.2061470954653468,
+          -0.053035474722696485,
+          0.037230759241665454
+        ],
+        [
+          1.2507916417275098,
+          0.0002405858235781591,
+          0.06605130063737222
+        ],
+        [
+          1.1917359048574663,
+          -0.05521073259004208,
+          0.08122945266542367
+        ],
+        [
+          1.2028582321688281,
+          -0.126590373257106,
+          -0.044484306213900274
+        ]
+      ]
+    },
+    "signal+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.208218823865265,
+          -0.05822464643320753,
+          0.03892193139150839
+        ],
+        [
+          1.2512501636180993,
+          -0.005856853915777399,
+          0.06532185631076311
+        ],
+        [
+          1.1939414041640786,
+          -0.06087004458453102,
+          0.0780691264369283
+        ],
+        [
+          1.2031574691244171,
+          -0.13155760785961457,
+          -0.04668054360786733
+        ]
+      ]
+    }
+  },
+  "frozen_q_source": "/Users/ayan/Downloads/All-In/artifacts/pair_dict/predictions/oof_best_r_two_head_only.csv",
+  "grid": {
+    "affine+fitted_simplex": {
+      "R": 0.22680341940379556,
+      "by_condition": {
+        "drift": 0.25557006454299036,
+        "shared_change": 0.21421881526914624,
+        "short_history": 0.32840130733563805,
+        "stable": 0.10902349046740753
+      },
+      "points": 48.90759110303012
+    },
+    "affine+full_vector_derived": {
+      "R": 0.2270664619734533,
+      "by_condition": {
+        "drift": 0.2564093757109271,
+        "shared_change": 0.21358480102185523,
+        "short_history": 0.32655394735831367,
+        "stable": 0.1117177238027172
+      },
+      "points": 48.89710692891389
+    },
+    "affine+two_head": {
+      "R": 0.23305621927603934,
+      "by_condition": {
+        "drift": 0.26485951268077024,
+        "shared_change": 0.2180554773212117,
+        "short_history": 0.33648740325134946,
+        "stable": 0.11282248385082595
+      },
+      "points": 48.65958182768635
+    },
+    "affine+uniform_mix": {
+      "R": 0.22783856111093728,
+      "by_condition": {
+        "drift": 0.2548578550097796,
+        "shared_change": 0.21630437218942458,
+        "short_history": 0.3307566920459231,
+        "stable": 0.10943532519862184
+      },
+      "points": 48.86635906410411
+    },
+    "beta+fitted_simplex": {
+      "R": 0.22764300483289795,
+      "by_condition": {
+        "drift": 0.2571535208856632,
+        "shared_change": 0.21491385654623849,
+        "short_history": 0.3296583997151134,
+        "stable": 0.10884624218457677
+      },
+      "points": 48.87414318641189
+    },
+    "beta+full_vector_derived": {
+      "R": 0.2279023588700851,
+      "by_condition": {
+        "drift": 0.2579404305824317,
+        "shared_change": 0.21430908754100267,
+        "short_history": 0.3278392276664373,
+        "stable": 0.11152068969046872
+      },
+      "points": 48.86382012916073
+    },
+    "beta+two_head": {
+      "R": 0.23389525664301364,
+      "by_condition": {
+        "drift": 0.2664403154721705,
+        "shared_change": 0.21873175905913486,
+        "short_history": 0.3377663041234006,
+        "stable": 0.11264264791734854
+      },
+      "points": 48.626493761908506
+    },
+    "beta+uniform_mix": {
+      "R": 0.2286617777035169,
+      "by_condition": {
+        "drift": 0.2563921588017944,
+        "shared_change": 0.21706777177329656,
+        "short_history": 0.33195611244018414,
+        "stable": 0.10923106779879246
+      },
+      "points": 48.83361807848013
+    },
+    "identity+fitted_simplex": {
+      "R": 0.2326616592345903,
+      "by_condition": {
+        "drift": 0.2709279849419114,
+        "shared_change": 0.22942474834003773,
+        "short_history": 0.32839168683935926,
+        "stable": 0.10190221681705287
+      },
+      "points": 48.675157169451055
+    },
+    "identity+full_vector_derived": {
+      "R": 0.23285572057121431,
+      "by_condition": {
+        "drift": 0.271646395029468,
+        "shared_change": 0.22893662630935985,
+        "short_history": 0.32656918126102885,
+        "stable": 0.10427067968500053
+      },
+      "points": 48.667495310968285
+    },
+    "identity+two_head": {
+      "R": 0.23873415540347062,
+      "by_condition": {
+        "drift": 0.2796501929127278,
+        "shared_change": 0.23297832458218629,
+        "short_history": 0.3367841058796996,
+        "stable": 0.10552399823926885
+      },
+      "points": 48.43654285164784
+    },
+    "identity+uniform_mix": {
+      "R": 0.23374335898577367,
+      "by_condition": {
+        "drift": 0.27038252565644383,
+        "shared_change": 0.2315490947479319,
+        "short_history": 0.33094054119677946,
+        "stable": 0.10210127434193954
+      },
+      "points": 48.63248062329944
+    },
+    "signal+fitted_simplex": {
+      "R": 0.22817392094397332,
+      "by_condition": {
+        "drift": 0.254855093320756,
+        "shared_change": 0.2184338928042365,
+        "short_history": 0.330430974992673,
+        "stable": 0.10897572265822783
+      },
+      "points": 48.85301582847815
+    },
+    "signal+full_vector_derived": {
+      "R": 0.22842160162689093,
+      "by_condition": {
+        "drift": 0.25568325833037725,
+        "shared_change": 0.21779099911522248,
+        "short_history": 0.32855729509949494,
+        "stable": 0.11165485396246908
+      },
+      "points": 48.84316583210316
+    },
+    "signal+two_head": {
+      "R": 0.23443033708288416,
+      "by_condition": {
+        "drift": 0.2641615552141567,
+        "shared_change": 0.2223007047868039,
+        "short_history": 0.33849036678575517,
+        "stable": 0.11276872154482086
+      },
+      "points": 48.60541595387847
+    },
+    "signal+uniform_mix": {
+      "R": 0.2292285393001322,
+      "by_condition": {
+        "drift": 0.2541986484010085,
+        "shared_change": 0.22050192065925753,
+        "short_history": 0.33282045928190673,
+        "stable": 0.10939312885835611
+      },
+      "points": 48.81110231475859
+    }
+  },
+  "paired_best_vs_baseline": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.0400884479754244,
+        -0.008124202075025459
+      ],
+      "shared_change": [
+        -0.030084871986024733,
+        -0.004581312452899084
+      ],
+      "short_history": [
+        -0.022866730739530598,
+        0.005508198447111866
+      ],
+      "stable": [
+        -0.0049943558504599445,
+        0.011950318267696066
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.018314320684195074,
+      -0.005010944165356406
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "preregistration": "Calibration ladder, signal correction, and conditional-r refit for the frozen compact q.\n\nPREREGISTRATION (recorded before any public-validation number in this script was read).\n\nHypotheses\n  H1 a small monotone calibration of q improves the official five-vector score\n  H2 a signal-dependent correction adds information beyond probability-only calibration\n  H3 refitting the conditional positive-payout weights r AFTER q is frozen improves the\n     score, because the deployed r was extracted from a full-vector blend selected under\n     the older DENSE win masses\n\nCandidates and ranges\n  calibration   identity (a,b,c)=(1,1,0); affine-logit (equal-slope subfamily, a=b);\n                beta calibration g(q)=sigmoid(a*log q - b*log(1-q) + c), a,b >= 0\n  signal        logit(q') = a*logit(q) + b + gamma*signal, gamma unconstrained\n  r formulation two_head only; existing full-vector-derived r; uniform mix of the three\n                primitive conditional r; official-weighted simplex over those three\n\nPrimary metric    official technical points / R on concatenated held-fold predictions\nSelection rule    every coefficient is fitted on the FITTING episodes of each outer fold\n                  only, by minimizing the exact official-weighted five-vector squared\n                  error with reference normalization taken from those fitting episodes\nMatched controls  identity calibration, and each r formulation above\nFollow-up rule    a mechanism is carried into the finalist only if it improves the\n                  concatenated held-fold points AND its paired whole-episode interval\n                  against the frozen baseline lies below zero\n\nExposure: these 96 public-validation episodes have been inspected repeatedly. This is\nanother adaptive round. Paired intervals describe variation in fixed forecasts; they do\nnot correct for repeated research selection (P9), and no split of these episodes creates\nuntouched data.\n",
+  "seconds": 3.166942125011701
+}

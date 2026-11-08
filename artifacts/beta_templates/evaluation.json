@@ -1,0 +1,107 @@
+{
+  "exposure": "Repeatedly inspected public validation; exploratory, another adaptive round.",
+  "gain": 1.9051054592651369,
+  "paired_vs_protected": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.05058026583565093,
+        -0.015179779813524205
+      ],
+      "shared_change": [
+        -0.06341369008742383,
+        -0.018423983551255043
+      ],
+      "short_history": [
+        -0.15865802930938933,
+        -0.03615068385992046
+      ],
+      "stable": [
+        -0.03240297932004296,
+        0.012562502460475541
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.06085659172709158,
+      -0.025116627462770845
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "parity_templates": {
+    "R": 0.12799887797317455,
+    "by_condition": {
+      "drift": 0.1254550278283578,
+      "shared_change": 0.13554887886904932,
+      "short_history": 0.16319343969214206,
+      "stable": 0.08779816550314908
+    },
+    "points": 53.19154227157564
+  },
+  "preregistration": "Cell-support diagnosis and the parity-template experiment for the Beta-cell win head.\n\nPREREGISTRATION (frozen before any public-validation number below was read).\n\nDiagnosis first. For every query we record the QUERIED cell's own support, not the\nmachine-wide ESS, because a machine with 200 transitions can still have an almost empty\ncell at the context it is being asked about.\n\nHypothesis. Where the queried cell's support is thin, estimating four free cell\nprobabilities is noisy. For an approximately parity-shaped response, two probabilities\n    theta_00 = theta_11 = theta_same ,  theta_01 = theta_10 = theta_different\nhalve the number of estimated quantities while leaving both free (they are NOT\nconstrained to sum to one). This tests estimation noise, not a claim that the simulator\nimplements XOR.\n\nCandidates. null; 28 pairs x {full 4-cell, parity 2-cell} = 57 total. Each pair's\naggregate prior mass is preserved when its two templates are added, so introducing the\nparity variant cannot inflate a pair's total prior weight.\nRanges. template prior split learned on train; kappa held at the protected 0.5 control.\nPrimary metric. official points / R on concatenated held-fold predictions.\nSelection. template and pair priors learned on TRAIN only; per-machine selection uses\nonly that machine's own pre-cutoff history.\nMatched controls. the protected four-cell candidate at 51.286436812 with identical\neligible transitions, identical per-machine half-lives, identical r, identical kappa.\nAdvancement. carried forward only if held-fold points improve AND the paired\nwhole-episode interval against the protected candidate lies below zero.\n\nExposure: these 96 episodes remain development data. This is another adaptive round;\nnew folds do not restore independence.\n",
+  "protected": {
+    "R": 0.16989995268296643,
+    "by_condition": {
+      "drift": 0.15774525378565485,
+      "shared_change": 0.1743204283005354,
+      "short_history": 0.2523276919076198,
+      "stable": 0.09520643673805569
+    },
+    "points": 51.286436812310505
+  },
+  "q_max_abs_change": 0.6428738664554632,
+  "queried_cell_support": {
+    "0-1": {
+      "mean_full_vector_loss_protected": 0.22630687908006103,
+      "mean_posterior_sd": 0.32020844866060366,
+      "mean_prior_fraction": 0.6836987199592984,
+      "queries": 8,
+      "share_of_total_loss": 0.07297679380132174
+    },
+    "1-3": {
+      "mean_full_vector_loss_protected": 0.04234575881944165,
+      "mean_posterior_sd": 0.20186930162666247,
+      "mean_prior_fraction": 0.1693193832810157,
+      "queries": 4,
+      "share_of_total_loss": 0.006827582356950026
+    },
+    "20-inf": {
+      "mean_full_vector_loss_protected": 0.017453766543808487,
+      "mean_posterior_sd": 0.038793419980649675,
+      "mean_prior_fraction": 0.01269304850369889,
+      "queries": 237,
+      "share_of_total_loss": 0.1667379836013377
+    },
+    "3-8": {
+      "mean_full_vector_loss_protected": 0.04447070755991933,
+      "mean_posterior_sd": 0.12398777973970294,
+      "mean_prior_fraction": 0.0815947395609866,
+      "queries": 226,
+      "share_of_total_loss": 0.4051161111363784
+    },
+    "8-20": {
+      "mean_full_vector_loss_protected": 0.029494470037018904,
+      "mean_posterior_sd": 0.08124925910449196,
+      "mean_prior_fraction": 0.04035990942358227,
+      "queries": 293,
+      "share_of_total_loss": 0.3483415291040121
+    }
+  },
+  "seconds": 10.13454262498999,
+  "selection_margin": {
+    "median": 3.955209835105354,
+    "p10": 0.31693190866737414
+  },
+  "train_oof_brier": 0.08695649682618396,
+  "train_template_selections": {
+    "full": 45,
+    "null": 33,
+    "parity": 690
+  },
+  "validation_template_selections": {
+    "full": 6,
+    "null": 0,
+    "parity": 762
+  }
+}

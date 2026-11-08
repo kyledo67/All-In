@@ -1538,7 +1538,7 @@
     "main-test-e00191-m006-next": 0.552929321882526,
     "main-test-e00191-m007-next": 0.8585696340179937
   },
-  "feature_seconds": 2.3820600000035483,
+  "feature_seconds": 2.1582724999752827,
   "max_abs_sum_error": 4.440892098500626e-16,
   "min_probability": 0.0003514211195283925,
   "payout_order": [
@@ -3102,9 +3102,9 @@
       "two_head": 0.31705741397667647
     }
   },
-  "reference_seconds": 343.9386395000038,
+  "reference_seconds": 247.22234366700286,
   "reference_variant": "three_component",
-  "seconds": 355.6945547920186,
+  "seconds": 256.99602712498745,
   "split": "test",
   "win_head": {
     "half_lives": [
@@ -3135,5 +3135,8 @@
     "train_oof_episode_win_brier": 0.14769297810424872
   },
   "win_head_fallback_queries": [],
-  "win_head_fallbacks": 0
+  "win_head_fallbacks": 0,
+  "win_model": {
+    "local_model": "dense_37_coefficient"
+  }
 }

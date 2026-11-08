@@ -6,10 +6,10 @@
 - Round: main
 - Season ID: 5fffdc4d0c700bbf61c3f911
 - Forecast file: `submission.csv`, written by the command below to `/output/submission.csv`
-- Forecast SHA-256: `84a6d8f81109469aeef45f8c3f87f9a7329f922db0e9dabc65f051c5e1fa253f`
+- Forecast SHA-256: `0916c5288c2a063a5f3ac9d8176be2ee40f59bab84e11b110d3ec687a0becadf`
   (the development copy is `artifacts/win_head_release_nofx/test_submission.csv`;
   `check_submission.py` reprints this hash)
-- Code version: repository commit `f002c77` plus the uncommitted win-head work
+- Code version: repository commit `5640a05` plus the uncommitted win-head work
 - Environment: `"image": "python"` in `reproduce.json`; extra packages pinned in
   `requirements.txt` at this archive's root
 
@@ -86,8 +86,8 @@ python predict.py --data /data --out /output/submission.csv
   weight or hyperparameter is fitted at prediction time. The only quantities computed
   from the query's own machine are `u_m` and the half-life mixture, both read strictly
   from ticks below the cutoff.
-- Measured runtime and hardware: **15.4 s** for the
-  1536 test queries and 10.3 s
+- Measured runtime and hardware: **11.4 s** for the
+  1536 test queries and 5.9 s
   for the 768 validation queries, with
   `OMP_NUM_THREADS=2` on an arm64 macOS laptop. The event budget is 30 minutes (1800 s)
   on two cores.
@@ -122,10 +122,10 @@ python check_submission.py /output/submission.csv --data /path/to/kit/public
   **1.110e-16**.
 - The win head `q` reproduces the measured held-fold prediction in
   `artifacts/win_head/predictions/oof_win_head.csv`: max absolute deviation
-  **5.870e-01**.
+  **5.459e-01**.
 - Composed five-vectors on test: all finite and non-negative, minimum probability
-  2.509e-04, max absolute sum error
-  3.331e-16 (the contract allows 1e-6).
+  5.171e-05, max absolute sum error
+  4.441e-16 (the contract allows 1e-6).
 - Win-head query-basis fallbacks: 0 on test,
   0 on validation.
 
@@ -140,7 +140,7 @@ composed five-vector is validated before it is written.
 
 ## Development score, and what it is not
 
-Development score of this candidate: **40.589853 / 60 (R = 0.478200)** on the released public validation
+Development score of this candidate: **not quoted here - this archive deploys the compact pair-dictionary local win model, whose own development score is recorded in `artifacts/win_head/pair_dict_deploy.json` of the development repository, not the dense-model score** on the released public validation
 split, with the organizer's own scorer and held-fold discipline.
 
 This number is **exploratory and not confirmed**. All 96 public-validation episodes were

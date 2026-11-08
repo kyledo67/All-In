@@ -1,0 +1,188 @@
+{
+  "csv": {
+    "test": {
+      "bytes": 201194,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 2.5282904579944443,
+        "max_abs_sum_error": 3.3306690738754696e-16,
+        "min_probability": 6.954920204319314e-05,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_nofx/test_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 1536,
+        "reference_notes": {
+          "two_head": {
+            "seeds": [
+              20261108,
+              20261109
+            ]
+          }
+        },
+        "reference_seconds": 0.3990683750016615,
+        "reference_variant": "two_head",
+        "seconds": 11.592785457993159,
+        "split": "test",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "candidates": 57,
+          "kappa": 0.5,
+          "local_model": "beta_template_dictionary",
+          "select": "hard"
+        }
+      },
+      "seconds": 11.757227750000311,
+      "sha256": "13ea35ae5ed03af765db71699eca1a25d2e36398c93fa9b3c702256ad0382fc2"
+    },
+    "validation": {
+      "bytes": 105035,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 1.2975270840106532,
+        "max_abs_sum_error": 3.3306690738754696e-16,
+        "min_probability": 6.566727083732459e-05,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_nofx/validation_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 768,
+        "reference_notes": {
+          "two_head": {
+            "seeds": [
+              20261108,
+              20261109
+            ]
+          }
+        },
+        "reference_seconds": 0.33328824999625795,
+        "reference_variant": "two_head",
+        "seconds": 5.963192333991174,
+        "split": "validation",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "candidates": 57,
+          "kappa": 0.5,
+          "local_model": "beta_template_dictionary",
+          "select": "hard"
+        }
+      },
+      "seconds": 6.10086441700696,
+      "sha256": "39c6768e145aa5c28df52b75a636fc61b2349e15245fa6ddfcfe1b0eb4706a37"
+    }
+  },
+  "deployment": {
+    "alpha": 1.0,
+    "beta_templates": "beta_templates_deploy.json",
+    "candidate": "win_head_q_times_two_head_r",
+    "local_win_model": "beta_templates",
+    "payout_order": [
+      0,
+      1,
+      2,
+      5,
+      20
+    ],
+    "reference_variant": "two_head",
+    "win_head": "population_averaged.json"
+  },
+  "entry_zip_bytes": 479197,
+  "entry_zip_sha256": "421dcd8cf9072494527980db68e88b13f68454be44c3dd44e9f605b9878ebc43",
+  "event_csv_limit_bytes": 10000000,
+  "event_zip_limit_bytes": 100000000,
+  "kit_enforced_zip_limit_bytes": 134217728,
+  "local_win_model": "beta_templates",
+  "package": "fallback",
+  "readme_bytes": 10108,
+  "reproduce_json_bytes": 145,
+  "requirements": [
+    "catboost==1.2.8",
+    "contourpy==1.4.0",
+    "cycler==0.12.1",
+    "fonttools==4.68.0",
+    "graphviz==0.21",
+    "kiwisolver==1.5.1",
+    "matplotlib==3.11.2",
+    "narwhals==2.28.0",
+    "numpy==2.2.6",
+    "packaging==25.0",
+    "pandas==3.1.1",
+    "pillow==13.0.0",
+    "plotly==7.1.0",
+    "pyparsing==3.3.3",
+    "python-dateutil==4.0.0",
+    "scipy==1.15.3",
+    "six==1.17.0",
+    "tzdata==2026.6"
+  ],
+  "requirements_conflicts_resolved": {},
+  "staged_bytes": 748538,
+  "staged_file_count": 29,
+  "two_head_rebuild_max_abs_deviation": 1.1102230246251565e-16,
+  "win_head_q_max_abs_deviation_vs_measured": 0.5591648570009949,
+  "within_event_zip_limit": true
+}

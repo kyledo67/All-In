@@ -1,12 +1,12 @@
 {
   "csv": {
     "test": {
-      "bytes": 199881,
+      "bytes": 201032,
       "report": {
         "alpha": 1.0,
-        "feature_seconds": 2.4587811669916846,
-        "max_abs_sum_error": 3.3306690738754696e-16,
-        "min_probability": 0.00025092035572480125,
+        "feature_seconds": 2.511419750022469,
+        "max_abs_sum_error": 4.440892098500626e-16,
+        "min_probability": 5.171485128712639e-05,
         "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_nofx/test_submission.csv",
         "payout_order": [
           0,
@@ -24,9 +24,9 @@
             ]
           }
         },
-        "reference_seconds": 0.3524845420033671,
+        "reference_seconds": 0.41582412499701604,
         "reference_variant": "two_head",
-        "seconds": 15.328093499992974,
+        "seconds": 11.247848833008902,
         "split": "test",
         "win_head": {
           "half_lives": [
@@ -59,21 +59,21 @@
         "win_head_fallbacks": 0,
         "win_model": {
           "candidates": 29,
-          "lam_scale": 0.25,
-          "local_model": "compact_pair_dictionary",
+          "kappa": 0.5,
+          "local_model": "four_cell_beta_bernoulli",
           "select": "hard"
         }
       },
-      "seconds": 15.448853667010553,
-      "sha256": "84a6d8f81109469aeef45f8c3f87f9a7329f922db0e9dabc65f051c5e1fa253f"
+      "seconds": 11.386624416016275,
+      "sha256": "0916c5288c2a063a5f3ac9d8176be2ee40f59bab84e11b110d3ec687a0becadf"
     },
     "validation": {
-      "bytes": 104455,
+      "bytes": 104970,
       "report": {
         "alpha": 1.0,
-        "feature_seconds": 1.862414166011149,
+        "feature_seconds": 1.2691877500037663,
         "max_abs_sum_error": 3.3306690738754696e-16,
-        "min_probability": 0.0005845065955480666,
+        "min_probability": 6.566727083732459e-05,
         "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_nofx/validation_submission.csv",
         "payout_order": [
           0,
@@ -91,9 +91,9 @@
             ]
           }
         },
-        "reference_seconds": 0.500771666993387,
+        "reference_seconds": 0.342583999998169,
         "reference_variant": "two_head",
-        "seconds": 10.152683291002177,
+        "seconds": 5.781288166996092,
         "split": "validation",
         "win_head": {
           "half_lives": [
@@ -126,20 +126,20 @@
         "win_head_fallbacks": 0,
         "win_model": {
           "candidates": 29,
-          "lam_scale": 0.25,
-          "local_model": "compact_pair_dictionary",
+          "kappa": 0.5,
+          "local_model": "four_cell_beta_bernoulli",
           "select": "hard"
         }
       },
-      "seconds": 10.296925500006182,
-      "sha256": "bb0d69a9fbe29d293c3c7b36deeaccfd96c54d98bdb8fe2cd2a289d5117bb4b1"
+      "seconds": 5.91759483399801,
+      "sha256": "147bbe266f8d8c3ea038ae1739296439c34aebd774ce5a942bb72416a08f6dfa"
     }
   },
   "deployment": {
     "alpha": 1.0,
+    "beta_cells": "beta_cells_deploy.json",
     "candidate": "win_head_q_times_two_head_r",
-    "pair_dict": "pair_dict_deploy.json",
-    "pair_select": "hard",
+    "local_win_model": "beta_cells",
     "payout_order": [
       0,
       1,
@@ -150,13 +150,14 @@
     "reference_variant": "two_head",
     "win_head": "population_averaged.json"
   },
-  "entry_zip_bytes": 475212,
-  "entry_zip_sha256": "681b8802f370dcce34fdadedbc57cbdcf00ded7020c67b724baf106648e7b2c9",
+  "entry_zip_bytes": 479198,
+  "entry_zip_sha256": "aa7dd638b2450cf8733a11b12612625f56fbbd13003abca3509e7ebb3d56c550",
   "event_csv_limit_bytes": 10000000,
   "event_zip_limit_bytes": 100000000,
   "kit_enforced_zip_limit_bytes": 134217728,
+  "local_win_model": "beta_cells",
   "package": "fallback",
-  "readme_bytes": 9912,
+  "readme_bytes": 10108,
   "reproduce_json_bytes": 145,
   "requirements": [
     "catboost==1.2.8",
@@ -179,9 +180,9 @@
     "tzdata==2026.6"
   ],
   "requirements_conflicts_resolved": {},
-  "staged_bytes": 731864,
-  "staged_file_count": 27,
+  "staged_bytes": 748526,
+  "staged_file_count": 29,
   "two_head_rebuild_max_abs_deviation": 1.1102230246251565e-16,
-  "win_head_q_max_abs_deviation_vs_measured": 0.5870112159196649,
+  "win_head_q_max_abs_deviation_vs_measured": 0.5458675275766224,
   "within_event_zip_limit": true
 }

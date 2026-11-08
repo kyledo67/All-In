@@ -5,8 +5,8 @@
       "sha256": "8362a19526dda0e75fab0466a4ce4c426f9e84f833bbf18406345643cad00e9d"
     },
     "model/deployment.json": {
-      "bytes": 267,
-      "sha256": "6050335662774b7d4cea72b67837267c821a19b77edc61b083fdf0a6d38963bb"
+      "bytes": 279,
+      "sha256": "1bca85b6e31b873b2749b6613e53d5ed1353b2bd8ad4751cb574b29c32a2a3a1"
     },
     "model/feature_schema.json": {
       "bytes": 3603,
@@ -31,6 +31,14 @@
     "model/two_head/win_20261109.cbm": {
       "bytes": 115024,
       "sha256": "5c98634281a3ecc8ae7b8355af5715c92adba6b567374b33499740c0506d3360"
+    },
+    "model/win_head/beta_cells_deploy.json": {
+      "bytes": 2437,
+      "sha256": "39e08197472d76cb035f14d7cfbfb3f8d84b13954e62a16092a7edd8d7bbbae0"
+    },
+    "model/win_head/beta_templates_deploy.json": {
+      "bytes": 4008,
+      "sha256": "ccd31720080d0fa45a511bd75cdd52371d89965d9215a5930b584ab48e594f8f"
     },
     "model/win_head/pair_dict_deploy.json": {
       "bytes": 2162,
@@ -97,8 +105,8 @@
       "sha256": "b542f37bcc15143932cd225c1c559b0b4a13576c88e16b885129b3c7e6a7b524"
     },
     "slot_model/win_head_infer.py": {
-      "bytes": 15879,
-      "sha256": "25960352581b9c099d024b88ff105fbcdcb1e68940ee7d42656716e52f539762"
+      "bytes": 25568,
+      "sha256": "6ceefaf89d5b83c964375febf87a4059d959d4c122c8fcc259fb54aaac89dadd"
     }
   },
   "note": "sha256 of every shipped file except README.md and checksums.json itself"

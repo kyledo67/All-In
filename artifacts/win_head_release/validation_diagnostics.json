@@ -770,7 +770,7 @@
     "main-validation-e00095-m006-next": 0.305582455748281,
     "main-validation-e00095-m007-next": 0.4598023669761848
   },
-  "feature_seconds": 1.0960542910033837,
+  "feature_seconds": 1.1238337919930927,
   "max_abs_sum_error": 3.3306690738754696e-16,
   "min_probability": 0.0003210115353635864,
   "payout_order": [
@@ -1566,9 +1566,9 @@
       "two_head": 0.31705741397667647
     }
   },
-  "reference_seconds": 200.00149470899487,
+  "reference_seconds": 299.54100412499974,
   "reference_variant": "three_component",
-  "seconds": 205.01335850000032,
+  "seconds": 304.4043981670111,
   "split": "validation",
   "win_head": {
     "half_lives": [
@@ -1599,5 +1599,8 @@
     "train_oof_episode_win_brier": 0.14769297810424872
   },
   "win_head_fallback_queries": [],
-  "win_head_fallbacks": 0
+  "win_head_fallbacks": 0,
+  "win_model": {
+    "local_model": "dense_37_coefficient"
+  }
 }

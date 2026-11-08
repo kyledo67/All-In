@@ -4,7 +4,7 @@
       "bytes": 199204,
       "report": {
         "alpha": 1.0,
-        "feature_seconds": 2.3820600000035483,
+        "feature_seconds": 2.1582724999752827,
         "max_abs_sum_error": 4.440892098500626e-16,
         "min_probability": 0.0003514211195283925,
         "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release/test_submission.csv",
@@ -31,9 +31,9 @@
             "two_head": 0.31705741397667647
           }
         },
-        "reference_seconds": 343.9386395000038,
+        "reference_seconds": 247.22234366700286,
         "reference_variant": "three_component",
-        "seconds": 355.6945547920186,
+        "seconds": 256.99602712498745,
         "split": "test",
         "win_head": {
           "half_lives": [
@@ -63,16 +63,19 @@
           },
           "train_oof_episode_win_brier": 0.14769297810424872
         },
-        "win_head_fallbacks": 0
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "local_model": "dense_37_coefficient"
+        }
       },
-      "seconds": 356.1445235830033,
+      "seconds": 257.40088187501533,
       "sha256": "ed5caacb79b8517071dab368ec1652c7e4fe99d9f79c957f3594b0482e78adb6"
     },
     "validation": {
       "bytes": 104078,
       "report": {
         "alpha": 1.0,
-        "feature_seconds": 1.0960542910033837,
+        "feature_seconds": 1.1238337919930927,
         "max_abs_sum_error": 3.3306690738754696e-16,
         "min_probability": 0.0003210115353635864,
         "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release/validation_submission.csv",
@@ -99,9 +102,9 @@
             "two_head": 0.31705741397667647
           }
         },
-        "reference_seconds": 200.00149470899487,
+        "reference_seconds": 299.54100412499974,
         "reference_variant": "three_component",
-        "seconds": 205.01335850000032,
+        "seconds": 304.4043981670111,
         "split": "validation",
         "win_head": {
           "half_lives": [
@@ -131,15 +134,19 @@
           },
           "train_oof_episode_win_brier": 0.14769297810424872
         },
-        "win_head_fallbacks": 0
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "local_model": "dense_37_coefficient"
+        }
       },
-      "seconds": 205.40324137499556,
+      "seconds": 304.75355129200034,
       "sha256": "d86563107c4b553edf35c4bde692162c35e93abf46bd9137bd636f62324945e9"
     }
   },
   "deployment": {
     "alpha": 1.0,
     "candidate": "win_head_q_times_three_component_r",
+    "local_win_model": "dense",
     "payout_order": [
       0,
       1,
@@ -156,13 +163,14 @@
     "weights_provenance": "Arithmetic mean of the four outer-fold simplex fits in artifacts/audit/recompute.json. Not tuned on anything further. The frozen_blend component was dropped because its mean weight is 5.05e-17 and it has no test-time analogue (its measured column was a held-fold prediction); the remaining three already sum to exactly 1.0 in float64.",
     "win_head": "population_averaged.json"
   },
-  "entry_zip_bytes": 31585405,
-  "entry_zip_sha256": "2a503f95d2e22300392b03f4f617968eb34cb28d7d6d2dce72d0196e6f5d5ba3",
+  "entry_zip_bytes": 31590887,
+  "entry_zip_sha256": "4e67a9d1ee178e5219b7c83b1c858c5459f38c63e6c441fa4a3451cf83f27b26",
   "event_csv_limit_bytes": 10000000,
   "event_zip_limit_bytes": 100000000,
   "kit_enforced_zip_limit_bytes": 134217728,
+  "local_win_model": "dense",
   "package": "primary",
-  "readme_bytes": 10284,
+  "readme_bytes": 11751,
   "reproduce_json_bytes": 145,
   "requirements": [
     "annotated-types==0.8.0",
@@ -228,8 +236,8 @@
     "packaging": "26.3 kept over 25.0 (from blend)",
     "pandas": "2.3.3 kept over 3.1.1 (from blend)"
   },
-  "staged_bytes": 33998250,
-  "staged_file_count": 38,
+  "staged_bytes": 34012980,
+  "staged_file_count": 40,
   "tabpfn_checkpoint_sha256": {
     "tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
   },

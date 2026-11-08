@@ -45,7 +45,7 @@ DEPLOYMENT_WEIGHTS = {
 
 COMMON_SLOT_MODEL = ('__init__.py', 'features.py', 'phase2_features.py',
                      'two_head_infer.py', 'win_head.py', 'win_head_infer.py',
-                     'pair_dict.py')
+                     'pair_dict.py')  # scipy.special.betaln is the only new runtime need
 PRIMARY_SLOT_MODEL = ('portable.py', 'phase2_predict.py', 'mtd.py', 'mtd_pairs.py',
                       'tabpfn_model.py')
 KIT_MODULES = ('__init__.py', 'schema.py', 'io.py', 'baseline.py', 'transition.py')
@@ -126,10 +126,11 @@ def stage(name, code, win_model='dense'):
 
     `win_model` selects the LOCAL win model: 'dense' is the measured 37-coefficient
     hierarchical model (`local_interactions_averaged`, the 40.705473 / 40.589853
-    candidate), 'pair_dict' is the compact pair-dictionary alternative. The pooled
+    candidate), 'pair_dict' is the compact logistic pair dictionary, and 'beta_cells' is the four-cell
+    Beta-Bernoulli dictionary that measured 51.286437 with two-head r. The pooled
     population coefficients and the half-life averaging are identical either way.
     """
-    if win_model not in ('dense', 'pair_dict'):
+    if win_model not in ('dense', 'pair_dict', 'beta_cells', 'beta_templates'):
         raise ValueError(f'Unknown win model {win_model!r}')
     primary = name == 'primary'
     if code.exists():
@@ -149,6 +150,10 @@ def stage(name, code, win_model='dense'):
          model / 'win_head/population_averaged.json')
     copy(ROOT / 'artifacts/win_head/pair_dict_deploy.json',
          model / 'win_head/pair_dict_deploy.json')
+    copy(ROOT / 'artifacts/win_head/beta_cells_deploy.json',
+         model / 'win_head/beta_cells_deploy.json')
+    copy(ROOT / 'artifacts/win_head/beta_templates_deploy.json',
+         model / 'win_head/beta_templates_deploy.json')
     for seed in SEEDS:
         for head in ('win', 'size'):
             copy(ROOT / f'artifacts/two_head_01/{head}_{seed}.cbm',
@@ -166,6 +171,10 @@ def stage(name, code, win_model='dense'):
     if win_model == 'pair_dict':
         deployment['pair_dict'] = 'pair_dict_deploy.json'
         deployment['pair_select'] = 'hard'
+    if win_model == 'beta_cells':
+        deployment['beta_cells'] = 'beta_cells_deploy.json'
+    if win_model == 'beta_templates':
+        deployment['beta_templates'] = 'beta_templates_deploy.json'
     if primary:
         copy(ROOT / 'artifacts/blend_release/model/population.json', model / 'population.json')
         copy(ROOT / 'artifacts/mtd_01/change.json', model / 'mtd/change.json')
@@ -238,7 +247,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=Path, default=ROOT / 'main-participants-60-40/public')
     parser.add_argument('--only', choices=['primary', 'fallback'])
-    parser.add_argument('--win-model', choices=['dense', 'pair_dict'], default='dense',
+    parser.add_argument('--win-model', choices=['dense', 'pair_dict', 'beta_cells', 'beta_templates'], default='dense',
                         help="Local win model to deploy. 'dense' (default) is the measured "
                              "37-coefficient local_interactions_averaged head whose "
                              "development scores the READMEs quote; 'pair_dict' deploys the "

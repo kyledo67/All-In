@@ -1,0 +1,66 @@
+{
+  "beta_selected": {
+    "R": 0.12907270587120293,
+    "by_condition": {
+      "drift": 0.12275705525168329,
+      "shared_change": 0.1314921234631449,
+      "short_history": 0.16549407852568307,
+      "stable": 0.09654756624430048
+    },
+    "points": 53.14095335756385
+  },
+  "estimator_identity_check": "scripts/compact_memory.py contains 0 betaln references, so the earlier -2.162018 memory result tested the logistic pair model, not Beta. This experiment is the Beta-specific test that negative did not cover.",
+  "exposure": "Repeatedly inspected public validation; exploratory.",
+  "gain": -0.05058891401179011,
+  "half_life_histogram": {
+    "0": 182,
+    "128": 9,
+    "16": 88,
+    "256": 11,
+    "32": 30,
+    "64": 16,
+    "8": 432
+  },
+  "paired_vs_shipped": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.012542506434144101,
+        0.004116170695919446
+      ],
+      "shared_change": [
+        -0.04177940288334264,
+        0.0301999514162179
+      ],
+      "short_history": [
+        -0.00887295855596575,
+        0.011925562303337236
+      ],
+      "stable": [
+        0.003164210349554135,
+        0.01587189013817796
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.008905633573645608,
+      0.010619367468905872
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "preregistration": "Beta-specific causal memory selection for the shipped template dictionary.\n\nPREREGISTRATION. The earlier memory-selector experiment that lost 2.162018 points used\nthe LOGISTIC pair model (scripts/compact_memory.py contains zero `betaln` references),\nso its negative result does not transfer to the conjugate Beta path. The deployed\nhalf-life still comes from the dense 37-coefficient averaged selector, which is a\ndifferent estimator from the one being deployed.\n\nHypothesis: selecting memory with the Beta template model's OWN causal held-out\npredictive log loss fits the deployed estimator better than inheriting the dense\nselector's choice.\n\nCandidates: the frozen half-life set 8, 16, 32, 64, 128, 256, infinity, plus one single\nglobal half-life chosen on training episodes. Primary metric: official points / R on\nconcatenated held-fold predictions. Selection: per machine, from that machine's own\npre-cutoff history only; template prior and kappa are the frozen trained values.\nMatched control: the shipped dense-selected candidate at 53.191542 with identical\npriors, eligible transitions and r. Advancement: held-fold points must improve AND the\npaired whole-episode interval must lie below zero.\n\nProcedure per machine and candidate half-life H:\n  1. split complete-lag transitions by ACTUAL tick into a prefix and the most recent\n     held-out block; the block is identical across H, so candidates are compared on the\n     same eligible target ticks\n  2. anchor decay at the historical origin (the first held-out tick), not the cutoff\n  3. select the template on the prefix ALONE, so template identity never sees the block\n     it is scored on\n  4. predict each held-out tick and accumulate UNWEIGHTED log loss, keeping the\n     comparison on a common scale across half-lives with different total weight\n  5. choose H, refit on the full pre-cutoff history anchored at the cutoff, and predict\n",
+  "q_max_abs_change": 0.5336734926686694,
+  "seconds": 3.998496709013125,
+  "shipped_dense_selected": {
+    "R": 0.12799887797317455,
+    "by_condition": {
+      "drift": 0.1254550278283578,
+      "shared_change": 0.13554887886904932,
+      "short_history": 0.16319343969214206,
+      "stable": 0.08779816550314906
+    },
+    "points": 53.19154227157564
+  },
+  "too_short_to_select": 0
+}

@@ -163,6 +163,161 @@ def pair_win_probabilities(queries, index, beta_by_half_life, lam, fallback,
     return values, details
 
 
+def load_beta_cells(path):
+    """Read the frozen four-cell Beta-Bernoulli settings and assert their shape."""
+    payload = json.loads(Path(path).read_text())
+    if list(payload['candidates']) != list(PD.candidate_names()):
+        raise ValueError('Saved beta-cell candidate set does not match slot_model.pair_dict')
+    log_prior = np.asarray(payload['log_prior'], dtype=np.float64)
+    if log_prior.shape != (len(PD.CANDIDATES),):
+        raise ValueError('Saved pair-identity log prior has the wrong length')
+    return float(payload['kappa']), dict(payload['prior_mean_by_type']), log_prior, payload
+
+
+def _cells(signs, candidate):
+    if candidate is None:
+        return np.zeros(len(signs), dtype=np.int64), 1
+    i, j = candidate
+    return ((signs[:, i - 1] > 0).astype(np.int64) * 2
+            + (signs[:, j - 1] > 0).astype(np.int64)), 4
+
+
+def beta_cell_win_probabilities(queries, index, beta_by_half_life, lam, fallback,
+                                kappa, prior_mean, log_prior):
+    """Four-cell conjugate win probability per query, in the order of `queries`.
+
+    The per-machine half-life comes from the same frozen dense averaged selector the
+    logistic compact model used, so memory policy is unchanged; only the local estimator
+    differs. A cell with no observed weight falls back to its prior mean, which is how
+    empty, all-win and all-loss cells are handled.
+    """
+    from scipy.special import betaln
+    values = np.empty(len(queries), dtype=np.float64)
+    details = []
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        if star is None or len(labels) == 0:
+            values[i] = fallback[i]
+            details.append({'transitions': int(len(labels)), 'fallback': True})
+            continue
+        by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                   for h, table in beta_by_half_life.items()}
+        _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                      lam, adapt='full')
+        picked = mix['selected_half_life']
+        half_life = None if picked == 0.0 else picked
+        weights = (np.ones(len(labels)) if not half_life else
+                   2.0 ** (-(query.cutoff - 1 - np.asarray(used, dtype=np.float64)) / half_life))
+        mu = float(prior_mean.get(query.machine_type, 0.44))
+        a0, b0 = kappa * mu, kappa * (1.0 - mu)
+        signs = PD.signs_from(phi)
+        star_signs = star[1:1 + W.HORIZON][None, :]
+        best_score, best_q, best_index = -np.inf, fallback[i], 0
+        for index_c, candidate in enumerate(PD.CANDIDATES):
+            idx, ncell = _cells(signs, candidate)
+            star_idx, _ = _cells(star_signs, candidate)
+            wins = np.bincount(idx, weights=weights * labels, minlength=ncell)
+            losses = np.bincount(idx, weights=weights * (1.0 - labels), minlength=ncell)
+            evidence = float(np.sum(betaln(a0 + wins, b0 + losses) - betaln(a0, b0)))
+            score_c = evidence + float(log_prior[index_c])
+            if np.isfinite(score_c) and score_c > best_score:
+                c = int(star_idx[0])
+                best_score = score_c
+                best_index = index_c
+                best_q = float((a0 + wins[c]) / (a0 + b0 + wins[c] + losses[c]))
+        detail = {'transitions': int(len(labels)), 'half_life': picked,
+                  'candidate': PD.candidate_names()[best_index],
+                  'log_evidence_plus_prior': best_score, 'fallback': False}
+        if not np.isfinite(best_q) or not 0.0 < best_q < 1.0:
+            best_q = fallback[i]
+            detail['fallback'] = True
+        values[i] = best_q
+        details.append(detail)
+    return values, details
+
+
+def load_beta_templates(path):
+    """Read the frozen template-dictionary settings (null / full 4-cell / parity 2-cell)."""
+    payload = json.loads(Path(path).read_text())
+    log_prior = np.asarray(payload['log_prior'], dtype=np.float64)
+    expected = 1 + 2 * len(PD.PAIRS)
+    if log_prior.shape != (expected,) or len(payload['candidates']) != expected:
+        raise ValueError(f'Saved template dictionary must hold {expected} candidates')
+    return float(payload['kappa']), dict(payload['prior_mean_by_type']), log_prior, payload
+
+
+def _template_cells(signs, subset, template):
+    if subset is None:
+        return np.zeros(len(signs), dtype=np.int64), 1
+    i, j = subset
+    a = signs[:, i - 1] > 0
+    b = signs[:, j - 1] > 0
+    if template == 'full':
+        return (a.astype(np.int64) * 2 + b.astype(np.int64)), 4
+    # Parity: agree vs differ. Both cell probabilities free; they do not sum to one.
+    return (a != b).astype(np.int64), 2
+
+
+def beta_template_win_probabilities(queries, index, beta_by_half_life, lam, fallback,
+                                    kappa, prior_mean, log_prior):
+    """Template-dictionary conjugate win probability per query, in `queries` order.
+
+    Memory policy is unchanged from the protected candidate: the per-machine half-life
+    still comes from the frozen dense averaged selector. Only the local cell structure
+    differs - a parity template estimates two free probabilities instead of four, which
+    doubles the observation mass behind the queried cell.
+    """
+    from scipy.special import betaln
+    templates = [(None, 'null')] + [(p, k) for p in PD.PAIRS for k in ('full', 'parity')]
+    values = np.empty(len(queries), dtype=np.float64)
+    details = []
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        if star is None or len(labels) == 0:
+            values[i] = fallback[i]
+            details.append({'transitions': int(len(labels)), 'fallback': True})
+            continue
+        by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                   for h, table in beta_by_half_life.items()}
+        _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                      lam, adapt='full')
+        picked = mix['selected_half_life']
+        half_life = None if picked == 0.0 else picked
+        weights = (np.ones(len(labels)) if not half_life else
+                   2.0 ** (-(query.cutoff - 1 - np.asarray(used, dtype=np.float64)) / half_life))
+        mu = float(prior_mean.get(query.machine_type, 0.44))
+        a0, b0 = kappa * mu, kappa * (1.0 - mu)
+        signs = PD.signs_from(phi)
+        star_signs = star[1:1 + W.HORIZON][None, :]
+        best_score, best_q, best_index = -np.inf, fallback[i], 0
+        for index_t, (subset, template) in enumerate(templates):
+            idx, ncell = _template_cells(signs, subset, template)
+            sidx, _ = _template_cells(star_signs, subset, template)
+            wins = np.bincount(idx, weights=weights * labels, minlength=ncell)
+            losses = np.bincount(idx, weights=weights * (1.0 - labels), minlength=ncell)
+            evidence = float(np.sum(betaln(a0 + wins, b0 + losses) - betaln(a0, b0)))
+            score_t = evidence + float(log_prior[index_t])
+            if np.isfinite(score_t) and score_t > best_score:
+                c = int(sidx[0])
+                best_score = score_t
+                best_index = index_t
+                best_q = float((a0 + wins[c]) / (a0 + b0 + wins[c] + losses[c]))
+        subset, template = templates[best_index]
+        detail = {'transitions': int(len(labels)), 'half_life': picked, 'template': template,
+                  'subset': None if subset is None else list(subset),
+                  'log_evidence_plus_prior': best_score, 'fallback': False}
+        if not np.isfinite(best_q) or not 0.0 < best_q < 1.0:
+            best_q = fallback[i]
+            detail['fallback'] = True
+        values[i] = best_q
+        details.append(detail)
+    return values, details
+
+
 def proportions(vectors):
     """Positive-payout proportions of a reference five-vector block.
 
@@ -215,9 +370,17 @@ def reference_vectors(variant, weights, rows, x, queries, history, model, thread
         return block, notes
     if variant != 'three_component':
         raise ValueError(f'Unknown reference variant {variant!r}')
-    components = {'two_head': two_head_component(rows, x, model),
-                  'mtd_lag7': mtd_component(rows, queries, history, model)}
+    # ORDER MATTERS, measured. TabPFN must run before CatBoost touches anything.
+    # With CatBoost's native runtime initialized first, the TabPFN forward pass deviated
+    # from the measured component CSVs by 3.975e-04 (max abs, 768 validation rows);
+    # running TabPFN first on the same saved context and the same bitwise-identical
+    # 189-column table reproduces them to 1.110e-16. CatBoost loads its own OpenMP
+    # runtime, which changes how torch partitions its intra-op work and therefore the
+    # reduction order inside the transformer. The components themselves are unchanged.
+    components = {}
     components['tabpfn_raw'], notes['tabpfn'] = tabpfn_component(rows, x, model, threads=threads)
+    components['two_head'] = two_head_component(rows, x, model)
+    components['mtd_lag7'] = mtd_component(rows, queries, history, model)
     if sorted(weights) != sorted(components):
         raise ValueError(f'Deployment weights {sorted(weights)} do not match '
                          f'the available components {sorted(components)}')
@@ -264,8 +427,24 @@ def predict(data, out, model, *, split='test', threads=2, diagnostics=None):
     beta, lam, selected = load_win_head(model / 'win_head' / deployment['win_head'])
     r = proportions(reference)
     reference_q = 1.0 - reference[:, 0]
+    template_name = deployment.get('beta_templates')
+    beta_name = deployment.get('beta_cells')
     pair_name = deployment.get('pair_dict')
-    if pair_name:
+    if template_name:
+        kappa, prior_mean, log_prior, tpl_payload = load_beta_templates(
+            model / 'win_head' / template_name)
+        q, details = beta_template_win_probabilities(ordered, index, beta, lam, reference_q,
+                                                     kappa, prior_mean, log_prior)
+        win_model = {'local_model': 'beta_template_dictionary', 'select': 'hard',
+                     'kappa': kappa, 'candidates': len(log_prior)}
+    elif beta_name:
+        kappa, prior_mean, log_prior, beta_payload = load_beta_cells(
+            model / 'win_head' / beta_name)
+        q, details = beta_cell_win_probabilities(ordered, index, beta, lam, reference_q,
+                                                 kappa, prior_mean, log_prior)
+        win_model = {'local_model': 'four_cell_beta_bernoulli', 'select': 'hard',
+                     'kappa': kappa, 'candidates': len(log_prior)}
+    elif pair_name:
         scale, intercept_scale, log_prior, pair_payload = load_pair_dict(
             model / 'win_head' / pair_name)
         q, details = pair_win_probabilities(ordered, index, beta, lam, reference_q,

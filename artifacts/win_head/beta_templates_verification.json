@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "check": "tiny_mean",
+      "detail": "4 tiny cases (empty, all-wins, all-losses, unequal weights) agree with an independent calculation to 0.00e+00; the empty cell returns the prior mean 0.4 exactly",
+      "passed": true
+    },
+    {
+      "check": "tiny_evidence",
+      "detail": "sequential predictive product equals betaln(a+W,b+L)-betaln(a,b) on 5 ordered sequences to 4.44e-16, confirming no Beta-binomial count coefficient contaminates the ordered-sequence likelihood",
+      "passed": true
+    },
+    {
+      "check": "parity_recovery",
+      "detail": "a pure s1*s2 parity response (0.80 / 0.18) selects parity on lags (1, 2) by unpenalised evidence",
+      "passed": true
+    },
+    {
+      "check": "asymmetric",
+      "detail": "an asymmetric four-cell response (0.85/0.55/0.22/0.40) selects full on lags (1, 2), so parity is not preferred when the cells genuinely differ",
+      "passed": true
+    },
+    {
+      "check": "pooling_cost",
+      "detail": "forcing parity on the asymmetric machine costs 26.54 nats of evidence and moves q by 0.2503; forcing the full template on the parity machine costs 4.04 nats and moves q by 0.0263 - pooling is not free when it is wrong",
+      "passed": true
+    },
+    {
+      "check": "post_cutoff",
+      "detail": "6144 adversarial plays appended at ticks cutoff..cutoff+7 across 768 machines; 0 of 768 deployed estimates changed",
+      "passed": true
+    },
+    {
+      "check": "positive_control",
+      "detail": "flipping each machine's lag-1 pre-cutoff outcome moved 610 of 768 estimates (median |dq| 0.1026), so the model is genuinely responsive to legal inputs",
+      "passed": true
+    },
+    {
+      "check": "fallbacks",
+      "detail": "0 of 768 queries fell back; template picks {'null': 0, 'full': 6, 'parity': 762}",
+      "passed": true
+    },
+    {
+      "check": "simplex",
+      "detail": "shipped CSV (1536, 5): min 6.955e-05, max row-sum error 2.22e-16, order [0,1,2,5,20]",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "package": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_parity",
+  "passed": true,
+  "scope": "the SHIPPED Beta template dictionary inference path; synthetic cases test implementation behaviour, not the private competition simulator"
+}

@@ -1,0 +1,614 @@
+{
+  "baseline_two_head_identity": {
+    "R": 0.16989995268296643,
+    "points": 51.286436812310505
+  },
+  "best": {
+    "R": 0.16362070055986946,
+    "gain_over_baseline": 0.27675725181308763,
+    "gap_to_50": -1.5631940641235929,
+    "key": "identity+fitted_simplex",
+    "points": 51.56319406412359,
+    "target_50_met": true
+  },
+  "exposure": "Another adaptive round on repeatedly inspected public validation. Not independent, not confirmed. Paired intervals do not correct for research selection.",
+  "fitted_parameters": {
+    "affine+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.2242049342713204,
+          "tabpfn": 0.2056928028409249,
+          "two_head": 0.5701022628877548
+        },
+        {
+          "mtd_lag7": 0.1913202236047146,
+          "tabpfn": 0.3327790253267381,
+          "two_head": 0.47590075106854735
+        },
+        {
+          "mtd_lag7": 0.2341989444338559,
+          "tabpfn": 0.31393541986387796,
+          "two_head": 0.45186563570226623
+        },
+        {
+          "mtd_lag7": 0.19297653983689922,
+          "tabpfn": 0.3014150026452866,
+          "two_head": 0.5056084575178142
+        }
+      ],
+      "theta_per_fold": [
+        [
+          1.0858679299590586,
+          -0.01127730170250046
+        ],
+        [
+          1.0944173269455244,
+          0.08155975366755039
+        ],
+        [
+          1.091226192921681,
+          0.05232764997307532
+        ],
+        [
+          1.0966605523820134,
+          -0.03717431972828788
+        ]
+      ]
+    },
+    "affine+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.087376029077193,
+          -0.010297637548895015
+        ],
+        [
+          1.0952549027027878,
+          0.08457164325522634
+        ],
+        [
+          1.0924292892062286,
+          0.05297323379019642
+        ],
+        [
+          1.0973417669374848,
+          -0.035533715001711916
+        ]
+      ]
+    },
+    "affine+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.0858679299590586,
+          -0.01127730170250046
+        ],
+        [
+          1.0944173269455244,
+          0.08155975366755039
+        ],
+        [
+          1.091226192921681,
+          0.05232764997307532
+        ],
+        [
+          1.0966605523820134,
+          -0.03717431972828788
+        ]
+      ]
+    },
+    "affine+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.088437099191241,
+          -0.016844448463836342
+        ],
+        [
+          1.0942737245081053,
+          0.07513833316295748
+        ],
+        [
+          1.092178687792989,
+          0.04563736822807605
+        ],
+        [
+          1.095666088739247,
+          -0.042990479609295196
+        ]
+      ]
+    },
+    "beta+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.22259631596529872,
+          "tabpfn": 0.20987741479710212,
+          "two_head": 0.5675262692375992
+        },
+        {
+          "mtd_lag7": 0.19027083114298188,
+          "tabpfn": 0.33641023004823595,
+          "two_head": 0.47331893880878223
+        },
+        {
+          "mtd_lag7": 0.23340359085720783,
+          "tabpfn": 0.31784860541132504,
+          "two_head": 0.44874780373146717
+        },
+        {
+          "mtd_lag7": 0.19235208321385697,
+          "tabpfn": 0.30409978753470557,
+          "two_head": 0.5035481292514375
+        }
+      ],
+      "theta_per_fold": [
+        [
+          1.2880704071308173,
+          0.8950251093549779,
+          0.3055557137922149
+        ],
+        [
+          1.2444394988244016,
+          0.9393968302626243,
+          0.33011366884111293
+        ],
+        [
+          1.2340734425779902,
+          0.9466757725354733,
+          0.28693744613998085
+        ],
+        [
+          1.2910402631479827,
+          0.910447355903993,
+          0.2701577950047238
+        ]
+      ]
+    },
+    "beta+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.2846872173272432,
+          0.9000198748434773,
+          0.2995736914481031
+        ],
+        [
+          1.2395672468257888,
+          0.94511345006113,
+          0.32447848179496774
+        ],
+        [
+          1.2361906809772905,
+          0.9464076374104942,
+          0.2893395118229514
+        ],
+        [
+          1.2867087760822664,
+          0.9152778501500902,
+          0.26432366738356566
+        ]
+      ]
+    },
+    "beta+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.2880704071308173,
+          0.8950251093549779,
+          0.3055557137922149
+        ],
+        [
+          1.2444394988244016,
+          0.9393968302626243,
+          0.33011366884111293
+        ],
+        [
+          1.2340734425779902,
+          0.9466757725354733,
+          0.28693744613998085
+        ],
+        [
+          1.2910402631479827,
+          0.910447355903993,
+          0.2701577950047238
+        ]
+      ]
+    },
+    "beta+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.2714067748041091,
+          0.9148858979107314,
+          0.2702677829631307
+        ],
+        [
+          1.2276078921387406,
+          0.9559375443857334,
+          0.2965019002438703
+        ],
+        [
+          1.2210365877458478,
+          0.9613034346534151,
+          0.25752102906425
+        ],
+        [
+          1.2782762657768303,
+          0.9207187823584916,
+          0.24577792932007053
+        ]
+      ]
+    },
+    "identity+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.22338982456205725,
+          "tabpfn": 0.2089087199602681,
+          "two_head": 0.5677014554776746
+        },
+        {
+          "mtd_lag7": 0.1962761103929264,
+          "tabpfn": 0.33453106033149577,
+          "two_head": 0.4691928292755779
+        },
+        {
+          "mtd_lag7": 0.23864737754529491,
+          "tabpfn": 0.31792065947332687,
+          "two_head": 0.4434319629813783
+        },
+        {
+          "mtd_lag7": 0.19238725659850728,
+          "tabpfn": 0.30511939627324225,
+          "two_head": 0.5024933471282504
+        }
+      ],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "identity+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "identity+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "identity+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "signal+fitted_simplex": {
+      "r_weights_per_fold": [
+        {
+          "mtd_lag7": 0.2243992808954483,
+          "tabpfn": 0.20529217083530288,
+          "two_head": 0.5703085482692489
+        },
+        {
+          "mtd_lag7": 0.1911354460078039,
+          "tabpfn": 0.3320699042836459,
+          "two_head": 0.4767946497085502
+        },
+        {
+          "mtd_lag7": 0.2337662743403497,
+          "tabpfn": 0.31412624876527595,
+          "two_head": 0.4521074768943744
+        },
+        {
+          "mtd_lag7": 0.19345899927915014,
+          "tabpfn": 0.3008544170710581,
+          "two_head": 0.5056865836497918
+        }
+      ],
+      "theta_per_fold": [
+        [
+          1.0857886481308963,
+          -0.013677887529502738,
+          0.03319750209196308
+        ],
+        [
+          1.0990024541725973,
+          0.07850112596295894,
+          0.09537480164765054
+        ],
+        [
+          1.0912152952133995,
+          0.043335172786629544,
+          0.07261015360267103
+        ],
+        [
+          1.0971983183439071,
+          -0.033378844034301414,
+          -0.04090150785929839
+        ]
+      ]
+    },
+    "signal+full_vector_derived": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.0873086507302636,
+          -0.012684741255221666,
+          0.03330894489772267
+        ],
+        [
+          1.0998477067318198,
+          0.0816685313266312,
+          0.09536488986350257
+        ],
+        [
+          1.0924520185790212,
+          0.04423700819760075,
+          0.07113266258152268
+        ],
+        [
+          1.0979220490892292,
+          -0.03168311047017888,
+          -0.04155516007329474
+        ]
+      ]
+    },
+    "signal+two_head": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.0857886481308963,
+          -0.013677887529502738,
+          0.03319750209196308
+        ],
+        [
+          1.0990024541725973,
+          0.07850112596295894,
+          0.09537480164765054
+        ],
+        [
+          1.0912152952133995,
+          0.043335172786629544,
+          0.07261015360267103
+        ],
+        [
+          1.0971983183439071,
+          -0.033378844034301414,
+          -0.04090150785929839
+        ]
+      ]
+    },
+    "signal+uniform_mix": {
+      "r_weights_per_fold": [],
+      "theta_per_fold": [
+        [
+          1.0883973126849424,
+          -0.019227394257179356,
+          0.034014570601167055
+        ],
+        [
+          1.0988134900617788,
+          0.0725201862018365,
+          0.09352239246309066
+        ],
+        [
+          1.0922241457450093,
+          0.037323762611086976,
+          0.06920151318912116
+        ],
+        [
+          1.0963040780139033,
+          -0.03896845359654122,
+          -0.044636796103244836
+        ]
+      ]
+    }
+  },
+  "frozen_q_source": "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+  "grid": {
+    "affine+fitted_simplex": {
+      "R": 0.16420286947466392,
+      "by_condition": {
+        "drift": 0.14415839605158928,
+        "shared_change": 0.16855787538326933,
+        "short_history": 0.25146968664415964,
+        "stable": 0.0926255198196374
+      },
+      "points": 51.537409478362186
+    },
+    "affine+full_vector_derived": {
+      "R": 0.16467731270048958,
+      "by_condition": {
+        "drift": 0.14538998011166185,
+        "shared_change": 0.16851952975655082,
+        "short_history": 0.24961046009912005,
+        "stable": 0.09518928083462562
+      },
+      "points": 51.51641518703619
+    },
+    "affine+two_head": {
+      "R": 0.17057850863129131,
+      "by_condition": {
+        "drift": 0.15391978867807307,
+        "shared_change": 0.17274559169216996,
+        "short_history": 0.25893304109044385,
+        "stable": 0.09671561306447841
+      },
+      "points": 51.25670730975192
+    },
+    "affine+uniform_mix": {
+      "R": 0.16518834073393235,
+      "by_condition": {
+        "drift": 0.14342026611836978,
+        "shared_change": 0.17046227444244838,
+        "short_history": 0.25374851484579447,
+        "stable": 0.09312230752911677
+      },
+      "points": 51.493821129558356
+    },
+    "beta+fitted_simplex": {
+      "R": 0.16410695440085982,
+      "by_condition": {
+        "drift": 0.1428608565503719,
+        "shared_change": 0.16741469007737328,
+        "short_history": 0.2537321462918469,
+        "stable": 0.09242012468384715
+      },
+      "points": 51.541655835980016
+    },
+    "beta+full_vector_derived": {
+      "R": 0.16454741460189212,
+      "by_condition": {
+        "drift": 0.1440516376045722,
+        "shared_change": 0.1673826637041308,
+        "short_history": 0.2518182356842884,
+        "stable": 0.09493712141457707
+      },
+      "points": 51.522161526167984
+    },
+    "beta+two_head": {
+      "R": 0.17043805941649431,
+      "by_condition": {
+        "drift": 0.1524206025440112,
+        "shared_change": 0.17155848317877048,
+        "short_history": 0.2613339198285977,
+        "stable": 0.0964392321145979
+      },
+      "points": 51.26285796782118
+    },
+    "beta+uniform_mix": {
+      "R": 0.1650889468700994,
+      "by_condition": {
+        "drift": 0.14224090020412458,
+        "shared_change": 0.16940083743023648,
+        "short_history": 0.25580069152053414,
+        "stable": 0.09291335832550233
+      },
+      "points": 51.498214072997854
+    },
+    "identity+fitted_simplex": {
+      "R": 0.16362070055986946,
+      "by_condition": {
+        "drift": 0.14836449221799441,
+        "shared_change": 0.1702861847324959,
+        "short_history": 0.24469584623100368,
+        "stable": 0.09113627905798385
+      },
+      "points": 51.56319406412359
+    },
+    "identity+full_vector_derived": {
+      "R": 0.16400274987509741,
+      "by_condition": {
+        "drift": 0.14960570011169474,
+        "shared_change": 0.170192752251326,
+        "short_history": 0.242612776756828,
+        "stable": 0.09359977038054094
+      },
+      "points": 51.546269977831464
+    },
+    "identity+two_head": {
+      "R": 0.16989995268296643,
+      "by_condition": {
+        "drift": 0.15774525378565485,
+        "shared_change": 0.1743204283005354,
+        "short_history": 0.2523276919076198,
+        "stable": 0.09520643673805569
+      },
+      "points": 51.286436812310505
+    },
+    "identity+uniform_mix": {
+      "R": 0.16453854765223463,
+      "by_condition": {
+        "drift": 0.14758313551623137,
+        "shared_change": 0.17202382443414982,
+        "short_history": 0.24700605091835265,
+        "stable": 0.09154117974020472
+      },
+      "points": 51.52255382268184
+    },
+    "signal+fitted_simplex": {
+      "R": 0.16550518192564168,
+      "by_condition": {
+        "drift": 0.14317890399087718,
+        "shared_change": 0.17213017590381705,
+        "short_history": 0.25404007255481076,
+        "stable": 0.09267157525306174
+      },
+      "points": 51.47982259578487
+    },
+    "signal+full_vector_derived": {
+      "R": 0.16598467323646304,
+      "by_condition": {
+        "drift": 0.14442523411783426,
+        "shared_change": 0.17206346651897872,
+        "short_history": 0.2522076730931959,
+        "stable": 0.09524231921584328
+      },
+      "points": 51.458652396738614
+    },
+    "signal+two_head": {
+      "R": 0.171875985833819,
+      "by_condition": {
+        "drift": 0.15294621549586507,
+        "shared_change": 0.17633138287036076,
+        "short_history": 0.26146436476404805,
+        "stable": 0.09676198020500212
+      },
+      "points": 51.19995692829946
+    },
+    "signal+uniform_mix": {
+      "R": 0.16652907314245577,
+      "by_condition": {
+        "drift": 0.14251946095196083,
+        "shared_change": 0.17398686661847218,
+        "short_history": 0.2563946189931198,
+        "stable": 0.09321534600627028
+      },
+      "points": 51.43463749117622
+    }
+  },
+  "paired_best_vs_baseline": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.015811608464422422,
+        -0.004178021678605423
+      ],
+      "shared_change": [
+        -0.009597107447514424,
+        0.001138547219299575
+      ],
+      "short_history": [
+        -0.015296993381106893,
+        -0.00035889278869717856
+      ],
+      "stable": [
+        -0.00873294889337749,
+        0.00037353162443385795
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.00938396396054487,
+      -0.003329913383702108
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "preregistration": "Calibration ladder, signal correction, and conditional-r refit for the frozen compact q.\n\nPREREGISTRATION (recorded before any public-validation number in this script was read).\n\nHypotheses\n  H1 a small monotone calibration of q improves the official five-vector score\n  H2 a signal-dependent correction adds information beyond probability-only calibration\n  H3 refitting the conditional positive-payout weights r AFTER q is frozen improves the\n     score, because the deployed r was extracted from a full-vector blend selected under\n     the older DENSE win masses\n\nCandidates and ranges\n  calibration   identity (a,b,c)=(1,1,0); affine-logit (equal-slope subfamily, a=b);\n                beta calibration g(q)=sigmoid(a*log q - b*log(1-q) + c), a,b >= 0\n  signal        logit(q') = a*logit(q) + b + gamma*signal, gamma unconstrained\n  r formulation two_head only; existing full-vector-derived r; uniform mix of the three\n                primitive conditional r; official-weighted simplex over those three\n\nPrimary metric    official technical points / R on concatenated held-fold predictions\nSelection rule    every coefficient is fitted on the FITTING episodes of each outer fold\n                  only, by minimizing the exact official-weighted five-vector squared\n                  error with reference normalization taken from those fitting episodes\nMatched controls  identity calibration, and each r formulation above\nFollow-up rule    a mechanism is carried into the finalist only if it improves the\n                  concatenated held-fold points AND its paired whole-episode interval\n                  against the frozen baseline lies below zero\n\nExposure: these 96 public-validation episodes have been inspected repeatedly. This is\nanother adaptive round. Paired intervals describe variation in fixed forecasts; they do\nnot correct for repeated research selection (P9), and no split of these episodes creates\nuntouched data.\n",
+  "seconds": 2.3969759169849567
+}
