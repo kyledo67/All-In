@@ -1,0 +1,55 @@
+{
+  "checks": [
+    {
+      "check": "one_component_identity",
+      "passed": true,
+      "detail": "with mu_L = mu_H the mixture collapses to the ordinary Beta posterior mean to 1.11e-16, for both queried groups"
+    },
+    {
+      "check": "independence_blocks_borrowing",
+      "passed": true,
+      "detail": "at rho = 0, replacing the opposite group counts with (0,0), (30,1) and (1,30) moves the queried estimate by at most 3.33e-16 - the component posterior factorises exactly, so borrowing can only come from the coupling"
+    },
+    {
+      "check": "dependence_borrows_with_sign",
+      "passed": true,
+      "detail": "with the opposite group strongly HIGH: independence 0.58537, positive dependence 0.62393 (pulled up), negative dependence 0.52603 (pushed down) - both signs are representable and act in opposite directions"
+    },
+    {
+      "check": "marginals_preserved",
+      "passed": true,
+      "detail": "across pi in {0.2,0.5,0.8} and rho in [-1,1] both group marginals stay at pi to 8.00e-13, so the coupling changes dependence only"
+    },
+    {
+      "check": "evidence_dominates_prior",
+      "passed": true,
+      "detail": "1 win alone gives 0.6640; 200 wins against 20 losses gives 0.9052, within 0.03 of the empirical rate 0.9091"
+    },
+    {
+      "check": "opposite_orientations",
+      "passed": true,
+      "detail": "a machine whose queried group is high gives 0.8326 and the mirrored machine 0.1674, so opposite orientations are representable per machine"
+    },
+    {
+      "check": "finite_normalised",
+      "passed": true,
+      "detail": "0 of 5000 random configurations left (0,1); max component-weight sum error 3.55e-15"
+    },
+    {
+      "check": "routes_cached",
+      "passed": true,
+      "detail": "762 of 768 queries are parity-routed and carry frozen (pair, template, half-life) identities reused across every arm"
+    },
+    {
+      "check": "post_cutoff_invariant",
+      "passed": true,
+      "detail": "6144 adversarial plays appended at ticks cutoff..cutoff+7; 0 of 768 cached identities/counts changed"
+    },
+    {
+      "check": "positive_control",
+      "passed": true,
+      "detail": "flipping each machine lag-1 pre-cutoff outcome changed 768 of 768 cached states, so post-cutoff invariance is not an inert pipeline"
+    }
+  ],
+  "passed": true
+}

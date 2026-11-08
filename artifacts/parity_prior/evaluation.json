@@ -1,0 +1,187 @@
+{
+  "control_reproduces_package_to": 3.3306690738754696e-16,
+  "exposure": "Conditional exploratory development on 96 repeatedly inspected episodes.",
+  "fold_provenance": [
+    {
+      "concentration": 0.4965419274588897,
+      "fold": 0,
+      "inner_scores": {
+        "1.0": -7.2220974512950225,
+        "10.0": -7.2224544097923875,
+        "100.0": -7.22463447041496,
+        "inf": -7.222013506093468
+      },
+      "lambda": 100.0,
+      "per_type": {
+        "balanced": [
+          0.2647327646647652,
+          0.4815174573949786,
+          0.05060691551693983
+        ],
+        "jackpot": [
+          0.2604230849380143,
+          0.31739106836367,
+          0.9402658310636537
+        ],
+        "steady": [
+          0.2962612156777717,
+          0.5911617127091692,
+          0.005701001074712564
+        ]
+      },
+      "rho": -0.9999999996256586
+    },
+    {
+      "concentration": 0.48546826465771964,
+      "fold": 1,
+      "inner_scores": {
+        "1.0": -7.592158042987626,
+        "10.0": -7.592311027998674,
+        "100.0": -7.59282605227794,
+        "inf": -7.592140004266793
+      },
+      "lambda": 100.0,
+      "per_type": {
+        "balanced": [
+          0.41652066261911896,
+          0.4460431705479601,
+          0.5022886469901177
+        ],
+        "jackpot": [
+          0.2678571426243151,
+          0.38424255393715656,
+          0.4999323629605619
+        ],
+        "steady": [
+          0.5646139677415242,
+          0.5751879789420169,
+          0.5020811644790583
+        ]
+      },
+      "rho": -0.9999999999999882
+    },
+    {
+      "concentration": 0.5014300103436147,
+      "fold": 2,
+      "inner_scores": {
+        "1.0": -7.823868560871399,
+        "10.0": -7.825261986371822,
+        "100.0": -7.824917307102981,
+        "inf": -7.823825054480947
+      },
+      "lambda": 10.0,
+      "per_type": {
+        "balanced": [
+          0.42425093586413654,
+          0.4460431654680213,
+          0.4706444057334219
+        ],
+        "jackpot": [
+          0.2678258354671305,
+          0.2852339511277025,
+          0.4967249397262272
+        ],
+        "steady": [
+          0.5358231801908018,
+          0.5751879699248525,
+          0.4671748862685791
+        ]
+      },
+      "rho": -0.9999999999575142
+    },
+    {
+      "concentration": 0.5215898242776694,
+      "fold": 3,
+      "inner_scores": {
+        "1.0": -7.493762995209014,
+        "10.0": -7.494910013178812,
+        "100.0": -7.500367949784028,
+        "inf": -7.493618161208823
+      },
+      "lambda": 100.0,
+      "per_type": {
+        "balanced": [
+          0.17680466236115794,
+          0.45510987867907987,
+          0.07771619103647165
+        ],
+        "jackpot": [
+          0.26785714284631146,
+          0.28235994114978963,
+          0.5256733846013599
+        ],
+        "steady": [
+          0.3103996342585174,
+          0.5751879699248286,
+          0.4367972469097674
+        ]
+      },
+      "rho": -0.9999999999951733
+    }
+  ],
+  "gains": {
+    "joint_minus_control": -0.0266182536359878,
+    "joint_minus_marginal": -0.0001479976503162561,
+    "marginal_minus_control": -0.026470255985671542
+  },
+  "paired": {
+    "joint_vs_control": {
+      "ci95_delta_R": [
+        -0.00012718291820729228,
+        0.0012466071549847215
+      ],
+      "units": "difference in normalized error R; negative favours the FIRST named forecast"
+    },
+    "joint_vs_marginal": {
+      "ci95_delta_R": [
+        -2.3912998064631627e-05,
+        3.063128856200629e-05
+      ],
+      "units": "difference in normalized error R; negative favours the FIRST named forecast"
+    },
+    "marginal_vs_control": {
+      "ci95_delta_R": [
+        -0.00011908475215786963,
+        0.001226612654480849
+      ],
+      "units": "difference in normalized error R; negative favours the FIRST named forecast"
+    }
+  },
+  "parity_routed": 762,
+  "permission": "organizer/RULES.md line 9 \"Learn from the main training and validation data\"; line 39 \"Public validation is available for model selection.\" Released probability supervision is permitted.",
+  "protocol": "Learn the population prior over the two parity probabilities; then test dependence.\n\nPROTOCOL, frozen before any public-validation number below was read.\n\nPERMISSION. organizer/RULES.md line 9: \"Learn from the main training and validation data,\nthen submit forecasts for its test queries\", and line 39: \"Public validation is available\nfor model selection.\" Released probability supervision is therefore permitted and this\nwork is deployable, not merely diagnostic.\n\nFROZEN SELECTIONS. The control's selected lag pair, template and half-life are cached per\nquery from their proper pre-cutoff histories and REUSED byte-identically in every arm, so\na changed prior cannot silently change model selection and contaminate the attribution.\nOnly parity-routed queries receive the new prior; null and full routes are untouched. The\nconditional positive-payout vector r, its blend weight, tail constants and tail operation\nare all frozen and numerically identical across arms.\n\nARMS\n  1 control        the protected prior: one Beta(kappa*mu_type, kappa*(1-mu_type)) for\n                   both groups, predicted independently. Exact, not a limiting case.\n  2 marginal       learned two-component mixture, delta = 0 (exact independence)\n  3 joint          the SAME fitted marginals plus one shared coupling rho\nInterpretation: 2 vs 1 is marginal prior calibration; 3 vs 2 is the incremental value of\ncross-group dependence; 3 vs 1 is the total.\n\nPARAMETERS. mu_L and mu_H per type as adjustments to the existing type mean, pi per type,\none shared concentration, one shared coupling: 6 + 3 + 1 + 1 = 11 globals, no locally\nfitted coefficients.\n\nOBJECTIVE. The exact full-vector loss at frozen r,\n    L_i(q) = (1 + ||r_i||^2) q^2 - 2 (u_i + r_i . t_+,i) q + const\nwith official episode and condition weighting and fitting-side reference normalization.\nNot unweighted win Brier.\n\nNESTING. Complete-episode outer folds frozen in advance. Every target-dependent parameter\nis fitted on outer fitting episodes only. The regularization strength comes from inner\ncomplete-episode folds, and ALL parameters are refitted inside each inner training\npartition so no inner held target leaks through a previously fitted marginal. The marginal\nis frozen before the coupling is estimated within each fitting partition. Held-fold\npredictions are concatenated and scored once.\n\nREGULARIZATION GRID, predeclared: lambda in {inf, 100, 10, 1}, a ridge pulling the learned\ncomponent means toward the control type mean and log-concentration toward log(kappa).\nlambda = inf reproduces the control exactly, so \"no change\" is an available outcome.\n\nConditional exploratory development: the base recipe and this hypothesis were both shaped\nby these 96 repeatedly inspected episodes. Nested fitting creates no independent holdout.\n",
+  "results": {
+    "control": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.14575610520224477,
+        "stable": 0.08563840608796552
+      },
+      "points": 53.532917808538166
+    },
+    "joint": {
+      "R": 0.12136328804489109,
+      "by_condition": {
+        "drift": 0.12143143875047674,
+        "shared_change": 0.13153032457102437,
+        "short_history": 0.14709675762706909,
+        "stable": 0.08539463123099418
+      },
+      "points": 53.50629955490218
+    },
+    "marginal": {
+      "R": 0.121360186378842,
+      "by_condition": {
+        "drift": 0.12144254236268706,
+        "shared_change": 0.13152175096986182,
+        "short_history": 0.14707955216800664,
+        "stable": 0.08539690001481243
+      },
+      "points": 53.506447552552494
+    }
+  },
+  "seconds": 129.76324950001435,
+  "total_queries": 768
+}
