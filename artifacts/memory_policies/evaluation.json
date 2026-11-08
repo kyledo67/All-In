@@ -1,0 +1,127 @@
+{
+  "best": "global_heldfold",
+  "exposure": "Repeatedly inspected public validation; exploratory research round.",
+  "fixed_share_argmax_histogram": {
+    "rho0": {
+      "128": 8,
+      "16": 43,
+      "256": 9,
+      "32": 32,
+      "64": 29,
+      "8": 485,
+      "inf": 162
+    },
+    "rho0.01": {
+      "128": 8,
+      "16": 47,
+      "256": 9,
+      "32": 29,
+      "64": 21,
+      "8": 480,
+      "inf": 174
+    },
+    "rho0.05": {
+      "128": 10,
+      "16": 52,
+      "256": 5,
+      "32": 44,
+      "64": 15,
+      "8": 444,
+      "inf": 198
+    }
+  },
+  "fixed_share_mean_max_weight": {
+    "rho0": 0.5991147338611046,
+    "rho0.01": 0.5225776060650883,
+    "rho0.05": 0.37001706387737965
+  },
+  "global_half_life_per_fold": [
+    "16",
+    "16",
+    "16",
+    "16"
+  ],
+  "paired_best_vs_deployed": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.0355397649631843,
+        0.018675186163992493
+      ],
+      "shared_change": [
+        -0.02518862314523205,
+        0.0044354986472228
+      ],
+      "short_history": [
+        -0.02119412780959983,
+        -0.0021805695287902597
+      ],
+      "stable": [
+        -0.02056463680022615,
+        0.011370539992076578
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.016344576564024344,
+      0.0017774280502139898
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "preregistration": "Matched memory-policy comparison over the cached parity experts, r held fixed.\n\nPREREGISTERED. The capacity envelope passed its 0.25-point gate (privileged bound\n55.042506 against the deployed 53.376905), so the expert family can repay a weighting\nexperiment. The single-expert table also showed H=16 scoring above the deployed\nper-machine selector, but that table is public validation, so a global half-life must be\nSELECTED fitting-side per outer fold rather than read off it.\n\nPolicies compared, all with the deployed r frozen and the structural choice held common:\n  deployed          per-machine dense half-life averaging (the shipped policy)\n  global_heldfold   one global half-life, selected on each outer fold's FITTING episodes\n                    by the exact official weighted objective, applied to the held fold\n  fixed_share       causal reset-to-prior fixed-share mixture over the experts, run along\n                    each machine's own transition sequence, with rho = 0 as the no-share\n                    control and two predeclared positive rates\n\nFixed-share definition used, stated precisely. Experts are the half-life grid with a\nuniform prior pi. Weights v are those immediately after the last eligible observed\noutcome, before sharing. At a prediction origin Delta ACTUAL ticks later,\n    a = (1 - rho)^Delta * v + (1 - (1 - rho)^Delta) * pi\nand the forecast is sum_H a_H q_H. The gap transition is applied once; no extra share\nstep follows the preceding outcome. After an eligible observed binary outcome, v is\nupdated by that outcome's predictive likelihood with learning rate 1. Unobserved ticks\nproduce no likelihood update. Predictions always precede the update.\n\nAdvancement: a policy replaces the deployed one only if its held-fold points improve AND\nits paired whole-episode interval against the deployed forecast lies below zero.\n\nExposure: repeatedly inspected public validation; exploratory research round.\n",
+  "r_held_fixed": true,
+  "results": {
+    "deployed_per_machine": {
+      "R": 0.12408166925852328,
+      "by_condition": {
+        "drift": 0.1232398370842923,
+        "shared_change": 0.13401013016936558,
+        "short_history": 0.1516957767850603,
+        "stable": 0.08738093299537494
+      },
+      "points": 53.376904579876054
+    },
+    "fixed_share_rho0": {
+      "R": 0.1602957427214993,
+      "by_condition": {
+        "drift": 0.13980709418427859,
+        "shared_change": 0.14343377507999475,
+        "short_history": 0.2708678184064435,
+        "stable": 0.08707428321528039
+      },
+      "points": 51.71095419110017
+    },
+    "fixed_share_rho0.01": {
+      "R": 0.16692601846889052,
+      "by_condition": {
+        "drift": 0.15237248926522282,
+        "shared_change": 0.15761915178295197,
+        "short_history": 0.2704713299858978,
+        "stable": 0.0872411028414895
+      },
+      "points": 51.417141318628985
+    },
+    "fixed_share_rho0.05": {
+      "R": 0.1869198120054768,
+      "by_condition": {
+        "drift": 0.19832425650265026,
+        "shared_change": 0.19649758289355376,
+        "short_history": 0.26924661283129053,
+        "stable": 0.08361079579441265
+      },
+      "points": 50.55101397171989
+    },
+    "global_heldfold": {
+      "R": 0.11778952680733806,
+      "by_condition": {
+        "drift": 0.12047758945589412,
+        "shared_change": 0.12403726278633966,
+        "short_history": 0.14048289849700907,
+        "stable": 0.08616035649010942
+      },
+      "points": 53.677368199515776
+    }
+  },
+  "seconds": 13.884790667012567
+}

@@ -121,7 +121,7 @@ def copy(source, target):
     return target
 
 
-def stage(name, code, win_model='dense'):
+def stage(name, code, win_model='dense', dirichlet_r=False):
     """Create one package's source tree and return its description.
 
     `win_model` selects the LOCAL win model: 'dense' is the measured 37-coefficient
@@ -175,6 +175,10 @@ def stage(name, code, win_model='dense'):
         deployment['beta_cells'] = 'beta_cells_deploy.json'
     if win_model == 'beta_templates':
         deployment['beta_templates'] = 'beta_templates_deploy.json'
+    if dirichlet_r:
+        copy(ROOT / 'artifacts/win_head/dirichlet_r_deploy.json',
+             model / 'win_head/dirichlet_r_deploy.json')
+        deployment['dirichlet_r'] = 'dirichlet_r_deploy.json'
     if primary:
         copy(ROOT / 'artifacts/blend_release/model/population.json', model / 'population.json')
         copy(ROOT / 'artifacts/mtd_01/change.json', model / 'mtd/change.json')
@@ -247,6 +251,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=Path, default=ROOT / 'main-participants-60-40/public')
     parser.add_argument('--only', choices=['primary', 'fallback'])
+    parser.add_argument('--dest', help='Fresh destination directory for a new candidate, '
+                                       'relative to the repository root.')
+    parser.add_argument('--allow-protected', action='store_true',
+                        help='Permit writing into a protected candidate directory. Only for a '
+                             'deliberate regeneration, and it does not guarantee byte-identical '
+                             'archives if the staged file set has changed since.')
+    parser.add_argument('--dirichlet-r', action='store_true',
+                        help='Blend the per-machine conjugate Dirichlet conditional-positive '
+                             'distribution into r at the frozen deployment weight.')
     parser.add_argument('--win-model', choices=['dense', 'pair_dict', 'beta_cells', 'beta_templates'], default='dense',
                         help="Local win model to deploy. 'dense' (default) is the measured "
                              "37-coefficient local_interactions_averaged head whose "
@@ -281,6 +294,22 @@ def main():
 
     packages = [('primary', ROOT / 'artifacts/win_head_release'),
                 ('fallback', ROOT / 'artifacts/win_head_release_nofx')]
+    if args.dest:
+        packages = [(name, ROOT / args.dest) for name, _ in packages
+                    if args.only is None or name == args.only]
+    # Protection: never write into a directory listed as a protected candidate, and
+    # require a fresh destination for anything new. An accidental overwrite already
+    # cost a byte-identical ZIP once; this makes that failure mode impossible.
+    protected = {ROOT / 'artifacts/win_head_release_nofx', ROOT / 'artifacts/win_head_release_parity'}
+    manifest = ROOT / 'artifacts/protected/hashes.txt'
+    for name, out in packages:
+        if out.resolve() in {p.resolve() for p in protected} and not args.allow_protected:
+            raise SystemExit(
+                f'Refusing to write into protected candidate directory {out}. '
+                f'Pass --dest <artifacts/new_dir> for a new candidate, or --allow-protected '
+                f'only to deliberately regenerate a protected one. Recorded hashes: {manifest}')
+        if args.dest and out.exists() and not args.allow_protected:
+            raise SystemExit(f'--dest {out} already exists; choose a fresh directory.')
     if args.only:
         packages = [p for p in packages if p[0] == args.only]
 
@@ -288,7 +317,7 @@ def main():
         print(f'\n===== {name}: {out} =====', flush=True)
         code = out / 'code'
         out.mkdir(parents=True, exist_ok=True)
-        deployment = stage(name, code, win_model=args.win_model)
+        deployment = stage(name, code, win_model=args.win_model, dirichlet_r=args.dirichlet_r)
         pins, conflicts = requirements(name == 'primary')
         header = ('# Pinned inference closure. Base environment is Python 3.13 + stdlib;\n'
                   '# organizers prepare these before the offline prediction run.\n')

@@ -1,0 +1,32 @@
+{
+  "deployed": {
+    "R": 0.12408166925852328,
+    "points": 53.376904579876054
+  },
+  "expert_spread_mean_max_minus_min": 0.24036097748223875,
+  "exposure": "Repeatedly inspected public validation; exploratory research round.",
+  "gate": {
+    "decision": "run the causal fixed-share comparison",
+    "passed": true,
+    "threshold_points": 0.25
+  },
+  "preregistration": "Capacity envelope for the fixed memory-expert family, then causal fixed-share if justified.\n\nPREREGISTERED BATCH (frozen before any public-validation number below was read).\n\nHypothesis. The parity representation is useful, but committing to one memory length may\ndiscard information or react poorly to change. A causal mixture over the existing\nhalf-life experts may improve the bias-variance tradeoff.\n\nGate first, per the brief. With r held fixed, the privileged per-query optimum is\n    q_star = clip((u + r . t_pos) / (1 + r . r), 0, 1)\nprojected onto [min_H q_H, max_H q_H]. Scoring those projected forecasts officially gives\nan OPTIMISTIC upper bound for ANY convex combination of these particular expert\npredictions, including the true per-query optimal weights. It uses public targets and is\na privileged diagnostic, not a deployable selector and not a performance estimate.\n\nAdvancement rule, fixed in advance: if the envelope's improvement over the deployed\ncandidate is below 0.25 points, the fixed expert family provably cannot repay a causal\nweighting experiment and the batch stops there. If it is above 0.25, run the causal\nfixed-share comparison.\n\nExperts: the frozen half-life grid 8, 16, 32, 64, 128, 256, infinity. The Beta prior,\nkappa, feature construction, structural candidate family and r are all held fixed. For\neach expert the structural choice (pair and template) is selected from the SAME strict\nprefix, so the comparison isolates memory and nothing else.\n",
+  "privileged_envelope": {
+    "R": 0.09006665336135847,
+    "gain_over_deployed": 1.6656011375334288,
+    "note": "PRIVILEGED. Optimistic upper bound for ANY convex combination of these expert predictions, computed with public true vectors. Not deployable, not a performance estimate.",
+    "points": 55.04250571740948
+  },
+  "r_held_fixed": true,
+  "seconds": 5.1522739580250345,
+  "single_experts": {
+    "128": 37.32866808284143,
+    "16": 53.677368199515776,
+    "256": 34.61822997293793,
+    "32": 50.1037230993204,
+    "64": 42.67137032585852,
+    "8": 53.06446225622102,
+    "inf": 32.07217871174973
+  },
+  "unconstrained_privileged_optimum": 57.24599176766222
+}

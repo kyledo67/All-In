@@ -318,6 +318,55 @@ def beta_template_win_probabilities(queries, index, beta_by_half_life, lam, fall
     return values, details
 
 
+def load_dirichlet_r(path):
+    """Read the frozen conjugate conditional-positive settings."""
+    payload = json.loads(Path(path).read_text())
+    prior = {k: np.asarray(v, dtype=np.float64) for k, v in payload['population_prior_by_type'].items()}
+    for v in prior.values():
+        if v.shape != (4,):
+            raise ValueError('Conditional-positive prior must hold four categories')
+    return float(payload['tau']), prior, float(payload['deployment_blend_weight']), payload
+
+
+def dirichlet_proportions(queries, index, beta_by_half_life, lam, tau, prior, pooled_r, weight):
+    """Blend a per-machine Dirichlet conditional-positive estimate into `pooled_r`.
+
+    Counts are the machine's decayed PRE-CUTOFF positive outcomes by payout category,
+    using the same per-machine half-life the win head selected. The prior is the
+    population conditional-positive distribution for that machine type, so a machine
+    with no positive history returns the population distribution exactly.
+    """
+    out = np.array(pooled_r, dtype=np.float64, copy=True)
+    support = np.zeros(len(queries))
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        half_life = None
+        if star is not None and len(labels):
+            by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                       for h, table in beta_by_half_life.items()}
+            _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                          lam, adapt='full')
+            picked = mix['selected_half_life']
+            half_life = None if picked == 0.0 else picked
+        counts = np.zeros(4)
+        for tick, value in ticks.items():
+            if tick >= query.cutoff or value <= 0:
+                continue
+            w = 1.0 if not half_life else 2.0 ** (-(query.cutoff - 1 - tick) / half_life)
+            counts[value - 1] += w
+        support[i] = counts.sum()
+        m = prior.get(query.machine_type, np.full(4, 0.25))
+        conj = (tau * m + counts) / (tau + counts.sum())
+        blended = (1.0 - weight) * out[i] + weight * conj
+        total = blended.sum()
+        if not np.isfinite(total) or total <= 0:
+            continue
+        out[i] = blended / total
+    return out, support
+
+
 def proportions(vectors):
     """Positive-payout proportions of a reference five-vector block.
 
@@ -427,6 +476,8 @@ def predict(data, out, model, *, split='test', threads=2, diagnostics=None):
     beta, lam, selected = load_win_head(model / 'win_head' / deployment['win_head'])
     r = proportions(reference)
     reference_q = 1.0 - reference[:, 0]
+    dirichlet_name = deployment.get('dirichlet_r')
+    r_model = {'formulation': 'pooled reference conditional-positive distribution'}
     template_name = deployment.get('beta_templates')
     beta_name = deployment.get('beta_cells')
     pair_name = deployment.get('pair_dict')
@@ -456,6 +507,13 @@ def predict(data, out, model, *, split='test', threads=2, diagnostics=None):
     else:
         q, details = win_probabilities(ordered, index, beta, lam, reference_q)
         win_model = {'local_model': 'dense_37_coefficient'}
+    if dirichlet_name:
+        tau, prior, weight, dir_payload = load_dirichlet_r(model / 'win_head' / dirichlet_name)
+        r, support = dirichlet_proportions(ordered, index, beta, lam, tau, prior, r, weight)
+        r_model = {'formulation': 'pooled reference blended with a per-machine Dirichlet '
+                                  'conditional-positive estimate',
+                   'tau': tau, 'deployment_blend_weight': weight,
+                   'median_positive_support': float(np.median(support))}
     blended = (1.0 - alpha) * reference_q + alpha * q
     vectors = np.array([W.compose(blended[i], r[i]) for i in range(len(ids))])
     if not np.isfinite(vectors).all() or vectors.min() < 0 or vectors.max() > 1:
@@ -468,7 +526,7 @@ def predict(data, out, model, *, split='test', threads=2, diagnostics=None):
     report = {'queries': len(ids), 'split': split, 'reference_variant': variant,
               'alpha': alpha, 'payout_order': list(PAYOUT_ORDER),
               'win_head': {k: selected[k] for k in sorted(selected)},
-              'win_model': win_model,
+              'win_model': win_model, 'r_model': r_model,
               'reference_notes': notes,
               'win_head_fallback_queries': fallbacks,
               'win_head_fallbacks': len(fallbacks),

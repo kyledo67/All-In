@@ -1,0 +1,139 @@
+{
+  "blend_weight_per_fold": [
+    0.35000000000000003,
+    0.41000000000000003,
+    0.48,
+    0.44
+  ],
+  "exposure": "Repeatedly inspected public validation; exploratory.",
+  "paired_blend_vs_deployed": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.006990907527329745,
+        0.0014815300233430588
+      ],
+      "shared_change": [
+        -0.0048763259605672325,
+        0.0020569134301548146
+      ],
+      "short_history": [
+        -0.018517760409280163,
+        -0.004055555845968393
+      ],
+      "stable": [
+        -0.004158166494128121,
+        0.00396141798024565
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.006207087893457616,
+      -0.001141905485628969
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "population_prior_by_type": {
+    "balanced": [
+      0.4032258064516129,
+      0.4032258064516129,
+      0.1532258064516129,
+      0.04032258064516129
+    ],
+    "jackpot": [
+      0.21666666666666667,
+      0.35,
+      0.31666666666666665,
+      0.11666666666666667
+    ],
+    "steady": [
+      0.6405228758169934,
+      0.2875816993464052,
+      0.0718954248366013,
+      0.0
+    ]
+  },
+  "positive_support": {
+    "median": 8.796376338381346,
+    "p10": 1.6547600201888988
+  },
+  "preregistration": "Conjugate Dirichlet conditional-positive distribution, the r-side analogue of the parity win.\n\nPREREGISTRATION. The refreshed diagnosis on the 53.191542 parity winner shows the\nbottleneck has moved: privileged substitution of the true conditional-positive\ndistribution r scores 55.7135 against the candidate's 53.1915, so r now carries about\n2.52 points of headroom where it previously had almost none. The deployed r is the\ntwo-head CatBoost conditional distribution, which is a pooled population model with no\nmachine-specific adaptation at all.\n\nHypothesis: a per-machine Dirichlet-multinomial over the four positive payout categories,\nwith a population prior learned on training episodes, estimates r better than the pooled\ntwo-head head alone - the same conjugate, partially pooled mechanism that moved q from\n48.4 to 53.2.\n\nModel. For machine m, over its pre-cutoff POSITIVE outcomes with recency weights w_t,\naccumulate decayed counts W_k for k in {1x, 2x, 5x, 20x}. With prior alpha_k = tau * m_k,\nwhere m_k is the population conditional-positive distribution for that machine type:\n\n    r_k = (tau * m_k + W_k) / (tau + sum_j W_j)\n\nCandidates: tau in {1, 2, 4, 8, 16, 32, 64, 128}. Context: pooled over the machine\n(declared) - the parity context is NOT reused here, because conditioning r on the same\ncell would split already-thin positive counts four ways.\nPrimary metric: official points / R on concatenated held-fold predictions.\nSelection: tau and the population prior m_k are learned on TRAIN episodes only, by\nepisode-equal conditional-positive Brier on observed training outcomes - a sampled-outcome\nsurrogate, labelled as such.\nMatched controls: deployed two-head r; a single bounded blend between the two.\nq is HELD FIXED at the parity benchmark throughout. Nothing about q is refitted.\nAdvancement: held-fold points must improve AND the paired interval must lie below zero.\n\nExposure: 96 repeatedly inspected validation episodes; exploratory, another adaptive round.\n",
+  "q_held_fixed": true,
+  "results": {
+    "blend_fitted_per_fold": {
+      "R": 0.12444446943898056,
+      "by_condition": {
+        "drift": 0.12322709563516397,
+        "shared_change": 0.13409134198256795,
+        "short_history": 0.15255389655902785,
+        "stable": 0.0879055435791625
+      },
+      "points": 53.359682608369106
+    },
+    "conjugate_dirichlet_r": {
+      "R": 0.13139548023712438,
+      "by_condition": {
+        "drift": 0.13282444623644296,
+        "shared_change": 0.14266327661831646,
+        "short_history": 0.15093493594557775,
+        "stable": 0.0991592621481604
+      },
+      "points": 53.03185406700127
+    },
+    "deployed_two_head_r": {
+      "R": 0.12799887797317455,
+      "by_condition": {
+        "drift": 0.1254550278283578,
+        "shared_change": 0.13554887886904932,
+        "short_history": 0.16319343969214206,
+        "stable": 0.08779816550314906
+      },
+      "points": 53.19154227157564
+    }
+  },
+  "seconds": 9.133693291980308,
+  "tau": 32.0,
+  "train_records": [
+    {
+      "scored_queries": 337,
+      "tau": 1.0,
+      "train_oof_conditional_positive_brier": 0.6101575584705287
+    },
+    {
+      "scored_queries": 337,
+      "tau": 2.0,
+      "train_oof_conditional_positive_brier": 0.6053677610222422
+    },
+    {
+      "scored_queries": 337,
+      "tau": 4.0,
+      "train_oof_conditional_positive_brier": 0.600236073589549
+    },
+    {
+      "scored_queries": 337,
+      "tau": 8.0,
+      "train_oof_conditional_positive_brier": 0.5961514056162799
+    },
+    {
+      "scored_queries": 337,
+      "tau": 16.0,
+      "train_oof_conditional_positive_brier": 0.5940491040645153
+    },
+    {
+      "scored_queries": 337,
+      "tau": 32.0,
+      "train_oof_conditional_positive_brier": 0.5938682711500572
+    },
+    {
+      "scored_queries": 337,
+      "tau": 64.0,
+      "train_oof_conditional_positive_brier": 0.5949211537793672
+    },
+    {
+      "scored_queries": 337,
+      "tau": 128.0,
+      "train_oof_conditional_positive_brier": 0.5964224980526219
+    }
+  ]
+}

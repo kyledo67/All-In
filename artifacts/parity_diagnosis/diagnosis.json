@@ -1,0 +1,207 @@
+{
+  "R_decomposition": {
+    "B_by_condition": {
+      "drift": 0.18983393064179913,
+      "shared_change": 0.20556264957983816,
+      "short_history": 0.17734144798786677,
+      "stable": 0.1962508028929019
+    },
+    "absolute_difference": 0.0,
+    "identity_holds": true,
+    "official_R": 0.12799887797317455,
+    "sum_of_query_contributions": 0.12799887797317455
+  },
+  "candidate": {
+    "R": 0.12799887797317455,
+    "by_condition": {
+      "drift": 0.1254550278283578,
+      "shared_change": 0.13554887886904932,
+      "short_history": 0.16319343969214206,
+      "stable": 0.08779816550314908
+    },
+    "points": 53.19154227157564
+  },
+  "episode_concentration": {
+    "top8": [
+      {
+        "R_contribution": 0.005116659663582859,
+        "condition": "shared_change",
+        "episode": "main-validation-e00051"
+      },
+      {
+        "R_contribution": 0.005034528633527874,
+        "condition": "stable",
+        "episode": "main-validation-e00054"
+      },
+      {
+        "R_contribution": 0.004568771292791483,
+        "condition": "drift",
+        "episode": "main-validation-e00080"
+      },
+      {
+        "R_contribution": 0.004314015698151079,
+        "condition": "short_history",
+        "episode": "main-validation-e00095"
+      },
+      {
+        "R_contribution": 0.004010063369868729,
+        "condition": "short_history",
+        "episode": "main-validation-e00011"
+      },
+      {
+        "R_contribution": 0.002802284007480598,
+        "condition": "short_history",
+        "episode": "main-validation-e00052"
+      },
+      {
+        "R_contribution": 0.0024995791612506964,
+        "condition": "drift",
+        "episode": "main-validation-e00006"
+      },
+      {
+        "R_contribution": 0.0024009956942511756,
+        "condition": "shared_change",
+        "episode": "main-validation-e00084"
+      }
+    ],
+    "top8_share_of_R": 0.2402122425428471
+  },
+  "privileged_substitutions": {
+    "candidate": 53.19154227157564,
+    "candidate_q_with_true_r": 55.713488347942885,
+    "note": "PRIVILEGED diagnostics using organizer true vectors. Not attainable ceilings and their gains need not add.",
+    "true_q_with_candidate_r": 56.941794809239425
+  },
+  "queried_context_support": {
+    "1-3": {
+      "R_contribution": 0.0013704641496743543,
+      "mean_post_sd": 0.20186930162666247,
+      "mean_prior_fraction": 0.1693193832810157,
+      "mean_raw_query_loss": 0.05013632523613837,
+      "queries": 4,
+      "share_of_R": 0.010706845023763178
+    },
+    "1e-09-1": {
+      "R_contribution": 0.005662469210698891,
+      "mean_post_sd": 0.29203288433028446,
+      "mean_prior_fraction": 0.5782649599457313,
+      "mean_raw_query_loss": 0.14180943074505073,
+      "queries": 6,
+      "share_of_R": 0.044238428495331085
+    },
+    "20-inf": {
+      "R_contribution": 0.03017342592782323,
+      "mean_post_sd": 0.038793419980649675,
+      "mean_prior_fraction": 0.01269304850369889,
+      "mean_raw_query_loss": 0.019339487104192706,
+      "queries": 237,
+      "share_of_R": 0.235731956448453
+    },
+    "3-8": {
+      "R_contribution": 0.04480227392548887,
+      "mean_post_sd": 0.12398777973970294,
+      "mean_prior_fraction": 0.0815947395609866,
+      "mean_raw_query_loss": 0.02842955129899169,
+      "queries": 226,
+      "share_of_R": 0.3500208332676036
+    },
+    "8-20": {
+      "R_contribution": 0.04336982443926183,
+      "mean_post_sd": 0.08124925910449196,
+      "mean_prior_fraction": 0.04035990942358227,
+      "mean_raw_query_loss": 0.02174240154057056,
+      "queries": 293,
+      "share_of_R": 0.33882972355703844
+    },
+    "empty": {
+      "R_contribution": 0.0026204203202273907,
+      "mean_post_sd": 0.40473514165156144,
+      "mean_prior_fraction": 1.0,
+      "mean_raw_query_loss": 0.17844830742756673,
+      "queries": 2,
+      "share_of_R": 0.02047221320781083
+    }
+  },
+  "selection_margin_nats": {
+    "0-0.5": {
+      "R_contribution": 0.015793314953782816,
+      "mean_raw_query_loss": 0.02661281468741356,
+      "queries": 86,
+      "share_of_R": 0.12338635466080188
+    },
+    "0.5-1.0": {
+      "R_contribution": 0.006473713154014069,
+      "mean_raw_query_loss": 0.028642657681865556,
+      "queries": 32,
+      "share_of_R": 0.050576327359453895
+    },
+    "1-2.0": {
+      "R_contribution": 0.012796175896809352,
+      "mean_raw_query_loss": 0.036743977219826626,
+      "queries": 51,
+      "share_of_R": 0.09997100052307582
+    },
+    "2-4.0": {
+      "R_contribution": 0.04150475251911129,
+      "mean_raw_query_loss": 0.02688737187396884,
+      "queries": 227,
+      "share_of_R": 0.3242587214538683
+    },
+    "4-inf": {
+      "R_contribution": 0.05143092144945703,
+      "mean_raw_query_loss": 0.020442784479525834,
+      "queries": 372,
+      "share_of_R": 0.40180759600280014
+    }
+  },
+  "template_counts": {
+    "fallback": 0,
+    "full": 6,
+    "null": 0,
+    "parity": 762
+  },
+  "weighted_likelihood_scope": {
+    "cases": [
+      {
+        "L": 1.3,
+        "W": 2.7,
+        "closed_form": 0.018116075230000615,
+        "naive_power_of_predictive_mean": 0.043366922321543246,
+        "quadrature": 0.018116075241784022
+      },
+      {
+        "L": 0.0,
+        "W": 0.4,
+        "closed_form": 0.5380298370423716,
+        "naive_power_of_predictive_mean": 0.6931448431551464,
+        "quadrature": 0.5380298376589695
+      },
+      {
+        "L": 0.9,
+        "W": 0.0,
+        "closed_form": 0.6131202304812788,
+        "naive_power_of_predictive_mean": 0.6314458674893553,
+        "quadrature": 0.6131202308924285
+      },
+      {
+        "L": 5.5,
+        "W": 5.5,
+        "closed_form": 6.735115526871259e-05,
+        "naive_power_of_predictive_mean": 0.00039008731627278325,
+        "quadrature": 6.735115531327056e-05
+      },
+      {
+        "L": 12.25,
+        "W": 0.05,
+        "closed_form": 0.2504774649636499,
+        "naive_power_of_predictive_mean": 0.001830019918563536,
+        "quadrature": 0.25047746513161606
+      }
+    ],
+    "claim": "the deployed fractional-weight quantity is an integrated POWER-likelihood ratio under the Beta prior, i.e. a generalized-posterior normalizer",
+    "max_relative_deviation_vs_naive_fractional_power": 4.791842986455721,
+    "max_relative_deviation_vs_quadrature": 1.1460291630886068e-09,
+    "scope_note": "The earlier sequential-product check established the UNIT-weight telescoping identity only. It did not cover the deployed weighted calculation, and it is not evidence of an exact sequential Bayes factor for a tempered likelihood with recency weights that change with the prediction origin.",
+    "verdict": "confirmed by independent quadrature"
+  }
+}
