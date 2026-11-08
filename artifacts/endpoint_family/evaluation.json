@@ -1,0 +1,287 @@
+{
+  "advanced": true,
+  "advancement_rule": "held-fold points improve AND paired interval upper bound < 0",
+  "best_deployable": "tail_train",
+  "crossfit_tails_per_fold": [
+    {
+      "balanced": [
+        0.6956521739130456,
+        0.26086956521739085,
+        0.043478260869565355
+      ],
+      "jackpot": [
+        0.3684210526315798,
+        0.4736842105263152,
+        0.15789473684210556
+      ],
+      "steady": [
+        0.8000000000000003,
+        0.19600000000000026,
+        0.004000000000000003
+      ]
+    },
+    {
+      "balanced": [
+        0.6956521739130457,
+        0.26086956521739085,
+        0.043478260869565355
+      ],
+      "jackpot": [
+        0.3684210526315796,
+        0.47368421052631515,
+        0.15789473684210545
+      ],
+      "steady": [
+        0.8000000000000005,
+        0.19600000000000017,
+        0.004000000000000003
+      ]
+    },
+    {
+      "balanced": [
+        0.6956521739130456,
+        0.26086956521739085,
+        0.043478260869565355
+      ],
+      "jackpot": [
+        0.3684210526315799,
+        0.4736842105263152,
+        0.15789473684210553
+      ],
+      "steady": [
+        0.8000000000000008,
+        0.19600000000000012,
+        0.004000000000000003
+      ]
+    },
+    {
+      "balanced": [
+        0.6956521739130456,
+        0.26086956521739085,
+        0.043478260869565355
+      ],
+      "jackpot": [
+        0.3684210526315801,
+        0.4736842105263152,
+        0.1578947368421055
+      ],
+      "steady": [
+        0.800000000000001,
+        0.19600000000000006,
+        0.004000000000000003
+      ]
+    }
+  ],
+  "error_geometry": {
+    "interpretation": "off-family error is what a projection can remove; along-family error requires identifying which endpoint applies, which the projection cannot do",
+    "mean_along_family_abs_error_in_P1": 0.10521871861752803,
+    "mean_off_family_L2_of_current_r": 0.03645618865117702,
+    "p90_off_family_L2": 0.08457806249751625
+  },
+  "exposure": "Repeatedly inspected public validation; exploratory research round.",
+  "gain_over_protected": 0.05533339489295486,
+  "paired_best_deployable_vs_protected": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.0015497114875421161,
+        0.0008514281877928283
+      ],
+      "shared_change": [
+        -0.002603699779933009,
+        0.0008274446626207049
+      ],
+      "short_history": [
+        -0.007996170114900414,
+        -0.00037937274031563605
+      ],
+      "stable": [
+        -0.0011477275818784342,
+        0.0013091635045851117
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.002377296176599742,
+      -0.00015897099033372408
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "preregistration": "Does restricting r to the observed type-specific family improve the official score?\n\nESTABLISHED STRUCTURE, verified independently from organizer data (validation/targets.csv).\nWithin each machine type the TRUE conditional positive-payout vector r takes exactly two\ndistinct values (2 of 269 steady, 2 of 234 balanced, 2 of 265 jackpot; one nonzero\ncovariance eigenvalue; rank-1 affine residual ~1e-15). Those two endpoints share an\nIDENTICAL tail split among {2x, 5x, 20x} to within 1e-9, and differ only in P(1x|positive):\n\n    steady    tail (0.800000, 0.196000, 0.004000)   P(1|pos) in {0.455122, 0.753989}\n    balanced  tail (0.695652, 0.260870, 0.043478)   P(1|pos) in {0.214066, 0.499853}\n    jackpot   tail (0.368421, 0.473684, 0.157895)   P(1|pos) in {0.120787, 0.335146}\n\nSo the family is one-parameter per type: r = [u, (1-u) * tail_type], u in two values. The\nendpoint is a MACHINE-level property, not an episode-level one: 59/90, 52/92 and 60/92\nepisodes contain both endpoints, and the split is close to 50/50 and near-uniform across\nconditions.\n\nCANDIDATES (all hold q byte-identical to the protected forecast; r only changes):\n  protected            the deployed forecast\n  tail_train           keep the forecast's own P(1|pos); replace the tail split with a\n                       ratio estimated from TRAIN sampled outcomes only. Fully deployable.\n  tail_train_smoothed  the same with Dirichlet smoothing, because steady has zero observed\n                       20x outcomes in 55 training positives and an exact zero is unsafe.\n  tail_crossfit        tail ratio estimated from validation TARGETS on each outer fold's\n                       FITTING episodes, applied to its held fold. Labelled: this uses\n                       held-out-style probability supervision, cross-fitted.\n  snap_nearest         PRIVILEGED. Snap r to the nearer true endpoint. Measures what the\n                       family buys if the endpoint were identifiable; already measured at\n                       52.340264, BELOW the protected forecast, because committing to the\n                       wrong endpoint costs more than hedging between them.\n  true_r               PRIVILEGED upper reference, 55.713488.\n\nThese are conditional deployment replays: q and the blend form are frozen and identical\nacross candidates. Exposure: 96 repeatedly inspected validation episodes; exploratory.\n",
+  "q_byte_identical": true,
+  "results": {
+    "protected": {
+      "R": 0.12408166925852328,
+      "by_condition": {
+        "drift": 0.1232398370842923,
+        "shared_change": 0.13401013016936558,
+        "short_history": 0.1516957767850603,
+        "stable": 0.08738093299537494
+      },
+      "points": 53.376904579876054
+    },
+    "snap_nearest_PRIVILEGED": {
+      "R": 0.1463449966118207,
+      "by_condition": {
+        "drift": 0.15065811531727896,
+        "shared_change": 0.15281758063149933,
+        "short_history": 0.1897698867230164,
+        "stable": 0.09213440377548812
+      },
+      "points": 52.34026421133097
+    },
+    "tail_crossfit": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.1457561052022448,
+        "stable": 0.0856384060879655
+      },
+      "points": 53.532917808538166
+    },
+    "tail_train": {
+      "R": 0.1229175919663393,
+      "by_condition": {
+        "drift": 0.12290750974918091,
+        "shared_change": 0.13328118144725878,
+        "short_history": 0.1479569695792634,
+        "stable": 0.08752470708965411
+      },
+      "points": 53.43223797476901
+    },
+    "tail_train_smoothed": {
+      "R": 0.12372110316771347,
+      "by_condition": {
+        "drift": 0.12452452504647409,
+        "shared_change": 0.1338849351202506,
+        "short_history": 0.14805938683907216,
+        "stable": 0.08841556566505701
+      },
+      "points": 53.39403151801903
+    },
+    "true_r_PRIVILEGED": {
+      "R": 0.0769384897475261,
+      "by_condition": {
+        "drift": 0.07320488575224181,
+        "shared_change": 0.09030357600500431,
+        "short_history": 0.09576647646508188,
+        "stable": 0.0484790207677764
+      },
+      "points": 55.713488347942885
+    }
+  },
+  "seconds": 1.1822612920077518,
+  "train_tail_estimates": {
+    "raw": {
+      "balanced": [
+        0.6756756756756757,
+        0.25675675675675674,
+        0.06756756756756757
+      ],
+      "jackpot": [
+        0.44680851063829785,
+        0.40425531914893614,
+        0.14893617021276595
+      ],
+      "steady": [
+        0.8,
+        0.2,
+        0.0
+      ]
+    },
+    "smoothed_add1": {
+      "balanced": [
+        0.6623376623376623,
+        0.2597402597402597,
+        0.07792207792207792
+      ],
+      "jackpot": [
+        0.44,
+        0.4,
+        0.16
+      ],
+      "steady": [
+        0.7758620689655172,
+        0.20689655172413793,
+        0.017241379310344827
+      ]
+    },
+    "training_positive_samples_per_type": {
+      "balanced": 74,
+      "jackpot": 47,
+      "steady": 55
+    }
+  },
+  "verified_structure": {
+    "P1_given_positive_endpoints": {
+      "balanced": [
+        0.214066147,
+        0.499853108
+      ],
+      "jackpot": [
+        0.12078673,
+        0.335146032
+      ],
+      "steady": [
+        0.455122008,
+        0.75398939
+      ]
+    },
+    "distinct_true_r_per_type": {
+      "balanced": 2,
+      "jackpot": 2,
+      "steady": 2
+    },
+    "endpoints": {
+      "balanced": [
+        [
+          0.214066147,
+          0.546736593,
+          0.205026222,
+          0.034171037
+        ],
+        [
+          0.499853108,
+          0.347928272,
+          0.130473102,
+          0.021745517
+        ]
+      ],
+      "jackpot": [
+        [
+          0.12078673,
+          0.323920678,
+          0.416469444,
+          0.138823148
+        ],
+        [
+          0.335146032,
+          0.244946199,
+          0.314930827,
+          0.104976942
+        ]
+      ],
+      "steady": [
+        [
+          0.455122008,
+          0.435902394,
+          0.106796087,
+          0.002179512
+        ],
+        [
+          0.75398939,
+          0.196808488,
+          0.04821808,
+          0.000984042
+        ]
+      ]
+    },
+    "tail_split_identical_across_endpoints_max_abs_diff": {
+      "balanced": 3.8724357054320535e-10,
+      "jackpot": 8.747100821437925e-10,
+      "steady": 1.8399283962730606e-09
+    }
+  }
+}

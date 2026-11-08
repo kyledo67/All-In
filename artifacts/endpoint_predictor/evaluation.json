@@ -1,0 +1,174 @@
+{
+  "advanced": true,
+  "advancement_rule": "held-fold points improve AND paired interval upper bound < 0",
+  "best": "tail_train",
+  "blend_alpha_per_fold": [
+    0.24,
+    0.11,
+    0.27,
+    0.11
+  ],
+  "endpoint_identification": {
+    "balanced": {
+      "em_recovered": [
+        0.29959272520040026,
+        0.4340936040727643
+      ],
+      "hard_assignment_accuracy": 0.6153846153846154,
+      "max_abs_endpoint_recovery_error": 0.08552657820040024,
+      "mean_abs_u_error_mixture": 0.12637616875134747,
+      "mean_abs_u_error_protected": 0.11212086150680113,
+      "true_endpoint_values": [
+        0.214066147,
+        0.499853108
+      ]
+    },
+    "jackpot": {
+      "em_recovered": [
+        0.18531811575792737,
+        0.32790764515388593
+      ],
+      "hard_assignment_accuracy": 0.5584905660377358,
+      "max_abs_endpoint_recovery_error": 0.06453138575792737,
+      "mean_abs_u_error_mixture": 0.09330757847792151,
+      "mean_abs_u_error_protected": 0.09265621458356461,
+      "true_endpoint_values": [
+        0.12078673,
+        0.335146032
+      ]
+    },
+    "steady": {
+      "em_recovered": [
+        0.5446748767314536,
+        0.7071355106932696
+      ],
+      "hard_assignment_accuracy": 0.7174721189591078,
+      "max_abs_endpoint_recovery_error": 0.08955286873145363,
+      "mean_abs_u_error_mixture": 0.11552594439286774,
+      "mean_abs_u_error_protected": 0.11159032505957418,
+      "true_endpoint_values": [
+        0.455122008,
+        0.75398939
+      ]
+    }
+  },
+  "exposure": "Repeatedly inspected public validation; exploratory research round.",
+  "gain_over_protected": 0.05533339489295486,
+  "paired_best_vs_protected": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.0015497114875421161,
+        0.0008514281877928283
+      ],
+      "shared_change": [
+        -0.002603699779933009,
+        0.0008274446626207049
+      ],
+      "short_history": [
+        -0.007996170114900414,
+        -0.00037937274031563605
+      ],
+      "stable": [
+        -0.0011477275818784342,
+        0.0013091635045851117
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.002377296176599742,
+      -0.00015897099033372408
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "positive_observations": {
+    "median": 74.0,
+    "p10": 19.0
+  },
+  "preregistration": "One small causal predictor for the remaining within-family quantity P(1x | positive).\n\nWHY THIS AND NOTHING ELSE. The family projection removed the off-family error (mean L2\n0.0365) and gained 0.055333 points. The along-family error is three times larger: mean\n|P(1|pos) - truth| = 0.1052. Since the true P(1|pos) takes exactly TWO values per machine\ntype, the remaining conditional-payout quantity is a two-class identification problem, and\nthat is what this predictor addresses.\n\nPERMITTED SUPERVISION. Both endpoint values and the mixing weight are estimated from\nTRAIN sampled outcomes only, by a two-component binomial mixture fitted with EM over\nper-machine counts (n_1x, n_positive) within each machine type. No validation target,\ncondition label or reference forecast enters the fit. The deployed tail split also comes\nfrom train sampled outcomes.\n\nINFERENCE, causal. For a held machine, count its own STRICTLY PRE-CUTOFF outcomes: n1 =\nnumber of 1x results and ntail = number of 2x/5x/20x results. The component posterior is\n    pi_k * Binomial(n1 ; n1 + ntail, u_k)\nand the emitted estimate is the posterior MEAN  u_hat = sum_k post_k * u_k, which stays\ninside [min u_k, max u_k]. A posterior mean is used rather than a hard assignment because\nsnapping to the nearer endpoint was measured at 52.340264, BELOW the protected forecast:\ncommitting to the wrong endpoint costs more under squared error than hedging between them.\n\nThen r = [u_hat, (1 - u_hat) * tail_train_type] and q is held byte-identical.\n\nCANDIDATES\n  protected        the deployed forecast\n  tail_train       family projection keeping the forecast's own P(1|pos)   (already +0.055333)\n  mixture_em       this predictor, with endpoints and weights from train EM\n  blend            one bounded coefficient between tail_train's P(1|pos) and mixture_em's,\n                   fitted per outer fold on the exact official objective\nAdvancement: held-fold points must improve AND the paired whole-episode interval against\nthe protected forecast must lie below zero. Same rule as the previous batches, unchanged.\n\nLIMITS. The EM endpoints are point estimates from 47-74 training positive samples per\ntype, so they carry real estimation error; the recovered values are reported against the\norganizer truth for transparency, but the truth is NOT used to fit them. Fractional decay\nis deliberately NOT applied to these counts: the endpoint is a machine-level property, so\nall permitted positive history is informative and recency weighting would only add\nvariance. That choice is a declared modelling decision, not a tuned one.\n",
+  "q_byte_identical": true,
+  "results": {
+    "blend": {
+      "R": 0.12295915055921365,
+      "by_condition": {
+        "drift": 0.1223439117521505,
+        "shared_change": 0.13419532573273715,
+        "short_history": 0.14819511794672732,
+        "stable": 0.08710224680523962
+      },
+      "points": 53.43026054876624
+    },
+    "mixture_em": {
+      "R": 0.1285670191208248,
+      "by_condition": {
+        "drift": 0.12725499516756875,
+        "shared_change": 0.14239235350863663,
+        "short_history": 0.1519861026717918,
+        "stable": 0.09263462513530198
+      },
+      "points": 53.164764682509634
+    },
+    "protected": {
+      "R": 0.12408166925852328,
+      "by_condition": {
+        "drift": 0.1232398370842923,
+        "shared_change": 0.13401013016936558,
+        "short_history": 0.1516957767850603,
+        "stable": 0.08738093299537494
+      },
+      "points": 53.376904579876054
+    },
+    "tail_train": {
+      "R": 0.1229175919663393,
+      "by_condition": {
+        "drift": 0.12290750974918091,
+        "shared_change": 0.13328118144725878,
+        "short_history": 0.1479569695792634,
+        "stable": 0.08752470708965411
+      },
+      "points": 53.43223797476901
+    }
+  },
+  "seconds": 1.5517649590037763,
+  "train_mixture": {
+    "balanced": {
+      "machines": 278,
+      "median_positive_observations": 82.5,
+      "u0": 0.29959272520040026,
+      "u1": 0.4340936040727643,
+      "weight0": 0.5870803060247383
+    },
+    "jackpot": {
+      "machines": 224,
+      "median_positive_observations": 37.0,
+      "u0": 0.18531811575792737,
+      "u1": 0.32790764515388593,
+      "weight0": 0.8047412708585965
+    },
+    "steady": {
+      "machines": 266,
+      "median_positive_observations": 119.0,
+      "u0": 0.5446748767314536,
+      "u1": 0.7071355106932696,
+      "weight0": 0.5366320805497156
+    }
+  },
+  "train_tail": {
+    "balanced": [
+      0.6756756756756757,
+      0.25675675675675674,
+      0.06756756756756757
+    ],
+    "jackpot": [
+      0.44680851063829785,
+      0.40425531914893614,
+      0.14893617021276595
+    ],
+    "steady": [
+      0.8,
+      0.2,
+      0.0
+    ]
+  }
+}

@@ -121,7 +121,7 @@ def copy(source, target):
     return target
 
 
-def stage(name, code, win_model='dense', dirichlet_r=False):
+def stage(name, code, win_model='dense', dirichlet_r=False, tail_projection=False):
     """Create one package's source tree and return its description.
 
     `win_model` selects the LOCAL win model: 'dense' is the measured 37-coefficient
@@ -179,6 +179,10 @@ def stage(name, code, win_model='dense', dirichlet_r=False):
         copy(ROOT / 'artifacts/win_head/dirichlet_r_deploy.json',
              model / 'win_head/dirichlet_r_deploy.json')
         deployment['dirichlet_r'] = 'dirichlet_r_deploy.json'
+    if tail_projection:
+        copy(ROOT / 'artifacts/win_head/tail_projection_deploy.json',
+             model / 'win_head/tail_projection_deploy.json')
+        deployment['tail_projection'] = 'tail_projection_deploy.json'
     if primary:
         copy(ROOT / 'artifacts/blend_release/model/population.json', model / 'population.json')
         copy(ROOT / 'artifacts/mtd_01/change.json', model / 'mtd/change.json')
@@ -257,6 +261,8 @@ def main():
                         help='Permit writing into a protected candidate directory. Only for a '
                              'deliberate regeneration, and it does not guarantee byte-identical '
                              'archives if the staged file set has changed since.')
+    parser.add_argument('--tail-projection', action='store_true',
+                        help='Project r onto the type-specific fixed tail split estimated from train.')
     parser.add_argument('--dirichlet-r', action='store_true',
                         help='Blend the per-machine conjugate Dirichlet conditional-positive '
                              'distribution into r at the frozen deployment weight.')
@@ -317,7 +323,8 @@ def main():
         print(f'\n===== {name}: {out} =====', flush=True)
         code = out / 'code'
         out.mkdir(parents=True, exist_ok=True)
-        deployment = stage(name, code, win_model=args.win_model, dirichlet_r=args.dirichlet_r)
+        deployment = stage(name, code, win_model=args.win_model, dirichlet_r=args.dirichlet_r,
+                           tail_projection=args.tail_projection)
         pins, conflicts = requirements(name == 'primary')
         header = ('# Pinned inference closure. Base environment is Python 3.13 + stdlib;\n'
                   '# organizers prepare these before the offline prediction run.\n')

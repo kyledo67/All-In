@@ -1,0 +1,27 @@
+{
+  "model": "type-specific fixed tail-ratio projection of the conditional positive-payout vector",
+  "formula": "r = [u, (1-u)*tail_type] where u = P(1x|positive) from the existing r, and tail_type is the fixed split among {2x,5x,20x}",
+  "tail_by_type": {
+    "balanced": [
+      0.6756756756756757,
+      0.25675675675675674,
+      0.06756756756756757
+    ],
+    "jackpot": [
+      0.44680851063829785,
+      0.40425531914893614,
+      0.14893617021276595
+    ],
+    "steady": [
+      0.8,
+      0.2,
+      0.0
+    ]
+  },
+  "tail_provenance": "estimated from TRAIN sampled outcomes only (payout category frequencies among positive training-query outcomes). No validation target, condition label or reference forecast used.",
+  "structure_evidence": "In validation/targets.csv the true conditional vector takes exactly two values per machine type (2 of 269 steady, 2 of 234 balanced, 2 of 265 jackpot; one nonzero covariance eigenvalue; rank-1 affine residual ~1e-15), and those two endpoints share an IDENTICAL tail split to within 1e-9, differing only in P(1x|positive). That verification used organizer targets; the DEPLOYED tail numbers come from train.",
+  "smoothing": "none - add-1 smoothing was tested and scored lower (53.394032 vs 53.432238)",
+  "validation_points": 53.43223797476901,
+  "validation_R": 0.1229175919663393,
+  "q_unchanged": true
+}

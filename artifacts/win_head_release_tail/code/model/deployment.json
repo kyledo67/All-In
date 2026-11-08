@@ -1,0 +1,17 @@
+{
+  "alpha": 1.0,
+  "beta_templates": "beta_templates_deploy.json",
+  "candidate": "win_head_q_times_two_head_r",
+  "dirichlet_r": "dirichlet_r_deploy.json",
+  "local_win_model": "beta_templates",
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "reference_variant": "two_head",
+  "tail_projection": "tail_projection_deploy.json",
+  "win_head": "population_averaged.json"
+}
