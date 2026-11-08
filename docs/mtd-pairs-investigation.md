@@ -92,6 +92,9 @@ The aggregate normalized 0x contribution worsened from 0.594101 to 0.596969.
 The shared-state correction is rejected. It uses other-machine observations
 strictly before the cutoff and passed cutoff-invariance and normalization
 checks. No release files or original prediction CSVs were modified.
+The complete shared-state fitting and validation script took 5.93 seconds on
+the local CPU, reusing the saved additive MTD training OOF and validation
+forecasts. It adds no new runtime dependency.
 
 Reproduce the second check:
 
