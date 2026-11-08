@@ -38,6 +38,26 @@ PHASE2 = ROOT / 'artifacts/phase2'
 BASE = 'frozen_blend'
 FIXED_WEIGHTS = (0.15, 0.25, 0.35)
 
+# Component registry. `keep` components are the candidate set for a deployed blend;
+# `reject` components were measured over all 32 combinations and removed because they
+# cost score or contribute nothing. Evidence: docs/combined-blend-findings.md.
+# Their code and artifacts are preserved as rejected experiments, per the convention
+# already used for the partial-pooling patch and calibration cycle 01.
+COMPONENTS = {
+    'tabpfn': ('keep', 'artifacts/tabpfn/predictions/oof_tabpfn.csv',
+               'Mandatory. Every combination containing it is significant; none without it is.'),
+    'mtd': ('keep', 'artifacts/mtd_pairs_01/validation_lag7.csv',
+            'Weak alone (30.59) but owns the drift condition; earns 0.11-0.25 fitted weight.'),
+    'two_head': ('keep', 'artifacts/two_head_01/validation.csv',
+                 'Adds +0.115 on top of tabpfn+mtd at fitted weight 0.24-0.41.'),
+    'shared_state': ('reject', 'artifacts/shared_state_01/validation.csv',
+                     'Fitted weight exactly 0.000 whenever tabpfn+mtd+two_head are present; '
+                     'strictly redundant. Strong alone (31.83) but carries no new information.'),
+    'dense_cb': ('reject', 'artifacts/dense_catboost_01/validation_dense.csv',
+                 'The only component that lowers the bar on its own (-0.0012) and it subtracts '
+                 '0.0128 from the best combination.'),
+}
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -45,7 +65,11 @@ def main():
     parser.add_argument('--base', type=Path, default=PHASE2 / 'predictions/oof_ensemble.csv',
                         help='The frozen four-recipe blend that defines the bar.')
     parser.add_argument('--component', action='append', default=[], metavar='NAME=PATH',
-                        help='Challenger validation predictions; repeatable.')
+                        help='Challenger validation predictions; repeatable. '
+                             'Default: the kept components in the COMPONENTS registry.')
+    parser.add_argument('--include-rejected', action='store_true',
+                        help='Also measure the registry components marked reject, to re-verify '
+                             'the removal decision rather than trust it.')
     parser.add_argument('--weights', nargs='+', type=float, default=list(FIXED_WEIGHTS))
     parser.add_argument('--max-combination', type=int, default=3,
                         help='Largest number of challengers to add to the base at once.')
@@ -99,11 +123,18 @@ def main():
 
     base = load(args.base)
     challengers = {}
-    for item in args.component:
-        name, _, path = item.partition('=')
-        if not path:
-            raise SystemExit(f'--component needs NAME=PATH, got {item!r}')
-        challengers[name] = load(path)
+    if args.component:
+        for item in args.component:
+            name, _, path = item.partition('=')
+            if not path:
+                raise SystemExit(f'--component needs NAME=PATH, got {item!r}')
+            challengers[name] = load(path)
+    else:
+        for name, (status, path, reason) in COMPONENTS.items():
+            if status == 'keep' or args.include_rejected:
+                challengers[name] = load(ROOT / path)
+                print(f'{status:>6}  {name:<14} {reason}')
+        print()
     if not challengers:
         raise SystemExit('Supply at least one --component NAME=PATH')
     for name, array in {BASE: base, **challengers}.items():

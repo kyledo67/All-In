@@ -70,6 +70,31 @@ HF_HUB_OFFLINE=1 .venv/bin/python predict_blend.py --data "$DATA" \
 TabPFN is under the Prior Labs License v1.1, not Apache-2.0; see
 `THIRD_PARTY_NOTICES.md` and `research/tabpfn/LICENSE`. Built with PriorLabs-TabPFN.
 
+## Which model classes belong in the blend
+
+All 32 combinations of five challengers over the frozen blend were measured with the
+existing four-fold protocol. **Keep `tabpfn`, `mtd`, `two_head`; `shared_state` and
+`dense_cb` are removed.** The 16 combinations containing TabPFN occupy the top 16
+positions and every one is significant; not one of the 16 without it is.
+
+| Blend | Points / 60 | Gain | Folds | 95% CI vs bar |
+| --- | ---: | ---: | ---: | --- |
+| frozen blend (bar) | 31.702332 | - | - | - |
+| + tabpfn + mtd + two_head | 32.2605 | +0.5582 | 4/4 | [-0.0511, -0.0150] * |
+| + tabpfn | 32.0522 | +0.3499 | 4/4 | [-0.0361, -0.0041] * |
+| + mtd + two_head (no tabpfn) | 31.9482 | +0.2458 | 4/4 | [-0.0339, +0.0037] |
+| + shared_state | 31.7439 | +0.0416 | 2/4 | [-0.0149, +0.0086] |
+| + dense_cb | 31.7011 | -0.0012 | 3/4 | [-0.0052, +0.0051] |
+
+`shared_state` is zeroed in all four folds once the kept components are present, so the
+five-component blend scores identically to the four-component one. `dense_cb` is the only
+component that lowers the bar on its own. Both are preserved as rejected experiments.
+
+The top result assigns the frozen release weight 0.000 in every fold, so it is a
+replacement rather than an addition; that trade-off and a conservative fixed-weight
+alternative are set out in [combined blend findings](docs/combined-blend-findings.md).
+No candidate has been promoted and nothing was uploaded.
+
 Predicts payout probabilities in order **0, 1, 2, 5, 20** using the released
 main participant kit. The controlled Dynamax partial-pooling experiment is
 complete. Its small holdout advantage did not pass the frozen retention gate,
