@@ -23,6 +23,12 @@ The first subsequent targeted calibration test is recorded in
 exploratory OOF points, worsened drift and one fold, and was rejected. The
 verified blend release remains unchanged.
 
+An experimental [MTDg stack addition](docs/mtd-investigation.md) uses a fixed
+0.25 changepoint MTD contribution on top of the frozen mean blend. Its
+combined OOF procedure scores 31.9023/60; the deployed candidate has no
+independent validation score. The separate CSV and ZIP are under
+`artifacts/mtd_01/`, and the original blend remains the active champion.
+
 Predicts payout probabilities in order **0, 1, 2, 5, 20** using the released
 main participant kit. The controlled Dynamax partial-pooling experiment is
 complete. Its small holdout advantage did not pass the frozen retention gate,

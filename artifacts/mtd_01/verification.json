@@ -1,0 +1,7 @@
+{
+  "cutoff_invariance": true,
+  "unknown_lag": true,
+  "normalized": true,
+  "deterministic_em": true,
+  "scalar_mixture_reference": true
+}

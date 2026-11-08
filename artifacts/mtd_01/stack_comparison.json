@@ -1,0 +1,905 @@
+{
+  "fixed_weight": 0.25,
+  "selection": "No fitted or changed stack weights. The three requested weights are descriptive sensitivity checks only.",
+  "score": {
+    "plain": {
+      "contest_version": "evidence-contest-v1",
+      "technical_points": 31.829065191281753,
+      "max_points": 60.0,
+      "mean_loss_ratio": 0.8850694998241576,
+      "by_condition": {
+        "stable": {
+          "error": 0.1695454221409952,
+          "reference_error": 0.19625080289290195,
+          "loss_ratio": 0.8639221834599045,
+          "episodes": 24,
+          "queries": 192
+        },
+        "short_history": {
+          "error": 0.168916015802027,
+          "reference_error": 0.1773414479878668,
+          "loss_ratio": 0.9524903383758531,
+          "episodes": 24,
+          "queries": 192
+        },
+        "drift": {
+          "error": 0.17252137925597757,
+          "reference_error": 0.18983393064179913,
+          "loss_ratio": 0.908801596599246,
+          "episodes": 24,
+          "queries": 192
+        },
+        "shared_change": {
+          "error": 0.16754669092674157,
+          "reference_error": 0.20556264957983816,
+          "loss_ratio": 0.8150638808616268,
+          "episodes": 24,
+          "queries": 192
+        }
+      }
+    },
+    "change": {
+      "contest_version": "evidence-contest-v1",
+      "technical_points": 31.902299010902958,
+      "max_points": 60.0,
+      "mean_loss_ratio": 0.8807421991591998,
+      "by_condition": {
+        "stable": {
+          "error": 0.16932474784971055,
+          "reference_error": 0.19625080289290195,
+          "loss_ratio": 0.8627977330727891,
+          "episodes": 24,
+          "queries": 192
+        },
+        "short_history": {
+          "error": 0.167557371222161,
+          "reference_error": 0.1773414479878668,
+          "loss_ratio": 0.9448291593605619,
+          "episodes": 24,
+          "queries": 192
+        },
+        "drift": {
+          "error": 0.17250666418711233,
+          "reference_error": 0.18983393064179913,
+          "loss_ratio": 0.908724081116026,
+          "episodes": 24,
+          "queries": 192
+        },
+        "shared_change": {
+          "error": 0.1658104969121717,
+          "reference_error": 0.20556264957983816,
+          "loss_ratio": 0.8066178230874224,
+          "episodes": 24,
+          "queries": 192
+        }
+      }
+    }
+  },
+  "paired_delta_ratio_ci95": {
+    "plain": [
+      -0.020746008063583003,
+      0.004607345858527298
+    ],
+    "change": [
+      -0.02424666729337912,
+      0.0009804140807674077
+    ]
+  },
+  "folds": {
+    "plain": [
+      {
+        "fold": 0,
+        "base": 31.692278233353797,
+        "candidate": 32.19150191402558
+      },
+      {
+        "fold": 1,
+        "base": 31.650300309716663,
+        "candidate": 31.727665862784956
+      },
+      {
+        "fold": 2,
+        "base": 31.67664315637334,
+        "candidate": 31.775305305058758
+      },
+      {
+        "fold": 3,
+        "base": 31.774719773961603,
+        "candidate": 31.634401404659805
+      }
+    ],
+    "change": [
+      {
+        "fold": 0,
+        "base": 31.692278233353797,
+        "candidate": 32.25272974382561
+      },
+      {
+        "fold": 1,
+        "base": 31.650300309716663,
+        "candidate": 31.82022554682747
+      },
+      {
+        "fold": 2,
+        "base": 31.67664315637334,
+        "candidate": 31.78400003896443
+      },
+      {
+        "fold": 3,
+        "base": 31.774719773961603,
+        "candidate": 31.738336922756844
+      }
+    ]
+  },
+  "per_episode": [
+    {
+      "episode": "main-validation-e00000",
+      "condition": "shared_change",
+      "reference": 0.15767163356242553,
+      "base": 0.12304980678009322,
+      "plain": 0.12236586948140338,
+      "change": 0.12279110270250418
+    },
+    {
+      "episode": "main-validation-e00001",
+      "condition": "short_history",
+      "reference": 0.18690801059912027,
+      "base": 0.15801634209347007,
+      "plain": 0.16321751680827978,
+      "change": 0.15961306951348334
+    },
+    {
+      "episode": "main-validation-e00002",
+      "condition": "shared_change",
+      "reference": 0.21092131536915523,
+      "base": 0.2629219872725591,
+      "plain": 0.24444522864844506,
+      "change": 0.24887150061092334
+    },
+    {
+      "episode": "main-validation-e00003",
+      "condition": "drift",
+      "reference": 0.151980755393053,
+      "base": 0.1538752379905769,
+      "plain": 0.13898684131933114,
+      "change": 0.13381264795412517
+    },
+    {
+      "episode": "main-validation-e00004",
+      "condition": "drift",
+      "reference": 0.19637082792873192,
+      "base": 0.2194506464471821,
+      "plain": 0.20058478378534564,
+      "change": 0.19350066985431008
+    },
+    {
+      "episode": "main-validation-e00005",
+      "condition": "stable",
+      "reference": 0.20942332949811313,
+      "base": 0.15713053035924324,
+      "plain": 0.15686881181754514,
+      "change": 0.1542369403608768
+    },
+    {
+      "episode": "main-validation-e00006",
+      "condition": "drift",
+      "reference": 0.2639639321943732,
+      "base": 0.20700541363559072,
+      "plain": 0.2134306644127813,
+      "change": 0.2083053306940018
+    },
+    {
+      "episode": "main-validation-e00007",
+      "condition": "short_history",
+      "reference": 0.17365447952126317,
+      "base": 0.14225341816814294,
+      "plain": 0.1662535633392003,
+      "change": 0.16177389146483284
+    },
+    {
+      "episode": "main-validation-e00008",
+      "condition": "short_history",
+      "reference": 0.10997660025544376,
+      "base": 0.12449637121356116,
+      "plain": 0.1321674267540633,
+      "change": 0.13148047817500397
+    },
+    {
+      "episode": "main-validation-e00009",
+      "condition": "stable",
+      "reference": 0.1765872507412447,
+      "base": 0.16377030016545763,
+      "plain": 0.14293646388603387,
+      "change": 0.14403895993961002
+    },
+    {
+      "episode": "main-validation-e00010",
+      "condition": "shared_change",
+      "reference": 0.1608007949282884,
+      "base": 0.10050087850319525,
+      "plain": 0.10972561145151614,
+      "change": 0.10194272816975933
+    },
+    {
+      "episode": "main-validation-e00011",
+      "condition": "short_history",
+      "reference": 0.27323924584161663,
+      "base": 0.21583864708590472,
+      "plain": 0.23969699360678054,
+      "change": 0.2395016305663888
+    },
+    {
+      "episode": "main-validation-e00012",
+      "condition": "drift",
+      "reference": 0.14954375862063213,
+      "base": 0.17356394701065397,
+      "plain": 0.14883421985089507,
+      "change": 0.1503706175125884
+    },
+    {
+      "episode": "main-validation-e00013",
+      "condition": "stable",
+      "reference": 0.23322620220191595,
+      "base": 0.22986142976378285,
+      "plain": 0.2292133528599931,
+      "change": 0.23039782576867648
+    },
+    {
+      "episode": "main-validation-e00014",
+      "condition": "short_history",
+      "reference": 0.11089057837037894,
+      "base": 0.11611726035908454,
+      "plain": 0.10088965901370545,
+      "change": 0.10088965901370545
+    },
+    {
+      "episode": "main-validation-e00015",
+      "condition": "short_history",
+      "reference": 0.16068695341875194,
+      "base": 0.14941545954652968,
+      "plain": 0.1533053705791654,
+      "change": 0.15546034778073944
+    },
+    {
+      "episode": "main-validation-e00016",
+      "condition": "stable",
+      "reference": 0.20202132676473178,
+      "base": 0.19766971617863036,
+      "plain": 0.1766435988230118,
+      "change": 0.18273224215850822
+    },
+    {
+      "episode": "main-validation-e00017",
+      "condition": "stable",
+      "reference": 0.18665090512237215,
+      "base": 0.19061339326573185,
+      "plain": 0.1941553423636117,
+      "change": 0.1969545867430827
+    },
+    {
+      "episode": "main-validation-e00018",
+      "condition": "shared_change",
+      "reference": 0.2662115209120093,
+      "base": 0.1510746570365698,
+      "plain": 0.16240150439226864,
+      "change": 0.15404605903792407
+    },
+    {
+      "episode": "main-validation-e00019",
+      "condition": "short_history",
+      "reference": 0.16422698508644912,
+      "base": 0.13497270931937555,
+      "plain": 0.13181066274206388,
+      "change": 0.13755847455184514
+    },
+    {
+      "episode": "main-validation-e00020",
+      "condition": "drift",
+      "reference": 0.20261742460379906,
+      "base": 0.15504160580892434,
+      "plain": 0.15923353935146511,
+      "change": 0.16151401442605995
+    },
+    {
+      "episode": "main-validation-e00021",
+      "condition": "drift",
+      "reference": 0.20003842030546018,
+      "base": 0.11608511336960695,
+      "plain": 0.11353976760221748,
+      "change": 0.10694357840764587
+    },
+    {
+      "episode": "main-validation-e00022",
+      "condition": "short_history",
+      "reference": 0.267289463241632,
+      "base": 0.22686557559423548,
+      "plain": 0.2108176661054677,
+      "change": 0.19122958827045414
+    },
+    {
+      "episode": "main-validation-e00023",
+      "condition": "stable",
+      "reference": 0.22516736927049066,
+      "base": 0.15772977704791274,
+      "plain": 0.1490174467112654,
+      "change": 0.15293161561478152
+    },
+    {
+      "episode": "main-validation-e00024",
+      "condition": "drift",
+      "reference": 0.16856953490042959,
+      "base": 0.20145394429138774,
+      "plain": 0.1992231529436572,
+      "change": 0.19907437633244213
+    },
+    {
+      "episode": "main-validation-e00025",
+      "condition": "drift",
+      "reference": 0.2553533756636146,
+      "base": 0.32897183235358285,
+      "plain": 0.31322156728996,
+      "change": 0.3182308140619885
+    },
+    {
+      "episode": "main-validation-e00026",
+      "condition": "shared_change",
+      "reference": 0.2198100682590683,
+      "base": 0.07826384183765431,
+      "plain": 0.0874497729140864,
+      "change": 0.08603479462819467
+    },
+    {
+      "episode": "main-validation-e00027",
+      "condition": "drift",
+      "reference": 0.15443071441144088,
+      "base": 0.1380381504962921,
+      "plain": 0.13919716342900879,
+      "change": 0.14189319862761654
+    },
+    {
+      "episode": "main-validation-e00028",
+      "condition": "drift",
+      "reference": 0.18146874288067819,
+      "base": 0.21923612026231323,
+      "plain": 0.20311731607300978,
+      "change": 0.2032437052035219
+    },
+    {
+      "episode": "main-validation-e00029",
+      "condition": "stable",
+      "reference": 0.11427084045401217,
+      "base": 0.0889428566505972,
+      "plain": 0.08133543378651287,
+      "change": 0.0805363466198735
+    },
+    {
+      "episode": "main-validation-e00030",
+      "condition": "short_history",
+      "reference": 0.16835578703925255,
+      "base": 0.164538013130548,
+      "plain": 0.15945776941302778,
+      "change": 0.16679866907511137
+    },
+    {
+      "episode": "main-validation-e00031",
+      "condition": "shared_change",
+      "reference": 0.2446504232027915,
+      "base": 0.1820251859660941,
+      "plain": 0.20564835418280525,
+      "change": 0.19730004432572057
+    },
+    {
+      "episode": "main-validation-e00032",
+      "condition": "stable",
+      "reference": 0.2024808463083758,
+      "base": 0.17134219311688603,
+      "plain": 0.1772490681121512,
+      "change": 0.17635752280205336
+    },
+    {
+      "episode": "main-validation-e00033",
+      "condition": "short_history",
+      "reference": 0.22047219613451896,
+      "base": 0.21802977815290192,
+      "plain": 0.19778634670840967,
+      "change": 0.18642599342183697
+    },
+    {
+      "episode": "main-validation-e00034",
+      "condition": "shared_change",
+      "reference": 0.1924752503305722,
+      "base": 0.18485309879951584,
+      "plain": 0.18558243750181963,
+      "change": 0.18197920740087647
+    },
+    {
+      "episode": "main-validation-e00035",
+      "condition": "shared_change",
+      "reference": 0.23484816320967972,
+      "base": 0.20962500517335594,
+      "plain": 0.19915054027735718,
+      "change": 0.18810904616694368
+    },
+    {
+      "episode": "main-validation-e00036",
+      "condition": "short_history",
+      "reference": 0.12222740849434521,
+      "base": 0.14055890899965265,
+      "plain": 0.11549498716085581,
+      "change": 0.114723786460516
+    },
+    {
+      "episode": "main-validation-e00037",
+      "condition": "stable",
+      "reference": 0.12803082308545755,
+      "base": 0.16924549532720862,
+      "plain": 0.1633982143147566,
+      "change": 0.16272549753134888
+    },
+    {
+      "episode": "main-validation-e00038",
+      "condition": "short_history",
+      "reference": 0.23656034790566827,
+      "base": 0.24375565498814317,
+      "plain": 0.2385705555865954,
+      "change": 0.23739933377282912
+    },
+    {
+      "episode": "main-validation-e00039",
+      "condition": "short_history",
+      "reference": 0.2001483425837201,
+      "base": 0.23894832964557722,
+      "plain": 0.2689792267984678,
+      "change": 0.2689792267984678
+    },
+    {
+      "episode": "main-validation-e00040",
+      "condition": "short_history",
+      "reference": 0.1845941579743393,
+      "base": 0.23093430648309288,
+      "plain": 0.23461079133152588,
+      "change": 0.23884406359437133
+    },
+    {
+      "episode": "main-validation-e00041",
+      "condition": "short_history",
+      "reference": 0.11062781100834386,
+      "base": 0.09089415330203605,
+      "plain": 0.08592171512952426,
+      "change": 0.08592171512952426
+    },
+    {
+      "episode": "main-validation-e00042",
+      "condition": "shared_change",
+      "reference": 0.14573148621165566,
+      "base": 0.1681295036743448,
+      "plain": 0.16846038021090853,
+      "change": 0.1793653438803491
+    },
+    {
+      "episode": "main-validation-e00043",
+      "condition": "shared_change",
+      "reference": 0.1451284357162007,
+      "base": 0.1922803464017061,
+      "plain": 0.1866355262716159,
+      "change": 0.19121225013129856
+    },
+    {
+      "episode": "main-validation-e00044",
+      "condition": "short_history",
+      "reference": 0.18009169140184655,
+      "base": 0.16532152723287563,
+      "plain": 0.16650089072133734,
+      "change": 0.15400836483125357
+    },
+    {
+      "episode": "main-validation-e00045",
+      "condition": "short_history",
+      "reference": 0.15791721818660548,
+      "base": 0.14539856669893275,
+      "plain": 0.14130842899321633,
+      "change": 0.1435253159254068
+    },
+    {
+      "episode": "main-validation-e00046",
+      "condition": "short_history",
+      "reference": 0.1639027556289246,
+      "base": 0.16122695325343822,
+      "plain": 0.1496051795406788,
+      "change": 0.1496051795406788
+    },
+    {
+      "episode": "main-validation-e00047",
+      "condition": "shared_change",
+      "reference": 0.20963401013925897,
+      "base": 0.10600980028538712,
+      "plain": 0.0904359192630889,
+      "change": 0.09179071018331963
+    },
+    {
+      "episode": "main-validation-e00048",
+      "condition": "drift",
+      "reference": 0.2040316317472579,
+      "base": 0.17684719699667578,
+      "plain": 0.17770000194987454,
+      "change": 0.1871091058618853
+    },
+    {
+      "episode": "main-validation-e00049",
+      "condition": "shared_change",
+      "reference": 0.2631676088618952,
+      "base": 0.21407736226565344,
+      "plain": 0.22462642316024506,
+      "change": 0.2287530808089695
+    },
+    {
+      "episode": "main-validation-e00050",
+      "condition": "stable",
+      "reference": 0.22302710926633318,
+      "base": 0.17700298062000858,
+      "plain": 0.19134258007539717,
+      "change": 0.18976022883527022
+    },
+    {
+      "episode": "main-validation-e00051",
+      "condition": "shared_change",
+      "reference": 0.26496445976692706,
+      "base": 0.20598643709583397,
+      "plain": 0.21242692248277756,
+      "change": 0.2028079616444985
+    },
+    {
+      "episode": "main-validation-e00052",
+      "condition": "short_history",
+      "reference": 0.21524423965763084,
+      "base": 0.16170414090765006,
+      "plain": 0.1778531591007998,
+      "change": 0.1778531591007998
+    },
+    {
+      "episode": "main-validation-e00053",
+      "condition": "shared_change",
+      "reference": 0.22970546643942674,
+      "base": 0.18119255434652937,
+      "plain": 0.17641041113537795,
+      "change": 0.18265162132031965
+    },
+    {
+      "episode": "main-validation-e00054",
+      "condition": "stable",
+      "reference": 0.21234207454795145,
+      "base": 0.20549189022026632,
+      "plain": 0.19322268698822945,
+      "change": 0.1975556389350286
+    },
+    {
+      "episode": "main-validation-e00055",
+      "condition": "shared_change",
+      "reference": 0.1697722808170942,
+      "base": 0.11636472225117005,
+      "plain": 0.11289154850112751,
+      "change": 0.11663314685753534
+    },
+    {
+      "episode": "main-validation-e00056",
+      "condition": "drift",
+      "reference": 0.21931510471828525,
+      "base": 0.15759309762375984,
+      "plain": 0.15818658398801738,
+      "change": 0.15750789413394922
+    },
+    {
+      "episode": "main-validation-e00057",
+      "condition": "drift",
+      "reference": 0.23732069498782682,
+      "base": 0.20717673985902174,
+      "plain": 0.2154433334144868,
+      "change": 0.2204212271287299
+    },
+    {
+      "episode": "main-validation-e00058",
+      "condition": "drift",
+      "reference": 0.12820237221525316,
+      "base": 0.13188460525141485,
+      "plain": 0.11430285327864118,
+      "change": 0.12098061202628885
+    },
+    {
+      "episode": "main-validation-e00059",
+      "condition": "stable",
+      "reference": 0.16492193959193602,
+      "base": 0.14117371388287728,
+      "plain": 0.16194386577732103,
+      "change": 0.15323246233417082
+    },
+    {
+      "episode": "main-validation-e00060",
+      "condition": "short_history",
+      "reference": 0.12308484055509761,
+      "base": 0.13421200196611613,
+      "plain": 0.12489020467955754,
+      "change": 0.12494261167283677
+    },
+    {
+      "episode": "main-validation-e00061",
+      "condition": "shared_change",
+      "reference": 0.1513990743453863,
+      "base": 0.12198136175547625,
+      "plain": 0.11901246150740037,
+      "change": 0.12065978018801729
+    },
+    {
+      "episode": "main-validation-e00062",
+      "condition": "drift",
+      "reference": 0.22559404523296606,
+      "base": 0.21487509251521508,
+      "plain": 0.20675344989666497,
+      "change": 0.20741206276933988
+    },
+    {
+      "episode": "main-validation-e00063",
+      "condition": "short_history",
+      "reference": 0.26365317527099186,
+      "base": 0.2689846242426764,
+      "plain": 0.2784695924666248,
+      "change": 0.2784695924666248
+    },
+    {
+      "episode": "main-validation-e00064",
+      "condition": "stable",
+      "reference": 0.20068102079166733,
+      "base": 0.13744417840104708,
+      "plain": 0.13689984067640432,
+      "change": 0.13869215680703292
+    },
+    {
+      "episode": "main-validation-e00065",
+      "condition": "drift",
+      "reference": 0.17026886364898264,
+      "base": 0.16021663518934587,
+      "plain": 0.15412866545648293,
+      "change": 0.1523163836855571
+    },
+    {
+      "episode": "main-validation-e00066",
+      "condition": "stable",
+      "reference": 0.16761260439500786,
+      "base": 0.14906522302681677,
+      "plain": 0.15089717817219916,
+      "change": 0.15111016602649252
+    },
+    {
+      "episode": "main-validation-e00067",
+      "condition": "stable",
+      "reference": 0.17965684788157021,
+      "base": 0.1747627055854275,
+      "plain": 0.1811238365750921,
+      "change": 0.18165110023258835
+    },
+    {
+      "episode": "main-validation-e00068",
+      "condition": "stable",
+      "reference": 0.17560645804742955,
+      "base": 0.19745040877170728,
+      "plain": 0.18443963251201317,
+      "change": 0.18049034667835667
+    },
+    {
+      "episode": "main-validation-e00069",
+      "condition": "stable",
+      "reference": 0.28655546819266287,
+      "base": 0.19797434605021236,
+      "plain": 0.19119804892516723,
+      "change": 0.18401454912755993
+    },
+    {
+      "episode": "main-validation-e00070",
+      "condition": "stable",
+      "reference": 0.199425800958402,
+      "base": 0.18684223264417196,
+      "plain": 0.17612133189171056,
+      "change": 0.16580086906324332
+    },
+    {
+      "episode": "main-validation-e00071",
+      "condition": "drift",
+      "reference": 0.21108909188596692,
+      "base": 0.18777454937067656,
+      "plain": 0.21661245849694655,
+      "change": 0.20527587698311747
+    },
+    {
+      "episode": "main-validation-e00072",
+      "condition": "drift",
+      "reference": 0.15688209634070988,
+      "base": 0.15293939329140335,
+      "plain": 0.1421034995244887,
+      "change": 0.14209362913040652
+    },
+    {
+      "episode": "main-validation-e00073",
+      "condition": "drift",
+      "reference": 0.08863567840074066,
+      "base": 0.10778679770380706,
+      "plain": 0.09717108344449217,
+      "change": 0.09301454983907809
+    },
+    {
+      "episode": "main-validation-e00074",
+      "condition": "shared_change",
+      "reference": 0.23188948626956,
+      "base": 0.2410069858803125,
+      "plain": 0.2431649934126691,
+      "change": 0.2404992063481588
+    },
+    {
+      "episode": "main-validation-e00075",
+      "condition": "stable",
+      "reference": 0.18008743152098822,
+      "base": 0.16702609381530445,
+      "plain": 0.16017107250970164,
+      "change": 0.16246976697972784
+    },
+    {
+      "episode": "main-validation-e00076",
+      "condition": "stable",
+      "reference": 0.24023585950644913,
+      "base": 0.22311645378081102,
+      "plain": 0.2121870929342179,
+      "change": 0.21164968874480014
+    },
+    {
+      "episode": "main-validation-e00077",
+      "condition": "drift",
+      "reference": 0.22256746912652975,
+      "base": 0.22039223285362125,
+      "plain": 0.22433274453044622,
+      "change": 0.2318911042785265
+    },
+    {
+      "episode": "main-validation-e00078",
+      "condition": "short_history",
+      "reference": 0.19195948937926088,
+      "base": 0.17414229982924223,
+      "plain": 0.1550757872326943,
+      "change": 0.15449701686579756
+    },
+    {
+      "episode": "main-validation-e00079",
+      "condition": "shared_change",
+      "reference": 0.24977018441994608,
+      "base": 0.22167094400394308,
+      "plain": 0.22788915176018126,
+      "change": 0.22361805816384348
+    },
+    {
+      "episode": "main-validation-e00080",
+      "condition": "drift",
+      "reference": 0.24915526867722776,
+      "base": 0.22144788620474473,
+      "plain": 0.21562280263858735,
+      "change": 0.21153482923151318
+    },
+    {
+      "episode": "main-validation-e00081",
+      "condition": "shared_change",
+      "reference": 0.25483495338213047,
+      "base": 0.2193516475097445,
+      "plain": 0.22946622405518619,
+      "change": 0.22826991093633808
+    },
+    {
+      "episode": "main-validation-e00082",
+      "condition": "shared_change",
+      "reference": 0.19551346113656848,
+      "base": 0.14138964710299884,
+      "plain": 0.14347295805687105,
+      "change": 0.13165070924302244
+    },
+    {
+      "episode": "main-validation-e00083",
+      "condition": "shared_change",
+      "reference": 0.16375558618489192,
+      "base": 0.09804152932542444,
+      "plain": 0.09149364524344958,
+      "change": 0.08687439579846594
+    },
+    {
+      "episode": "main-validation-e00084",
+      "condition": "shared_change",
+      "reference": 0.08653357834940911,
+      "base": 0.08545594944166797,
+      "plain": 0.07646150205996986,
+      "change": 0.07599689909130511
+    },
+    {
+      "episode": "main-validation-e00085",
+      "condition": "drift",
+      "reference": 0.16420502153110927,
+      "base": 0.09624119403210099,
+      "plain": 0.08677935297908185,
+      "change": 0.0873332027669611
+    },
+    {
+      "episode": "main-validation-e00086",
+      "condition": "stable",
+      "reference": 0.11665357565346932,
+      "base": 0.09048627996783043,
+      "plain": 0.10182785762071125,
+      "change": 0.0996928775786306
+    },
+    {
+      "episode": "main-validation-e00087",
+      "condition": "stable",
+      "reference": 0.28068955086152947,
+      "base": 0.2384748316833723,
+      "plain": 0.2351010596465479,
+      "change": 0.23528271392096534
+    },
+    {
+      "episode": "main-validation-e00088",
+      "condition": "short_history",
+      "reference": 0.12327556569614535,
+      "base": 0.10431576935188829,
+      "plain": 0.10599880558445332,
+      "change": 0.10476187966711213
+    },
+    {
+      "episode": "main-validation-e00089",
+      "condition": "shared_change",
+      "reference": 0.24530860164757323,
+      "base": 0.1724910520583979,
+      "plain": 0.20389908824339578,
+      "change": 0.20117086015250513
+    },
+    {
+      "episode": "main-validation-e00090",
+      "condition": "stable",
+      "reference": 0.19778476088113967,
+      "base": 0.15087832908520732,
+      "plain": 0.13918424624478581,
+      "change": 0.15177839077089267
+    },
+    {
+      "episode": "main-validation-e00091",
+      "condition": "drift",
+      "reference": 0.13296613911237307,
+      "base": 0.11521787787568952,
+      "plain": 0.10747841159050892,
+      "change": 0.10695367418263739
+    },
+    {
+      "episode": "main-validation-e00092",
+      "condition": "drift",
+      "reference": 0.2214433708757375,
+      "base": 0.19694752195265186,
+      "plain": 0.1945288448970706,
+      "change": 0.19942683539840422
+    },
+    {
+      "episode": "main-validation-e00093",
+      "condition": "shared_change",
+      "reference": 0.2390057464542017,
+      "base": 0.18618550587188065,
+      "plain": 0.19760410802783163,
+      "change": 0.1964235081013277
+    },
+    {
+      "episode": "main-validation-e00094",
+      "condition": "stable",
+      "reference": 0.20687987388639606,
+      "base": 0.16742675837045567,
+      "plain": 0.1826120681595043,
+      "change": 0.17970145481948252
+    },
+    {
+      "episode": "main-validation-e00095",
+      "condition": "short_history",
+      "reference": 0.14720740845745578,
+      "base": 0.15312082685934394,
+      "plain": 0.15530207985215316,
+      "change": 0.15711386167224387
+    }
+  ],
+  "exposure": "Public validation previously inspected; exploratory only. OOF stack is fold-routed; deployed equal mean has no independent score."
+}
