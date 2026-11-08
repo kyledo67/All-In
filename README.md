@@ -29,6 +29,11 @@ combined OOF procedure scores 31.9023/60; the deployed candidate has no
 independent validation score. The separate CSV and ZIP are under
 `artifacts/mtd_01/`, and the original blend remains the active champion.
 
+The subsequent [structural interaction and shared-state checks](docs/mtd-pairs-investigation.md)
+found no useful replacement: lag-7 pair corrections added only 0.0025 exploratory
+OOF points, and a two-state episode-neighbor correction reduced points. Both
+are preserved as rejected experiments; neither changed a release.
+
 Predicts payout probabilities in order **0, 1, 2, 5, 20** using the released
 main participant kit. The controlled Dynamax partial-pooling experiment is
 complete. Its small holdout advantage did not pass the frozen retention gate,

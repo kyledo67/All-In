@@ -1,0 +1,23 @@
+{
+  "post_cutoff_invariance": true,
+  "normalized": true,
+  "zero_pair_matches_additive": true,
+  "pairs": [
+    [
+      7,
+      1
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      8
+    ]
+  ]
+}

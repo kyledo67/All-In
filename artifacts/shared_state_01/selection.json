@@ -1,0 +1,34 @@
+{
+  "beta": 0.04000000000000001,
+  "train_oof_brier_baseline": 0.5602460837092944,
+  "train_oof_brier_candidate": 0.5598732776474007,
+  "folds": [
+    {
+      "fold": 0,
+      "beta": 0.04000000000000001,
+      "held_brier_baseline": 0.53005913381672,
+      "held_brier_candidate": 0.5299164876293038
+    },
+    {
+      "fold": 1,
+      "beta": 0.06,
+      "held_brier_baseline": 0.534569170346982,
+      "held_brier_candidate": 0.5359347422544504
+    },
+    {
+      "fold": 2,
+      "beta": 0.04000000000000001,
+      "held_brier_baseline": 0.5914577550790293,
+      "held_brier_candidate": 0.5912380645570362
+    },
+    {
+      "fold": 3,
+      "beta": 0.01999999999999999,
+      "held_brier_baseline": 0.5848982755944461,
+      "held_brier_candidate": 0.5838975814222113
+    }
+  ],
+  "emission_rate": "estimated outside held training episode fold",
+  "state": "two-state Markov filter from earlier other-machine wins; 0.97 self-transition; low/high rates global training mean +/-0.08",
+  "fold_hash": "06faf91fdb74e2a4b58845b8104b2cdf823eadeef54b9327643193d1e92b245a"
+}
