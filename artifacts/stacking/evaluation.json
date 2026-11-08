@@ -1,0 +1,394 @@
+{
+  "advanced": true,
+  "advancement_rule": "applied PER ARM: points improve AND paired interval upper bound < 0",
+  "best_arm": "augmented_stacking",
+  "excluded_privileged": [
+    "artifacts/endpoint_family/predictions/oof_snap_nearest_PRIVILEGED.csv",
+    "artifacts/endpoint_family/predictions/oof_true_r_PRIVILEGED.csv",
+    "artifacts/memory_envelope/predictions/privileged_envelope.csv"
+  ],
+  "exposure": "Conditional exploratory development; these 96 episodes underpin the entire project and stacking can fit that reuse.",
+  "fold_provenance": [
+    {
+      "augmented_K": 12,
+      "augmented_inner_scores": {
+        "1": 0.3917121004939515,
+        "12": 0.3589805877100803,
+        "2": 0.38852149199547803,
+        "3": 0.3885214936443763,
+        "5": 0.38255018073936986,
+        "8": 0.3603903887533514
+      },
+      "augmented_members": [
+        "recomb[q=oof_global_heldfold|r=oof_context_correction]",
+        "recomb[q=oof_global_heldfold|r=oof_signal_fitted_simplex]",
+        "recomb[q=oof_global_heldfold|r=oof_affine_fitted_simplex]",
+        "recomb[q=oof_global_heldfold|r=oof_beta_fitted_simplex]",
+        "recomb[q=oof_global_heldfold|r=oof_identity_fitted_simplex]",
+        "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+        "recomb[q=oof_beta_memory|r=oof_context_correction]",
+        "recomb[q=oof_beta_memory|r=oof_signal_fitted_simplex]",
+        "recomb[q=oof_beta_memory|r=oof_affine_fitted_simplex]",
+        "recomb[q=oof_beta_memory|r=oof_beta_fitted_simplex]",
+        "recomb[q=oof_beta_memory|r=oof_identity_fitted_simplex]",
+        "recomb[q=oof_parity_templates|r=oof_context_correction]"
+      ],
+      "augmented_weights": [
+        0.07235069333346841,
+        2.0946563626271294e-16,
+        1.7355085696397937e-16,
+        4.4869823375342855e-17,
+        0.48466981069875026,
+        0.0,
+        0.28736386796983976,
+        1.2517241136287238e-17,
+        0.0,
+        3.4497110842825896e-17,
+        2.6140522013231383e-16,
+        0.155615627997941
+      ],
+      "best_single": "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+      "fold": 0,
+      "recombination_q": "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+      "recombination_r": "artifacts/context_correction/predictions/oof_context_correction.csv",
+      "stack_K": 12,
+      "stack_inner_scores": {
+        "1": 0.37850453851023635,
+        "12": 0.3734072590789521,
+        "2": 0.37637416356556974,
+        "3": 0.3770037760745588,
+        "5": 0.37480566066586296,
+        "8": 0.3736127950653293
+      },
+      "stack_members": [
+        "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+        "artifacts/context_correction/predictions/oof_context_correction.csv",
+        "artifacts/finalist_parity/predictions/oof_identity_fitted_simplex.csv",
+        "artifacts/context_correction/predictions/oof_structural_control.csv",
+        "artifacts/projection/predictions/oof_endpoint_projection_crossfit.csv",
+        "artifacts/projection/predictions/oof_tail_projection_crossfit.csv",
+        "artifacts/parity_prior/predictions/oof_marginal.csv",
+        "artifacts/parity_prior/predictions/oof_joint.csv",
+        "artifacts/finalist_parity/predictions/oof_identity_full_vector_derived.csv",
+        "artifacts/finalist_parity/predictions/oof_identity_uniform_mix.csv",
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv"
+      ],
+      "stack_weights": [
+        0.4326942133950323,
+        0.05853736134595717,
+        0.0,
+        7.972141750659466e-18,
+        2.2619485460834057e-18,
+        0.0,
+        5.311425974876497e-19,
+        0.0,
+        5.142469371678866e-18,
+        0.2846650390409257,
+        0.0,
+        0.2241033862180849
+      ]
+    },
+    {
+      "augmented_K": 12,
+      "augmented_inner_scores": {
+        "1": 0.327296333039917,
+        "12": 0.3195612677129244,
+        "2": 0.3271880277912071,
+        "3": 0.3271880277912068,
+        "5": 0.326775328323172,
+        "8": 0.3229696101224848
+      },
+      "augmented_members": [
+        "recomb[q=oof_global_heldfold|r=oof_endpoint_projection_crossfit]",
+        "recomb[q=oof_global_heldfold|r=oof_context_correction]",
+        "recomb[q=oof_global_heldfold|r=oof_tail_projection_crossfit]",
+        "recomb[q=oof_global_heldfold|r=oof_marginal]",
+        "recomb[q=oof_global_heldfold|r=oof_joint]",
+        "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+        "recomb[q=oof_tau32|r=oof_endpoint_projection_crossfit]",
+        "recomb[q=oof_tau32|r=oof_context_correction]",
+        "recomb[q=oof_tau32|r=oof_tail_projection_crossfit]",
+        "recomb[q=oof_parity_templates|r=oof_context_correction]",
+        "recomb[q=oof_parity_templates|r=oof_endpoint_projection_crossfit]",
+        "recomb[q=oof_tau32|r=oof_joint]"
+      ],
+      "augmented_weights": [
+        0.4904885165945066,
+        0.13210094389638674,
+        0.0,
+        2.8417425984789724e-17,
+        1.0615016894990884e-17,
+        0.0,
+        0.0,
+        0.3318758191996337,
+        0.0,
+        6.328636311563655e-16,
+        0.04553472030947239,
+        0.0
+      ],
+      "best_single": "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+      "fold": 1,
+      "recombination_q": "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+      "recombination_r": "artifacts/projection/predictions/oof_endpoint_projection_crossfit.csv",
+      "stack_K": 12,
+      "stack_inner_scores": {
+        "1": 0.3364501564194988,
+        "12": 0.3225572270540211,
+        "2": 0.32869046683026915,
+        "3": 0.3265339145549756,
+        "5": 0.3237336823515477,
+        "8": 0.3237120083522633
+      },
+      "stack_members": [
+        "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+        "artifacts/context_correction/predictions/oof_context_correction.csv",
+        "artifacts/projection/predictions/oof_endpoint_projection_crossfit.csv",
+        "artifacts/context_correction/predictions/oof_structural_control.csv",
+        "artifacts/projection/predictions/oof_tail_projection_crossfit.csv",
+        "artifacts/finalist_parity/predictions/oof_beta_full_vector_derived.csv",
+        "artifacts/finalist_parity/predictions/oof_beta_fitted_simplex.csv",
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/finalist_parity/predictions/oof_identity_full_vector_derived.csv",
+        "artifacts/finalist_parity/predictions/oof_identity_fitted_simplex.csv",
+        "artifacts/finalist_parity/predictions/oof_affine_full_vector_derived.csv",
+        "artifacts/finalist_parity/predictions/oof_affine_fitted_simplex.csv"
+      ],
+      "stack_weights": [
+        0.541052277151369,
+        0.11278792994004512,
+        6.300866336387927e-18,
+        0.0,
+        0.0,
+        0.3461597929085859,
+        0.0,
+        1.0693790959085542e-19,
+        0.0,
+        1.1946870325429872e-17,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "augmented_K": 12,
+      "augmented_inner_scores": {
+        "1": 0.3395380269185172,
+        "12": 0.3297062535168951,
+        "2": 0.33899331664870413,
+        "3": 0.33899331664870375,
+        "5": 0.3395204357212015,
+        "8": 0.33378472478072174
+      },
+      "augmented_members": [
+        "recomb[q=oof_global_heldfold|r=oof_context_correction]",
+        "recomb[q=oof_global_heldfold|r=oof_marginal]",
+        "recomb[q=oof_global_heldfold|r=oof_joint]",
+        "recomb[q=oof_global_heldfold|r=oof_structural_control]",
+        "recomb[q=oof_global_heldfold|r=oof_endpoint_projection_crossfit]",
+        "recomb[q=oof_tau32|r=oof_context_correction]",
+        "recomb[q=oof_tau32|r=oof_marginal]",
+        "recomb[q=oof_tau32|r=oof_joint]",
+        "recomb[q=oof_tau32|r=oof_structural_control]",
+        "recomb[q=oof_tau32|r=oof_endpoint_projection_crossfit]",
+        "recomb[q=oof_tail_projection_crossfit|r=oof_context_correction]",
+        "recomb[q=oof_endpoint_projection_crossfit|r=oof_context_correction]"
+      ],
+      "augmented_weights": [
+        0.5371296228015093,
+        0.0,
+        2.7674154573574094e-19,
+        2.8898117182356558e-18,
+        0.0,
+        0.2642883942522882,
+        0.06619399431972921,
+        0.06619399431097212,
+        0.06619399431550126,
+        2.430050175399902e-17,
+        0.0,
+        0.0
+      ],
+      "best_single": "artifacts/context_correction/predictions/oof_context_correction.csv",
+      "fold": 2,
+      "recombination_q": "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+      "recombination_r": "artifacts/context_correction/predictions/oof_context_correction.csv",
+      "stack_K": 8,
+      "stack_inner_scores": {
+        "1": 0.3531637103334678,
+        "12": 0.3432931650723048,
+        "2": 0.34363331232312977,
+        "3": 0.3511323217672817,
+        "5": 0.346438304163222,
+        "8": 0.3422403797685384
+      },
+      "stack_members": [
+        "artifacts/context_correction/predictions/oof_context_correction.csv",
+        "artifacts/context_correction/predictions/oof_structural_control.csv",
+        "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+        "artifacts/projection/predictions/oof_endpoint_projection_crossfit.csv",
+        "artifacts/projection/predictions/oof_tail_projection_crossfit.csv",
+        "artifacts/finalist_parity/predictions/oof_identity_full_vector_derived.csv",
+        "artifacts/parity_prior/predictions/oof_marginal.csv",
+        "artifacts/parity_prior/predictions/oof_joint.csv"
+      ],
+      "stack_weights": [
+        0.2615986068803639,
+        6.194860163039051e-17,
+        0.4363171429781857,
+        0.0,
+        2.715587628897287e-18,
+        0.3020842501414503,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "augmented_K": 8,
+      "augmented_inner_scores": {
+        "1": 0.3896177010785459,
+        "12": 0.364980469804172,
+        "2": 0.3871027890459918,
+        "3": 0.3866919153834154,
+        "5": 0.36633797395475753,
+        "8": 0.3638574744026693
+      },
+      "augmented_members": [
+        "recomb[q=oof_global_heldfold|r=oof_context_correction]",
+        "recomb[q=oof_global_heldfold|r=oof_joint]",
+        "recomb[q=oof_global_heldfold|r=oof_marginal]",
+        "recomb[q=oof_global_heldfold|r=oof_structural_control]",
+        "recomb[q=oof_global_heldfold|r=oof_endpoint_projection_crossfit]",
+        "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+        "recomb[q=oof_parity_templates|r=oof_context_correction]",
+        "recomb[q=oof_parity_templates|r=oof_joint]"
+      ],
+      "augmented_weights": [
+        0.23771553926764727,
+        0.0,
+        0.0,
+        0.0,
+        0.3559427631427084,
+        0.0031660892653051858,
+        0.40317560832433913,
+        8.376231855289066e-18
+      ],
+      "best_single": "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+      "fold": 3,
+      "recombination_q": "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+      "recombination_r": "artifacts/context_correction/predictions/oof_context_correction.csv",
+      "stack_K": 3,
+      "stack_inner_scores": {
+        "1": 0.39438726358258136,
+        "12": 0.3834352072691125,
+        "2": 0.3849871439043225,
+        "3": 0.38294250267593055,
+        "5": 0.38321528412031963,
+        "8": 0.3834056481360824
+      },
+      "stack_members": [
+        "artifacts/memory_policies/predictions/oof_global_heldfold.csv",
+        "artifacts/context_correction/predictions/oof_context_correction.csv",
+        "artifacts/projection/predictions/oof_endpoint_projection_crossfit.csv"
+      ],
+      "stack_weights": [
+        0.5924793765825385,
+        0.4075206234174615,
+        4.735190290361942e-17
+      ]
+    }
+  ],
+  "gains_over_protected": {
+    "augmented_stacking": 0.3362573503484043,
+    "best_single": -0.00704654477308253,
+    "convex_stacking": 0.2623023856427835,
+    "head_recombination": 0.28771130760078023
+  },
+  "paired_vs_protected": {
+    "augmented_stacking": {
+      "ci95_delta_R": [
+        -0.014238526661981636,
+        -0.0011846251979419976
+      ],
+      "units": "change in normalized error R; negative favours the candidate"
+    },
+    "best_single": {
+      "ci95_delta_R": [
+        -0.006668680699896814,
+        0.006821293926518466
+      ],
+      "units": "change in normalized error R; negative favours the candidate"
+    },
+    "convex_stacking": {
+      "ci95_delta_R": [
+        -0.011678651948129327,
+        -0.0004290598168346341
+      ],
+      "units": "change in normalized error R; negative favours the candidate"
+    },
+    "head_recombination": {
+      "ci95_delta_R": [
+        -0.0160527940121231,
+        0.002345631077466464
+      ],
+      "units": "change in normalized error R; negative favours the candidate"
+    }
+  },
+  "pool_size": 112,
+  "protocol": "Full-vector stacking and head recombination over archived forecasts only.\n\nPREREGISTERED PROTOCOL, fixed before any held-fold number below was read.\n\nNo new features, no new model family, no new external signal. Every input is an archived\nfive-probability validation forecast already produced in this project. The two PRIVILEGED\narrays (true-r substitution and the memory envelope) are EXCLUDED from every candidate\npool, because they read the evaluation targets as forecasts and are diagnostics only.\n\nThree arms, each with all selection and weight fitting done inside the outer folds:\n\n  A  best_single        the archived forecast with the lowest loss on each fold's FITTING\n                        episodes, applied to its held fold. This is the honest \"best\n                        single model\" comparator: picking the best by its held-fold score\n                        would be selection on the evaluation data.\n  B  head_recombination q and r are separable heads of p = (1-q, q*r). For each outer fold\n                        the (q-source, r-source) pair minimising the official weighted loss\n                        on the FITTING episodes is chosen and applied to the held fold.\n                        Exploits that the best q and the best r were produced by different\n                        archived candidates.\n  C  convex_stacking    convex weights over a pool of archived forecasts, fitted on the\n                        fitting episodes against the exact official weighted squared error\n                        (a proper rule, matched to the evaluation loss, not a surrogate).\n                        The pool size K is chosen by inner complete-episode folds from a\n                        predeclared grid, because unconstrained stacking over ~140\n                        candidates on 72 fitting episodes would overfit the weights.\n\nComparator: the protected candidate at 53.532918. Advancement requires held-fold points to\nimprove AND the paired whole-episode interval against the protected forecast to lie below\nzero, the same rule used throughout; it is not relaxed after seeing results.\n\nBlum and Hardt's caution applies with full force here: these 96 episodes have been reused\nfor the whole project, and stacking is exactly the kind of step that can fit the reuse\nrather than the signal. Fold-internal selection limits but does not remove that.\n",
+  "qualified_arms": {
+    "augmented_stacking": 0.3362573503484043,
+    "convex_stacking": 0.2623023856427835
+  },
+  "results": {
+    "augmented_stacking": {
+      "R": 0.1138095176514329,
+      "by_condition": {
+        "drift": 0.1119137280844029,
+        "shared_change": 0.1245569407232406,
+        "short_history": 0.140587448493897,
+        "stable": 0.07817995330419109
+      },
+      "points": 53.86917515888657
+    },
+    "best_single": {
+      "R": 0.12095326210257602,
+      "by_condition": {
+        "drift": 0.13064807889485142,
+        "shared_change": 0.1275433294986134,
+        "short_history": 0.1435567308602569,
+        "stable": 0.08206490915658239
+      },
+      "points": 53.52587126376508
+    },
+    "convex_stacking": {
+      "R": 0.11534072699065237,
+      "by_condition": {
+        "drift": 0.1119445182550294,
+        "shared_change": 0.12375034758996752,
+        "short_history": 0.14385990289086037,
+        "stable": 0.08180813922675223
+      },
+      "points": 53.79522019418095
+    },
+    "head_recombination": {
+      "R": 0.11481417042760036,
+      "by_condition": {
+        "drift": 0.1162976070811759,
+        "shared_change": 0.12243176427505706,
+        "short_history": 0.1360894587852438,
+        "stable": 0.08443785156892467
+      },
+      "points": 53.820629116138946
+    },
+    "protected": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.14575610520224477,
+        "stable": 0.08563840608796552
+      },
+      "points": 53.532917808538166
+    }
+  },
+  "seconds": 27.61718450000626
+}

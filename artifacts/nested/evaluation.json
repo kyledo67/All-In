@@ -1,0 +1,408 @@
+{
+  "manifest": [
+    {
+      "path": "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "class": "RAW",
+      "recipe": "four-cell Beta averaged, train surrogate",
+      "sha_full": "98b33b3be1189b59",
+      "sha_q": "f03eeca3d36122e0",
+      "sha_r": "886279b92aa89546",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "class": "RAW",
+      "recipe": "four-cell Beta, kappa from train surrogate",
+      "sha_full": "3d536e72da7c4ece",
+      "sha_q": "8f86b0ddcb2187e1",
+      "sha_r": "886279b92aa89546",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "class": "RAW",
+      "recipe": "Beta-specific causal memory selection, per-machine history only",
+      "sha_full": "a34ed75a5f01f1bf",
+      "sha_q": "3135e464c1f287a4",
+      "sha_r": "886279b92aa89546",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "class": "RAW",
+      "recipe": "subset-parity dictionary, train surrogate",
+      "sha_full": "53c66ae6f5921167",
+      "sha_q": "cefdbdf14ff47071",
+      "sha_r": "886279b92aa89546",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "class": "RAW",
+      "recipe": "null/full/parity dictionary, train surrogate",
+      "sha_full": "34e5915c9e30df17",
+      "sha_q": "21d7b7c9bed30cfe",
+      "sha_r": "886279b92aa89546",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/dense_catboost_01/validation_dense.csv",
+      "class": "RAW",
+      "recipe": "dense CatBoost, trained on public/train",
+      "sha_full": "ebed314380f510ef",
+      "sha_q": "8bb386f401fd9e13",
+      "sha_r": "a965713b6ec33ce6",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/dense_catboost_01/validation_sparse.csv",
+      "class": "RAW",
+      "recipe": "sparse CatBoost, trained on public/train",
+      "sha_full": "b5d7cb01fe508bfe",
+      "sha_q": "dcbb164de45d8917",
+      "sha_r": "120175105de97ba1",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+      "class": "RAW",
+      "recipe": "conjugate Dirichlet r, tau from train surrogate",
+      "sha_full": "920011b00dfb5c71",
+      "sha_q": "21d7b7c9bed30cfe",
+      "sha_r": "3d9696b11870d64b",
+      "dup_full_of": null,
+      "dup_q_of": "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+      "class": "RAW",
+      "recipe": "tail rescale with TRAIN-estimated constants",
+      "sha_full": "a4242edccfbe8250",
+      "sha_q": "21d7b7c9bed30cfe",
+      "sha_r": "01bce484d9b18375",
+      "dup_full_of": null,
+      "dup_q_of": "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+      "class": "RAW",
+      "recipe": "tail rescale, train constants, add-1 smoothed",
+      "sha_full": "c301ea1882585943",
+      "sha_q": "21d7b7c9bed30cfe",
+      "sha_r": "98be168b0ec1928f",
+      "dup_full_of": null,
+      "dup_q_of": "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/endpoint_predictor/predictions/oof_beta_hard.csv",
+      "class": "RAW",
+      "status": "missing"
+    },
+    {
+      "path": "artifacts/final/validation_predictions.csv",
+      "class": "RAW",
+      "recipe": "Dynamax shared HMM, train-fitted",
+      "sha_full": "d94c1e48608bcb5f",
+      "sha_q": "0d3cd620a24f6f02",
+      "sha_r": "ab76ccda074a1d3e",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+      "class": "RAW",
+      "recipe": "independent four-cell control, train surrogate",
+      "sha_full": "ceb4690ff7f174b5",
+      "sha_q": "fab45849930cca36",
+      "sha_r": "962d37b8a2e26eb4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+      "class": "RAW",
+      "recipe": "hierarchical Beta, pooled endpoint, train surrogate",
+      "sha_full": "9f816d9832a9a1ab",
+      "sha_q": "21d7b7c9bed30cfe",
+      "sha_r": "962d37b8a2e26eb4",
+      "dup_full_of": null,
+      "dup_q_of": "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "dup_r_of": "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/hier_beta/predictions/oof_tau2.csv",
+      "class": "RAW",
+      "recipe": "hierarchical Beta tau=2, train surrogate",
+      "sha_full": "d5e9f22285311d88",
+      "sha_q": "ba075f7c8e0e0edc",
+      "sha_r": "962d37b8a2e26eb4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/hier_beta/predictions/oof_tau32.csv",
+      "class": "RAW",
+      "recipe": "hierarchical Beta tau=32, train surrogate",
+      "sha_full": "21e6bfec5970f656",
+      "sha_q": "53200f5941a245c7",
+      "sha_r": "962d37b8a2e26eb4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/hier_beta/predictions/oof_tau8.csv",
+      "class": "RAW",
+      "recipe": "hierarchical Beta tau=8, train surrogate",
+      "sha_full": "734090e2a76cf411",
+      "sha_q": "1e575238d288cc1a",
+      "sha_r": "962d37b8a2e26eb4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/mtd_pairs_01/validation_additive.csv",
+      "class": "RAW",
+      "recipe": "additive MTD, train-fitted, pair family frozen on train OOF",
+      "sha_full": "3565ffb1814bcbbf",
+      "sha_q": "ae30ec1d9efe76c9",
+      "sha_r": "ddd1f55e104a91bf",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/mtd_pairs_01/validation_control.csv",
+      "class": "RAW",
+      "recipe": "control pair MTD, train-fitted",
+      "sha_full": "eeb10fe8aa09efde",
+      "sha_q": "f06cb6e78cd1d69d",
+      "sha_r": "78b500cc7558ae58",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/mtd_pairs_01/validation_lag7.csv",
+      "class": "RAW",
+      "recipe": "lag-7 pair MTD, train-fitted",
+      "sha_full": "68e076039d9262c7",
+      "sha_q": "747c93d4849c49e8",
+      "sha_r": "5cdc39788b17c05e",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/pair_dict/predictions/oof_compact_average.csv",
+      "class": "RAW",
+      "recipe": "compact logistic pair dictionary, averaged",
+      "sha_full": "024b413c12ca1608",
+      "sha_q": "3c10265110c9ba6a",
+      "sha_r": "724f0a753c84e4d4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+      "class": "RAW",
+      "recipe": "compact logistic pair dictionary, hard selection",
+      "sha_full": "6de9ec361234e845",
+      "sha_q": "d048f5b3ece7f132",
+      "sha_r": "724f0a753c84e4d4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/pair_dict/predictions/oof_compact_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/projection/predictions/oof_tail_projection_train.csv",
+      "class": "RAW",
+      "recipe": "exact tail projection, TRAIN constants",
+      "sha_full": "b185b62693c51691",
+      "sha_q": "8dce0a06a3a09c8a",
+      "sha_r": "8951b8092ff5f3c5",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+      "class": "RAW",
+      "recipe": "TabPFN hmm variant, seed 20261108, trained on public/train",
+      "sha_full": "9b1313daad473cab",
+      "sha_q": "b2f2f6f258b4e095",
+      "sha_r": "ae92fb1f4fa1d1d4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+      "class": "RAW",
+      "recipe": "TabPFN hmm variant, seed 20261109, trained on public/train",
+      "sha_full": "749cc65b08d2e7a6",
+      "sha_q": "06d2dce1a3272ddd",
+      "sha_r": "2ef23b79ae2ee6cd",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+      "class": "RAW",
+      "recipe": "TabPFN observable variant, train-fitted",
+      "sha_full": "bc56b80be2486e1f",
+      "sha_q": "4c1b7e486ce15ff3",
+      "sha_r": "8c3a73d3fb76fb93",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+      "class": "RAW",
+      "recipe": "TabPFN observable variant, train-fitted",
+      "sha_full": "ac021a86f0b81a43",
+      "sha_q": "6a507374a4981495",
+      "sha_r": "e6d39a0d149f73ab",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": null,
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/two_head_01/validation.csv",
+      "class": "RAW",
+      "recipe": "two-head CatBoost, trained on public/train",
+      "sha_full": "26775fb398ed28b5",
+      "sha_q": "b618524f1e72d57a",
+      "sha_r": "886279b92aa89546",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+      "class": "RAW",
+      "recipe": "dense win head, local interactions",
+      "sha_full": "2d384c201c733a8b",
+      "sha_q": "8f98bfd8dab06159",
+      "sha_r": "724f0a753c84e4d4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/pair_dict/predictions/oof_compact_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/win_head/predictions/oof_local_main_alpha1.csv",
+      "class": "RAW",
+      "recipe": "dense win head, local main effects",
+      "sha_full": "4439b7372a91539a",
+      "sha_q": "64b36e2c21f07cf7",
+      "sha_r": "724f0a753c84e4d4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/pair_dict/predictions/oof_compact_average.csv",
+      "status": "ok"
+    },
+    {
+      "path": "artifacts/win_head/predictions/oof_population_alpha1.csv",
+      "class": "RAW",
+      "recipe": "dense win head, population only",
+      "sha_full": "f16d2958bea3ba7a",
+      "sha_q": "cbcbcf4fbf7dd243",
+      "sha_r": "724f0a753c84e4d4",
+      "dup_full_of": null,
+      "dup_q_of": null,
+      "dup_r_of": "artifacts/pair_dict/predictions/oof_compact_average.csv",
+      "status": "ok"
+    }
+  ],
+  "provenance": [
+    {
+      "fold": 0,
+      "kq": 12,
+      "kr": 30,
+      "pool": 30
+    },
+    {
+      "fold": 1,
+      "kq": 30,
+      "kr": 30,
+      "pool": 30
+    },
+    {
+      "fold": 2,
+      "kq": 30,
+      "kr": 8,
+      "pool": 30
+    },
+    {
+      "fold": 3,
+      "kq": 30,
+      "kr": 30,
+      "pool": 30
+    }
+  ],
+  "points": 53.947251729160556,
+  "R": 0.11219752771145707,
+  "by_condition": {
+    "stable": 0.07591790967050444,
+    "short_history": 0.14801163399825956,
+    "drift": 0.10668344045919605,
+    "shared_change": 0.1181771267178682
+  },
+  "paired_vs_protected": [
+    -0.01594039113275816,
+    -0.002371071373149163
+  ],
+  "pool_size": 30
+}
