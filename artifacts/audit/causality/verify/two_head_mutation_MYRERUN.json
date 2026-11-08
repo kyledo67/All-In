@@ -1,0 +1,97 @@
+{
+  "feature_columns": 182,
+  "feature_matrix_shape": [
+    768,
+    182
+  ],
+  "holdout_status": "public validation, inspected many times; NOT an independent holdout. Causality checks only, no generalisation claim.",
+  "import_transform": {
+    "source_sha256": "198df012ce6fc6c888d388c7b4fd98803395c99a561e16e4e39c437330c7d106",
+    "substituted_from": "D=Path('/Users/kyledo/Downloads/main-participants-60-40/public')",
+    "substituted_to": "D=Path('/Users/ayan/Downloads/All-In/main-participants-60-40/public')",
+    "substitutions": 1
+  },
+  "neighbour_columns": {
+    "count": 6,
+    "names": [
+      "other_recent_count",
+      "other_recent_0",
+      "other_recent_1",
+      "other_recent_2",
+      "other_recent_3",
+      "other_recent_4"
+    ],
+    "nonconstant": 5,
+    "other_recent_count_range": [
+      112.0,
+      112.0
+    ],
+    "source": "observable() reads index.items() filtered to episode==q.episode_id and machine!=q.machine_id, with q.cutoff-16 <= t < q.cutoff (strict)"
+  },
+  "passed": true,
+  "post_cutoff_invariance_bypassing_causal_index": {
+    "features_bitwise_identical": true,
+    "features_max_abs_delta": 0.0,
+    "probabilities_bitwise_identical": true,
+    "probabilities_max_abs_delta": 0.0,
+    "ticks_injected_directly_into_index": 6144,
+    "why": "causal_index is bypassed, so only the t < q.cutoff guards inside sample_history() and observable() can produce invariance here"
+  },
+  "post_cutoff_invariance_through_causal_index": {
+    "adversarial_plays_added": 6144,
+    "episodes_mutated": 96,
+    "features_bitwise_identical": true,
+    "features_max_abs_delta": 0.0,
+    "machines_mutated": 768,
+    "probabilities_bitwise_identical": true,
+    "probabilities_max_abs_delta": 0.0
+  },
+  "power_control_pre_cutoff": {
+    "detail": [
+      {
+        "cutoff": 202,
+        "feature_max_abs_delta": 1.0,
+        "injected_tick": 74,
+        "own_row_changed": true,
+        "query_id": "main-validation-e00001-m000-next"
+      },
+      {
+        "cutoff": 202,
+        "feature_max_abs_delta": 1.0,
+        "injected_tick": 74,
+        "own_row_changed": true,
+        "query_id": "main-validation-e00001-m001-next"
+      },
+      {
+        "cutoff": 202,
+        "feature_max_abs_delta": 1.0,
+        "injected_tick": 74,
+        "own_row_changed": true,
+        "query_id": "main-validation-e00001-m002-next"
+      },
+      {
+        "cutoff": 202,
+        "feature_max_abs_delta": 1.0276869934567419,
+        "injected_tick": 74,
+        "own_row_changed": true,
+        "query_id": "main-validation-e00001-m003-next"
+      }
+    ],
+    "probes": 4,
+    "probes_that_changed": 4,
+    "test_has_power": true
+  },
+  "queries": 768,
+  "reproducibility": {
+    "note": "recomputed from the saved .cbm heads and a freshly built feature matrix",
+    "saved_bitwise_identical": false,
+    "saved_max_abs_delta": 1.1102230246251565e-16,
+    "saved_queries_differing": 92,
+    "saved_within_1e_12": true
+  },
+  "seconds": 5.7353302919946145,
+  "seeds": [
+    20261108,
+    20261109
+  ]
+}

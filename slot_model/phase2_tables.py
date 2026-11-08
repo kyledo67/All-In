@@ -84,7 +84,21 @@ def produce(es, index, upstream_sets, train_queries, train_index, local_configs,
                 cutoff=np.array([e['q'].cutoff for e in es])), model_keys
 
 
-def design(data, *, protocol=None, folds=None, models=None):
+def crossfit_sets(folds):
+    """Each training episode's upstream components come from the other three folds."""
+    all_episodes = set(folds['train'])
+    return all_episodes, {e: {a for a in all_episodes if folds['train'][a] != folds['train'][e]}
+                          for e in all_episodes}
+
+
+def population_keys(folds):
+    """Every HMM checkpoint `design` loads: one per cross-fit set, plus the full set."""
+    all_episodes, crossfit = crossfit_sets(folds)
+    sets = {tuple(sorted(a)) for a in crossfit.values()} | {tuple(sorted(all_episodes))}
+    return sorted(population_key(set(s)) for s in sets)
+
+
+def design(data, *, protocol=None, folds=None, models=None, schema=None):
     """Return the training and validation tables used by the phase-two CatBoost runs."""
     data = Path(data)
     protocol = json.loads(Path(protocol or PHASE2 / 'protocol.json').read_text())
@@ -96,14 +110,12 @@ def design(data, *, protocol=None, folds=None, models=None):
     labels = read_labels(data / 'train/labels.csv', train_queries)
     train_examples = examples(train_queries, train_index, labels, historical=True)
     val_examples = examples(val_queries, val_index)
-    all_episodes = set(folds['train'])
-    # Each training episode's upstream components come from the other three folds.
-    crossfit = {e: {a for a in all_episodes if folds['train'][a] != folds['train'][e]} for e in all_episodes}
+    all_episodes, crossfit = crossfit_sets(folds)
     train_table, train_keys = produce(train_examples, train_index, crossfit, train_queries,
                                       train_index, protocol['local'], models)
     val_table, val_keys = produce(val_examples, val_index, {q.episode_id: all_episodes for q in val_queries},
                                   train_queries, train_index, protocol['local'], models)
-    schema = json.loads((PHASE2 / 'feature_schema.json').read_text())
+    schema = json.loads(Path(schema or PHASE2 / 'feature_schema.json').read_text())
     for name, table in (('train', train_table), ('validation', val_table)):
         if table['names'].tolist() != schema['observable']:
             raise ValueError(f'{name} observable feature schema does not match the committed schema')
@@ -122,18 +134,51 @@ def features_for(table, variant):
     raise ValueError(f'Unknown feature variant {variant}')
 
 
+CACHE_SOURCES = (Path(__file__), ROOT / 'slot_model/phase2_features.py', ROOT / 'slot_model/features.py',
+                 ROOT / 'slot_model/phase2_predict.py', ROOT / 'slot_model/portable.py',
+                 ROOT / 'organizer/slot_forecasting/transition.py')
+CACHE_DATA_FILES = ('train/queries.csv', 'train/history.csv', 'train/labels.csv',
+                    'validation/queries.csv', 'validation/history.csv')
+
+
+def cache_inputs(data, *, protocol=None, folds=None, models=None, schema=None):
+    """Resolve and hash everything `design` reads, and derive the cache key from it.
+
+    The module sources, protocol, folds and input CSVs were always covered. The
+    cross-fit HMM population checkpoints and `feature_schema.json` were not, so a
+    refitted checkpoint or an edited schema used to return a cache hit on features
+    built from the previous ones. The effective local-feature configuration and the
+    resolved feature order are digested as values too, not only as file bytes.
+    """
+    paths = {'protocol.json': Path(protocol or PHASE2 / 'protocol.json'),
+             'folds.json': Path(folds or PHASE2 / 'folds.json'),
+             'feature_schema.json': Path(schema or PHASE2 / 'feature_schema.json')}
+    models_dir = Path(models or PHASE2 / 'hmm_models')
+    protocol_json = json.loads(paths['protocol.json'].read_text())
+    schema_json = json.loads(paths['feature_schema.json'].read_text())
+    keys = population_keys(json.loads(paths['folds.json'].read_text()))
+    for key in keys:
+        paths[f'hmm_models/{key}.json'] = models_dir / f'{key}.json'
+    for source in CACHE_SOURCES:
+        paths[f'source/{source.name}'] = source
+    for name in CACHE_DATA_FILES:
+        paths[f'data/{name}'] = Path(data) / name
+    configuration = {'local': protocol_json['local'], 'hmm_columns': HMM_COLUMNS,
+                     'observable_order': schema_json['observable'], 'hmm_order': schema_json['hmm'],
+                     'population_keys': keys}
+    hashes = {name: hashlib.sha256(path.read_bytes()).hexdigest() for name, path in sorted(paths.items())}
+    digest = hashlib.sha256()
+    for name, value in sorted(hashes.items()):
+        digest.update(f'{name}={value}\n'.encode())
+    digest.update(json.dumps(configuration, sort_keys=True, separators=(',', ':')).encode())
+    return digest.hexdigest()[:16], {'sha256': hashes, 'configuration': configuration,
+                                     'resolved_paths': {name: str(path) for name, path in sorted(paths.items())}}
+
+
 def cached_design(data, cache, **kwargs):
     """Cache on the inputs and this module, so unchanged inputs are not rebuilt."""
     cache = Path(cache)
-    digest = hashlib.sha256()
-    for path in (Path(__file__), ROOT / 'slot_model/phase2_features.py', ROOT / 'slot_model/features.py',
-                 ROOT / 'slot_model/phase2_predict.py', ROOT / 'slot_model/portable.py',
-                 ROOT / 'organizer/slot_forecasting/transition.py', PHASE2 / 'protocol.json', PHASE2 / 'folds.json'):
-        digest.update(path.read_bytes())
-    for name in ('train/queries.csv', 'train/history.csv', 'train/labels.csv',
-                 'validation/queries.csv', 'validation/history.csv'):
-        digest.update((Path(data) / name).read_bytes())
-    key = digest.hexdigest()[:16]
+    key, inputs = cache_inputs(data, **kwargs)
     path = cache / f'design-{key}.npz'
     if path.exists():
         with np.load(path, allow_pickle=False) as stored:
@@ -146,6 +191,7 @@ def cached_design(data, cache, **kwargs):
         provenance = json.loads((cache / f'design-{key}.json').read_text())
         return {**tables, 'provenance': provenance, 'cache_key': key, 'cached': True}
     built = design(data, **kwargs)
+    built['provenance']['cache_inputs'] = inputs
     cache.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(path, **{f'{split}.{column}': value
                                 for split in ('train', 'validation')

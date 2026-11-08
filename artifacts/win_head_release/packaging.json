@@ -1,0 +1,239 @@
+{
+  "csv": {
+    "test": {
+      "bytes": 199204,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 2.3820600000035483,
+        "max_abs_sum_error": 4.440892098500626e-16,
+        "min_probability": 0.0003514211195283925,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release/test_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 1536,
+        "reference_notes": {
+          "tabpfn": {
+            "hmm_summary_columns": 7,
+            "seeds": [
+              20261108,
+              20261109
+            ],
+            "variant": "hmm"
+          },
+          "weights": {
+            "mtd_lag7": 0.19998414057692182,
+            "tabpfn_raw": 0.4829584454464017,
+            "two_head": 0.31705741397667647
+          }
+        },
+        "reference_seconds": 343.9386395000038,
+        "reference_variant": "three_component",
+        "seconds": 355.6945547920186,
+        "split": "test",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0
+      },
+      "seconds": 356.1445235830033,
+      "sha256": "ed5caacb79b8517071dab368ec1652c7e4fe99d9f79c957f3594b0482e78adb6"
+    },
+    "validation": {
+      "bytes": 104078,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 1.0960542910033837,
+        "max_abs_sum_error": 3.3306690738754696e-16,
+        "min_probability": 0.0003210115353635864,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release/validation_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 768,
+        "reference_notes": {
+          "tabpfn": {
+            "hmm_summary_columns": 7,
+            "seeds": [
+              20261108,
+              20261109
+            ],
+            "variant": "hmm"
+          },
+          "weights": {
+            "mtd_lag7": 0.19998414057692182,
+            "tabpfn_raw": 0.4829584454464017,
+            "two_head": 0.31705741397667647
+          }
+        },
+        "reference_seconds": 200.00149470899487,
+        "reference_variant": "three_component",
+        "seconds": 205.01335850000032,
+        "split": "validation",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0
+      },
+      "seconds": 205.40324137499556,
+      "sha256": "d86563107c4b553edf35c4bde692162c35e93abf46bd9137bd636f62324945e9"
+    }
+  },
+  "deployment": {
+    "alpha": 1.0,
+    "candidate": "win_head_q_times_three_component_r",
+    "payout_order": [
+      0,
+      1,
+      2,
+      5,
+      20
+    ],
+    "reference_variant": "three_component",
+    "weights": {
+      "mtd_lag7": 0.19998414057692182,
+      "tabpfn_raw": 0.4829584454464017,
+      "two_head": 0.31705741397667647
+    },
+    "weights_provenance": "Arithmetic mean of the four outer-fold simplex fits in artifacts/audit/recompute.json. Not tuned on anything further. The frozen_blend component was dropped because its mean weight is 5.05e-17 and it has no test-time analogue (its measured column was a held-fold prediction); the remaining three already sum to exactly 1.0 in float64.",
+    "win_head": "population_averaged.json"
+  },
+  "entry_zip_bytes": 31585405,
+  "entry_zip_sha256": "2a503f95d2e22300392b03f4f617968eb34cb28d7d6d2dce72d0196e6f5d5ba3",
+  "event_csv_limit_bytes": 10000000,
+  "event_zip_limit_bytes": 100000000,
+  "kit_enforced_zip_limit_bytes": 134217728,
+  "package": "primary",
+  "readme_bytes": 10284,
+  "reproduce_json_bytes": 145,
+  "requirements": [
+    "annotated-types==0.8.0",
+    "backoff==2.2.1",
+    "catboost==1.2.8",
+    "certifi==2026.10.23",
+    "charset-normalizer==3.5.2",
+    "cloudpickle==3.1.2",
+    "contourpy==1.4.0",
+    "cycler==0.12.1",
+    "distro==1.9.0",
+    "einops==0.8.2",
+    "eval_type_backport==0.4.0",
+    "filelock==4.2.4",
+    "fonttools==4.68.0",
+    "fsspec==2026.9.0",
+    "graphviz==0.21",
+    "hf-xet==1.8.0",
+    "huggingface_hub==0.36.2",
+    "idna==3.20",
+    "Jinja2==3.1.6",
+    "joblib==1.6.0",
+    "kiwisolver==1.5.1",
+    "MarkupSafe==3.0.3",
+    "matplotlib==3.11.2",
+    "mpmath==1.3.0",
+    "narwhals==2.28.0",
+    "networkx==3.7",
+    "numpy==2.2.6",
+    "nvidia-ml-py==13.615.71",
+    "packaging==26.3",
+    "pandas==2.3.3",
+    "pillow==13.0.0",
+    "platformdirs==4.14.5",
+    "plotly==7.1.0",
+    "posthog==7.86.0",
+    "pydantic==2.14.3",
+    "pydantic-settings==2.16.2",
+    "pydantic_core==2.50.4",
+    "pyparsing==3.3.3",
+    "python-dateutil==4.0.0",
+    "python-dotenv==1.2.4",
+    "pytz==2026.6",
+    "PyYAML==6.0.3",
+    "requests==2.34.2",
+    "safetensors==0.8.0",
+    "scikit-learn==1.6.1",
+    "scipy==1.15.3",
+    "setuptools==78.1.0",
+    "six==1.17.0",
+    "sympy==1.14.0",
+    "tabpfn==2.2.1",
+    "tabpfn-common-utils==0.2.23",
+    "threadpoolctl==3.8.0",
+    "torch==2.15.0",
+    "tqdm==4.70.1",
+    "typing-inspection==0.4.5",
+    "typing_extensions==4.16.0",
+    "tzdata==2026.6",
+    "urllib3==2.8.0"
+  ],
+  "requirements_conflicts_resolved": {
+    "packaging": "26.3 kept over 25.0 (from blend)",
+    "pandas": "2.3.3 kept over 3.1.1 (from blend)"
+  },
+  "staged_bytes": 33998250,
+  "staged_file_count": 38,
+  "tabpfn_checkpoint_sha256": {
+    "tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
+  },
+  "two_head_rebuild_max_abs_deviation": 1.1102230246251565e-16,
+  "win_head_q_max_abs_deviation_vs_measured": 8.881784197001252e-16,
+  "within_event_zip_limit": true
+}

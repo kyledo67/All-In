@@ -1,0 +1,43 @@
+{
+  "train_examples": 3134,
+  "observable_columns": 182,
+  "episodes_probed": [
+    {
+      "episode": "main-train-e00000",
+      "overwritten_tick": 208,
+      "machines_touched": 8,
+      "rows_with_cutoff_le_T": 24,
+      "rows_with_cutoff_le_T_that_changed": 0,
+      "violations": [],
+      "rows_with_cutoff_gt_T": 32,
+      "rows_with_cutoff_gt_T_that_changed": 32,
+      "power_control_ok": true
+    },
+    {
+      "episode": "main-train-e00001",
+      "overwritten_tick": 208,
+      "machines_touched": 8,
+      "rows_with_cutoff_le_T": 24,
+      "rows_with_cutoff_le_T_that_changed": 0,
+      "violations": [],
+      "rows_with_cutoff_gt_T": 32,
+      "rows_with_cutoff_gt_T_that_changed": 32,
+      "power_control_ok": true
+    },
+    {
+      "episode": "main-train-e00002",
+      "overwritten_tick": 208,
+      "machines_touched": 8,
+      "rows_with_cutoff_le_T": 0,
+      "rows_with_cutoff_le_T_that_changed": 0,
+      "violations": [],
+      "rows_with_cutoff_gt_T": 8,
+      "rows_with_cutoff_gt_T_that_changed": 8,
+      "power_control_ok": true
+    }
+  ],
+  "guard_holds": true,
+  "power_controls_fired": true,
+  "why_this_matters": "for a pseudo-row the post-cutoff ticks are REALLY in the index (they are released observations below the real query cutoff), so this exercises the t < q.cutoff guards on live data rather than on an injected counterfactual stream",
+  "seconds": 9.56104533400503
+}

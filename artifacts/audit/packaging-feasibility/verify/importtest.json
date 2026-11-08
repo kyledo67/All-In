@@ -1,0 +1,6 @@
+{
+  "required_paths": 30,
+  "stdout": "{\n  \"slot_model.features\": \"OK\",\n  \"slot_model.phase2_features\": \"ModuleNotFoundError: No module named 'slot_forecasting.baseline'\",\n  \"slot_model.phase2_predict\": \"ModuleNotFoundError: No module named 'slot_forecasting.baseline'\",\n  \"slot_model.portable\": \"OK\",\n  \"slot_model.mtd\": \"OK\",\n  \"slot_model.mtd_pairs\": \"OK\",\n  \"slot_model.frozen_blend\": \"ModuleNotFoundError: No module named 'slot_forecasting.baseline'\",\n  \"slot_model.tabpfn_model\": \"OK\"\n}\n",
+  "stderr": "",
+  "returncode": 0
+}

@@ -1,0 +1,30 @@
+{
+  "by_split": {
+    "train": {
+      "pseudo_cutoffs_generated": 3264,
+      "pseudo_cutoffs_at_or_after_real_cutoff": 0,
+      "sample": [],
+      "thin_histories_built": 768,
+      "thin_violations": 0,
+      "thin_sample": []
+    },
+    "validation": {
+      "pseudo_cutoffs_generated": 3312,
+      "pseudo_cutoffs_at_or_after_real_cutoff": 0,
+      "sample": [],
+      "thin_histories_built": 768,
+      "thin_violations": 0,
+      "thin_sample": []
+    },
+    "test": {
+      "pseudo_cutoffs_generated": 6736,
+      "pseudo_cutoffs_at_or_after_real_cutoff": 0,
+      "sample": [],
+      "thin_histories_built": 1536,
+      "thin_violations": 0,
+      "thin_sample": []
+    }
+  },
+  "verdict": "both slices are benign: range(192, q.cutoff, 8) is stop-exclusive so every pseudo-cutoff is < q.cutoff, and the [:24] thin selection is a slice of a HASH-ordered list of ticks already filtered to t < q.cutoff-40, not of a tick-ordered list, so no adjacency is implied",
+  "but": "the prior agent's 'exactly 1 positional hit' is a property of its regex, not of the code; it under-scanned 8 files out of 22 on the candidate's path and its pattern misses list(range(...))[-8:] and sorted(..., key=lambda ...)[:24] even inside the files it did scan"
+}

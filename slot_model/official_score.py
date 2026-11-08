@@ -7,6 +7,11 @@ reproduced here against the organizer's own scorer, unchanged in behaviour:
 `score` still delegates to `slot_forecasting.experiments.subset_score`, and
 `paired_bootstrap` keeps the same episode resampling, seed and repeat count, so
 numbers are directly comparable with `artifacts/phase2/evaluation.json`.
+
+The round maximum is read from the kit's `metadata.json` through
+`slot_forecasting.rounds.round_metadata` rather than hardcoded, and a kit that is not
+the 60-point main round is refused: pointing these helpers at the 40-point adaptation
+kit would otherwise report points 1.5x too large with no error raised.
 """
 from pathlib import Path
 
@@ -14,22 +19,53 @@ import numpy as np
 
 from slot_forecasting.experiments import subset_score
 from slot_forecasting.io import read_rows, read_submission, read_targets
-from slot_forecasting.schema import CONDITIONS
+from slot_forecasting.rounds import ROUND_POINTS, round_metadata
+from slot_forecasting.schema import CONDITIONS, ValidationError
 
-MAX_POINTS = 60
+# Round two (adaptation) is worth 40 points and its validation split is shaped
+# differently, so these helpers refuse it instead of reporting 60/40 = 1.5x too much.
+ROUND = 'main'
+
+
+class ScoringInputs(tuple):
+    """(targets, groups, reference), plus the round metadata they were loaded with.
+
+    Still a plain three-element tuple, so every caller's `targets, groups, reference =
+    scoring_inputs(data)` and `subset_score(predictions, *scoring, ...)` are unchanged.
+    """
+
+    def __new__(cls, targets, groups, reference, metadata):
+        inputs = super().__new__(cls, (targets, groups, reference))
+        inputs.metadata = metadata
+        return inputs
+
+
+def max_points(scoring):
+    """The round maximum from the kit's own metadata.json, never a module constant."""
+    metadata = getattr(scoring, 'metadata', None)
+    if metadata is None:
+        raise ValidationError('Pass the ScoringInputs returned by scoring_inputs(data); the round '
+                              'maximum is read from the kit metadata, not assumed.')
+    return metadata['max_points']
 
 
 def scoring_inputs(data):
     data = Path(data)
+    metadata = round_metadata(data)
+    if metadata['round'] != ROUND:
+        raise ValidationError(
+            f"slot_model.official_score scores the {ROUND} round only ({ROUND_POINTS[ROUND]} points); this "
+            f"kit is round {metadata['round']} ({metadata['max_points']} points). Scoring it here would "
+            'report the wrong maximum, so it is refused rather than converted.')
     targets = read_targets(data / 'validation/targets.csv')
     groups = {r['query_id']: r['condition']
               for r in read_rows(data / 'validation/conditions.csv', ('query_id', 'condition'))}
     reference = read_submission(data / 'validation/reference.csv')
-    return targets, groups, reference
+    return ScoringInputs(targets, groups, reference, metadata)
 
 
 def score(predictions, scoring, episodes):
-    return subset_score(predictions, *scoring, set(episodes), MAX_POINTS)
+    return subset_score(predictions, *scoring, set(episodes), max_points(scoring))
 
 
 def paired_bootstrap(a, b, scoring, episodes, repeats=2000):

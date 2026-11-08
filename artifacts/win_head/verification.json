@@ -1,0 +1,67 @@
+{
+  "checks": [
+    {
+      "check": "gradient",
+      "detail": "max relative deviation 9.35e-10 over 37 coordinates (central differences, h=1e-6); max |eta| on the probe 5.010 < ETA_CLIP 30, so the identity is in scope",
+      "passed": true
+    },
+    {
+      "check": "stationary_mode",
+      "detail": "gradient norm at mode 5.36e-15, min Hessian eigenvalue 4.839e+00 (positive definite)",
+      "passed": true
+    },
+    {
+      "check": "opposite",
+      "detail": "true lag-1 effects +2.0 and -2.0: the pooled fit over both machines recovers +0.002134 (the two cancel, so pooling cannot represent either), while the local deviations recover +1.6312 and -1.6562 (shrunk by lam_main=4); over 16 held conditioning patterns the lag-1 probability response gap is mean +0.7477, min +0.4519, positive in all 16. LIMITATION, measured: the individual per-machine response had the wrong sign in 1 of 32 cases, and reading a SINGLE identical query row instead of a response separates by only mean +0.2907 (min -0.0864, sign inverted in 2 of 12) because 28 interaction coefficients inject noise into one conditioning row",
+      "passed": true
+    },
+    {
+      "check": "xor",
+      "detail": "with a true s1*s2 effect of +2.5 the interaction model recovers +2.8133 and +2.9426 on the two conditioning histories and separates agreeing from disagreeing lags by +0.6200, while the main-effects-only model separates them by +0.0054; its interaction block is pinned at max |u| 6.08e-11, so its logit is additive in s1 and s2 and cannot represent XOR (the +0.0054 residue is main-effect noise, not an interaction)",
+      "passed": true
+    },
+    {
+      "check": "shrinkage",
+      "detail": "population q=0.2689; an EMPTY local history returns q=0.268941, bitwise equal to the population, with logit variance 0. 392 transitions give q=0.9297 (logit var 6.940); 14 transitions give q=0.6616 (logit var 27.668), and the variance is the larger one in 20/20 seeds. The widening pulls the probability toward 0.5: |q-0.5|=0.1616 against 0.4097 for the unwidened sigmoid of the same logit. NOT asserted, because measured false: the local logit deviation does not shrink with a shorter history (mean |deviation| 4.270 at full history against 5.002 at 14 transitions over 20 seeds), so this is a pull toward 0.5, not a shrink toward the population logit",
+      "passed": true
+    },
+    {
+      "check": "post_cutoff",
+      "detail": "6144 adversarial plays appended at ticks cutoff..cutoff+7 across 768 machines; 0 of 768 win estimates changed. At the win-head boundary, feeding `design`/`query_row` an UNFILTERED tick map containing 8 post-cutoff ticks (bypassing causal_index) leaves the design matrix, the labels and the query row bitwise equal and uses no tick >= cutoff: True",
+      "passed": true
+    },
+    {
+      "check": "missing",
+      "detail": "removing tick 209 dropped exactly 9 transitions (expected 9: the victim as a target plus the 8 transitions needing it as a lag) rather than imputing a loss; the removed tick appears neither as an observed outcome nor as a lag in any of the 204 retained rows",
+      "passed": true
+    },
+    {
+      "check": "coverage",
+      "detail": "768 of 768 scored queries have a win-head estimate, so 0 fall back to the reference q; a fallback would silently make the simplex and blend checks partly about the reference instead of the win head",
+      "passed": true
+    },
+    {
+      "check": "clip_consistency",
+      "detail": "`objective` differentiates through the ETA_CLIP saturation and `gradient` does not, so at |eta|=2*ETA_CLIP the analytic gradient and central differences disagree by 37.240 - they are gradients of different functions there, and `objective`'s docstring claim to be \"the exact MAP objective the Newton solver minimizes\" holds only for |eta| < ETA_CLIP=30. That is inert here: the largest |eta| at any fitted mode is 7.4798 across every synthetic fit above and all 768 real validation fits, a factor 4.0 inside the clip",
+      "passed": true
+    },
+    {
+      "check": "outer_fold",
+      "detail": "held-fold target vectors replaced with random simplex points in all 4 folds; the UNCLIPPED blend coefficient changed in 0 of 4 folds (raw ratios 1.374797604, 1.458559117, 1.421170061, 1.431425503). This is compared before the [0,1] clip on purpose: the clipped alpha is saturated at a bound in 4 of 4 folds, so comparing the clipped value alone would pass even if tampering moved the ratio (it changed in 0 of 4 clipped). The fitting weights and both closed-form sums are zero on held rows by construction",
+      "passed": true
+    },
+    {
+      "check": "simplex",
+      "detail": "768 five-vectors: min 7.984e-04, max sum error 3.33e-16, order [0,1,2,5,20] preserved",
+      "passed": true
+    },
+    {
+      "check": "signal",
+      "detail": "scanned 340 lines of slot_model/win_head.py for /signal/i: 0 matches. The win head reads no signal field, so no historical signal value is invented and an unknown historical signal is never represented as an observed zero",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "passed": true,
+  "scope": "implementation capability on synthetic and real inputs; not a competition score"
+}

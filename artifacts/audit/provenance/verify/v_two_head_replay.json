@@ -1,0 +1,17 @@
+{
+  "features": 182,
+  "files_read": [
+    "train/queries.csv",
+    "train/history.csv",
+    "validation/queries.csv",
+    "validation/history.csv",
+    "artifacts/phase2/{folds,protocol,feature_schema}.json",
+    "artifacts/two_head_01/{win,size}_{seed}.cbm",
+    "artifacts/dense_catboost_01/sparse_{seed}.cbm"
+  ],
+  "note": "No label or target file of either split was opened by this script.",
+  "seconds": 1.6309805000200868,
+  "sparse_cb_validation_max_abs_deviation": 2.220446049250313e-16,
+  "two_head_validation_max_abs_deviation": 1.1102230246251565e-16,
+  "validation_rows": 768
+}

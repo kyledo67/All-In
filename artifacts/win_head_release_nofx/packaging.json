@@ -1,0 +1,187 @@
+{
+  "csv": {
+    "test": {
+      "bytes": 199881,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 2.4587811669916846,
+        "max_abs_sum_error": 3.3306690738754696e-16,
+        "min_probability": 0.00025092035572480125,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_nofx/test_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 1536,
+        "reference_notes": {
+          "two_head": {
+            "seeds": [
+              20261108,
+              20261109
+            ]
+          }
+        },
+        "reference_seconds": 0.3524845420033671,
+        "reference_variant": "two_head",
+        "seconds": 15.328093499992974,
+        "split": "test",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "candidates": 29,
+          "lam_scale": 0.25,
+          "local_model": "compact_pair_dictionary",
+          "select": "hard"
+        }
+      },
+      "seconds": 15.448853667010553,
+      "sha256": "84a6d8f81109469aeef45f8c3f87f9a7329f922db0e9dabc65f051c5e1fa253f"
+    },
+    "validation": {
+      "bytes": 104455,
+      "report": {
+        "alpha": 1.0,
+        "feature_seconds": 1.862414166011149,
+        "max_abs_sum_error": 3.3306690738754696e-16,
+        "min_probability": 0.0005845065955480666,
+        "out": "/Users/ayan/Downloads/All-In/artifacts/win_head_release_nofx/validation_submission.csv",
+        "payout_order": [
+          0,
+          1,
+          2,
+          5,
+          20
+        ],
+        "queries": 768,
+        "reference_notes": {
+          "two_head": {
+            "seeds": [
+              20261108,
+              20261109
+            ]
+          }
+        },
+        "reference_seconds": 0.500771666993387,
+        "reference_variant": "two_head",
+        "seconds": 10.152683291002177,
+        "split": "validation",
+        "win_head": {
+          "half_lives": [
+            8.0,
+            16.0,
+            32.0,
+            64.0,
+            128.0,
+            256.0,
+            0.0
+          ],
+          "lam_inter": 1.0,
+          "lam_intercept": 0.01,
+          "lam_main": 4.0,
+          "mix_entropy_median": 1.14880870149051,
+          "mode": "per_machine_half_life_average",
+          "scored_machines": 768,
+          "seconds": 4.324515749991406,
+          "selected_half_life_histogram": {
+            "0": 100,
+            "128": 23,
+            "16": 208,
+            "256": 19,
+            "32": 72,
+            "64": 58,
+            "8": 288
+          },
+          "train_oof_episode_win_brier": 0.14769297810424872
+        },
+        "win_head_fallbacks": 0,
+        "win_model": {
+          "candidates": 29,
+          "lam_scale": 0.25,
+          "local_model": "compact_pair_dictionary",
+          "select": "hard"
+        }
+      },
+      "seconds": 10.296925500006182,
+      "sha256": "bb0d69a9fbe29d293c3c7b36deeaccfd96c54d98bdb8fe2cd2a289d5117bb4b1"
+    }
+  },
+  "deployment": {
+    "alpha": 1.0,
+    "candidate": "win_head_q_times_two_head_r",
+    "pair_dict": "pair_dict_deploy.json",
+    "pair_select": "hard",
+    "payout_order": [
+      0,
+      1,
+      2,
+      5,
+      20
+    ],
+    "reference_variant": "two_head",
+    "win_head": "population_averaged.json"
+  },
+  "entry_zip_bytes": 475212,
+  "entry_zip_sha256": "681b8802f370dcce34fdadedbc57cbdcf00ded7020c67b724baf106648e7b2c9",
+  "event_csv_limit_bytes": 10000000,
+  "event_zip_limit_bytes": 100000000,
+  "kit_enforced_zip_limit_bytes": 134217728,
+  "package": "fallback",
+  "readme_bytes": 9912,
+  "reproduce_json_bytes": 145,
+  "requirements": [
+    "catboost==1.2.8",
+    "contourpy==1.4.0",
+    "cycler==0.12.1",
+    "fonttools==4.68.0",
+    "graphviz==0.21",
+    "kiwisolver==1.5.1",
+    "matplotlib==3.11.2",
+    "narwhals==2.28.0",
+    "numpy==2.2.6",
+    "packaging==25.0",
+    "pandas==3.1.1",
+    "pillow==13.0.0",
+    "plotly==7.1.0",
+    "pyparsing==3.3.3",
+    "python-dateutil==4.0.0",
+    "scipy==1.15.3",
+    "six==1.17.0",
+    "tzdata==2026.6"
+  ],
+  "requirements_conflicts_resolved": {},
+  "staged_bytes": 731864,
+  "staged_file_count": 27,
+  "two_head_rebuild_max_abs_deviation": 1.1102230246251565e-16,
+  "win_head_q_max_abs_deviation_vs_measured": 0.5870112159196649,
+  "within_event_zip_limit": true
+}

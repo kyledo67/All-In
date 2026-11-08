@@ -86,14 +86,46 @@ positions and every one is significant; not one of the 16 without it is.
 | + shared_state | 31.7439 | +0.0416 | 2/4 | [-0.0149, +0.0086] |
 | + dense_cb | 31.7011 | -0.0012 | 3/4 | [-0.0052, +0.0051] |
 
-`shared_state` is zeroed in all four folds once the kept components are present, so the
-five-component blend scores identically to the four-component one. `dense_cb` is the only
-component that lowers the bar on its own. Both are preserved as rejected experiments.
+`dense_cb` is the only component that lowers the bar on its own. `shared_state` is zeroed
+in all four folds once the kept components are present, but that is redundancy **by
+construction**, not evidence about the shared-state variable: the column is
+`0.75 x frozen blend + 0.25 x additive MTD` with a bounded correction of at most 0.0199
+applied on top, so two of its own inputs are already separate components of the same
+simplex. Its 31.8314 is a composite's score, not a standalone model's; the composite it
+is built from scores 31.902299 by itself, so the correction *lowered* points. An earlier
+version of this section called it the second-best single model in the project, which was
+wrong and is corrected in [combined blend findings](docs/combined-blend-findings.md).
+Both components are preserved as rejected experiments.
 
 The top result assigns the frozen release weight 0.000 in every fold, so it is a
 replacement rather than an addition; that trade-off and a conservative fixed-weight
 alternative are set out in [combined blend findings](docs/combined-blend-findings.md).
 No candidate has been promoted and nothing was uploaded.
+
+## Win-probability head
+
+An error decomposition of the best blend above put 67.6% of all squared probability error
+in the zero-payout coordinate, so a separate hierarchical logistic autoregressive model
+was fitted for the total win probability `q = 1 - p_0` and composed with that blend's
+split of the win mass across the positive payouts. Held-fold public validation, official
+scorer: **40.705473/60** against the blend's 32.260531, with a paired 95% whole-episode
+interval of [-0.423135, -0.346498] and all four conditions improved.
+
+**The 50/60 target is not met; the gap is 9.294527 points.** The model is
+variance-limited rather than feature-limited: 37 local parameters against a median
+Laplace logit variance of 11.21, and 282 of 768 machines putting most of their mixture
+weight on a half-life of 8. Fitting is MAP (penalized maximum likelihood) with a
+one-dimensional Laplace predictive integral, **not** Bayesian inference. All 96 public-validation episodes had
+been inspected repeatedly before this work, so the score is exploratory and nothing about
+it is independently confirmed.
+
+**The active release is unchanged.** `artifacts/blend_release/`,
+`artifacts/active_champion.json` and `artifacts/final/` are untouched; the candidate is
+built beside them, nothing is promoted and nothing was submitted.
+
+Model, exact objective, the matched-control ladder, per-machine half-life averaging, two
+negative results, stated basis limitations and the exposure disclosures:
+[win head](docs/win-head.md).
 
 Predicts payout probabilities in order **0, 1, 2, 5, 20** using the released
 main participant kit. The controlled Dynamax partial-pooling experiment is

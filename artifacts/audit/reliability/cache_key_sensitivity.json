@@ -1,0 +1,53 @@
+{
+  "baseline_new_key": "af4c26d47bf4360f",
+  "baseline_old_key": "a485ed4b9936d597",
+  "cases": {
+    "feature_schema_order_changed": {
+      "new_key": "dabcebf7c65346eb",
+      "new_key_changed": true,
+      "old_key": "a485ed4b9936d597",
+      "old_key_changed": false,
+      "swapped": [
+        "type_balanced",
+        "type_steady"
+      ]
+    },
+    "identical_copy_of_checkpoints": {
+      "new_key": "af4c26d47bf4360f",
+      "new_key_changed": false
+    },
+    "loaded_checkpoint_contents_changed": {
+      "file": "243be1a99bcbf51a.json",
+      "mutated_field": "initial",
+      "new_key": "73642ef39e853f73",
+      "new_key_changed": true,
+      "old_key": "a485ed4b9936d597",
+      "old_key_changed": false
+    },
+    "unloaded_checkpoint_contents_changed": {
+      "file": "01564da50940f418.json",
+      "new_key": "af4c26d47bf4360f",
+      "new_key_changed": false
+    }
+  },
+  "committed_but_unloaded_keys": [
+    "01564da50940f418",
+    "4e3348b20063bd44",
+    "a0f6bbb56dfb2ac0"
+  ],
+  "loaded_population_keys": [
+    "243be1a99bcbf51a",
+    "31a573ded8ac999c",
+    "5c640565ea14690f",
+    "842ce57246be7636",
+    "8e08785c8a049acb"
+  ],
+  "verdict": {
+    "new_key_detects_checkpoint_contents": true,
+    "new_key_detects_schema_order": true,
+    "new_key_ignores_unloaded_checkpoint": true,
+    "new_key_is_path_independent": true,
+    "old_key_was_blind_to_checkpoint": true,
+    "old_key_was_blind_to_schema": true
+  }
+}

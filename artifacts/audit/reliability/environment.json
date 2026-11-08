@@ -1,0 +1,105 @@
+{
+  "component_csv_paths": {
+    "candidate_oof": "artifacts/audit/oof_candidate_raw.csv",
+    "frozen_blend": "artifacts/phase2/predictions/oof_ensemble.csv",
+    "mtd_lag7": "artifacts/mtd_pairs_01/validation_lag7.csv",
+    "tabpfn_component_as_blended": "artifacts/tabpfn/predictions/oof_tabpfn.csv",
+    "tabpfn_raw_seed_20261108": "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+    "tabpfn_raw_seed_20261109": "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+    "two_head": "artifacts/two_head_01/validation.csv"
+  },
+  "component_csv_sha256": {
+    "candidate_oof": "3e101db53475fc1ea06190adabe812bea4f908d6d11c928f50ddfa439437a459",
+    "frozen_blend": "248b55abb69ff6f33601488abeb5eb24aac64b103030e9144ebafbf9879c57a7",
+    "mtd_lag7": "49301c79b5c198b7dd182a81aff29c04f3de1e09f1983efb7906c0fd5b22fefb",
+    "tabpfn_component_as_blended": "95b87de204cdf3040d0324144b4d80117c3bb70566063ad4b21bba0aa2000769",
+    "tabpfn_raw_seed_20261108": "c859f01459d93ba4802473694e1e2fac782299328a302ce0525c94be035a38f2",
+    "tabpfn_raw_seed_20261109": "30fee7d9dfc1982fe2e4c682ae7ed47c827b1b32a03989b9fa7eb15760f8e57e",
+    "two_head": "fef4f159c38bba581265c555258935c2c5de951e288fe6fe0527edcd95b5a7bc"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "f002c770faeec846a955aed231a091f9fc0afe65",
+    "commit_short": "f002c77",
+    "committed_tree_clean": false,
+    "organizer_rows": 0,
+    "reliability_pass_edited": [
+      "scripts/report_mtd_pairs.py",
+      "scripts/tabpfn_train.py",
+      "slot_model/official_score.py",
+      "slot_model/phase2_tables.py",
+      "slot_model/tabpfn_model.py"
+    ],
+    "uncommitted_paths": {
+      "README.md": " M",
+      "artifacts/audit/": "??",
+      "artifacts/headroom/": "??",
+      "artifacts/win_head/": "??",
+      "artifacts/win_head_release/": "??",
+      "artifacts/win_head_release_nofx/": "??",
+      "docs/combined-blend-findings.md": " M",
+      "docs/win-head.md": "??",
+      "scripts/__init__.py": "??",
+      "scripts/report_mtd_pairs.py": " M",
+      "scripts/tabpfn_train.py": " M",
+      "scripts/win_head_evaluate.py": "??",
+      "scripts/win_head_package.py": "??",
+      "scripts/win_head_train.py": "??",
+      "scripts/win_head_tune_average.py": "??",
+      "scripts/win_head_verify.py": "??",
+      "slot_model/official_score.py": " M",
+      "slot_model/phase2_tables.py": " M",
+      "slot_model/tabpfn_model.py": " M",
+      "slot_model/two_head_infer.py": "??",
+      "slot_model/win_head.py": "??",
+      "slot_model/win_head_infer.py": "??"
+    }
+  },
+  "packages": {
+    "catboost": "1.2.8",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "tabpfn": "2.2.1",
+    "torch": "2.15.0"
+  },
+  "phase2_feature_cache": {
+    "cache_key": "af4c26d47bf4360f",
+    "hmm_checkpoint_sha256": {
+      "hmm_models/243be1a99bcbf51a.json": "fa76c8be11df1d0bb5aa49c25a2962d1662e5cf1146d60f7c0c32c6355288d2d",
+      "hmm_models/31a573ded8ac999c.json": "a9ece543e37b837f7948c06753068df90fcae3dd52631c40295cf7aeda144c04",
+      "hmm_models/5c640565ea14690f.json": "37042db23b104f08045c2f42172f4b6a27b8be43d23d1706d2c6f2a02c7531c9",
+      "hmm_models/842ce57246be7636.json": "57efc463bef725a4fcaa4f42acc383df8c671b2028f626075910bf68be5d46d8",
+      "hmm_models/8e08785c8a049acb.json": "9b76313eeb01180896d76bc49fe3d8794f99406871421cb237dfe8df4d06f9f4"
+    },
+    "population_keys": [
+      "243be1a99bcbf51a",
+      "31a573ded8ac999c",
+      "5c640565ea14690f",
+      "842ce57246be7636",
+      "8e08785c8a049acb"
+    ]
+  },
+  "platform": {
+    "machine": "arm64",
+    "processor": "arm",
+    "release": "25.3.0",
+    "system": "Darwin"
+  },
+  "protocol_sha256": {
+    "feature_schema": "157ffe16cd42d79ba915f1fefdcfb844d5f58df981ffeea0408e363fa183598d",
+    "folds": "06faf91fdb74e2a4b58845b8104b2cdf823eadeef54b9327643193d1e92b245a",
+    "kit_metadata": "7979323052df471e6b8b2c985cb48faa89e287ac6b0fd7789f24bccd544ce7bf",
+    "protocol": "f000dbcadb63b112fb7d4bf398a700d958dd320230a4fcad74dbd32535b26bad",
+    "recompute": "6bd2c31d1bf39cd895dd850b799f6316ad46979cd16fbf8cebcccf76c013ecb9"
+  },
+  "python": {
+    "executable": "/Users/ayan/Downloads/All-In/.venv/bin/python",
+    "implementation": "CPython",
+    "sys_version": "3.12.16 (main, Oct 25 2026, 18:24:37) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "version": "3.12.16"
+  },
+  "scope": "Environment and input provenance for the 32.260531/60 candidate. Every score it refers to is public-validation over the same 96 episodes this project has inspected many times; none of it is an independent holdout.",
+  "tabpfn_checkpoint_sha256": {
+    "tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
+  }
+}

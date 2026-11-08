@@ -1,0 +1,100 @@
+{
+  "by_condition": {
+    "drift": 0.9044814261883185,
+    "shared_change": 0.7846025459585029,
+    "short_history": 0.9221922407326215,
+    "stable": 0.8281549172163446
+  },
+  "direct_objective_candidate_points": 32.260531188882695,
+  "direct_objective_mean_loss_ratio": 0.8598577825239468,
+  "per_fold": [
+    {
+      "fold": 0,
+      "objective_on_fit": 0.854179589870695,
+      "weights": {
+        "frozen_blend": 0.0,
+        "mtd_lag7": 0.10960036127980308,
+        "tabpfn_raw": 0.48262776031596966,
+        "two_head": 0.4077718784042272
+      }
+    },
+    {
+      "fold": 1,
+      "objective_on_fit": 0.8594679088032187,
+      "weights": {
+        "frozen_blend": 2.3326064925759e-17,
+        "mtd_lag7": 0.2207725914270399,
+        "tabpfn_raw": 0.4828860977706953,
+        "two_head": 0.29634131080226483
+      }
+    },
+    {
+      "fold": 2,
+      "objective_on_fit": 0.8547374941582134,
+      "weights": {
+        "frozen_blend": 1.520000623847842e-17,
+        "mtd_lag7": 0.22221819778951704,
+        "tabpfn_raw": 0.45084238616328415,
+        "two_head": 0.3269394160471987
+      }
+    },
+    {
+      "fold": 3,
+      "objective_on_fit": 0.8504853471836862,
+      "weights": {
+        "frozen_blend": 2.9707986559050076e-17,
+        "mtd_lag7": 0.24734549164061198,
+        "tabpfn_raw": 0.5154779394749657,
+        "two_head": 0.23717656888442232
+      }
+    }
+  ],
+  "reference_points": 30.0,
+  "standalone": {
+    "combined_additive": {
+      "drift": 0.908724081116026,
+      "points": 31.902299010902958
+    },
+    "dense_cb": {
+      "drift": 0.941913249889611,
+      "points": 31.39174294683825
+    },
+    "frozen_blend": {
+      "drift": 0.9350415777410521,
+      "points": 31.70233166770079
+    },
+    "mtd_additive": {
+      "drift": 0.9550876768373701,
+      "points": 30.535212167421708
+    },
+    "mtd_control": {
+      "drift": 0.9543373826420577,
+      "points": 30.561692454215212
+    },
+    "mtd_lag7": {
+      "drift": 0.9525941532125984,
+      "points": 30.59051669586896
+    },
+    "shared_state": {
+      "drift": 0.9124852108784477,
+      "points": 31.831425820283904
+    },
+    "sparse_cb": {
+      "drift": 0.9495480409543938,
+      "points": 31.398445839003106
+    },
+    "tabpfn_oof_registry": {
+      "drift": 0.9384958743496331,
+      "points": 31.914042054963435
+    },
+    "tabpfn_raw_seedavg": {
+      "drift": 0.9384958743496331,
+      "points": 31.914042054963435
+    },
+    "two_head": {
+      "drift": 0.9690850009773246,
+      "points": 31.589326735376435
+    }
+  },
+  "truth_points": 60.0
+}

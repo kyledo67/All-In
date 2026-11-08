@@ -1,0 +1,272 @@
+{
+  "holdout_status": "public validation, inspected many times; NOT an independent holdout. Causality checks only, no generalisation claim.",
+  "horizon_ticks": 8,
+  "lag_arithmetic": {
+    "neighbour_lag_failure_count": 0,
+    "neighbour_lag_failures": [],
+    "note": "every own lag recomputed as own.get(t-k); every neighbour lag as t-k over other machines only. Neighbour lags are 1..3, so at t=cutoff they read cutoff-1..cutoff-3 and can never read tick == cutoff.",
+    "own_lag_failure_count": 0,
+    "own_lag_failures": [],
+    "queries": 768,
+    "rows_checked": 142160
+  },
+  "machines": 768,
+  "mtd_index_applies_no_cutoff_filter": true,
+  "passed": true,
+  "post_cutoff_invariance": {
+    "adversarial_plays_added": 6144,
+    "bitwise_identical": true,
+    "changed_queries": [],
+    "covers": "own machine future AND all 7 episode-neighbour futures, every episode",
+    "episodes_mutated": 96,
+    "machines_mutated": 768,
+    "max_abs_delta": 0.0,
+    "queries_attacked": 768
+  },
+  "power_control_pre_cutoff": {
+    "detail": [
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.04053135989719828,
+        "query_id": "main-validation-e00001-m000-next"
+      },
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.03350431321398645,
+        "query_id": "main-validation-e00001-m001-next"
+      },
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.002124992624942257,
+        "query_id": "main-validation-e00001-m002-next"
+      },
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.03367387296131358,
+        "query_id": "main-validation-e00001-m003-next"
+      },
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.05052016603382348,
+        "query_id": "main-validation-e00001-m004-next"
+      },
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.0279096760884055,
+        "query_id": "main-validation-e00001-m005-next"
+      },
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.018936277347167824,
+        "query_id": "main-validation-e00001-m006-next"
+      },
+      {
+        "cutoff": 202,
+        "inserted_tick": 74,
+        "max_abs_delta": 0.027276042093390407,
+        "query_id": "main-validation-e00001-m007-next"
+      },
+      {
+        "cutoff": 254,
+        "inserted_tick": 126,
+        "max_abs_delta": 0.00021481376438559074,
+        "query_id": "main-validation-e00007-m000-next"
+      },
+      {
+        "cutoff": 254,
+        "inserted_tick": 126,
+        "max_abs_delta": 0.010735950266823502,
+        "query_id": "main-validation-e00007-m001-next"
+      },
+      {
+        "cutoff": 254,
+        "inserted_tick": 126,
+        "max_abs_delta": 0.003634900941796304,
+        "query_id": "main-validation-e00007-m002-next"
+      },
+      {
+        "cutoff": 254,
+        "inserted_tick": 126,
+        "max_abs_delta": 0.022348984218032275,
+        "query_id": "main-validation-e00007-m003-next"
+      }
+    ],
+    "probes": 12,
+    "probes_that_changed": 12,
+    "test_has_power": true
+  },
+  "q_tensor": {
+    "changepoint": true,
+    "contexts": 12,
+    "input_symbols": [
+      6
+    ],
+    "shapes": [
+      "(11, 6, 5)"
+    ],
+    "strength": 13.333333333333334,
+    "unknown_row_differs_from_0x_row_in_every_context": true
+  },
+  "queries": 768,
+  "reproducibility": {
+    "in_process_bitwise_deterministic": true,
+    "in_process_max_abs_delta": 0.0,
+    "note": "submissions are written with .17g (exact float64 round-trip), so a nonzero delta is cross-run floating-point reduction order, not CSV truncation",
+    "saved_bitwise_identical": false,
+    "saved_max_abs_delta": 2.220446049250313e-16,
+    "saved_queries_differing": 248,
+    "saved_within_1e_15": true
+  },
+  "seconds": 88.17040904099122,
+  "unknown_distinct_from_zero": {
+    "all_predictions_changed": true,
+    "all_symbol_5_to_0": true,
+    "detail": [
+      {
+        "condition": "short_history",
+        "historical_row_tick": 2,
+        "lag": 1,
+        "materialised_tick": 1,
+        "max_abs_delta": 0.00019926351880619406,
+        "query_id": "main-validation-e00001-m000-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      },
+      {
+        "condition": "short_history",
+        "historical_row_tick": 11,
+        "lag": 1,
+        "materialised_tick": 10,
+        "max_abs_delta": 0.003466650097523727,
+        "query_id": "main-validation-e00001-m001-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      },
+      {
+        "condition": "short_history",
+        "historical_row_tick": 8,
+        "lag": 1,
+        "materialised_tick": 7,
+        "max_abs_delta": 0.00036703198635668066,
+        "query_id": "main-validation-e00001-m002-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      },
+      {
+        "condition": "short_history",
+        "historical_row_tick": 4,
+        "lag": 1,
+        "materialised_tick": 3,
+        "max_abs_delta": 0.02380042989022707,
+        "query_id": "main-validation-e00001-m003-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      },
+      {
+        "condition": "short_history",
+        "historical_row_tick": 1,
+        "lag": 1,
+        "materialised_tick": 0,
+        "max_abs_delta": 0.0006323556113504228,
+        "query_id": "main-validation-e00001-m004-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      },
+      {
+        "condition": "short_history",
+        "historical_row_tick": 5,
+        "lag": 1,
+        "materialised_tick": 4,
+        "max_abs_delta": 0.03639246463584031,
+        "query_id": "main-validation-e00001-m005-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      },
+      {
+        "condition": "short_history",
+        "historical_row_tick": 2,
+        "lag": 1,
+        "materialised_tick": 1,
+        "max_abs_delta": 0.02041343072358051,
+        "query_id": "main-validation-e00001-m006-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      },
+      {
+        "condition": "short_history",
+        "historical_row_tick": 18,
+        "lag": 1,
+        "materialised_tick": 17,
+        "max_abs_delta": 0.054041510896195855,
+        "query_id": "main-validation-e00001-m007-next",
+        "symbol_after": 0,
+        "symbol_before": 5
+      }
+    ],
+    "note": "a missing tick is the unknown symbol 5; materialising it as a real 0x play moves the symbol to 0 and moves the forecast, so UNKNOWN is not folded into 0x",
+    "probes": 8,
+    "probes_found": true
+  },
+  "unknown_symbol_census": {
+    "by_condition": {
+      "drift": {
+        "cutoff_nbr_slots": 576,
+        "cutoff_nbr_unknown": 0,
+        "cutoff_own_slots": 1536,
+        "cutoff_own_unknown": 0,
+        "hist_nbr_slots": 130296,
+        "hist_nbr_unknown": 1152,
+        "hist_own_slots": 347456,
+        "hist_own_unknown": 6912,
+        "hist_rows": 43432,
+        "queries": 192
+      },
+      "shared_change": {
+        "cutoff_nbr_slots": 576,
+        "cutoff_nbr_unknown": 0,
+        "cutoff_own_slots": 1536,
+        "cutoff_own_unknown": 0,
+        "hist_nbr_slots": 129480,
+        "hist_nbr_unknown": 1152,
+        "hist_own_slots": 345280,
+        "hist_own_unknown": 6912,
+        "hist_rows": 43160,
+        "queries": 192
+      },
+      "short_history": {
+        "cutoff_nbr_slots": 576,
+        "cutoff_nbr_unknown": 0,
+        "cutoff_own_slots": 1536,
+        "cutoff_own_unknown": 0,
+        "hist_nbr_slots": 36864,
+        "hist_nbr_unknown": 5649,
+        "hist_own_slots": 98304,
+        "hist_own_unknown": 38096,
+        "hist_rows": 12288,
+        "queries": 192
+      },
+      "stable": {
+        "cutoff_nbr_slots": 576,
+        "cutoff_nbr_unknown": 0,
+        "cutoff_own_slots": 1536,
+        "cutoff_own_unknown": 0,
+        "hist_nbr_slots": 127536,
+        "hist_nbr_unknown": 1152,
+        "hist_own_slots": 340096,
+        "hist_own_unknown": 6912,
+        "hist_rows": 42512,
+        "queries": 192
+      }
+    },
+    "payout_0x_code": 0,
+    "unknown_code": 5,
+    "unknown_is_distinct_code_from_0x": true
+  }
+}

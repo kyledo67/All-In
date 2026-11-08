@@ -1,0 +1,1177 @@
+{
+  "artifacts_written": [
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/mtd_mutation.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/mtd_mutation.py",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/report.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/shared_state_mutation.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/shared_state_mutation.py",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/splits_and_history.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/splits_and_history.py",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/surface_probes.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/surface_probes.py",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/tabpfn_bypass.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/tabpfn_bypass.py",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/tabpfn_leakage_audit_rerun.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/tabpfn_leakage_audit_test.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/test_split_invariance.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/test_split_invariance.py",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/two_head_mutation.json",
+    "/Users/ayan/Downloads/All-In/artifacts/audit/causality/two_head_mutation.py"
+  ],
+  "benign_positional_slice": {
+    "code": "for t in rows[20:-19]:",
+    "evidence": "For short_history queries only 1329 of 4800 candidates survive the >=15 guard, and ALL 1329 lie inside the dense recent-40 region (0 outside). Sparse older rows can never be averaged as 20 adjacent observations.",
+    "location": "slot_model/mtd.py:68",
+    "status": "benign, verified empirically",
+    "why": "It selects WHICH ticks are candidate changepoints. The statistic is built with tick arithmetic, range(t-20,t) and range(t,t+20), each guarded by `if s in h` and a minimum of 15 present observations per side."
+  },
+  "candidate_effective_components": {
+    "causally_active": [
+      "tabpfn_hmm (raw seed average)",
+      "mtd_lag7",
+      "two_head"
+    ],
+    "causally_inert": [
+      "oof_ensemble (frozen 4-recipe blend)"
+    ],
+    "coverage": "All three active components, plus the inert one and shared_state, now have adversarial post-cutoff invariance tests.",
+    "max_frozen_blend_weight": 1.7251774146612511e-16,
+    "note": "The frozen blend receives weight <= 1.73e-16 in all 4 folds, below float64 rounding at p~0.5 (2.22e-16), so the candidate output depends causally on only three components."
+  },
+  "commit": "f002c770faeec846a955aed231a091f9fc0afe65",
+  "data_rules_checked": {
+    "features_only_below_cutoff_episode_neighbours": "VERIFIED for all components, validation + test",
+    "features_only_below_cutoff_own_machine": "VERIFIED for all components, validation + test",
+    "historical_pseudo_queries_have_no_signal": "VERIFIED: phase2_features.examples() sets signal=0 and signal_known=False on every historical pseudo-query, and observable() zeroes signal and emits signal_known as its own column.",
+    "lag_k_is_tick_cutoff_minus_k_never_row_offset": "VERIFIED by independent recomputation over 142160 rows (mtd) and 64 rows x 48 checks (observable), 0 failures. Only one positional slice exists in any component and it is benign (see row_offset_scan).",
+    "missing_ticks_are_unknown_never_zero": "VERIFIED: mtd uses symbol 5 with a 6-symbol Q tensor; observable() emits a separate lag{k}_missing flag with all five one-hot columns zero; organizer context() returns None; shared_state skips the likelihood update entirely.",
+    "other_machine_outcome_at_target_tick_unavailable": "VERIFIED: no component reads tick == cutoff for any machine. mtd neighbour lags are 1..3 (cutoff-1..cutoff-3); observable() neighbour window is cutoff-16 <= t < cutoff; shared_state loops range(start, cutoff).",
+    "short_histories_sampled_older_rows_not_adjacent": "VERIFIED empirically; see short_history",
+    "test_condition_labels_absent_at_inference": "VERIFIED: within slot_model/ the only module reaching conditions.csv / targets.csv / reference.csv is official_score.py (a scoring module). The single hit in phase2_features.py is a source COMMENT, not a label read. In the component scripts they are read only AFTER write_submission, feeding contest_score. No feature builder or fitting call can reach them.",
+    "whole_episodes_stay_together": "VERIFIED; see split_integrity"
+  },
+  "dimension": "causal-input enforcement across every component of the audited candidate",
+  "float_reproducibility_observations": {
+    "bearing_on_this_audit": "None. Every invariance comparison is made between two tables built in the SAME process, where determinism was verified.",
+    "mtd": "Re-predicting MTD is bitwise deterministic within a process, but differs from the saved artifacts/mtd_pairs_01/validation_lag7.csv by at most 2.220446e-16 on 248 of 768 queries. Submissions are written with .17g (exact float64 round-trip), so this is cross-run floating-point reduction order, not CSV truncation. Benign, and consistent in magnitude with the orchestrator-reported 1.6e-07 points delta.",
+    "two_head": "Recomputed from the saved .cbm heads, max delta vs saved validation.csv is 1.110223e-16 - same cause."
+  },
+  "holdout_status": {
+    "scope_of_this_report": "Information-flow (causality) only. These tests say what each component is allowed to read. They say nothing about generalisation.",
+    "statement": "All 96 public-validation episodes have been inspected many times across this project. The 4 validation folds are splits of those same episodes, so they are NOT an independent holdout. Nothing in this report confirms the candidate's 32.260531/60, and that number must never be described as confirmed or independent.",
+    "why_it_matters_here": "The candidate's per-fold convex simplex weights are fitted against public-validation TARGETS on 3 folds and applied to the 4th. Fold hygiene (verified clean below) makes that construction internally honest; it does not make the resulting score out-of-sample at the corpus level. The frozen blend component carries this further: scripts/phase2_evaluate.py records blend_fit = \"all public validation after fold-held evaluation\"."
+  },
+  "methodology_notes": {
+    "bypass_variant_added": "The pre-existing audit feeds adversarial plays through causal_index, which itself drops tick >= cutoff, so it cannot separate \"the feature code ignores the future\" from \"causal_index filtered it first\". Added a variant that injects post-cutoff ticks DIRECTLY into the index dicts for the TabPFN/observable path and the two-head path. Both still bitwise identical, so the t < q.cutoff guards inside sample_history() and observable() hold on their own.",
+    "mtd_needs_no_bypass": "slot_model.mtd.index() applies NO cutoff filter at all, so the plain mutation test is already the strong form for MTD and PairMTDModel.",
+    "power_controls_added": "The pre-existing audit asserts only invariance. An invariance test passes vacuously if the pipeline ignores history altogether, so every test here is paired with a power control: inserting one observation strictly BELOW the cutoff must CHANGE the output. All power controls fired (mtd 12/12, two_head 4/4, tabpfn 3/3, shared_state 12/12).",
+    "self_correction": "Two of my own probes were initially wrong and were fixed, not reported as defects. See corrections."
+  },
+  "non_causality_defects": [
+    {
+      "description": "Hardcoded absolute data root D=Path('/Users/kyledo/Downloads/main-participants-60-40/public'). The path does not exist here, so importing scripts.dense_catboost dies at module scope and none of these scripts can be re-run as committed.",
+      "evidence": "ls /Users/kyledo/Downloads/main-participants-60-40/public -> 'No such file or directory'",
+      "impact": "Not a causality or leakage issue. It did force this audit to exec the feature builder's original source with that one assignment rewritten (recorded, with the source sha256, in two_head_mutation.json.import_transform).",
+      "location": "scripts/dense_catboost.py:15, scripts/evaluate_mtd_pairs.py:11, scripts/two_head_catboost.py (inherits via import), scripts/phase2_evaluate.py:9",
+      "recommended_fix": "Take the data root from argv or an environment variable with the repo-relative main-participants-60-40/public as the default.",
+      "severity": "medium"
+    }
+  ],
+  "python": ".venv/bin/python (3.12.16)",
+  "risk_surface_finding": {
+    "consequence": "In the released files there are ZERO neighbour ticks at or after a target query's cutoff (0 of 5376 target-neighbour pairs on validation). The organizer's index_history() would reject such a file anyway. So the neighbour-future leak condition never arises naturally on this data.",
+    "cutoff_homogeneity": "Within every episode of train, validation AND test, all 8 machines share one identical cutoff (spread 0 in 96/96, 96/96 and 192/192 episodes).",
+    "how_to_read_the_invariance_results": "The mutation tests therefore probe a counterfactual: they inject rows that do not exist in any released file. That is still the right test - it proves the code would stay causal under a broader event stream or a heterogeneous-cutoff release - but it should NOT be read as having caught a live risk. The live neighbour-leak exposure on this data is nil by construction of the files, not only by construction of the code."
+  },
+  "step_1_extension_bypass": {
+    "examples": 768,
+    "hmm_summary_columns": 7,
+    "holdout_status": "public validation, inspected many times; NOT an independent holdout. Causality checks only.",
+    "horizon_ticks": 8,
+    "method": "post-cutoff ticks injected DIRECTLY into the index dicts, bypassing causal_index's own tick >= cutoff drop",
+    "observable_columns": 182,
+    "passed": true,
+    "population_key": "243be1a99bcbf51a",
+    "post_cutoff_invariance_bypassing_causal_index": {
+      "episodes_mutated": 96,
+      "hmm_summary_bitwise_identical": true,
+      "hmm_summary_max_abs_delta": 0.0,
+      "machines_mutated": 768,
+      "observable_bitwise_identical": true,
+      "observable_max_abs_delta": 0.0,
+      "queries_attacked": 768,
+      "ticks_injected": 6144
+    },
+    "power_control_pre_cutoff": {
+      "detail": [
+        {
+          "cutoff": 202,
+          "hmm_summary_max_abs_delta": 0.0,
+          "injected_tick": 74,
+          "observable_max_abs_delta": 1.0,
+          "query_id": "main-validation-e00001-m000-next"
+        },
+        {
+          "cutoff": 202,
+          "hmm_summary_max_abs_delta": 0.0,
+          "injected_tick": 74,
+          "observable_max_abs_delta": 1.0,
+          "query_id": "main-validation-e00001-m001-next"
+        },
+        {
+          "cutoff": 202,
+          "hmm_summary_max_abs_delta": 0.0,
+          "injected_tick": 74,
+          "observable_max_abs_delta": 1.0,
+          "query_id": "main-validation-e00001-m002-next"
+        }
+      ],
+      "probes": 3,
+      "probes_that_changed_observable": 3,
+      "test_has_power": true
+    },
+    "queries": 768,
+    "seconds": 6.278097417001845,
+    "window_containment_under_injection": {
+      "failure_count": 0,
+      "failures": [],
+      "note": "sample_history() must re-filter even though the index now holds future ticks"
+    }
+  },
+  "step_1_tabpfn_rerun": {
+    "also_run_on_test_split": {
+      "adversarial_plays": 3584,
+      "command": ".venv/bin/python scripts/tabpfn_audit.py --data main-participants-60-40/public --split test --sample 64 --out artifacts/audit/causality/tabpfn_leakage_audit_test.json",
+      "containment_failures_over_1536_examples": 0,
+      "episodes_mutated": 56,
+      "hmm_summary_bitwise_identical": true,
+      "lag_failures": 0,
+      "machines_mutated": 448,
+      "observable_bitwise_identical": true,
+      "passed": true
+    },
+    "byte_identical_to_recorded": true,
+    "command": ".venv/bin/python scripts/tabpfn_audit.py --data main-participants-60-40/public --split validation --sample 64 --out artifacts/audit/causality/tabpfn_leakage_audit_rerun.json",
+    "figures": {
+      "adversarial_plays": 2688,
+      "containment_failures_over_768_examples": 0,
+      "episodes_mutated": 42,
+      "hmm_summary_bitwise_identical": true,
+      "lag_checks": "64 rows x 48",
+      "lag_failures": 0,
+      "machines_mutated": 336,
+      "observable_bitwise_identical": true
+    },
+    "note": "Re-run with --out redirected into this audit directory so the shared artifact artifacts/tabpfn/leakage_audit.json was not overwritten. It is byte-identical.",
+    "recorded_result_confirmed": true,
+    "recorded_sha256": "facf1aa47864fd026b2b1a4b8e0d5cdbfcb43830f065153781f108cb6b0be474",
+    "rerun_sha256": "facf1aa47864fd026b2b1a4b8e0d5cdbfcb43830f065153781f108cb6b0be474"
+  },
+  "step_2_mtd": {
+    "holdout_status": "public validation, inspected many times; NOT an independent holdout. Causality checks only, no generalisation claim.",
+    "horizon_ticks": 8,
+    "lag_arithmetic": {
+      "neighbour_lag_failure_count": 0,
+      "neighbour_lag_failures": [],
+      "note": "every own lag recomputed as own.get(t-k); every neighbour lag as t-k over other machines only. Neighbour lags are 1..3, so at t=cutoff they read cutoff-1..cutoff-3 and can never read tick == cutoff.",
+      "own_lag_failure_count": 0,
+      "own_lag_failures": [],
+      "queries": 768,
+      "rows_checked": 142160
+    },
+    "machines": 768,
+    "mtd_index_applies_no_cutoff_filter": true,
+    "passed": true,
+    "post_cutoff_invariance": {
+      "adversarial_plays_added": 6144,
+      "bitwise_identical": true,
+      "changed_queries": [],
+      "covers": "own machine future AND all 7 episode-neighbour futures, every episode",
+      "episodes_mutated": 96,
+      "machines_mutated": 768,
+      "max_abs_delta": 0.0,
+      "queries_attacked": 768
+    },
+    "power_control_pre_cutoff": {
+      "detail": [
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.04053135989719828,
+          "query_id": "main-validation-e00001-m000-next"
+        },
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.03350431321398645,
+          "query_id": "main-validation-e00001-m001-next"
+        },
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.002124992624942257,
+          "query_id": "main-validation-e00001-m002-next"
+        },
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.03367387296131358,
+          "query_id": "main-validation-e00001-m003-next"
+        },
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.05052016603382348,
+          "query_id": "main-validation-e00001-m004-next"
+        },
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.0279096760884055,
+          "query_id": "main-validation-e00001-m005-next"
+        },
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.018936277347167824,
+          "query_id": "main-validation-e00001-m006-next"
+        },
+        {
+          "cutoff": 202,
+          "inserted_tick": 74,
+          "max_abs_delta": 0.027276042093390407,
+          "query_id": "main-validation-e00001-m007-next"
+        },
+        {
+          "cutoff": 254,
+          "inserted_tick": 126,
+          "max_abs_delta": 0.00021481376438559074,
+          "query_id": "main-validation-e00007-m000-next"
+        },
+        {
+          "cutoff": 254,
+          "inserted_tick": 126,
+          "max_abs_delta": 0.010735950266823502,
+          "query_id": "main-validation-e00007-m001-next"
+        },
+        {
+          "cutoff": 254,
+          "inserted_tick": 126,
+          "max_abs_delta": 0.003634900941796304,
+          "query_id": "main-validation-e00007-m002-next"
+        },
+        {
+          "cutoff": 254,
+          "inserted_tick": 126,
+          "max_abs_delta": 0.022348984218032275,
+          "query_id": "main-validation-e00007-m003-next"
+        }
+      ],
+      "probes": 12,
+      "probes_that_changed": 12,
+      "test_has_power": true
+    },
+    "q_tensor": {
+      "changepoint": true,
+      "contexts": 12,
+      "input_symbols": [
+        6
+      ],
+      "shapes": [
+        "(11, 6, 5)"
+      ],
+      "strength": 13.333333333333334,
+      "unknown_row_differs_from_0x_row_in_every_context": true
+    },
+    "queries": 768,
+    "reproducibility": {
+      "in_process_bitwise_deterministic": true,
+      "in_process_max_abs_delta": 0.0,
+      "note": "submissions are written with .17g (exact float64 round-trip), so a nonzero delta is cross-run floating-point reduction order, not CSV truncation",
+      "saved_bitwise_identical": false,
+      "saved_max_abs_delta": 2.220446049250313e-16,
+      "saved_queries_differing": 248,
+      "saved_within_1e_15": true
+    },
+    "seconds": 88.17040904099122,
+    "unknown_distinct_from_zero": {
+      "all_predictions_changed": true,
+      "all_symbol_5_to_0": true,
+      "detail": [
+        {
+          "condition": "short_history",
+          "historical_row_tick": 2,
+          "lag": 1,
+          "materialised_tick": 1,
+          "max_abs_delta": 0.00019926351880619406,
+          "query_id": "main-validation-e00001-m000-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        },
+        {
+          "condition": "short_history",
+          "historical_row_tick": 11,
+          "lag": 1,
+          "materialised_tick": 10,
+          "max_abs_delta": 0.003466650097523727,
+          "query_id": "main-validation-e00001-m001-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        },
+        {
+          "condition": "short_history",
+          "historical_row_tick": 8,
+          "lag": 1,
+          "materialised_tick": 7,
+          "max_abs_delta": 0.00036703198635668066,
+          "query_id": "main-validation-e00001-m002-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        },
+        {
+          "condition": "short_history",
+          "historical_row_tick": 4,
+          "lag": 1,
+          "materialised_tick": 3,
+          "max_abs_delta": 0.02380042989022707,
+          "query_id": "main-validation-e00001-m003-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        },
+        {
+          "condition": "short_history",
+          "historical_row_tick": 1,
+          "lag": 1,
+          "materialised_tick": 0,
+          "max_abs_delta": 0.0006323556113504228,
+          "query_id": "main-validation-e00001-m004-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        },
+        {
+          "condition": "short_history",
+          "historical_row_tick": 5,
+          "lag": 1,
+          "materialised_tick": 4,
+          "max_abs_delta": 0.03639246463584031,
+          "query_id": "main-validation-e00001-m005-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        },
+        {
+          "condition": "short_history",
+          "historical_row_tick": 2,
+          "lag": 1,
+          "materialised_tick": 1,
+          "max_abs_delta": 0.02041343072358051,
+          "query_id": "main-validation-e00001-m006-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        },
+        {
+          "condition": "short_history",
+          "historical_row_tick": 18,
+          "lag": 1,
+          "materialised_tick": 17,
+          "max_abs_delta": 0.054041510896195855,
+          "query_id": "main-validation-e00001-m007-next",
+          "symbol_after": 0,
+          "symbol_before": 5
+        }
+      ],
+      "note": "a missing tick is the unknown symbol 5; materialising it as a real 0x play moves the symbol to 0 and moves the forecast, so UNKNOWN is not folded into 0x",
+      "probes": 8,
+      "probes_found": true
+    },
+    "unknown_symbol_census": {
+      "by_condition": {
+        "drift": {
+          "cutoff_nbr_slots": 576,
+          "cutoff_nbr_unknown": 0,
+          "cutoff_own_slots": 1536,
+          "cutoff_own_unknown": 0,
+          "hist_nbr_slots": 130296,
+          "hist_nbr_unknown": 1152,
+          "hist_own_slots": 347456,
+          "hist_own_unknown": 6912,
+          "hist_rows": 43432,
+          "queries": 192
+        },
+        "shared_change": {
+          "cutoff_nbr_slots": 576,
+          "cutoff_nbr_unknown": 0,
+          "cutoff_own_slots": 1536,
+          "cutoff_own_unknown": 0,
+          "hist_nbr_slots": 129480,
+          "hist_nbr_unknown": 1152,
+          "hist_own_slots": 345280,
+          "hist_own_unknown": 6912,
+          "hist_rows": 43160,
+          "queries": 192
+        },
+        "short_history": {
+          "cutoff_nbr_slots": 576,
+          "cutoff_nbr_unknown": 0,
+          "cutoff_own_slots": 1536,
+          "cutoff_own_unknown": 0,
+          "hist_nbr_slots": 36864,
+          "hist_nbr_unknown": 5649,
+          "hist_own_slots": 98304,
+          "hist_own_unknown": 38096,
+          "hist_rows": 12288,
+          "queries": 192
+        },
+        "stable": {
+          "cutoff_nbr_slots": 576,
+          "cutoff_nbr_unknown": 0,
+          "cutoff_own_slots": 1536,
+          "cutoff_own_unknown": 0,
+          "hist_nbr_slots": 127536,
+          "hist_nbr_unknown": 1152,
+          "hist_own_slots": 340096,
+          "hist_own_unknown": 6912,
+          "hist_rows": 42512,
+          "queries": 192
+        }
+      },
+      "payout_0x_code": 0,
+      "unknown_code": 5,
+      "unknown_is_distinct_code_from_0x": true
+    }
+  },
+  "step_3_two_head": {
+    "feature_columns": 182,
+    "feature_matrix_shape": [
+      768,
+      182
+    ],
+    "holdout_status": "public validation, inspected many times; NOT an independent holdout. Causality checks only, no generalisation claim.",
+    "import_transform": {
+      "source_sha256": "198df012ce6fc6c888d388c7b4fd98803395c99a561e16e4e39c437330c7d106",
+      "substituted_from": "D=Path('/Users/kyledo/Downloads/main-participants-60-40/public')",
+      "substituted_to": "D=Path('/Users/ayan/Downloads/All-In/main-participants-60-40/public')",
+      "substitutions": 1
+    },
+    "neighbour_columns": {
+      "count": 6,
+      "names": [
+        "other_recent_count",
+        "other_recent_0",
+        "other_recent_1",
+        "other_recent_2",
+        "other_recent_3",
+        "other_recent_4"
+      ],
+      "nonconstant": 5,
+      "other_recent_count_range": [
+        112.0,
+        112.0
+      ],
+      "source": "observable() reads index.items() filtered to episode==q.episode_id and machine!=q.machine_id, with q.cutoff-16 <= t < q.cutoff (strict)"
+    },
+    "passed": true,
+    "post_cutoff_invariance_bypassing_causal_index": {
+      "features_bitwise_identical": true,
+      "features_max_abs_delta": 0.0,
+      "probabilities_bitwise_identical": true,
+      "probabilities_max_abs_delta": 0.0,
+      "ticks_injected_directly_into_index": 6144,
+      "why": "causal_index is bypassed, so only the t < q.cutoff guards inside sample_history() and observable() can produce invariance here"
+    },
+    "post_cutoff_invariance_through_causal_index": {
+      "adversarial_plays_added": 6144,
+      "episodes_mutated": 96,
+      "features_bitwise_identical": true,
+      "features_max_abs_delta": 0.0,
+      "machines_mutated": 768,
+      "probabilities_bitwise_identical": true,
+      "probabilities_max_abs_delta": 0.0
+    },
+    "power_control_pre_cutoff": {
+      "detail": [
+        {
+          "cutoff": 202,
+          "feature_max_abs_delta": 1.0,
+          "injected_tick": 74,
+          "own_row_changed": true,
+          "query_id": "main-validation-e00001-m000-next"
+        },
+        {
+          "cutoff": 202,
+          "feature_max_abs_delta": 1.0,
+          "injected_tick": 74,
+          "own_row_changed": true,
+          "query_id": "main-validation-e00001-m001-next"
+        },
+        {
+          "cutoff": 202,
+          "feature_max_abs_delta": 1.0,
+          "injected_tick": 74,
+          "own_row_changed": true,
+          "query_id": "main-validation-e00001-m002-next"
+        },
+        {
+          "cutoff": 202,
+          "feature_max_abs_delta": 1.0276869934567419,
+          "injected_tick": 74,
+          "own_row_changed": true,
+          "query_id": "main-validation-e00001-m003-next"
+        }
+      ],
+      "probes": 4,
+      "probes_that_changed": 4,
+      "test_has_power": true
+    },
+    "queries": 768,
+    "reproducibility": {
+      "note": "recomputed from the saved .cbm heads and a freshly built feature matrix",
+      "saved_bitwise_identical": false,
+      "saved_max_abs_delta": 1.1102230246251565e-16,
+      "saved_queries_differing": 92,
+      "saved_within_1e_12": true
+    },
+    "seconds": 5.777845542004798,
+    "seeds": [
+      20261108,
+      20261109
+    ]
+  },
+  "step_4_shared_state": {
+    "S1_neighbour_post_cutoff_invariance": {
+      "bitwise_identical": true,
+      "changed": [],
+      "max_abs_delta": 0.0,
+      "plays_injected": 6912,
+      "ticks": "cutoff .. cutoff+8 on every episode neighbour of every query"
+    },
+    "S2_own_machine_excluded": {
+      "bitwise_identical": true,
+      "detail": [
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m000-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m001-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m002-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m003-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m004-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m005-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m006-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00000-m007-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 57,
+          "query_id": "main-validation-e00001-m000-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 57,
+          "query_id": "main-validation-e00001-m001-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 56,
+          "query_id": "main-validation-e00001-m002-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 55,
+          "query_id": "main-validation-e00001-m003-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 55,
+          "query_id": "main-validation-e00001-m004-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 58,
+          "query_id": "main-validation-e00001-m005-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 58,
+          "query_id": "main-validation-e00001-m006-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 55,
+          "query_id": "main-validation-e00001-m007-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m000-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m001-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m002-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m003-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m004-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m005-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m006-next"
+        },
+        {
+          "abs_delta": 0.0,
+          "own_plays_injected": 8,
+          "query_id": "main-validation-e00002-m007-next"
+        }
+      ],
+      "max_abs_delta": 0.0,
+      "method": "per-query isolated: own-machine ticks injected AND existing own ticks overwritten with flipped win/loss inside [cutoff-96, cutoff); only that query's own state is compared",
+      "note": "an earlier all-queries-at-once variant of this probe showed a 7.125e-04 delta. That was test cross-contamination, not a leak: a play on machine X is a legitimate neighbour observation for the other 7 queries of episode X.",
+      "queries_probed": 24
+    },
+    "S3_power_control": {
+      "detail": [
+        {
+          "abs_delta": 0.015097712772975447,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m001",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m000-next"
+        },
+        {
+          "abs_delta": 0.008779421935708132,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m000",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m001-next"
+        },
+        {
+          "abs_delta": 0.0186198206457594,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m000",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m002-next"
+        },
+        {
+          "abs_delta": 0.046512870861591615,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m000",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m003-next"
+        },
+        {
+          "abs_delta": 0.009197882714397365,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m000",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m004-next"
+        },
+        {
+          "abs_delta": 0.018558166876374238,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m000",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m005-next"
+        },
+        {
+          "abs_delta": 0.03086485384621318,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m000",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m006-next"
+        },
+        {
+          "abs_delta": 0.10215782896015602,
+          "cutoff": 221,
+          "flipped_to_payout": 20,
+          "neighbour": "main-validation-e00000-m000",
+          "overwritten_tick": 220,
+          "query_id": "main-validation-e00000-m007-next"
+        },
+        {
+          "abs_delta": 0.044193413383915914,
+          "cutoff": 202,
+          "flipped_to_payout": 0,
+          "neighbour": "main-validation-e00001-m001",
+          "overwritten_tick": 201,
+          "query_id": "main-validation-e00001-m000-next"
+        },
+        {
+          "abs_delta": 0.1302363671048744,
+          "cutoff": 202,
+          "flipped_to_payout": 0,
+          "neighbour": "main-validation-e00001-m000",
+          "overwritten_tick": 201,
+          "query_id": "main-validation-e00001-m001-next"
+        },
+        {
+          "abs_delta": 0.022063700740484582,
+          "cutoff": 202,
+          "flipped_to_payout": 0,
+          "neighbour": "main-validation-e00001-m000",
+          "overwritten_tick": 201,
+          "query_id": "main-validation-e00001-m002-next"
+        },
+        {
+          "abs_delta": 0.05078871566568366,
+          "cutoff": 202,
+          "flipped_to_payout": 0,
+          "neighbour": "main-validation-e00001-m000",
+          "overwritten_tick": 201,
+          "query_id": "main-validation-e00001-m003-next"
+        }
+      ],
+      "method": "flip the win/loss of one EXISTING neighbour tick strictly inside the window (every in-window tick is already observed, so there is no gap to fill); mtd.index lets a later row overwrite a tick",
+      "probes": 12,
+      "probes_that_changed": 12,
+      "test_has_power": true
+    },
+    "S4_missing_ticks_skipped": {
+      "mechanism": "vals is empty -> the `if vals:` branch is skipped, so only prior@prev runs and no 0-win likelihood is applied. A missing tick is therefore UNKNOWN, not a loss.",
+      "queries_sampled": 32,
+      "ticks_with_no_neighbour_observation": 158,
+      "verified_structurally": true
+    },
+    "holdout_status": "public validation, inspected many times; NOT an independent holdout. Causality checks only.",
+    "in_candidate": false,
+    "in_candidate_note": "shared_state is not a component of the audited candidate; checked because the dimension asks for it",
+    "loop": "for t in range(max(0, q.cutoff-96), q.cutoff)",
+    "max_tick_readable": "q.cutoff - 1",
+    "passed": true,
+    "queries": 768,
+    "range_upper_bound_is_exclusive": true,
+    "seconds": 1.3218478329945356,
+    "win_rate": 0.35,
+    "window_ticks": 96
+  },
+  "steps_5_6_splits_and_history": {
+    "holdout_status": "the 4 validation folds are splits of the SAME 96 public-validation\nepisodes that have been inspected many times across this project. A clean fold partition\nmakes the OOF construction internally honest; it does NOT make the resulting number an\nindependent holdout, and it is not confirmation of anything. The candidate's simplex\nweights are fitted against public-validation TARGETS on 3 folds and applied to the 4th,\nso the 32.260531 figure is an in-sample-at-the-corpus-level estimate.",
+    "passed": true,
+    "row_offset_scan": {
+      "assessment": "The only positional slicing of a tick-ordered list in any candidate component is slot_model/mtd.py `for t in rows[20:-19]` inside the changepoint search. It selects WHICH ticks are candidate changepoints; the statistic itself is built with tick arithmetic (range(t-20,t) and range(t,t+20)) guarded by `if s in h` and a len>=15 minimum per side, so sparse older rows cannot masquerade as 20 adjacent observations. Every lag, decay and window in every component is tick arithmetic: h.get(t-k), q.cutoff-lag, q.cutoff-1-t, q.cutoff-w <= t < q.cutoff.",
+      "files_scanned": [
+        "slot_model/features.py",
+        "slot_model/phase2_features.py",
+        "slot_model/phase2_predict.py",
+        "slot_model/mtd.py",
+        "slot_model/mtd_pairs.py",
+        "slot_model/shared_state.py",
+        "scripts/dense_catboost.py",
+        "scripts/two_head_catboost.py"
+      ],
+      "hits": [
+        {
+          "file": "slot_model/mtd.py",
+          "line": 68,
+          "text": "for t in rows[20:-19]:"
+        }
+      ],
+      "pattern": "rows\\s*\\[|sorted\\([^)]*\\)\\s*\\[|\\.values\\(\\)\\s*\\[|iloc|shift\\("
+    },
+    "seconds": 0.8795454170031007,
+    "short_history_semantics": {
+      "by_condition": {
+        "drift": {
+          "history_ticks_max": 250,
+          "history_ticks_min": 196,
+          "older_adjacent_fraction": 1.0,
+          "older_gap_max": 1,
+          "older_ticks_max": 210,
+          "older_ticks_min": 156,
+          "queries": 192,
+          "recent40_complete": "192/192",
+          "recent40_missing_ticks_total": 0,
+          "span_max": 250,
+          "span_min": 196
+        },
+        "shared_change": {
+          "history_ticks_max": 256,
+          "history_ticks_min": 198,
+          "older_adjacent_fraction": 1.0,
+          "older_gap_max": 1,
+          "older_ticks_max": 216,
+          "older_ticks_min": 158,
+          "queries": 192,
+          "recent40_complete": "192/192",
+          "recent40_missing_ticks_total": 0,
+          "span_max": 256,
+          "span_min": 198
+        },
+        "short_history": {
+          "history_ticks_max": 64,
+          "history_ticks_min": 64,
+          "older_adjacent_fraction": 0.1324728260869565,
+          "older_gap_max": 60,
+          "older_ticks_max": 24,
+          "older_ticks_min": 24,
+          "queries": 192,
+          "recent40_complete": "192/192",
+          "recent40_missing_ticks_total": 0,
+          "span_max": 254,
+          "span_min": 169
+        },
+        "stable": {
+          "history_ticks_max": 249,
+          "history_ticks_min": 192,
+          "older_adjacent_fraction": 1.0,
+          "older_gap_max": 1,
+          "older_ticks_max": 209,
+          "older_ticks_min": 152,
+          "queries": 192,
+          "recent40_complete": "192/192",
+          "recent40_missing_ticks_total": 0,
+          "span_max": 249,
+          "span_min": 192
+        }
+      },
+      "interpretation": "short_history machines hold exactly 64 pre-cutoff ticks: the 40 ticks [cutoff-40, cutoff) are all present and consecutive, plus exactly 24 older ticks scattered over a much longer span, only a small fraction of which are tick-adjacent. The dense conditions have history count == span, i.e. fully contiguous with no gaps at all.",
+      "short_history_episodes": [
+        "main-validation-e00001",
+        "main-validation-e00007",
+        "main-validation-e00008",
+        "main-validation-e00011",
+        "main-validation-e00014",
+        "main-validation-e00015",
+        "main-validation-e00019",
+        "main-validation-e00022",
+        "main-validation-e00030",
+        "main-validation-e00033",
+        "main-validation-e00036",
+        "main-validation-e00038",
+        "main-validation-e00039",
+        "main-validation-e00040",
+        "main-validation-e00041",
+        "main-validation-e00044",
+        "main-validation-e00045",
+        "main-validation-e00046",
+        "main-validation-e00052",
+        "main-validation-e00060",
+        "main-validation-e00063",
+        "main-validation-e00078",
+        "main-validation-e00088",
+        "main-validation-e00095"
+      ]
+    },
+    "split_integrity": {
+      "candidate_oof_rows": {
+        "episodes_covered": 96,
+        "matches_validation_query_set": true,
+        "rows": 768,
+        "unique_query_ids": 768
+      },
+      "episodes_in_two_folds": [],
+      "per_split": {
+        "train": {
+          "episodes": 96,
+          "episodes_missing_from_fold_map": [],
+          "episodes_with_more_than_one_fold": [],
+          "fold_map_entries": 96,
+          "fold_map_entries_with_no_query": [],
+          "fold_sizes_episodes": {
+            "0": 24,
+            "1": 24,
+            "2": 24,
+            "3": 24
+          },
+          "fold_sizes_queries": {
+            "0": 192,
+            "1": 192,
+            "2": 192,
+            "3": 192
+          },
+          "folds_partition_all_queries": true,
+          "queries": 768,
+          "queries_per_episode": [
+            8
+          ]
+        },
+        "validation": {
+          "episodes": 96,
+          "episodes_missing_from_fold_map": [],
+          "episodes_with_more_than_one_fold": [],
+          "fold_map_entries": 96,
+          "fold_map_entries_with_no_query": [],
+          "fold_sizes_episodes": {
+            "0": 24,
+            "1": 24,
+            "2": 24,
+            "3": 24
+          },
+          "fold_sizes_queries": {
+            "0": 192,
+            "1": 192,
+            "2": 192,
+            "3": 192
+          },
+          "folds_partition_all_queries": true,
+          "queries": 768,
+          "queries_per_episode": [
+            8
+          ]
+        }
+      },
+      "train_validation_episode_overlap": [],
+      "train_validation_machine_overlap": 0,
+      "validation_fold_union_covers_all_episodes": true,
+      "validation_per_fold": [
+        {
+          "fit_episodes": 72,
+          "fold": 0,
+          "held_episodes": 24,
+          "held_queries": 192,
+          "overlap": 0
+        },
+        {
+          "fit_episodes": 72,
+          "fold": 1,
+          "held_episodes": 24,
+          "held_queries": 192,
+          "overlap": 0
+        },
+        {
+          "fit_episodes": 72,
+          "fold": 2,
+          "held_episodes": 24,
+          "held_queries": 192,
+          "overlap": 0
+        },
+        {
+          "fit_episodes": 72,
+          "fold": 3,
+          "held_episodes": 24,
+          "held_queries": 192,
+          "overlap": 0
+        }
+      ]
+    }
+  },
+  "supporting_probes": {
+    "P1_cutoff_homogeneity_and_surface": {
+      "by_split": {
+        "test": {
+          "episodes": 192,
+          "episodes_with_one_shared_cutoff": "192/192",
+          "machines_per_episode": [
+            8
+          ],
+          "max_cutoff_spread_within_episode": 0,
+          "queries": 1536
+        },
+        "train": {
+          "episodes": 96,
+          "episodes_with_one_shared_cutoff": "96/96",
+          "machines_per_episode": [
+            8
+          ],
+          "max_cutoff_spread_within_episode": 0,
+          "queries": 768
+        },
+        "validation": {
+          "episodes": 96,
+          "episodes_with_one_shared_cutoff": "96/96",
+          "machines_per_episode": [
+            8
+          ],
+          "max_cutoff_spread_within_episode": 0,
+          "queries": 768
+        }
+      },
+      "conclusion": "Every episode in all three splits gives its 8 machines one identical cutoff, so the released files contain ZERO neighbour ticks at or after a target cutoff. The neighbour-future leak condition never arises naturally on this data, and the organizer's index_history() would reject a file where it did. The mutation tests therefore probe a counterfactual: they prove the code stays causal under a broader event stream, not that a live risk was caught.",
+      "neighbour_ticks_at_or_after_a_target_cutoff": 0,
+      "pairs_with_neighbour_ticks_at_or_after_target_cutoff": 0,
+      "validation_target_neighbour_pairs": 5376
+    },
+    "P2_changepoint_positional_slice": {
+      "by_condition": {
+        "drift": {
+          "candidates": 35944,
+          "in_dense": 4032,
+          "outside": 31912,
+          "passed": 35944
+        },
+        "shared_change": {
+          "candidates": 35672,
+          "in_dense": 4032,
+          "outside": 31640,
+          "passed": 35672
+        },
+        "short_history": {
+          "candidates": 4800,
+          "in_dense": 1329,
+          "outside": 0,
+          "passed": 1329
+        },
+        "stable": {
+          "candidates": 35024,
+          "in_dense": 4032,
+          "outside": 30992,
+          "passed": 35024
+        }
+      },
+      "conclusion": "The slice only chooses WHICH ticks are candidate changepoints. The statistic uses tick arithmetic range(t-20,t) / range(t,t+20) guarded by `if s in h` and >=15 present observations per side. For short_history only 1329 of 4800 candidates survive, and all 1329 sit inside the dense recent-40 region, so sparse older rows are never averaged as 20 adjacent observations.",
+      "location": "slot_model/mtd.py:68  for t in rows[20:-19]:"
+    },
+    "P3_label_reachability": {
+      "conclusion": "Inside slot_model/ the only module that touches conditions.csv, targets.csv or reference.csv is official_score.py, a scoring module. No feature builder (features.py, phase2_features.py, phase2_tables.py, mtd.py, mtd_pairs.py, shared_state.py) can reach a condition or target label. In the component scripts they are read only after write_submission, feeding contest_score.",
+      "slot_model_hits": [
+        {
+          "file": "slot_model/official_score.py",
+          "line": 16,
+          "text": "from slot_forecasting.io import read_rows, read_submission, read_targets"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 24,
+          "text": "targets = read_targets(data / 'validation/targets.csv')"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 26,
+          "text": "for r in read_rows(data / 'validation/conditions.csv', ('query_id', 'condition'))}"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 27,
+          "text": "reference = read_submission(data / 'validation/reference.csv')"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 28,
+          "text": "return targets, groups, reference"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 37,
+          "text": "targets, groups, reference = scoring"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 38,
+          "text": "selected = [t for t in targets if t.episode_id in set(episodes)]"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 50,
+          "text": "conditions = {}"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 56,
+          "text": "conditions[condition] = np.quantile(diff, [.025, .975]).tolist()"
+        },
+        {
+          "file": "slot_model/official_score.py",
+          "line": 58,
+          "text": "by_condition_ci95=conditions, repeats=repeats, seed=314159,"
+        },
+        {
+          "file": "slot_model/phase2_features.py",
+          "line": 95,
+          "text": "# At most eight historical targets; original released outcomes only."
+        }
+      ]
+    },
+    "seconds": 0.6017177090106998
+  },
+  "test_split_invariance": {
+    "adversarial_plays_added": 12288,
+    "episodes": 192,
+    "horizon_ticks": 8,
+    "labels_available": false,
+    "machines": 1536,
+    "machines_mutated": 1536,
+    "mtd": {
+      "bitwise_identical": true,
+      "max_abs_delta": 0.0,
+      "mtd_index_applies_no_cutoff_filter": true,
+      "queries_attacked": 1536
+    },
+    "note": "the test split carries no labels, so running it consumes no holdout information; this is a pure information-flow check",
+    "passed": true,
+    "queries": 1536,
+    "seconds": 130.80616908398224,
+    "split": "test",
+    "two_head": {
+      "bypassing_causal_index": {
+        "features_bitwise_identical": true,
+        "features_max_abs_delta": 0.0,
+        "probabilities_bitwise_identical": true,
+        "probabilities_max_abs_delta": 0.0,
+        "ticks_injected_directly_into_index": 12288
+      },
+      "feature_matrix_shape": [
+        1536,
+        182
+      ],
+      "import_transform": {
+        "source_sha256": "198df012ce6fc6c888d388c7b4fd98803395c99a561e16e4e39c437330c7d106",
+        "substituted_from": "D=Path('/Users/kyledo/Downloads/main-participants-60-40/public')",
+        "substitutions": 1
+      },
+      "through_causal_index": {
+        "features_bitwise_identical": true,
+        "features_max_abs_delta": 0.0,
+        "probabilities_bitwise_identical": true,
+        "probabilities_max_abs_delta": 0.0
+      }
+    }
+  },
+  "unresolved": [
+    "Causality establishes only that no component reads a disallowed tick. It is not evidence that the candidate generalises; the 32.260531/60 remains fitted on repeatedly-inspected public validation and is not an independent estimate.",
+    "The mutation tests cover the inference path end to end. The TRAINING-time paths were read and reasoned about rather than mutation-tested: MTDModel.fit computes its Dirichlet strength from the unfiltered index (slot_model/mtd.py `props`), which is safe only because the organizer loader guarantees released histories hold no post-cutoff rows AND because strength is frozen in artifacts/mtd_01/change.json (13.333) and never recomputed at predict time. A mutation test on fit() would close this by construction.",
+    "The 7 portable HMM summary columns were checked for post-cutoff invariance, but the committed HMM checkpoints under artifacts/phase2/hmm_models were not re-fitted, so their own fold hygiene is taken from the recorded population keys rather than re-derived.",
+    "scripts/dense_catboost.py, scripts/evaluate_mtd_pairs.py and scripts/phase2_evaluate.py all hardcode D=Path('/Users/kyledo/Downloads/main-participants-60-40/public'), which does not exist on this machine. None of them can be re-run as committed. This is a reproducibility defect, not a causality defect, and it is reported separately below."
+  ],
+  "verdict": "PASS. No causal-input violation found in any component of the candidate, on public validation or on the test split. No defect at any severity."
+}

@@ -1,0 +1,128 @@
+{
+  "objective_equals_official_on_fit_folds": [
+    {
+      "abs_diff": 0.0,
+      "component": 0,
+      "fold": 0
+    },
+    {
+      "abs_diff": 0.0,
+      "component": 1,
+      "fold": 0
+    },
+    {
+      "abs_diff": 0.0,
+      "component": 2,
+      "fold": 0
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 3,
+      "fold": 0
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 0,
+      "fold": 1
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 1,
+      "fold": 1
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 2,
+      "fold": 1
+    },
+    {
+      "abs_diff": 0.0,
+      "component": 3,
+      "fold": 1
+    },
+    {
+      "abs_diff": 2.220446049250313e-16,
+      "component": 0,
+      "fold": 2
+    },
+    {
+      "abs_diff": 0.0,
+      "component": 1,
+      "fold": 2
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 2,
+      "fold": 2
+    },
+    {
+      "abs_diff": 0.0,
+      "component": 3,
+      "fold": 2
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 0,
+      "fold": 3
+    },
+    {
+      "abs_diff": 0.0,
+      "component": 1,
+      "fold": 3
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 2,
+      "fold": 3
+    },
+    {
+      "abs_diff": 1.1102230246251565e-16,
+      "component": 3,
+      "fold": 3
+    }
+  ],
+  "weights_invariant_to_held_fold_truth": [
+    {
+      "fold": 0,
+      "max_abs_weight_change": 0.0,
+      "weights": [
+        0.0,
+        0.4826272568519949,
+        0.10960043379320458,
+        0.4077723093548005
+      ]
+    },
+    {
+      "fold": 1,
+      "max_abs_weight_change": 0.0,
+      "weights": [
+        5.409999434113213e-18,
+        0.48288619150824247,
+        0.22077243849786582,
+        0.2963413699938917
+      ]
+    },
+    {
+      "fold": 2,
+      "max_abs_weight_change": 0.0,
+      "weights": [
+        1.8537316050660363e-17,
+        0.45084240280833027,
+        0.22221819107671398,
+        0.32693940611495576
+      ]
+    },
+    {
+      "fold": 3,
+      "max_abs_weight_change": 0.0,
+      "weights": [
+        0.0,
+        0.5154779306170376,
+        0.24734549893990812,
+        0.23717657044305426
+      ]
+    }
+  ],
+  "worst_objective_gap": 2.220446049250313e-16,
+  "worst_weight_change_under_held_fold_scramble": 0.0
+}

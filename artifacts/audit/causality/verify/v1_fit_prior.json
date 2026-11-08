@@ -1,0 +1,113 @@
+{
+  "ticks_injected_into_train_index": 6144,
+  "fit_prior_max_abs_change": 0.05462918361258527,
+  "fit_prior_has_own_cutoff_guard": false,
+  "validation_feature_matrix_max_abs_change": 0.05462918361258527,
+  "validation_columns_changed": 80,
+  "validation_columns_changed_sample": [
+    "change_0",
+    "change_1",
+    "change_2",
+    "change_3",
+    "change_4",
+    "conditional_1_0",
+    "conditional_1_1",
+    "conditional_1_2",
+    "conditional_1_2_0",
+    "conditional_1_2_1",
+    "conditional_1_2_2",
+    "conditional_1_2_3",
+    "conditional_1_2_4",
+    "conditional_1_3",
+    "conditional_1_4",
+    "conditional_2_0",
+    "conditional_2_1",
+    "conditional_2_2",
+    "conditional_2_3",
+    "conditional_2_4",
+    "conditional_4_0",
+    "conditional_4_1",
+    "conditional_4_2",
+    "conditional_4_3",
+    "conditional_4_4"
+  ],
+  "prior_before": [
+    [
+      0.4197043993639119,
+      0.355074324023866,
+      0.1743852410283866,
+      0.046946347069536654,
+      0.003889688514298809
+    ],
+    [
+      0.5849225420608419,
+      0.14490155709110994,
+      0.18208477361715752,
+      0.07333829792297103,
+      0.01475282930791945
+    ],
+    [
+      0.7564441496674162,
+      0.05118575893697873,
+      0.0725050139310123,
+      0.08765833612931787,
+      0.03220674133527489
+    ]
+  ],
+  "prior_after": [
+    [
+      0.39853356127976314,
+      0.33717823136458763,
+      0.16583800207480912,
+      0.04481120149066117,
+      0.053639003790178934
+    ],
+    [
+      0.5524793142581841,
+      0.13687160318076239,
+      0.17204527386345883,
+      0.06922179577709003,
+      0.06938201292050472
+    ],
+    [
+      0.7150916675442166,
+      0.04842608936003084,
+      0.0683651702505932,
+      0.08263627136247013,
+      0.08548080148268924
+    ]
+  ],
+  "sample_machines": [
+    {
+      "query": "main-train-e00000-m000-next",
+      "cutoff": 238,
+      "max_tick_in_index": 245,
+      "ticks_at_or_after_cutoff": 8
+    },
+    {
+      "query": "main-train-e00000-m001-next",
+      "cutoff": 238,
+      "max_tick_in_index": 245,
+      "ticks_at_or_after_cutoff": 8
+    },
+    {
+      "query": "main-train-e00000-m002-next",
+      "cutoff": 238,
+      "max_tick_in_index": 245,
+      "ticks_at_or_after_cutoff": 8
+    },
+    {
+      "query": "main-train-e00000-m003-next",
+      "cutoff": 238,
+      "max_tick_in_index": 245,
+      "ticks_at_or_after_cutoff": 8
+    },
+    {
+      "query": "main-train-e00000-m004-next",
+      "cutoff": 238,
+      "max_tick_in_index": 245,
+      "ticks_at_or_after_cutoff": 8
+    }
+  ],
+  "conclusion": "fit_prior() applies NO t < cutoff filter: it bincounts every value in index[episode,machine]. Its causality depends ENTIRELY on the caller passing a causal_index() result. Single layer of defence."
+}

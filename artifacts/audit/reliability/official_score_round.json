@@ -1,0 +1,33 @@
+{
+  "adaptation_kit_message": "slot_model.official_score scores the main round only (60 points); this kit is round adaptation (40 points). Scoring it here would report the wrong maximum, so it is refused rather than converted.",
+  "adaptation_kit_metadata": {
+    "max_points": 40,
+    "round": "adaptation"
+  },
+  "adaptation_kit_refused": true,
+  "candidate": {
+    "mean_loss_ratio": 0.859857784208175,
+    "repr": "32.26053115966858",
+    "technical_points": 32.26053115966858
+  },
+  "frozen_blend": {
+    "contest_version": "temporal-adaptation-v3-60-40",
+    "matches_recorded_31_702332": true,
+    "max_points": 60.0,
+    "repr": "31.70233166770079",
+    "technical_points": 31.70233166770079
+  },
+  "max_points_from_metadata": 60,
+  "max_points_is_hardcoded_anywhere": false,
+  "metadata": {
+    "max_points": 60,
+    "round": "main",
+    "season_id": "5fffdc4d0c700bbf61c3f911",
+    "suite_version": "experimentation-suite-v3"
+  },
+  "plain_tuple_message": "Pass the ScoringInputs returned by scoring_inputs(data); the round maximum is read from the kit metadata, not assumed.",
+  "plain_tuple_refused": true,
+  "reference_scores_itself": 30.0,
+  "round_constant": "main",
+  "unpacks_as_three_tuple": true
+}

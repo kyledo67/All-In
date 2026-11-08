@@ -1,0 +1,32 @@
+{
+  "population_prior_matches_fit_prior_over_all_train": 0.0,
+  "observable_schema_matches": true,
+  "x_shape": [
+    768,
+    182
+  ],
+  "win_20261108_classes": [
+    0,
+    1
+  ],
+  "size_20261108_classes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "win_20261109_classes": [
+    0,
+    1
+  ],
+  "size_20261109_classes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "two_head_recompute_seconds": 0.057742125005461276,
+  "two_head_max_abs_vs_recorded_validation_csv": 1.1102230246251565e-16,
+  "mtd_lag7_validation_seconds": 16.977316000004066,
+  "mtd_lag7_max_abs_vs_recorded_validation_csv": 2.220446049250313e-16
+}

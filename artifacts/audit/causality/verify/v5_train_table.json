@@ -1,0 +1,34 @@
+{
+  "train_examples": 3134,
+  "pseudo_rows": 2366,
+  "real_rows": 768,
+  "C1_history_at_or_after_own_cutoff": {
+    "failures": 0,
+    "sample": []
+  },
+  "C2_own_label_tick_inside_own_history": {
+    "failures": 0,
+    "sample": []
+  },
+  "C2b_pseudo_label_matches_observed_payout_at_pseudo_cutoff": {
+    "ok": 2366,
+    "failures": 0,
+    "sample": []
+  },
+  "C3_neighbour_window_holds_a_tick_at_or_after_pseudo_cutoff": {
+    "pseudo_rows_checked": 400,
+    "failures": 400,
+    "sample": [
+      "main-train-e00000-m000-next-t192",
+      "main-train-e00000-m000-next-t200",
+      "main-train-e00000-m000-next-t208",
+      "main-train-e00000-m000-next-t216",
+      "main-train-e00000-m000-next-t224"
+    ]
+  },
+  "C4_pseudo_rows_signal": {
+    "nonzero_signal": 0,
+    "signal_known_true": 0
+  },
+  "verdict": "FAILURES PRESENT"
+}

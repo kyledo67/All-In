@@ -1,0 +1,41 @@
+{
+  "cache_key": "45eaa29447ae7570",
+  "cached": true,
+  "catboost_replay_max_abs": {
+    "cb_hmm_0_20261108": 4.440892098500626e-16,
+    "cb_hmm_0_20261109": 2.220446049250313e-16,
+    "cb_hmm_1_20261108": 3.3306690738754696e-16,
+    "cb_hmm_1_20261109": 3.3306690738754696e-16,
+    "cb_observable_0_20261108": 3.3306690738754696e-16,
+    "cb_observable_0_20261109": 2.220446049250313e-16,
+    "cb_observable_1_20261108": 2.220446049250313e-16,
+    "cb_observable_1_20261109": 3.3306690738754696e-16
+  },
+  "local_replay_max_abs": {
+    "local_0": 2.220446049250313e-16,
+    "local_1": 2.220446049250313e-16,
+    "local_2": 2.220446049250313e-16,
+    "local_3": 2.220446049250313e-16,
+    "local_4": 3.3306690738754696e-16,
+    "local_5": 2.220446049250313e-16
+  },
+  "note": "cached_design hashes train/{queries,history,labels} + validation/{queries,history} contents only; the matching cache key proves this kit is byte-identical to the one that built the committed tables. No validation label/target/reference file is opened.",
+  "provenance": {
+    "hmm_features": 7,
+    "observable_features": 182,
+    "train_model_keys": [
+      "31a573ded8ac999c",
+      "5c640565ea14690f",
+      "842ce57246be7636",
+      "8e08785c8a049acb"
+    ],
+    "train_rows": 3134,
+    "validation_model_keys": [
+      "243be1a99bcbf51a"
+    ],
+    "validation_rows": 768
+  },
+  "seconds": 38.18419583400828,
+  "worst_catboost": 4.440892098500626e-16,
+  "worst_local": 3.3306690738754696e-16
+}

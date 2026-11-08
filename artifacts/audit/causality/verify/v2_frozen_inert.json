@@ -1,0 +1,27 @@
+{
+  "max_frozen_blend_weight": 1.7251774146612511e-16,
+  "np.spacing(0.5)_ULP_at_half": 1.1102230246251565e-16,
+  "np.spacing(1.0)_machine_eps": 2.220446049250313e-16,
+  "max_weight_in_ULPs_at_p_0.5": 1.5539016723632812,
+  "agent_claim_weight_below_float_rounding_at_p_half": false,
+  "with_vs_without_frozen_blend": {
+    "bitwise_identical": false,
+    "rows_differing": 236,
+    "max_abs_prob_delta": 2.220446049250313e-16,
+    "points_with": 32.26053115966858,
+    "points_without": 32.26053115966858,
+    "points_delta": 0.0
+  },
+  "my_rebuild_vs_saved_oof_candidate_raw": {
+    "max_abs_delta": 2.220446049250313e-16,
+    "points_mine": 32.26053115966858,
+    "R_mine": null,
+    "keys": [
+      "by_condition",
+      "contest_version",
+      "max_points",
+      "mean_loss_ratio",
+      "technical_points"
+    ]
+  }
+}

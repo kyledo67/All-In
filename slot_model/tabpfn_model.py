@@ -31,6 +31,21 @@ CHECKPOINTS = Path(__file__).resolve().parents[1] / 'artifacts/tabpfn/checkpoint
 FLOOR = 1e-6
 
 
+def checkpoint_sha256(checkpoints=CHECKPOINTS):
+    """Hash every TabPFN checkpoint in the cache directory.
+
+    The forward pass is fixed by the context, the seed and the checkpoint weights, so a
+    run manifest that records only the first two cannot identify the model that produced
+    its predictions. Raises rather than returning an empty record, so a run against a
+    missing checkpoint fails before it would reach for the network.
+    """
+    directory = Path(checkpoints)
+    files = sorted(p for p in directory.glob('*.ckpt') if p.is_file())
+    if not files:
+        raise FileNotFoundError(f'No TabPFN checkpoint (*.ckpt) under {directory}')
+    return {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+
+
 def simplex(probabilities):
     """Clip to [1e-6, 1-1e-6] then renormalize, as the blend contract requires."""
     values = np.clip(np.asarray(probabilities, dtype=np.float64), FLOOR, 1 - FLOOR)

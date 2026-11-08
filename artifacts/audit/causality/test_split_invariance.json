@@ -1,0 +1,43 @@
+{
+  "adversarial_plays_added": 12288,
+  "episodes": 192,
+  "horizon_ticks": 8,
+  "labels_available": false,
+  "machines": 1536,
+  "machines_mutated": 1536,
+  "mtd": {
+    "bitwise_identical": true,
+    "max_abs_delta": 0.0,
+    "mtd_index_applies_no_cutoff_filter": true,
+    "queries_attacked": 1536
+  },
+  "note": "the test split carries no labels, so running it consumes no holdout information; this is a pure information-flow check",
+  "passed": true,
+  "queries": 1536,
+  "seconds": 130.80616908398224,
+  "split": "test",
+  "two_head": {
+    "bypassing_causal_index": {
+      "features_bitwise_identical": true,
+      "features_max_abs_delta": 0.0,
+      "probabilities_bitwise_identical": true,
+      "probabilities_max_abs_delta": 0.0,
+      "ticks_injected_directly_into_index": 12288
+    },
+    "feature_matrix_shape": [
+      1536,
+      182
+    ],
+    "import_transform": {
+      "source_sha256": "198df012ce6fc6c888d388c7b4fd98803395c99a561e16e4e39c437330c7d106",
+      "substituted_from": "D=Path('/Users/kyledo/Downloads/main-participants-60-40/public')",
+      "substitutions": 1
+    },
+    "through_causal_index": {
+      "features_bitwise_identical": true,
+      "features_max_abs_delta": 0.0,
+      "probabilities_bitwise_identical": true,
+      "probabilities_max_abs_delta": 0.0
+    }
+  }
+}

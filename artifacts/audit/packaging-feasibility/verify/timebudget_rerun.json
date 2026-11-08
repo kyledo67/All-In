@@ -1,0 +1,17 @@
+{
+  "A_frozen_blend_test_seconds": 3.546082250017207,
+  "A_queries": 1536,
+  "B_feature_table_seconds": 3.363042334007332,
+  "B_observable_cols": 182,
+  "B_hmm_cols": 7,
+  "B_rows": 1536,
+  "C_two_head_marginal_seconds": 0.12341475000721402,
+  "C_two_head_valid_simplex": true,
+  "D_mtd_load_seconds": 0.0007804170018061996,
+  "D_mtd_lag7_test_seconds": 55.29375495799468,
+  "D_mtd_rows": 1536,
+  "E_sum_without_tabpfn_seconds": 58.964032375020906,
+  "threads": "2",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "python": "3.12.16"
+}

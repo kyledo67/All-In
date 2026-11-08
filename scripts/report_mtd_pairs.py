@@ -1,10 +1,11 @@
-import sys,json
+import os,sys,json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1];sys.path[:0]=[str(R),str(R/'organizer')]
 import numpy as np
 from slot_forecasting.io import read_targets,read_rows,read_submission
-from slot_forecasting.contest import contest_score
-D=Path('/Users/kyledo/Downloads/main-participants-60-40/public');O=R/'artifacts/mtd_pairs_01'
+# Kit location: $SLOT_PUBLIC_DATA, else the copy beside the repo. It used to be one
+# machine's home directory, which made this report unrunnable anywhere else.
+D=Path(os.environ.get('SLOT_PUBLIC_DATA') or R/'main-participants-60-40/public');O=R/'artifacts/mtd_pairs_01'
 r=json.loads((O/'evaluation.json').read_text());t=read_targets(D/'validation/targets.csv');ids=[x.query_id for x in t]
 groups={x['query_id']:x['condition'] for x in read_rows(D/'validation/conditions.csv',('query_id','condition'))};truth={x.query_id:np.asarray(x.probabilities) for x in t}
 ref=read_submission(D/'validation/reference.csv');names=('additive','lag7','control')

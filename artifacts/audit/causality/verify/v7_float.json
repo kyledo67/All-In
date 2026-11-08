@@ -1,0 +1,8 @@
+{
+  "rows": 768,
+  "rows_whose_written_values_do_not_fsum_to_exactly_1": 72,
+  "rows_where_read_submission_returns_the_written_values_unchanged": 696,
+  "max_abs_change_introduced_by_read_side_renormalisation": 1.1102230246251565e-16,
+  "format_17g_is_an_exact_float64_roundtrip": true,
+  "finding": "read_submission() divides by math.fsum(values) (organizer slot_forecasting/schema.py:73), so for the rows whose written values do not fsum to exactly 1.0 the value read back differs from the value written. The agent ruled out .17g truncation but not this read-side renormalisation, which is of the same 1-2 ULP magnitude as the delta it attributed solely to cross-run reduction order."
+}

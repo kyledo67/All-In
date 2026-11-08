@@ -1,0 +1,39 @@
+{
+  "recomputed_points": 32.26053115966858,
+  "recorded_points": 32.260531,
+  "recomputed_R": 0.859857784208175,
+  "component_sha256_16": {
+    "tabpfn_hmm_20261108": "c859f01459d93ba4",
+    "tabpfn_hmm_20261109": "30fee7d9dfc1982f",
+    "frozen_blend": "248b55abb69ff6f3",
+    "mtd_lag7": "49301c79b5c198b7",
+    "two_head": "fef4f159c38bba58"
+  },
+  "fold_weights": [
+    {
+      "frozen_blend": 1.7251774146612511e-16,
+      "tabpfn_raw": 0.482627256851995,
+      "mtd_lag7": 0.10960043379320268,
+      "two_head": 0.40777230935480224
+    },
+    {
+      "frozen_blend": 1.842466066867554e-17,
+      "tabpfn_raw": 0.4828861915082434,
+      "mtd_lag7": 0.220772438497864,
+      "two_head": 0.29634136999389266
+    },
+    {
+      "frozen_blend": 0.0,
+      "tabpfn_raw": 0.45084240280833043,
+      "mtd_lag7": 0.22221819107671303,
+      "two_head": 0.32693940611495664
+    },
+    {
+      "frozen_blend": 1.1038745126854853e-17,
+      "tabpfn_raw": 0.5154779306170381,
+      "mtd_lag7": 0.24734549893990754,
+      "two_head": 0.23717657044305426
+    }
+  ],
+  "tabpfn_raw_vs_oof_max_abs": 2.220446049250313e-16
+}

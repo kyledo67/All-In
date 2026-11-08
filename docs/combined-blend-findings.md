@@ -36,6 +36,9 @@ asking anyone to trust this page.
 the phase-two comparisons: 2,000 draws stratified by condition, seed 314159, reference
 denominators recomputed per draw. Intervals are unadjusted for selection.
 
+The `+ shared_state` row is not a fifth model added to the blend. That column is itself
+a composite of two components already in the simplex; see the correction below.
+
 ## TabPFN is the load-bearing component
 
 Across all 32 combinations the separation is exact: **the 16 combinations containing
@@ -47,11 +50,60 @@ TabPFN also never gets dropped. Its fitted weight is 0.45–0.67 in every fold o
 combination it appears in. Removing it does not cost 0.3 points; it costs the only
 statistically separable result available.
 
-## Why `shared_state` is removed
+## Correction: `shared_state` is not a standalone model
 
-It is the second-best single model in the project (31.8314, and the best drift ratio of
-any standalone component at 0.9125), and it is still worth nothing in a blend. Its
-fitted weight, per fold, in every combination containing it:
+An earlier version of this page described `shared_state` as "the second-best single model
+in the project (31.8314, and the best drift ratio of any standalone component at 0.9125)"
+and removed it on the grounds that its fitted weight was zero, so "its information is a
+strict subset of what the kept components already supply." Both halves were wrong. That
+number is not a standalone-model score, and the zero fitted weight does not establish
+what the page claimed. **The removal stands**; the corrected reason is below. The error is
+recorded here rather than edited away, so a reader can see what was wrong.
+
+### What the column actually is
+
+`artifacts/shared_state_01/validation.csv`, the file registered as the `shared_state`
+component in `scripts/combined_evaluate.py:53`, is not one model's output. It is a small
+correction applied to a composite that already contains two of the kept components:
+
+- `scripts/evaluate_shared_state.py:40-42` builds it as
+  `adjust(artifacts/mtd_pairs_01/combined_additive.csv, state, beta)`;
+- `scripts/evaluate_mtd_pairs.py:41-44` builds that input as
+  `0.75 * artifacts/blend_release/evaluated_oof_predictions.csv + 0.25 *
+  artifacts/mtd_pairs_01/validation_additive.csv`.
+
+Both steps were rechecked numerically rather than read off the source. Recomputing
+`0.75 * blend + 0.25 * additive MTD` matches `combined_additive.csv` to 1.11e-16, and
+`artifacts/blend_release/evaluated_oof_predictions.csv` is byte-identical to the
+simplex's own base column `artifacts/phase2/predictions/oof_ensemble.csv` (both
+`sha256:248b55abb69ff6f3...`, the `frozen_blend` hash in `artifacts/audit/recompute.json`).
+The additive MTD differs from the registered `mtd` component — the lag-7 pairwise variant
+— by a mean absolute 0.001342 per coordinate, maximum 0.044665: the same model family
+with a near-identical output.
+
+The two-state filter then moves the result very little. `adjust` clips the win-mass shift
+to +/-0.08, the fitted slope is beta = 0.04 and the state is bounded in [-0.5, 0.5], so
+the delivered column sits at most 0.019868 from its own composite input in any
+coordinate, with a mean absolute 0.014237 on `p_0`.
+
+### Why 31.8314 must not be presented as a model score
+
+31.8314 is the score of `0.75 * frozen blend + 0.25 * additive MTD` with that bounded
+nudge applied. The composite input alone scores **31.902299**, so the two-state
+correction *lowered* points by 0.070873; `docs/mtd-pairs-investigation.md` reports that
+fall correctly. The 0.9125 drift ratio is likewise the composite's ratio, not a
+standalone component's.
+
+The fit is mismatched as well. The slope was fitted against
+`artifacts/mtd_pairs_01/train_oof_additive.csv`, the **raw MTD train OOF**
+(`scripts/evaluate_shared_state.py:12` and `:25`) — a different baseline from the
+blend-plus-MTD composite the fitted correction is then applied to. Whatever the state
+variable is worth, it was never calibrated against the thing it adjusts.
+
+### Why the old redundancy argument does not hold
+
+The fitted weights themselves are a sound observation. Per fold, in every combination
+containing it:
 
 | Combination | shared_state weight per fold |
 | --- | --- |
@@ -62,11 +114,53 @@ fitted weight, per fold, in every combination containing it:
 | frozen + tabpfn + shared_state | 0.245, 0.501, 0.526, 0.448 |
 | frozen + shared_state | 0.380, 0.830, 1.000, 1.000 |
 
-It earns weight only when the stronger components are absent. Once `tabpfn`, `mtd` and
-`two_head` are present it is zeroed in all four folds, and the five-component blend
-scores **identically** to the four-component one (32.2605 both). Its information is a
-strict subset of what the kept components already supply. Including it would add
-inference cost for a provably zero change in output.
+It earns weight only when the stronger components are absent, and the five-component
+blend scores identically to the four-component one (32.2605 both).
+
+But that is what a free simplex *must* do with a column equal to 0.75 of its own base
+plus 0.25 of a near-twin of one of its components, shifted by at most 0.02. The column is
+**redundant by construction**, because two of its own inputs are already separate
+components of the same simplex. So the zero weight says nothing about whether a
+differently constructed shared-state column — fitted against the baseline it actually
+corrects, and supplied as a residual rather than as a composite — would also be
+redundant. The old text used the zero weight as if it proved that, and it does not.
+
+### What justifies the removal
+
+- The column is, by construction, two components already in the simplex plus a bounded
+  nudge, so it cannot contribute to a simplex that contains them.
+- That nudge is measured to *lose* 0.070873 points on the composite it was fitted for,
+  and its slope was fitted against a different baseline than the one it adjusts.
+- Including it would add inference cost for no change in output.
+
+That is sufficient and it does not rest on the invalid inference. **Shared-state
+modelling is not reopened here**: the conclusion is unchanged, only its justification.
+`--include-rejected` still re-measures the column rather than asking anyone to trust
+this page.
+
+Reproduce the construction checks:
+
+```sh
+.venv/bin/python - <<'PY'
+import sys; from pathlib import Path
+R = Path('.').resolve(); sys.path[:0] = [str(R), str(R / 'organizer')]
+import numpy as np, json
+from slot_forecasting.io import read_submission
+blend = read_submission(R / 'artifacts/blend_release/evaluated_oof_predictions.csv')
+add   = read_submission(R / 'artifacts/mtd_pairs_01/validation_additive.csv')
+comb  = read_submission(R / 'artifacts/mtd_pairs_01/combined_additive.csv')
+ss    = read_submission(R / 'artifacts/shared_state_01/validation.csv')
+print('composite residual',
+      max(abs(.75*np.array(blend[k]) + .25*np.array(add[k]) - np.array(comb[k])).max()
+          for k in comb))
+print('shared_state vs its own input',
+      max(abs(np.array(ss[k]) - np.array(comb[k])).max() for k in comb))
+e = json.loads((R / 'artifacts/shared_state_01/evaluation.json').read_text())
+print('input', e['baseline']['technical_points'], 'adjusted', e['candidate']['technical_points'])
+PY
+shasum -a 256 artifacts/phase2/predictions/oof_ensemble.csv \
+              artifacts/blend_release/evaluated_oof_predictions.csv
+```
 
 ## Why `dense_cb` is removed
 
@@ -148,3 +242,7 @@ fitted on validation: `0.65 x frozen_blend + 0.35 x mean(tabpfn, mtd)` scores 32
   probably better than 32.0434.
 - Nothing here explains *why* any component helps. The conditions each one improves are
   reported; no ablation isolates a mechanism.
+- The `shared_state` column's zero fitted weight is explained by its construction, so
+  this search establishes nothing about the shared-state variable itself. It was not
+  supplied to the simplex in a form that could have shown anything either way, and no
+  such form was built or measured.

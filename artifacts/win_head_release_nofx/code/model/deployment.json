@@ -1,0 +1,15 @@
+{
+  "alpha": 1.0,
+  "candidate": "win_head_q_times_two_head_r",
+  "pair_dict": "pair_dict_deploy.json",
+  "pair_select": "hard",
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "reference_variant": "two_head",
+  "win_head": "population_averaged.json"
+}

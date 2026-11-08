@@ -1,0 +1,75 @@
+{
+  "conclusion": "oof_ensemble rows for fold k come from a config selection and simplex fitted on the other three folds of the identical validation fold map",
+  "folds_json_sha256": "06faf91fdb74e2a4b58845b8104b2cdf823eadeef54b9327643193d1e92b245a",
+  "per_fold": [
+    {
+      "fold": 0,
+      "held_episode_count": 24,
+      "held_episodes_match_folds_json": true,
+      "max_abs_rebuild_deviation": 2.220446049250313e-16,
+      "selection": {
+        "hmm": 1,
+        "local": 0,
+        "observable": 0
+      },
+      "weights": {
+        "cat_hmm": 0.6555188032425726,
+        "cat_observable": 0.05473799087054383,
+        "hmm": 0.13017963076849223,
+        "local": 0.15956357511839142
+      }
+    },
+    {
+      "fold": 1,
+      "held_episode_count": 24,
+      "held_episodes_match_folds_json": true,
+      "max_abs_rebuild_deviation": 1.1102230246251565e-16,
+      "selection": {
+        "hmm": 1,
+        "local": 0,
+        "observable": 0
+      },
+      "weights": {
+        "cat_hmm": 0.4920918430931864,
+        "cat_observable": 7.865547948203433e-18,
+        "hmm": 0.3112993896833916,
+        "local": 0.19660876722342205
+      }
+    },
+    {
+      "fold": 2,
+      "held_episode_count": 24,
+      "held_episodes_match_folds_json": true,
+      "max_abs_rebuild_deviation": 1.1102230246251565e-16,
+      "selection": {
+        "hmm": 0,
+        "local": 0,
+        "observable": 0
+      },
+      "weights": {
+        "cat_hmm": 0.4185908074830036,
+        "cat_observable": 0.15514464324702326,
+        "hmm": 0.29112772490743316,
+        "local": 0.13513682436253996
+      }
+    },
+    {
+      "fold": 3,
+      "held_episode_count": 24,
+      "held_episodes_match_folds_json": true,
+      "max_abs_rebuild_deviation": 2.220446049250313e-16,
+      "selection": {
+        "hmm": 0,
+        "local": 0,
+        "observable": 0
+      },
+      "weights": {
+        "cat_hmm": 0.529259685016378,
+        "cat_observable": 0.042703351469832514,
+        "hmm": 0.3319876182610961,
+        "local": 0.0960493452526935
+      }
+    }
+  ],
+  "worst_rebuild_deviation": 2.220446049250313e-16
+}

@@ -1,0 +1,26 @@
+{
+  "baseline_py_bytes": 4995,
+  "corrected_required_count": 31,
+  "corrected_required_raw_bytes": 33927601,
+  "corrected_required_deflate_sum": 31552335,
+  "audited_raw_bytes": 33922606,
+  "audited_deflate_sum": 31550807,
+  "real_zip_bytes_with_readme_and_reproduce": 31559367,
+  "real_zip_entries": 33,
+  "real_zip_unpacked_bytes": 33927756,
+  "pct_of_event_100MB": 31.559367,
+  "pct_of_MAX_EXPANDED_512MiB": 6.31953701376915,
+  "inspect_archive": "PASSED",
+  "imports_from_corrected_set": {
+    "slot_model.features": "OK",
+    "slot_model.phase2_features": "OK",
+    "slot_model.phase2_predict": "OK",
+    "slot_model.portable": "OK",
+    "slot_model.mtd": "OK",
+    "slot_model.mtd_pairs": "OK",
+    "slot_model.frozen_blend": "OK",
+    "slot_model.tabpfn_model": "OK"
+  },
+  "ckpt_share_of_raw_pct": 85.5,
+  "ckpt_deflate_share_of_deflate_pct": 85.35
+}

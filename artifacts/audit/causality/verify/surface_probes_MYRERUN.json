@@ -1,0 +1,128 @@
+{
+  "P1_cutoff_homogeneity_and_surface": {
+    "by_split": {
+      "test": {
+        "episodes": 192,
+        "episodes_with_one_shared_cutoff": "192/192",
+        "machines_per_episode": [
+          8
+        ],
+        "max_cutoff_spread_within_episode": 0,
+        "queries": 1536
+      },
+      "train": {
+        "episodes": 96,
+        "episodes_with_one_shared_cutoff": "96/96",
+        "machines_per_episode": [
+          8
+        ],
+        "max_cutoff_spread_within_episode": 0,
+        "queries": 768
+      },
+      "validation": {
+        "episodes": 96,
+        "episodes_with_one_shared_cutoff": "96/96",
+        "machines_per_episode": [
+          8
+        ],
+        "max_cutoff_spread_within_episode": 0,
+        "queries": 768
+      }
+    },
+    "conclusion": "Every episode in all three splits gives its 8 machines one identical cutoff, so the released files contain ZERO neighbour ticks at or after a target cutoff. The neighbour-future leak condition never arises naturally on this data, and the organizer's index_history() would reject a file where it did. The mutation tests therefore probe a counterfactual: they prove the code stays causal under a broader event stream, not that a live risk was caught.",
+    "neighbour_ticks_at_or_after_a_target_cutoff": 0,
+    "pairs_with_neighbour_ticks_at_or_after_target_cutoff": 0,
+    "validation_target_neighbour_pairs": 5376
+  },
+  "P2_changepoint_positional_slice": {
+    "by_condition": {
+      "drift": {
+        "candidates": 35944,
+        "in_dense": 4032,
+        "outside": 31912,
+        "passed": 35944
+      },
+      "shared_change": {
+        "candidates": 35672,
+        "in_dense": 4032,
+        "outside": 31640,
+        "passed": 35672
+      },
+      "short_history": {
+        "candidates": 4800,
+        "in_dense": 1329,
+        "outside": 0,
+        "passed": 1329
+      },
+      "stable": {
+        "candidates": 35024,
+        "in_dense": 4032,
+        "outside": 30992,
+        "passed": 35024
+      }
+    },
+    "conclusion": "The slice only chooses WHICH ticks are candidate changepoints. The statistic uses tick arithmetic range(t-20,t) / range(t,t+20) guarded by `if s in h` and >=15 present observations per side. For short_history only 1329 of 4800 candidates survive, and all 1329 sit inside the dense recent-40 region, so sparse older rows are never averaged as 20 adjacent observations.",
+    "location": "slot_model/mtd.py:68  for t in rows[20:-19]:"
+  },
+  "P3_label_reachability": {
+    "conclusion": "Inside slot_model/ the only module that touches conditions.csv, targets.csv or reference.csv is official_score.py, a scoring module. No feature builder (features.py, phase2_features.py, phase2_tables.py, mtd.py, mtd_pairs.py, shared_state.py) can reach a condition or target label. In the component scripts they are read only after write_submission, feeding contest_score.",
+    "slot_model_hits": [
+      {
+        "file": "slot_model/official_score.py",
+        "line": 16,
+        "text": "from slot_forecasting.io import read_rows, read_submission, read_targets"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 24,
+        "text": "targets = read_targets(data / 'validation/targets.csv')"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 26,
+        "text": "for r in read_rows(data / 'validation/conditions.csv', ('query_id', 'condition'))}"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 27,
+        "text": "reference = read_submission(data / 'validation/reference.csv')"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 28,
+        "text": "return targets, groups, reference"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 37,
+        "text": "targets, groups, reference = scoring"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 38,
+        "text": "selected = [t for t in targets if t.episode_id in set(episodes)]"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 50,
+        "text": "conditions = {}"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 56,
+        "text": "conditions[condition] = np.quantile(diff, [.025, .975]).tolist()"
+      },
+      {
+        "file": "slot_model/official_score.py",
+        "line": 58,
+        "text": "by_condition_ci95=conditions, repeats=repeats, seed=314159,"
+      },
+      {
+        "file": "slot_model/phase2_features.py",
+        "line": 95,
+        "text": "# At most eight historical targets; original released outcomes only."
+      }
+    ]
+  },
+  "seconds": 0.6172789580014069
+}

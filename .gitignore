@@ -264,3 +264,12 @@ artifacts/tabpfn/cache/
 # weights, re-downloadable once with scripts/tabpfn_fetch_checkpoint.py, and it ships
 # inside the entry archive alongside research/tabpfn/LICENSE instead.
 artifacts/tabpfn/checkpoints/
+
+# Staged copies of the upstream TabPFN weights inside candidate packages.
+# Same reason as artifacts/tabpfn/checkpoints/: licensed upstream model weights, not ours.
+artifacts/*/code/model/tabpfn_checkpoints/
+artifacts/**/entry.zip.d/
+# Unverified primary package archive: 30 MB and it embeds the upstream TabPFN weights.
+# The verified torch-free candidate (artifacts/win_head_release_nofx/entry.zip) is committed instead.
+artifacts/win_head_release/entry.zip
+artifacts/audit/**/freshcache/

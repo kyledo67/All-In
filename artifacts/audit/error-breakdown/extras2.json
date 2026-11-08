@@ -1,0 +1,499 @@
+{
+  "climatology_benchmark": {
+    "per_condition": {
+      "stable": {
+        "const_vector": [
+          0.548999244652891,
+          0.21238616923612808,
+          0.15823918536911485,
+          0.06752989983764719,
+          0.012845500904219008
+        ],
+        "E_c": 0.24377607714603755
+      },
+      "short_history": {
+        "const_vector": [
+          0.5922862890424646,
+          0.17667493541795373,
+          0.1427414074735867,
+          0.07215952556583366,
+          0.016137842500161367
+        ],
+        "E_c": 0.2221647851039603
+      },
+      "drift": {
+        "const_vector": [
+          0.5543719864163815,
+          0.19553972166163566,
+          0.1615741682284025,
+          0.07360496607779181,
+          0.014909157615788577
+        ],
+        "E_c": 0.2405050095474038
+      },
+      "shared_change": {
+        "const_vector": [
+          0.5508299973383951,
+          0.21024718672954704,
+          0.15096911613083894,
+          0.07248730330857868,
+          0.015466396492640339
+        ],
+        "E_c": 0.2451286504707604
+      }
+    },
+    "R": 1.2385793558058782,
+    "points": 26.802712999379143,
+    "ratio_by_condition": {
+      "stable": 1.2421660118204516,
+      "short_history": 1.2527516134815826,
+      "drift": 1.2669231929944957,
+      "shared_change": 1.1924766049269824
+    }
+  },
+  "per_category_skill_vs_climatology": {
+    "global": [
+      {
+        "payout": 0,
+        "true_var": 0.154437006129989,
+        "cand_mse": 0.11134809657273564,
+        "ref_mse": 0.13013207416984343,
+        "cand_R2_vs_climatology": 0.2790063770142346,
+        "ref_R2_vs_climatology": 0.15737764263371057,
+        "true_sd": 0.39298474032713915
+      },
+      {
+        "payout": 1,
+        "true_var": 0.05177457298899093,
+        "cand_mse": 0.029492896432895325,
+        "ref_mse": 0.03417826438695445,
+        "cand_R2_vs_climatology": 0.4303594461480824,
+        "ref_R2_vs_climatology": 0.3398639058940779,
+        "true_sd": 0.227540266741935
+      },
+      {
+        "payout": 2,
+        "true_var": 0.024534482114910026,
+        "cand_mse": 0.017923059841043188,
+        "ref_mse": 0.02058108638728944,
+        "cand_R2_vs_climatology": 0.2694747027021599,
+        "ref_R2_vs_climatology": 0.16113630233173093,
+        "true_sd": 0.15663486877100521
+      },
+      {
+        "payout": 5,
+        "true_var": 0.00700969249380939,
+        "cand_mse": 0.005535368680393608,
+        "ref_mse": 0.006770442977813016,
+        "cand_R2_vs_climatology": 0.21032646078523853,
+        "ref_R2_vs_climatology": 0.034131242733924094,
+        "true_sd": 0.08372390634585435
+      },
+      {
+        "payout": 20,
+        "true_var": 0.0007183267546582906,
+        "cand_mse": 0.00046438326405462345,
+        "ref_mse": 0.0005853398537011806,
+        "cand_R2_vs_climatology": 0.3535208579617344,
+        "ref_R2_vs_climatology": 0.18513427224407386,
+        "true_sd": 0.02680161850818511
+      }
+    ],
+    "stable": [
+      {
+        "payout": 0,
+        "true_var": 0.15638072147532828,
+        "cand_mse": 0.108850312308097,
+        "ref_mse": 0.13213852846540766,
+        "cand_R2_vs_climatology": 0.30394033688308575,
+        "ref_R2_vs_climatology": 0.1550203425410417,
+        "true_sd": 0.3954500239920694
+      },
+      {
+        "payout": 1,
+        "true_var": 0.05578728344416322,
+        "cand_mse": 0.0318774923069506,
+        "ref_mse": 0.03742332234546972,
+        "cand_R2_vs_climatology": 0.42858855389765715,
+        "ref_R2_vs_climatology": 0.329178263664223,
+        "true_sd": 0.23619331794985907
+      },
+      {
+        "payout": 2,
+        "true_var": 0.02548410772088741,
+        "cand_mse": 0.01716269602946469,
+        "ref_mse": 0.020742271857512803,
+        "cand_R2_vs_climatology": 0.3265333745470823,
+        "ref_R2_vs_climatology": 0.1860703115568798,
+        "true_sd": 0.15963742581514967
+      },
+      {
+        "payout": 5,
+        "true_var": 0.005622489623749667,
+        "cand_mse": 0.004315229372183644,
+        "ref_mse": 0.005529837350461776,
+        "cand_R2_vs_climatology": 0.2325055872124856,
+        "ref_R2_vs_climatology": 0.01647886959124356,
+        "true_sd": 0.07498326229065835
+      },
+      {
+        "payout": 20,
+        "true_var": 0.0005014748819089857,
+        "cand_mse": 0.00032034187062514525,
+        "ref_mse": 0.000416842874049986,
+        "cand_R2_vs_climatology": 0.36120056620645435,
+        "ref_R2_vs_climatology": 0.1687661953014027,
+        "true_sd": 0.022393634852542043
+      }
+    ],
+    "short_history": [
+      {
+        "payout": 0,
+        "true_var": 0.14570500984417764,
+        "cand_mse": 0.11051666866463794,
+        "ref_mse": 0.11905740606550215,
+        "cand_R2_vs_climatology": 0.24150398958259167,
+        "ref_R2_vs_climatology": 0.1828873544373898,
+        "true_sd": 0.38171325604984907
+      },
+      {
+        "payout": 1,
+        "true_var": 0.04495164309031476,
+        "cand_mse": 0.029111100981140267,
+        "ref_mse": 0.03124282411391809,
+        "cand_R2_vs_climatology": 0.3523907252366373,
+        "ref_R2_vs_climatology": 0.30496813984871585,
+        "true_sd": 0.2120180253900945
+      },
+      {
+        "payout": 2,
+        "true_var": 0.02349923612607295,
+        "cand_mse": 0.017309868959321233,
+        "ref_mse": 0.019981465654517642,
+        "cand_R2_vs_climatology": 0.26338588767506665,
+        "ref_R2_vs_climatology": 0.14969722644100159,
+        "true_sd": 0.15329460566527758
+      },
+      {
+        "payout": 5,
+        "true_var": 0.007258959298220715,
+        "cand_mse": 0.006092592746886912,
+        "ref_mse": 0.006447784742924226,
+        "cand_R2_vs_climatology": 0.1606795827632893,
+        "ref_R2_vs_climatology": 0.11174805119727294,
+        "true_sd": 0.08519952639669258
+      },
+      {
+        "payout": 20,
+        "true_var": 0.0007499367451742079,
+        "cand_mse": 0.0005126715438251814,
+        "ref_mse": 0.0006119674110046801,
+        "cand_R2_vs_climatology": 0.31638028523847106,
+        "ref_R2_vs_climatology": 0.18397462860348035,
+        "true_sd": 0.027384972981075003
+      }
+    ],
+    "drift": [
+      {
+        "payout": 0,
+        "true_var": 0.15779070930657887,
+        "cand_mse": 0.11737670573470944,
+        "ref_mse": 0.1305607800800995,
+        "cand_R2_vs_climatology": 0.25612410102895977,
+        "ref_R2_vs_climatology": 0.17256991457952753,
+        "true_sd": 0.3972287871071014
+      },
+      {
+        "payout": 1,
+        "true_var": 0.04886542306939087,
+        "cand_mse": 0.02761423863343666,
+        "ref_mse": 0.030361821521727214,
+        "cand_R2_vs_climatology": 0.4348920586603061,
+        "ref_R2_vs_climatology": 0.37866451133325496,
+        "true_sd": 0.22105524890712475
+      },
+      {
+        "payout": 2,
+        "true_var": 0.025531451846079304,
+        "cand_mse": 0.020289517388914928,
+        "ref_mse": 0.02073484709101489,
+        "cand_R2_vs_climatology": 0.20531282313149557,
+        "ref_R2_vs_climatology": 0.18787042679678223,
+        "true_sd": 0.15978564342918705
+      },
+      {
+        "payout": 5,
+        "true_var": 0.007512631430512857,
+        "cand_mse": 0.00590329975216547,
+        "ref_mse": 0.0075525325783486795,
+        "cand_R2_vs_climatology": 0.21421677520489302,
+        "ref_R2_vs_climatology": -0.005311207957542363,
+        "true_sd": 0.08667543729634629
+      },
+      {
+        "payout": 20,
+        "true_var": 0.0008047938948418963,
+        "cand_mse": 0.0005175024163119123,
+        "ref_mse": 0.000623949370608852,
+        "cand_R2_vs_climatology": 0.35697522107374213,
+        "ref_R2_vs_climatology": 0.22470911545442518,
+        "true_sd": 0.02836888955954914
+      }
+    ],
+    "shared_change": [
+      {
+        "payout": 0,
+        "true_var": 0.15660292130048598,
+        "cand_mse": 0.10864869958349821,
+        "ref_mse": 0.1387715820683644,
+        "cand_R2_vs_climatology": 0.3062153714551361,
+        "ref_R2_vs_climatology": 0.11386338826915765,
+        "true_sd": 0.3957308697846125
+      },
+      {
+        "payout": 1,
+        "true_var": 0.05667820334966178,
+        "cand_mse": 0.029368753810053785,
+        "ref_mse": 0.037685089566702766,
+        "cand_R2_vs_climatology": 0.4818333667199943,
+        "ref_R2_vs_climatology": 0.33510437276541427,
+        "true_sd": 0.23807184493270467
+      },
+      {
+        "payout": 2,
+        "true_var": 0.0234133846829782,
+        "cand_mse": 0.016930156986471896,
+        "ref_mse": 0.020865760946112418,
+        "cand_R2_vs_climatology": 0.27690262575404945,
+        "ref_R2_vs_climatology": 0.10881057016578788,
+        "true_sd": 0.15301432835841944
+      },
+      {
+        "payout": 5,
+        "true_var": 0.007623099217762625,
+        "cand_mse": 0.005830352850338409,
+        "ref_mse": 0.0075516172395173825,
+        "cand_R2_vs_climatology": 0.2351729022819129,
+        "ref_R2_vs_climatology": 0.00937702320319822,
+        "true_sd": 0.08731036145706089
+      },
+      {
+        "payout": 20,
+        "true_var": 0.0008110419198718318,
+        "cand_mse": 0.0005070172254562548,
+        "ref_mse": 0.0006885997591412045,
+        "cand_R2_vs_climatology": 0.37485694261478086,
+        "ref_R2_vs_climatology": 0.15096896686915606,
+        "true_sd": 0.028478797725182005
+      }
+    ]
+  },
+  "targeted_repair_floor_at_reference": {
+    "stable_floor_at_reference_top1": {
+      "n_episodes": 1,
+      "E_c": 0.16209384096505866,
+      "R": 0.8593071738209933,
+      "points": 32.27008470940077,
+      "points_delta": 0.009553549732189026,
+      "episodes": [
+        "main-validation-e00037"
+      ]
+    },
+    "stable_floor_at_reference_top3": {
+      "n_episodes": 3,
+      "E_c": 0.16236104145684455,
+      "R": 0.8596475552205176,
+      "points": 32.26417814040316,
+      "points_delta": 0.0036469807345795857,
+      "episodes": [
+        "main-validation-e00037",
+        "main-validation-e00017",
+        "main-validation-e00086"
+      ]
+    },
+    "stable_floor_at_reference_top5": {
+      "n_episodes": 5,
+      "E_c": 0.1633937396016307,
+      "R": 0.8609630888763847,
+      "points": 32.24137026609533,
+      "points_delta": -0.019160893573250348,
+      "episodes": [
+        "main-validation-e00037",
+        "main-validation-e00017",
+        "main-validation-e00086",
+        "main-validation-e00016",
+        "main-validation-e00050"
+      ]
+    },
+    "stable_floor_at_reference_top24": {
+      "n_episodes": 24,
+      "E_c": 0.19625080289290195,
+      "R": 0.9028190492176043,
+      "points": 31.53216277957204,
+      "points_delta": -0.7283683800965406,
+      "episodes": "all 24"
+    },
+    "short_history_floor_at_reference_top1": {
+      "n_episodes": 1,
+      "E_c": 0.16112990289679405,
+      "R": 0.856456154151587,
+      "points": 32.3196429206379,
+      "points_delta": 0.059111760969315696,
+      "episodes": [
+        "main-validation-e00039"
+      ]
+    },
+    "short_history_floor_at_reference_top3": {
+      "n_episodes": 3,
+      "E_c": 0.15777126381022757,
+      "R": 0.8517214472843065,
+      "points": 32.402281718988924,
+      "points_delta": 0.14175055932034297,
+      "episodes": [
+        "main-validation-e00039",
+        "main-validation-e00040",
+        "main-validation-e00008"
+      ]
+    },
+    "short_history_floor_at_reference_top5": {
+      "n_episodes": 5,
+      "E_c": 0.15731096886048465,
+      "R": 0.8510725649235197,
+      "points": 32.41364014407453,
+      "points_delta": 0.15310898440594656,
+      "episodes": [
+        "main-validation-e00039",
+        "main-validation-e00040",
+        "main-validation-e00008",
+        "main-validation-e00015",
+        "main-validation-e00095"
+      ]
+    },
+    "short_history_floor_at_reference_top24": {
+      "n_episodes": 24,
+      "E_c": 0.1773414479878668,
+      "R": 0.8793097302261744,
+      "points": 31.926615945727594,
+      "points_delta": -0.3339152139409869,
+      "episodes": "all 24"
+    },
+    "drift_floor_at_reference_top1": {
+      "n_episodes": 1,
+      "E_c": 0.1701765223239079,
+      "R": 0.8578497901729734,
+      "points": 32.295398862366454,
+      "points_delta": 0.034867702697873426,
+      "episodes": [
+        "main-validation-e00024"
+      ]
+    },
+    "drift_floor_at_reference_top3": {
+      "n_episodes": 3,
+      "E_c": 0.16771059818039824,
+      "R": 0.854602314688516,
+      "points": 32.35194926955384,
+      "points_delta": 0.09141810988526089,
+      "episodes": [
+        "main-validation-e00024",
+        "main-validation-e00012",
+        "main-validation-e00028"
+      ]
+    },
+    "drift_floor_at_reference_top5": {
+      "n_episodes": 5,
+      "E_c": 0.1656188715567473,
+      "R": 0.8518476350896436,
+      "points": 32.40007377663959,
+      "points_delta": 0.13954261697100634,
+      "episodes": [
+        "main-validation-e00024",
+        "main-validation-e00012",
+        "main-validation-e00028",
+        "main-validation-e00025",
+        "main-validation-e00004"
+      ]
+    },
+    "drift_floor_at_reference_top24": {
+      "n_episodes": 24,
+      "E_c": 0.18983393064179913,
+      "R": 0.8837374281882541,
+      "points": 31.85157289023394,
+      "points_delta": -0.40895826943464186,
+      "episodes": "all 24"
+    },
+    "shared_change_floor_at_reference_top1": {
+      "n_episodes": 1,
+      "E_c": 0.16009313293216432,
+      "R": 0.8584082899468266,
+      "points": 32.28569325942726,
+      "points_delta": 0.025162099758681222,
+      "episodes": [
+        "main-validation-e00042"
+      ]
+    },
+    "shared_change_floor_at_reference_top3": {
+      "n_episodes": 3,
+      "E_c": 0.15866820209631957,
+      "R": 0.8566753257644262,
+      "points": 32.315827741878856,
+      "points_delta": 0.05529658221027489,
+      "episodes": [
+        "main-validation-e00042",
+        "main-validation-e00043",
+        "main-validation-e00002"
+      ]
+    },
+    "shared_change_floor_at_reference_top5": {
+      "n_episodes": 5,
+      "E_c": 0.15882645993074107,
+      "R": 0.8568677948666014,
+      "points": 32.31247812357608,
+      "points_delta": 0.05194696390749698,
+      "episodes": [
+        "main-validation-e00042",
+        "main-validation-e00043",
+        "main-validation-e00002",
+        "main-validation-e00084",
+        "main-validation-e00074"
+      ]
+    },
+    "shared_change_floor_at_reference_top24": {
+      "n_episodes": 24,
+      "E_c": 0.20556264957983816,
+      "R": 0.9137071449924924,
+      "points": 31.352759567731763,
+      "points_delta": -0.9077715919368181,
+      "episodes": "all 24"
+    }
+  },
+  "win_loss_split_by_episode": {
+    "stable": {
+      "n_worse_than_ref": 2,
+      "sum_excess_worse": 0.01305143633171843,
+      "sum_excess_better": -0.8224449804656591,
+      "net_excess": -0.8093935441339406,
+      "E_c_minus_B_c": -0.03372473100558088
+    },
+    "short_history": {
+      "n_worse_than_ref": 7,
+      "sum_excess_worse": 0.15466851839830767,
+      "sum_excess_better": -0.48583360060763386,
+      "net_excess": -0.3311650822093262,
+      "E_c_minus_B_c": -0.013798545092055275
+    },
+    "drift": {
+      "n_worse_than_ref": 8,
+      "sum_excess_worse": 0.17696938192731726,
+      "sum_excess_better": -0.6121533831175747,
+      "net_excess": -0.43518400119025746,
+      "E_c_minus_B_c": -0.01813266671626071
+    },
+    "shared_change": {
+      "n_worse_than_ref": 3,
+      "sum_excess_worse": 0.06280268062797542,
+      "sum_excess_better": -1.1254667396044464,
+      "net_excess": -1.062664058976471,
+      "E_c_minus_B_c": -0.04427766912401962
+    }
+  }
+}

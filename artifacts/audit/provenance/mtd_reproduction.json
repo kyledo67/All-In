@@ -1,0 +1,19 @@
+{
+  "changepoint_mine": true,
+  "changepoint_saved": true,
+  "fit_seconds": 9.624354707979364,
+  "inputs_read": [
+    "train/queries.csv",
+    "train/history.csv",
+    "train/labels.csv",
+    "validation/queries.csv",
+    "validation/history.csv"
+  ],
+  "max_abs_deviation_validation_lag7_reproduction": 2.220446049250313e-16,
+  "max_abs_parameter_deviation_vs_change_json": 0.0,
+  "predict_seconds": 21.31808912497945,
+  "refit_from_public_train_only": true,
+  "strength_mine": 13.333333333333334,
+  "strength_saved": 13.333333333333334,
+  "validation_targets_read": false
+}

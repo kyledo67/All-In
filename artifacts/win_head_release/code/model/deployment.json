@@ -1,0 +1,19 @@
+{
+  "alpha": 1.0,
+  "candidate": "win_head_q_times_three_component_r",
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "reference_variant": "three_component",
+  "weights": {
+    "mtd_lag7": 0.19998414057692182,
+    "tabpfn_raw": 0.4829584454464017,
+    "two_head": 0.31705741397667647
+  },
+  "weights_provenance": "Arithmetic mean of the four outer-fold simplex fits in artifacts/audit/recompute.json. Not tuned on anything further. The frozen_blend component was dropped because its mean weight is 5.05e-17 and it has no test-time analogue (its measured column was a held-fold prediction); the remaining three already sum to exactly 1.0 in float64.",
+  "win_head": "population_averaged.json"
+}

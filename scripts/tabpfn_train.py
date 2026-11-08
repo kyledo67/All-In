@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT / 'organizer'))
 import numpy as np
 
 from slot_model.phase2_tables import PHASE2, cached_design, features_for
-from slot_model.tabpfn_model import TabPFNComponent
+from slot_model.tabpfn_model import TabPFNComponent, checkpoint_sha256
 from slot_forecasting.io import read_submission, write_submission
 
 VARIANTS = ('observable', 'hmm')
@@ -77,7 +77,11 @@ def main():
     parser.add_argument('--out', type=Path, default=ROOT / 'artifacts/tabpfn')
     parser.add_argument('--variants', nargs='+', default=list(VARIANTS), choices=VARIANTS)
     parser.add_argument('--seeds', nargs='+', type=int)
-    parser.add_argument('--n-estimators', type=int, default=4)
+    parser.add_argument('--n-estimators', type=int, default=1,
+                        help='1 is what every recorded result used (artifacts/tabpfn/training_runs.json, '
+                             'docs/tabpfn-component.md); a rerun at any other value is a different model '
+                             'from the one that was scored. Cost per 768-row predict against the 3,134-row '
+                             'context: ~118 s at 1, ~305 s at 2, ~950 s at 4 (default: 1).')
     parser.add_argument('--max-train-rows', type=int, default=10000)
     parser.add_argument('--threads', type=int, default=2)
     parser.add_argument('--skip-verify', action='store_true',
@@ -87,6 +91,10 @@ def main():
     out = Path(args.out)
     protocol = json.loads((PHASE2 / 'protocol.json').read_text())
     seeds = args.seeds or protocol['seeds']
+    # Resolved first, so a missing or swapped checkpoint fails now rather than after
+    # the fits, and so the manifest below can name the exact weights that were used.
+    checkpoints = checkpoint_sha256()
+    print('checkpoints: ' + ', '.join(f'{n}={h[:16]}' for n, h in checkpoints.items()), flush=True)
     start = time.perf_counter()
 
     tables = cached_design(args.data, out / 'cache')
@@ -138,6 +146,7 @@ def main():
           'cache_key': tables['cache_key'], 'rebuild_verification': verification,
           'package': 'tabpfn (local); tabpfn_client never imported',
           'checkpoint_dir': str(ROOT / 'artifacts/tabpfn/checkpoints'),
+          'checkpoint_sha256': checkpoints,
           'total_seconds': time.perf_counter() - start})
     print(f'done in {time.perf_counter() - start:.1f}s', flush=True)
 

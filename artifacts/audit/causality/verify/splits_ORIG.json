@@ -1,0 +1,201 @@
+{
+  "holdout_status": "the 4 validation folds are splits of the SAME 96 public-validation\nepisodes that have been inspected many times across this project. A clean fold partition\nmakes the OOF construction internally honest; it does NOT make the resulting number an\nindependent holdout, and it is not confirmation of anything. The candidate's simplex\nweights are fitted against public-validation TARGETS on 3 folds and applied to the 4th,\nso the 32.260531 figure is an in-sample-at-the-corpus-level estimate.",
+  "passed": true,
+  "row_offset_scan": {
+    "assessment": "The only positional slicing of a tick-ordered list in any candidate component is slot_model/mtd.py `for t in rows[20:-19]` inside the changepoint search. It selects WHICH ticks are candidate changepoints; the statistic itself is built with tick arithmetic (range(t-20,t) and range(t,t+20)) guarded by `if s in h` and a len>=15 minimum per side, so sparse older rows cannot masquerade as 20 adjacent observations. Every lag, decay and window in every component is tick arithmetic: h.get(t-k), q.cutoff-lag, q.cutoff-1-t, q.cutoff-w <= t < q.cutoff.",
+    "files_scanned": [
+      "slot_model/features.py",
+      "slot_model/phase2_features.py",
+      "slot_model/phase2_predict.py",
+      "slot_model/mtd.py",
+      "slot_model/mtd_pairs.py",
+      "slot_model/shared_state.py",
+      "scripts/dense_catboost.py",
+      "scripts/two_head_catboost.py"
+    ],
+    "hits": [
+      {
+        "file": "slot_model/mtd.py",
+        "line": 68,
+        "text": "for t in rows[20:-19]:"
+      }
+    ],
+    "pattern": "rows\\s*\\[|sorted\\([^)]*\\)\\s*\\[|\\.values\\(\\)\\s*\\[|iloc|shift\\("
+  },
+  "seconds": 0.8795454170031007,
+  "short_history_semantics": {
+    "by_condition": {
+      "drift": {
+        "history_ticks_max": 250,
+        "history_ticks_min": 196,
+        "older_adjacent_fraction": 1.0,
+        "older_gap_max": 1,
+        "older_ticks_max": 210,
+        "older_ticks_min": 156,
+        "queries": 192,
+        "recent40_complete": "192/192",
+        "recent40_missing_ticks_total": 0,
+        "span_max": 250,
+        "span_min": 196
+      },
+      "shared_change": {
+        "history_ticks_max": 256,
+        "history_ticks_min": 198,
+        "older_adjacent_fraction": 1.0,
+        "older_gap_max": 1,
+        "older_ticks_max": 216,
+        "older_ticks_min": 158,
+        "queries": 192,
+        "recent40_complete": "192/192",
+        "recent40_missing_ticks_total": 0,
+        "span_max": 256,
+        "span_min": 198
+      },
+      "short_history": {
+        "history_ticks_max": 64,
+        "history_ticks_min": 64,
+        "older_adjacent_fraction": 0.1324728260869565,
+        "older_gap_max": 60,
+        "older_ticks_max": 24,
+        "older_ticks_min": 24,
+        "queries": 192,
+        "recent40_complete": "192/192",
+        "recent40_missing_ticks_total": 0,
+        "span_max": 254,
+        "span_min": 169
+      },
+      "stable": {
+        "history_ticks_max": 249,
+        "history_ticks_min": 192,
+        "older_adjacent_fraction": 1.0,
+        "older_gap_max": 1,
+        "older_ticks_max": 209,
+        "older_ticks_min": 152,
+        "queries": 192,
+        "recent40_complete": "192/192",
+        "recent40_missing_ticks_total": 0,
+        "span_max": 249,
+        "span_min": 192
+      }
+    },
+    "interpretation": "short_history machines hold exactly 64 pre-cutoff ticks: the 40 ticks [cutoff-40, cutoff) are all present and consecutive, plus exactly 24 older ticks scattered over a much longer span, only a small fraction of which are tick-adjacent. The dense conditions have history count == span, i.e. fully contiguous with no gaps at all.",
+    "short_history_episodes": [
+      "main-validation-e00001",
+      "main-validation-e00007",
+      "main-validation-e00008",
+      "main-validation-e00011",
+      "main-validation-e00014",
+      "main-validation-e00015",
+      "main-validation-e00019",
+      "main-validation-e00022",
+      "main-validation-e00030",
+      "main-validation-e00033",
+      "main-validation-e00036",
+      "main-validation-e00038",
+      "main-validation-e00039",
+      "main-validation-e00040",
+      "main-validation-e00041",
+      "main-validation-e00044",
+      "main-validation-e00045",
+      "main-validation-e00046",
+      "main-validation-e00052",
+      "main-validation-e00060",
+      "main-validation-e00063",
+      "main-validation-e00078",
+      "main-validation-e00088",
+      "main-validation-e00095"
+    ]
+  },
+  "split_integrity": {
+    "candidate_oof_rows": {
+      "episodes_covered": 96,
+      "matches_validation_query_set": true,
+      "rows": 768,
+      "unique_query_ids": 768
+    },
+    "episodes_in_two_folds": [],
+    "per_split": {
+      "train": {
+        "episodes": 96,
+        "episodes_missing_from_fold_map": [],
+        "episodes_with_more_than_one_fold": [],
+        "fold_map_entries": 96,
+        "fold_map_entries_with_no_query": [],
+        "fold_sizes_episodes": {
+          "0": 24,
+          "1": 24,
+          "2": 24,
+          "3": 24
+        },
+        "fold_sizes_queries": {
+          "0": 192,
+          "1": 192,
+          "2": 192,
+          "3": 192
+        },
+        "folds_partition_all_queries": true,
+        "queries": 768,
+        "queries_per_episode": [
+          8
+        ]
+      },
+      "validation": {
+        "episodes": 96,
+        "episodes_missing_from_fold_map": [],
+        "episodes_with_more_than_one_fold": [],
+        "fold_map_entries": 96,
+        "fold_map_entries_with_no_query": [],
+        "fold_sizes_episodes": {
+          "0": 24,
+          "1": 24,
+          "2": 24,
+          "3": 24
+        },
+        "fold_sizes_queries": {
+          "0": 192,
+          "1": 192,
+          "2": 192,
+          "3": 192
+        },
+        "folds_partition_all_queries": true,
+        "queries": 768,
+        "queries_per_episode": [
+          8
+        ]
+      }
+    },
+    "train_validation_episode_overlap": [],
+    "train_validation_machine_overlap": 0,
+    "validation_fold_union_covers_all_episodes": true,
+    "validation_per_fold": [
+      {
+        "fit_episodes": 72,
+        "fold": 0,
+        "held_episodes": 24,
+        "held_queries": 192,
+        "overlap": 0
+      },
+      {
+        "fit_episodes": 72,
+        "fold": 1,
+        "held_episodes": 24,
+        "held_queries": 192,
+        "overlap": 0
+      },
+      {
+        "fit_episodes": 72,
+        "fold": 2,
+        "held_episodes": 24,
+        "held_queries": 192,
+        "overlap": 0
+      },
+      {
+        "fit_episodes": 72,
+        "fold": 3,
+        "held_episodes": 24,
+        "held_queries": 192,
+        "overlap": 0
+      }
+    ]
+  }
+}

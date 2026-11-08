@@ -1,0 +1,288 @@
+{
+  "alpha_per_fold": {
+    "dense_x_average": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "dense_x_hard": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "hard_x_average": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "argmax_candidate_histogram": {
+    "null": 75,
+    "pair1_3": 198,
+    "pair2_5": 286,
+    "pair4_7": 209
+  },
+  "best_q_control": "compact_hard",
+  "controls": {
+    "alpha_blend_dense_x_average": {
+      "R": 0.25396337327340807,
+      "by_condition": {
+        "drift": 0.29727621990949354,
+        "shared_change": 0.25898073831081736,
+        "short_history": 0.3577073173095386,
+        "stable": 0.10188921756378277
+      },
+      "points": 47.84828750091243
+    },
+    "alpha_blend_dense_x_hard": {
+      "R": 0.23285572057121431,
+      "by_condition": {
+        "drift": 0.271646395029468,
+        "shared_change": 0.22893662630935985,
+        "short_history": 0.32656918126102885,
+        "stable": 0.10427067968500056
+      },
+      "points": 48.667495310968285
+    },
+    "alpha_blend_hard_x_average": {
+      "R": 0.23285572057121431,
+      "by_condition": {
+        "drift": 0.271646395029468,
+        "shared_change": 0.22893662630935985,
+        "short_history": 0.32656918126102885,
+        "stable": 0.10427067968500056
+      },
+      "points": 48.667495310968285
+    },
+    "compact_average": {
+      "R": 0.25396337327340807,
+      "by_condition": {
+        "drift": 0.29727621990949354,
+        "shared_change": 0.25898073831081736,
+        "short_history": 0.3577073173095386,
+        "stable": 0.10188921756378277
+      },
+      "points": 47.84828750091243
+    },
+    "compact_hard": {
+      "R": 0.23285572057121431,
+      "by_condition": {
+        "drift": 0.271646395029468,
+        "shared_change": 0.22893662630935985,
+        "short_history": 0.32656918126102885,
+        "stable": 0.10427067968500056
+      },
+      "points": 48.667495310968285
+    },
+    "dense_37": {
+      "R": 0.47400327647776885,
+      "by_condition": {
+        "drift": 0.5904842045433673,
+        "shared_change": 0.49887557585664566,
+        "short_history": 0.5955974113070178,
+        "stable": 0.21105591420404457
+      },
+      "points": 40.70547261154947
+    }
+  },
+  "exposure": "All 96 public-validation episodes previously inspected. Exploratory; nested evaluation does not undo prior inspection and no untouched set exists.",
+  "fallbacks": 0,
+  "lam_scale": 0.25,
+  "pair_weight_concentration": {
+    "median_max_weight": 0.9409584299832734,
+    "p10": 0.3065743188353341,
+    "p90": 0.9999999999978127
+  },
+  "paired_compact_average_vs_dense": {
+    "by_condition_ci95": {
+      "drift": [
+        -0.39220027194651547,
+        -0.19706109597841573
+      ],
+      "shared_change": [
+        -0.3137795961384706,
+        -0.17238022388111712
+      ],
+      "short_history": [
+        -0.3142645262725429,
+        -0.14650140742773546
+      ],
+      "stable": [
+        -0.15258296804160223,
+        -0.07010985065432247
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -0.2593876943194481,
+      -0.18116911414628473
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "q_rmse": {
+    "compact_average": 0.16985366892361187,
+    "compact_hard": 0.16108138102526898,
+    "dense": 0.24175900178898618
+  },
+  "r_source_remeasured_under_new_q": {
+    "full_stack_three_component": 48.667495310968285,
+    "two_head_only": 48.43654285164784
+  },
+  "seconds": 58.75789249999798,
+  "train_records": [
+    {
+      "_key": 0.1211710602255639,
+      "argmax_counts": [
+        232.0,
+        10.0,
+        156.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        181.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        2.0,
+        0.0,
+        174.0,
+        1.0,
+        0.0,
+        5.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "lam_scale": 0.03125,
+      "train_oof_brier_average": 0.12340722701832285,
+      "train_oof_brier_hard": 0.1211710602255639
+    },
+    {
+      "_key": 0.11508530956178631,
+      "argmax_counts": [
+        178.0,
+        19.0,
+        180.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        189.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        2.0,
+        0.0,
+        185.0,
+        1.0,
+        0.0,
+        5.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "lam_scale": 0.0625,
+      "train_oof_brier_average": 0.11917097528050218,
+      "train_oof_brier_hard": 0.11508530956178631
+    },
+    {
+      "_key": 0.11159929136813411,
+      "argmax_counts": [
+        146.0,
+        20.0,
+        192.0,
+        1.0,
+        0.0,
+        1.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        198.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        191.0,
+        2.0,
+        1.0,
+        6.0,
+        1.0,
+        2.0,
+        1.0,
+        0.0
+      ],
+      "lam_scale": 0.125,
+      "train_oof_brier_average": 0.11804745902163773,
+      "train_oof_brier_hard": 0.11159929136813411
+    },
+    {
+      "_key": 0.10960791131040487,
+      "argmax_counts": [
+        122.0,
+        20.0,
+        200.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        207.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        2.0,
+        0.0,
+        195.0,
+        2.0,
+        1.0,
+        4.0,
+        1.0,
+        2.0,
+        1.0,
+        0.0
+      ],
+      "lam_scale": 0.25,
+      "train_oof_brier_average": 0.12000037772491985,
+      "train_oof_brier_hard": 0.10960791131040487
+    }
+  ],
+  "weighting_method": "Laplace marginal likelihood under a proper Gaussian prior, times a smoothed pair-identity prior learned on train. The decay-weighted likelihood makes this a generalized/approximate Bayesian model weight, not an exact Bayes factor."
+}

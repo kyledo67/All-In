@@ -1,0 +1,238 @@
+{
+  "frozen_reference": {
+    "R_delta": "0.0",
+    "diagnostic_probability_error_pooled": "0.19224720777560153",
+    "diagnostic_score_key": "90.38763961121992",
+    "independent_R": "1.0",
+    "independent_max_points": 60,
+    "independent_technical_points": "30.0",
+    "organizer_R": "1.0",
+    "organizer_max_points": 60.0,
+    "organizer_technical_points": "30.0",
+    "path": "main-participants-60-40/public/validation/reference.csv",
+    "per_condition": {
+      "drift": {
+        "B_ind": "0.18983393064179913",
+        "B_org": "0.18983393064179913",
+        "E_delta": "0.0",
+        "E_ind": "0.18983393064179913",
+        "E_org": "0.18983393064179913",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "1.0",
+        "ratio_org": "1.0"
+      },
+      "shared_change": {
+        "B_ind": "0.20556264957983816",
+        "B_org": "0.20556264957983816",
+        "E_delta": "0.0",
+        "E_ind": "0.20556264957983816",
+        "E_org": "0.20556264957983816",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "1.0",
+        "ratio_org": "1.0"
+      },
+      "short_history": {
+        "B_ind": "0.1773414479878668",
+        "B_org": "0.1773414479878668",
+        "E_delta": "0.0",
+        "E_ind": "0.1773414479878668",
+        "E_org": "0.1773414479878668",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "1.0",
+        "ratio_org": "1.0"
+      },
+      "stable": {
+        "B_ind": "0.19625080289290195",
+        "B_org": "0.19625080289290195",
+        "E_delta": "0.0",
+        "E_ind": "0.19625080289290195",
+        "E_org": "0.19625080289290195",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "1.0",
+        "ratio_org": "1.0"
+      }
+    },
+    "points_delta": "0.0"
+  },
+  "oof_candidate_raw": {
+    "R_delta": "0.0",
+    "diagnostic_probability_error_pooled": "0.16476380479112238",
+    "diagnostic_score_key": "91.76180976044388",
+    "independent_R": "0.859857784208175",
+    "independent_max_points": 60,
+    "independent_technical_points": "32.26053115966858",
+    "organizer_R": "0.859857784208175",
+    "organizer_max_points": 60.0,
+    "organizer_technical_points": "32.26053115966858",
+    "path": "artifacts/audit/oof_candidate_raw.csv",
+    "per_condition": {
+      "drift": {
+        "B_ind": "0.18983393064179913",
+        "B_org": "0.18983393064179913",
+        "E_delta": "0.0",
+        "E_ind": "0.17170126392553842",
+        "E_org": "0.17170126392553842",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.9044814240796839",
+        "ratio_org": "0.9044814240796839"
+      },
+      "shared_change": {
+        "B_ind": "0.20556264957983816",
+        "B_org": "0.20556264957983816",
+        "E_delta": "0.0",
+        "E_ind": "0.16128498045581854",
+        "E_org": "0.16128498045581854",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.7846025568627306",
+        "ratio_org": "0.7846025568627306"
+      },
+      "short_history": {
+        "B_ind": "0.1773414479878668",
+        "B_org": "0.1773414479878668",
+        "E_delta": "0.0",
+        "E_ind": "0.16354290289581153",
+        "E_org": "0.16354290289581153",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.9221922159280027",
+        "ratio_org": "0.9221922159280027"
+      },
+      "stable": {
+        "B_ind": "0.19625080289290195",
+        "B_org": "0.19625080289290195",
+        "E_delta": "0.0",
+        "E_ind": "0.16252607188732107",
+        "E_org": "0.16252607188732107",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.8281549399622831",
+        "ratio_org": "0.8281549399622831"
+      }
+    },
+    "points_delta": "0.0"
+  },
+  "oof_ensemble": {
+    "R_delta": "0.0",
+    "diagnostic_probability_error_pooled": "0.17103100415865766",
+    "diagnostic_score_key": "91.44844979206712",
+    "independent_R": "0.8926052704549067",
+    "independent_max_points": 60,
+    "independent_technical_points": "31.70233166770079",
+    "organizer_R": "0.8926052704549067",
+    "organizer_max_points": 60.0,
+    "organizer_technical_points": "31.70233166770079",
+    "path": "artifacts/phase2/predictions/oof_ensemble.csv",
+    "per_condition": {
+      "drift": {
+        "B_ind": "0.18983393064179913",
+        "B_org": "0.18983393064179913",
+        "E_delta": "0.0",
+        "E_ind": "0.17750261801609332",
+        "E_org": "0.17750261801609332",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.9350415777410521",
+        "ratio_org": "0.9350415777410521"
+      },
+      "shared_change": {
+        "B_ind": "0.20556264957983816",
+        "B_org": "0.20556264957983816",
+        "E_delta": "0.0",
+        "E_ind": "0.16516374210997953",
+        "E_org": "0.16516374210997953",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.8034715569563227",
+        "ratio_org": "0.8034715569563227"
+      },
+      "short_history": {
+        "B_ind": "0.1773414479878668",
+        "B_org": "0.1773414479878668",
+        "E_delta": "0.0",
+        "E_ind": "0.1693359016010175",
+        "E_org": "0.1693359016010175",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.9548580070948951",
+        "ratio_org": "0.9548580070948951"
+      },
+      "stable": {
+        "B_ind": "0.19625080289290195",
+        "B_org": "0.19625080289290195",
+        "E_delta": "0.0",
+        "E_ind": "0.1721217549075403",
+        "E_org": "0.1721217549075403",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.8770499400273569",
+        "ratio_org": "0.8770499400273569"
+      }
+    },
+    "points_delta": "0.0"
+  },
+  "oof_tabpfn": {
+    "R_delta": "0.0",
+    "diagnostic_probability_error_pooled": "0.16854385661152715",
+    "diagnostic_score_key": "91.57280716942364",
+    "independent_R": "0.8800501640207775",
+    "independent_max_points": 60,
+    "independent_technical_points": "31.914042054963435",
+    "organizer_R": "0.8800501640207775",
+    "organizer_max_points": 60.0,
+    "organizer_technical_points": "31.914042054963435",
+    "path": "artifacts/tabpfn/predictions/oof_tabpfn.csv",
+    "per_condition": {
+      "drift": {
+        "B_ind": "0.18983393064179913",
+        "B_org": "0.18983393064179913",
+        "E_delta": "0.0",
+        "E_ind": "0.17815836071890287",
+        "E_org": "0.17815836071890287",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.9384958743496331",
+        "ratio_org": "0.9384958743496331"
+      },
+      "shared_change": {
+        "B_ind": "0.20556264957983816",
+        "B_org": "0.20556264957983816",
+        "E_delta": "0.0",
+        "E_ind": "0.16204287105581797",
+        "E_org": "0.16204287105581797",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.7882894649734624",
+        "ratio_org": "0.7882894649734624"
+      },
+      "short_history": {
+        "B_ind": "0.1773414479878668",
+        "B_org": "0.1773414479878668",
+        "E_delta": "0.0",
+        "E_ind": "0.16867239333980863",
+        "E_org": "0.16867239333980863",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.9511165903604707",
+        "ratio_org": "0.9511165903604707"
+      },
+      "stable": {
+        "B_ind": "0.19625080289290195",
+        "B_org": "0.19625080289290195",
+        "E_delta": "0.0",
+        "E_ind": "0.1653018013315792",
+        "E_org": "0.1653018013315792",
+        "episodes": 24,
+        "queries": 192,
+        "ratio_ind": "0.8422987263995437",
+        "ratio_org": "0.8422987263995437"
+      }
+    },
+    "points_delta": "0.0"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "selection_metric": "episode-equal win-indicator Brier on TRAIN out-of-fold predictions; a sampled-outcome surrogate. No public-validation data was read for any of these decisions.",
+  "retained_baseline": {
+    "name": "local_interactions_averaged",
+    "train_oof_episode_win_brier": 0.147693,
+    "config": "lam_intercept=0.01, lam_main=4, lam_inter=1; per-machine softmax over half-lives [8,16,32,64,128,256,uniform] scored on a held-out recent block",
+    "validation_points": 40.705473,
+    "validation_R": 0.474003
+  },
+  "rejected": [
+    {
+      "name": "payout_magnitude_block",
+      "description": "Eight extra basis dims, big_l = +1 when the lag-l outcome paid 5x or 20x and -1 otherwise, so a loss and a 1x/2x win are distinguished from a large win.",
+      "motivation": "The deployed basis codes win/loss only, discarding every distinction among 1x, 2x, 5x and 20x. If the simulator conditioned the next win probability on payout size, this would recover it.",
+      "train_oof_episode_win_brier": 0.151515,
+      "delta_vs_baseline": 0.003822,
+      "verdict": "rejected - worse. Payout magnitude does not predict the next win probability here; the 8 extra parameters cost more than they add.",
+      "command": ".venv/bin/python scripts/win_head_tune_average.py --data main-participants-60-40/public --magnitude --name population_magnitude.json"
+    },
+    {
+      "name": "neighbour_win_sign_block",
+      "description": "Three extra dims, the mean win sign of the other machines in the same episode at ticks cutoff-1..cutoff-3, excluding the target machine.",
+      "motivation": "The organizer data notes say earlier outcomes on neighbouring machines can help, and the shared_change condition involves machines changing together. Episodes share one cutoff, so these ticks are legal causal inputs.",
+      "train_oof_episode_win_brier": 0.147549,
+      "delta_vs_baseline": -0.000144,
+      "verdict": "rejected - a 0.1% change, indistinguishable from noise, for 3 more parameters and an episode-join at inference.",
+      "command": ".venv/bin/python scripts/win_head_tune_average.py --data main-participants-60-40/public --neighbour-lags 3 --name population_neighbour.json"
+    },
+    {
+      "name": "two_stage_temporal_pooling",
+      "description": "Stage 1 fits u_long on uniform weights over all ~200 transitions; stage 2 fits the recency-weighted u with its ridge pulling toward u_long instead of toward zero.",
+      "motivation": "The deployed model is variance-limited: 282 of 768 machines choose half-life 8, about 11 effective transitions for 37 parameters, median Laplace logit variance 11.21. Borrowing strength from the machine's own long history should cut that variance while keeping drift tracking.",
+      "train_oof_episode_win_brier": {
+        "lam_stage2=0.5": 0.165823,
+        "lam_stage2=2": 0.171985,
+        "lam_stage2=8": 0.19394,
+        "lam_stage2=32": 0.218329
+      },
+      "best_delta_vs_baseline": 0.01813,
+      "verdict": "rejected - clearly worse, and monotonically worse as shrinkage toward the long-window fit increases. The informative negative: a machine's own long-window fit is actively STALE, so the population offset is a better anchor than the machine's own older history. This is consistent with the drift evidence and with the half-life histogram.",
+      "command": "scratch probe, see docs/win-head.md"
+    }
+  ],
+  "conclusion": "Three independent extensions of the basis and the pooling structure all failed on the train surrogate. The win/loss-only 37-dim basis with per-machine half-life averaging is the best supported configuration. Remaining error is dominated by estimation variance in the local fit, not by the basis omitting a representable effect.",
+  "stated_basis_limitations": [
+    "no three-way or higher lag interactions",
+    "no payout magnitude in the deployed basis (tested, rejected)",
+    "nothing beyond lag 8",
+    "no neighbour information in the deployed basis (tested, rejected)"
+  ]
+}

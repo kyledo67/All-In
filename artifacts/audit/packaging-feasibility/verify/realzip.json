@@ -1,0 +1,14 @@
+{
+  "required_files_copied": 30,
+  "zip_entries": 32,
+  "zip_bytes_real": 31557693,
+  "sum_file_size_unpacked": 33922761,
+  "sum_compress_size": 31552913,
+  "inspect_archive": "PASSED",
+  "pct_of_event_100MB": 31.557693,
+  "pct_of_kit_MAX_ZIP": 23.51231351494789,
+  "pct_of_MAX_EXPANDED": 6.318606622517109,
+  "pct_of_MAX_FILES": 0.64,
+  "auditor_claim_deflate_sum": 31550807,
+  "auditor_claim_required_bytes": 33922606
+}

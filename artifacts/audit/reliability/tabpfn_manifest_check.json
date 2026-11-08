@@ -1,0 +1,38 @@
+{
+  "checkpoint_sha256": {
+    "tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
+  },
+  "checkpoint_sha256_matches_shasum": true,
+  "help_mentions_cost_ladder": true,
+  "help_mentions_default_1": true,
+  "help_text": "--n-estimators N_ESTIMATORS 1 is what every recorded result used (artifacts/tabpfn/training_runs.json, docs/tabpfn- component.md); a rerun at any other value is a different model from the one that was scored. Cost per 768-row predict against the 3,134-row context: ~118 s at 1, ~305 s at 2, ~950 s at 4 (default: 1).",
+  "manifest_cache_inputs_population_keys": [
+    "243be1a99bcbf51a",
+    "31a573ded8ac999c",
+    "5c640565ea14690f",
+    "842ce57246be7636",
+    "8e08785c8a049acb"
+  ],
+  "manifest_cache_key": "a0337b5ff2e2cdbd",
+  "manifest_checkpoint_sha256": {
+    "tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
+  },
+  "manifest_keys": [
+    "cache_key",
+    "checkpoint_dir",
+    "checkpoint_sha256",
+    "n_estimators",
+    "package",
+    "provenance",
+    "rebuild_verification",
+    "runs",
+    "seeds",
+    "total_seconds",
+    "variants"
+  ],
+  "manifest_n_estimators_default": 1,
+  "manifest_records_checkpoint": true,
+  "manifest_run_n_estimators": [
+    1
+  ]
+}

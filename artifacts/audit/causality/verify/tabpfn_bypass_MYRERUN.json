@@ -1,0 +1,55 @@
+{
+  "examples": 768,
+  "hmm_summary_columns": 7,
+  "holdout_status": "public validation, inspected many times; NOT an independent holdout. Causality checks only.",
+  "horizon_ticks": 8,
+  "method": "post-cutoff ticks injected DIRECTLY into the index dicts, bypassing causal_index's own tick >= cutoff drop",
+  "observable_columns": 182,
+  "passed": true,
+  "population_key": "243be1a99bcbf51a",
+  "post_cutoff_invariance_bypassing_causal_index": {
+    "episodes_mutated": 96,
+    "hmm_summary_bitwise_identical": true,
+    "hmm_summary_max_abs_delta": 0.0,
+    "machines_mutated": 768,
+    "observable_bitwise_identical": true,
+    "observable_max_abs_delta": 0.0,
+    "queries_attacked": 768,
+    "ticks_injected": 6144
+  },
+  "power_control_pre_cutoff": {
+    "detail": [
+      {
+        "cutoff": 202,
+        "hmm_summary_max_abs_delta": 0.0,
+        "injected_tick": 74,
+        "observable_max_abs_delta": 1.0,
+        "query_id": "main-validation-e00001-m000-next"
+      },
+      {
+        "cutoff": 202,
+        "hmm_summary_max_abs_delta": 0.0,
+        "injected_tick": 74,
+        "observable_max_abs_delta": 1.0,
+        "query_id": "main-validation-e00001-m001-next"
+      },
+      {
+        "cutoff": 202,
+        "hmm_summary_max_abs_delta": 0.0,
+        "injected_tick": 74,
+        "observable_max_abs_delta": 1.0,
+        "query_id": "main-validation-e00001-m002-next"
+      }
+    ],
+    "probes": 3,
+    "probes_that_changed_observable": 3,
+    "test_has_power": true
+  },
+  "queries": 768,
+  "seconds": 7.182663999992656,
+  "window_containment_under_injection": {
+    "failure_count": 0,
+    "failures": [],
+    "note": "sample_history() must re-filter even though the index now holds future ticks"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "feature_seconds": 3.267635917000007,
+  "features": 182,
+  "label_files_opened": [
+    "train/labels.csv"
+  ],
+  "max_abs_deviation_vs_committed_validation_csv": 1.1102230246251565e-16,
+  "note": "No validation label, target, condition or reference file was opened by this script.",
+  "per_seed": [
+    {
+      "seed": 20261108,
+      "size_trees": 214,
+      "win_trees": 214
+    },
+    {
+      "seed": 20261109,
+      "size_trees": 307,
+      "win_trees": 307
+    }
+  ],
+  "total_seconds": 9.060671042010654,
+  "train_rows": 3134
+}

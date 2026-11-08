@@ -1,0 +1,350 @@
+{
+  "files_scanned": [
+    "organizer/slot_forecasting/transition.py",
+    "scripts/combined_evaluate.py",
+    "scripts/dense_catboost.py",
+    "scripts/evaluate_mtd.py",
+    "scripts/evaluate_mtd_pairs.py",
+    "scripts/phase2_evaluate.py",
+    "scripts/phase2_train.py",
+    "scripts/tabpfn_evaluate.py",
+    "scripts/tabpfn_train.py",
+    "scripts/two_head_catboost.py",
+    "slot_model/features.py",
+    "slot_model/frozen_blend.py",
+    "slot_model/model.py",
+    "slot_model/mtd.py",
+    "slot_model/mtd_pairs.py",
+    "slot_model/phase2_features.py",
+    "slot_model/phase2_predict.py",
+    "slot_model/phase2_tables.py",
+    "slot_model/portable.py",
+    "slot_model/runtime.py",
+    "slot_model/shared_state.py",
+    "slot_model/tabpfn_model.py"
+  ],
+  "files_scanned_count": 22,
+  "prior_agent_files_scanned": 8,
+  "positional_pattern": "(rows|pre|ticks|hist(?:ory)?|seq|order(?:ed)?|sorted_\\w*|times?)\\s*\\[|sorted\\([^)]*\\)\\s*\\[|\\.values\\(\\)\\s*\\[|\\.keys\\(\\)\\s*\\[|iloc|shift\\(|np\\.roll|\\[\\s*-?\\d+\\s*:|\\[\\s*:\\s*-?\\d+\\s*\\]|argsort|enumerate\\(sorted|zip\\([^)]*\\[1:\\]",
+  "positional_hits": [
+    {
+      "file": "scripts/combined_evaluate.py",
+      "line": 205,
+      "text": "'  '.join(f'{c[:9]:>9}' for c in conds))"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 7,
+      "text": "ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'organizer')]"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 29,
+      "text": "cutoffs=range(192,q.cutoff) if dense else list(range(192,q.cutoff,8))[-8:]"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 39,
+      "text": "for cutoff in list(range(192,q.cutoff,8))[-8:]:"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 66,
+      "text": "cache_key=hashlib.sha256((str(dense)+'|'+str(held)+'|'+str(sorted(allowed))+'|'+hashlib.sha256(Path(__file__).read_bytes()).hexdig"
+    },
+    {
+      "file": "scripts/evaluate_mtd.py",
+      "line": 4,
+      "text": "R=Path(__file__).resolve().parents[1];sys.path[:0]=[str(R),str(R/'organizer')]"
+    },
+    {
+      "file": "scripts/evaluate_mtd.py",
+      "line": 16,
+      "text": "report[name]={'score':score(p),'seconds':time.perf_counter()-start,'strength':m.strength,'weights':{k:v['lambda'] for k,v in m.con"
+    },
+    {
+      "file": "scripts/evaluate_mtd_pairs.py",
+      "line": 4,
+      "text": "R=Path(__file__).resolve().parents[1];sys.path[:0]=[str(R),str(R/'organizer')]"
+    },
+    {
+      "file": "scripts/phase2_train.py",
+      "line": 28,
+      "text": "owner_ep={q.query_id:q.episode_id for q in tq};seqep=np.array([owner_ep[x] for x in seq['owners']])"
+    },
+    {
+      "file": "scripts/phase2_train.py",
+      "line": 33,
+      "text": "key=hashlib.sha256('|'.join(sorted(allowed)).encode()).hexdigest()[:16]"
+    },
+    {
+      "file": "scripts/tabpfn_evaluate.py",
+      "line": 56,
+      "text": "'stderr': process.stderr.strip()[:400] or None}"
+    },
+    {
+      "file": "scripts/two_head_catboost.py",
+      "line": 4,
+      "text": "R=Path(__file__).resolve().parents[1];sys.path[:0]=[str(R),str(R/'organizer')]"
+    },
+    {
+      "file": "slot_model/features.py",
+      "line": 40,
+      "text": "wins = [1.0 if ticks[tick-i] > 0 else -1.0 for i in range(1, 9)]"
+    },
+    {
+      "file": "slot_model/features.py",
+      "line": 63,
+      "text": "ys.append([ticks[t] for t in range(end-window, end)])"
+    },
+    {
+      "file": "slot_model/mtd.py",
+      "line": 68,
+      "text": "for t in rows[20:-19]:"
+    },
+    {
+      "file": "slot_model/phase2_features.py",
+      "line": 35,
+      "text": "old=sorted(old,key=lambda t:hashlib.sha256(f'{q.episode_id}|{q.machine_id}|{q.cutoff}|{t}'.encode()).hexdigest())[:24]"
+    },
+    {
+      "file": "slot_model/phase2_features.py",
+      "line": 96,
+      "text": "for cutoff in list(range(192,q.cutoff,8))[-8:]:"
+    },
+    {
+      "file": "slot_model/phase2_tables.py",
+      "line": 34,
+      "text": "return hashlib.sha256('|'.join(sorted(allowed)).encode()).hexdigest()[:16]"
+    },
+    {
+      "file": "slot_model/phase2_tables.py",
+      "line": 136,
+      "text": "key = digest.hexdigest()[:16]"
+    },
+    {
+      "file": "slot_model/shared_state.py",
+      "line": 29,
+      "text": "out=p.copy();out[0]=1-newwin;out[1:]*=newwin/max(oldwin,1e-12)"
+    },
+    {
+      "file": "slot_model/tabpfn_model.py",
+      "line": 53,
+      "text": "if total + rows[episode] > budget:"
+    },
+    {
+      "file": "slot_model/tabpfn_model.py",
+      "line": 56,
+      "text": "total += rows[episode]"
+    }
+  ],
+  "positional_hit_count": 22,
+  "label_reachability_hits": [
+    {
+      "file": "scripts/combined_evaluate.py",
+      "line": 34,
+      "text": "from slot_model.official_score import paired_bootstrap, score, scoring_inputs"
+    },
+    {
+      "file": "scripts/combined_evaluate.py",
+      "line": 81,
+      "text": "scoring = scoring_inputs(args.data)"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 12,
+      "text": "from slot_forecasting.io import load_inputs,read_labels,read_targets,read_rows,read_submission,write_submission"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 13,
+      "text": "from slot_forecasting.contest import contest_score"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 17,
+      "text": "tq,th=load_inputs(D/'train');vq,vh=load_inputs(D/'validation');labels=read_labels(D/'train/labels.csv',tq);idx=causal_index(tq,th);vidx=causal_index(v"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 118,
+      "text": "t=read_targets(D/'validation/targets.csv');g={r['query_id']:r['condition'] for r in read_rows(D/'validation/conditions.csv',('query_id','condition'))}"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 119,
+      "text": "score=lambda p:contest_score(p,t,g,ref,max_points=60)"
+    },
+    {
+      "file": "scripts/dense_catboost.py",
+      "line": 120,
+      "text": "report={'train_oof_brier':brier,'train_episode_errors':per_episode,'validation':{n:score(p) for n,p in vp.items()},'exposure':'Public validation repea"
+    },
+    {
+      "file": "scripts/evaluate_mtd.py",
+      "line": 6,
+      "text": "from slot_forecasting.io import load_inputs,read_labels,read_targets,read_rows,read_submission,write_submission"
+    },
+    {
+      "file": "scripts/evaluate_mtd.py",
+      "line": 7,
+      "text": "from slot_forecasting.contest import contest_score"
+    },
+    {
+      "file": "scripts/evaluate_mtd.py",
+      "line": 9,
+      "text": "tq,th=load_inputs(D/'train');vq,vh=load_inputs(D/'validation');labels=read_labels(D/'train/labels.csv',tq)"
+    },
+    {
+      "file": "scripts/evaluate_mtd.py",
+      "line": 10,
+      "text": "targets=read_targets(D/'validation/targets.csv');groups={r['query_id']:r['condition'] for r in read_rows(D/'validation/conditions.csv',('query_id','co"
+    },
+    {
+      "file": "scripts/evaluate_mtd.py",
+      "line": 12,
+      "text": "score=lambda p:contest_score(p,targets,groups,ref,max_points=60)"
+    },
+    {
+      "file": "scripts/evaluate_mtd_pairs.py",
+      "line": 8,
+      "text": "from slot_forecasting.io import load_inputs,read_labels,read_targets,read_rows,read_submission,write_submission"
+    },
+    {
+      "file": "scripts/evaluate_mtd_pairs.py",
+      "line": 9,
+      "text": "from slot_forecasting.contest import contest_score"
+    },
+    {
+      "file": "scripts/evaluate_mtd_pairs.py",
+      "line": 11,
+      "text": "tq,th=load_inputs(D/'train');vq,vh=load_inputs(D/'validation');labels=read_labels(D/'train/labels.csv',tq)"
+    },
+    {
+      "file": "scripts/evaluate_mtd_pairs.py",
+      "line": 40,
+      "text": "score_t=read_targets(D/'validation/targets.csv');group={r['query_id']:r['condition'] for r in read_rows(D/'validation/conditions.csv',('query_id','con"
+    },
+    {
+      "file": "scripts/evaluate_mtd_pairs.py",
+      "line": 42,
+      "text": "sc=lambda x:contest_score(x,score_t,group,ref,max_points=60)"
+    },
+    {
+      "file": "scripts/phase2_evaluate.py",
+      "line": 5,
+      "text": "from scripts.experiment import scoring_inputs,score,paired_bootstrap"
+    },
+    {
+      "file": "scripts/phase2_evaluate.py",
+      "line": 10,
+      "text": "S=scoring_inputs(D);targets,groups,reference=S"
+    },
+    {
+      "file": "scripts/phase2_train.py",
+      "line": 13,
+      "text": "from slot_forecasting.io import load_inputs,read_labels,write_submission"
+    },
+    {
+      "file": "scripts/phase2_train.py",
+      "line": 25,
+      "text": "labels=read_labels(D/'train/labels.csv',tq)"
+    },
+    {
+      "file": "scripts/phase2_train.py",
+      "line": 47,
+      "text": "digest=hash_files(['slot_model/phase2_features.py','slot_model/features.py','slot_model/model.py',__file__,'organizer/slot_forecasting/transition.py',"
+    },
+    {
+      "file": "scripts/tabpfn_evaluate.py",
+      "line": 29,
+      "text": "from slot_model.official_score import paired_bootstrap, score, scoring_inputs"
+    },
+    {
+      "file": "scripts/tabpfn_evaluate.py",
+      "line": 71,
+      "text": "scoring = scoring_inputs(args.data)"
+    },
+    {
+      "file": "scripts/two_head_catboost.py",
+      "line": 8,
+      "text": "from slot_forecasting.io import read_submission,read_targets,read_rows,write_submission"
+    },
+    {
+      "file": "scripts/two_head_catboost.py",
+      "line": 9,
+      "text": "from slot_forecasting.contest import contest_score"
+    },
+    {
+      "file": "scripts/two_head_catboost.py",
+      "line": 51,
+      "text": "t=read_targets(D/'validation/targets.csv');groups={r['query_id']:r['condition'] for r in read_rows(D/'validation/conditions.csv',('query_id','conditio"
+    },
+    {
+      "file": "scripts/two_head_catboost.py",
+      "line": 52,
+      "text": "score=lambda p:contest_score(p,t,groups,ref,max_points=60)"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 3,
+      "text": "`scripts/experiment.py` already exposes `scoring_inputs`, `score` and"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 7,
+      "text": "`score` still delegates to `slot_forecasting.experiments.subset_score`, and"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 15,
+      "text": "from slot_forecasting.experiments import subset_score"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 16,
+      "text": "from slot_forecasting.io import read_rows, read_submission, read_targets"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 22,
+      "text": "def scoring_inputs(data):"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 24,
+      "text": "targets = read_targets(data / 'validation/targets.csv')"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 26,
+      "text": "for r in read_rows(data / 'validation/conditions.csv', ('query_id', 'condition'))}"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 27,
+      "text": "reference = read_submission(data / 'validation/reference.csv')"
+    },
+    {
+      "file": "slot_model/official_score.py",
+      "line": 32,
+      "text": "return subset_score(predictions, *scoring, set(episodes), MAX_POINTS)"
+    },
+    {
+      "file": "slot_model/phase2_tables.py",
+      "line": 25,
+      "text": "from slot_forecasting.io import load_inputs, read_labels"
+    },
+    {
+      "file": "slot_model/phase2_tables.py",
+      "line": 96,
+      "text": "labels = read_labels(data / 'train/labels.csv', train_queries)"
+    },
+    {
+      "file": "slot_model/phase2_tables.py",
+      "line": 133,
+      "text": "for name in ('train/queries.csv', 'train/history.csv', 'train/labels.csv',"
+    }
+  ],
+  "label_hit_count": 41
+}
