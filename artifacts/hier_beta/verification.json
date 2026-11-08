@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "check": "pooled_endpoint",
+      "detail": "the exact tau->infinity branch reproduces the deployed parity posterior mean for all four cells to <1e-15, in closed form rather than via a large tau",
+      "passed": true
+    },
+    {
+      "check": "endpoint_limit",
+      "detail": "tau=1e6 approaches the closed-form endpoint to 1.11e-06",
+      "passed": true
+    },
+    {
+      "check": "quadrature",
+      "detail": "256-node Gauss-Legendre parent mean matches scipy.quad to 7.22e-10 across 8 cases including an empty cell, a weak Beta(0.05,0.05) prior and fractional counts",
+      "passed": true
+    },
+    {
+      "check": "suppresses_unsupported",
+      "detail": "with identical cell counts the two cells agree to 0.0e+00 and sit 0.0001 from the pooled value",
+      "passed": true
+    },
+    {
+      "check": "recovers_supported",
+      "detail": "with 18/2 against 2/18 the cells separate by +0.5714 at tau=8 (pooled gives 0.4988 for both; the independent control gives 0.8878), so a supported difference is recovered while pooling erases it",
+      "passed": true
+    },
+    {
+      "check": "opposite_machines",
+      "detail": "under a symmetric prior the mirrored machines give 0.7857 and 0.2143, exactly symmetric about 0.5 to 0.0e+00; under the deployed prior (mean 0.4) they separate 0.7843 against 0.2129. Opposite responses are represented per machine, not averaged away",
+      "passed": true
+    },
+    {
+      "check": "empty_cell_borrows",
+      "detail": "an EMPTY queried cell whose group partner is 14/2 returns 0.8072, above the prior mean 0.4000 and below the partner, with parent 0.8072",
+      "passed": true
+    },
+    {
+      "check": "finite_normalised",
+      "detail": "0 of 4000 random count configurations left (0,1)",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

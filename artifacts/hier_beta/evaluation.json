@@ -1,0 +1,129 @@
+{
+  "advanced": false,
+  "advancement_rule": "held-fold points improve AND paired interval upper bound < 0",
+  "comparison_label": "conditional deployment replay: r held at the fixed w=0.42 vectors and identical across every candidate",
+  "deployed_control": {
+    "R": 0.12408166925852328,
+    "by_condition": {
+      "drift": 0.1232398370842923,
+      "shared_change": 0.13401013016936558,
+      "short_history": 0.1516957767850603,
+      "stable": 0.08738093299537494
+    },
+    "points": 53.376904579876054
+  },
+  "exposure": "Repeatedly inspected public validation; exploratory research round.",
+  "paired_selected_vs_deployed": {
+    "by_condition_ci95": {
+      "drift": [
+        -1.9660334689041163e-17,
+        5.300239918426129e-17
+      ],
+      "shared_change": [
+        -3.088321620382864e-17,
+        3.735612948120973e-17
+      ],
+      "short_history": [
+        -4.1720681690693925e-17,
+        5.5341840375283225e-17
+      ],
+      "stable": [
+        -3.54885318782021e-17,
+        1.800841064337557e-17
+      ]
+    },
+    "delta_loss_ratio_ci95": [
+      -1.4368734691932218e-17,
+      1.9623652384978096e-17
+    ],
+    "interpretation": "negative favors first model",
+    "repeats": 2000,
+    "seed": 314159,
+    "unit": "whole episode, stratified by condition"
+  },
+  "pooled_endpoint_reproduces_deployed_q_to": 2.220446049250313e-16,
+  "preregistration": "Verify, then evaluate, hierarchical partial pooling within the parity group.\n\nPREREGISTERED BATCH, frozen before any public-validation number below was read.\n\nQuestion. Does letting the two original cells inside a selected parity group depart from\ntheir parent improve the full five-probability forecast?\n\nCandidates, all sharing the deployed pair/template selection policy, memory policy,\npopulation prior and kappa conventions, feature availability and r predictions:\n  pooled_endpoint   exact tau -> infinity, which must reproduce the deployed parity model\n  tau = 32          prior cell departure sd about 0.0853 at theta = 0.4\n  tau = 8           about 0.1633\n  tau = 2           about 0.2828\n  independent_4cell separately specified control, each cell under the parity prior alone\nThree finite taus plus the pooled endpoint, as specified. Their scale is chosen from the\ninterpretable departure sd sqrt(theta(1-theta)/(tau+1)) rather than from any validation\nscore, and the rationale is recorded here.\n\nPrimary metric: official points / R. Selection: one GLOBAL tau chosen on training\nepisodes by episode-equal win-indicator Brier on out-of-fold training predictions, a\nsampled-outcome surrogate used because training has no true probability vectors.\nAdvancement: the candidate replaces the deployed predictor only if held-fold points\nimprove AND the paired whole-episode interval against the deployed forecast lies below\nzero. That is the same rule that withheld global H=16 and independent r memory, and it is\nnot relaxed after seeing this run.\nStopping: one batch. Only parity-routed predictions change; null and full selections are\npreserved exactly.\n\nComparisons below hold r at the fixed w=0.42 deployment vectors, so they are CONDITIONAL\nDEPLOYMENT REPLAYS, labelled as such, matched on r across every candidate.\n\nExposure: 96 repeatedly inspected validation episodes; exploratory research round.\n",
+  "results": {
+    "independent_4cell": {
+      "R": 0.15769342408035833,
+      "by_condition": {
+        "drift": 0.15862584717061978,
+        "shared_change": 0.17201967201518994,
+        "short_history": 0.22253579490563305,
+        "stable": 0.07759238222999053
+      },
+      "points": 51.827192546819944
+    },
+    "pooled_endpoint": {
+      "R": 0.12408166925852328,
+      "by_condition": {
+        "drift": 0.1232398370842923,
+        "shared_change": 0.13401013016936558,
+        "short_history": 0.1516957767850603,
+        "stable": 0.08738093299537494
+      },
+      "points": 53.376904579876054
+    },
+    "tau=2": {
+      "R": 0.1389138766550536,
+      "by_condition": {
+        "drift": 0.13943518385534848,
+        "shared_change": 0.15477973206148976,
+        "short_history": 0.18461819087755732,
+        "stable": 0.07682239982581875
+      },
+      "points": 52.68177096605206
+    },
+    "tau=32": {
+      "R": 0.12182805829210538,
+      "by_condition": {
+        "drift": 0.12233944641506042,
+        "shared_change": 0.13301403898440262,
+        "short_history": 0.1539122822853822,
+        "stable": 0.07804646548357627
+      },
+      "points": 53.4841320436799
+    },
+    "tau=8": {
+      "R": 0.12545470995886426,
+      "by_condition": {
+        "drift": 0.12557161041375164,
+        "shared_change": 0.13924982700564711,
+        "short_history": 0.16193470943290897,
+        "stable": 0.07506269298314933
+      },
+      "points": 53.31178542243874
+    }
+  },
+  "seconds": 42.09861679200549,
+  "selected_gain_over_deployed": 0.0,
+  "selected_on_train": "pooled_endpoint",
+  "train_selection": [
+    {
+      "candidate": "pooled_endpoint",
+      "parity_routed": 765,
+      "train_oof_episode_win_brier": 0.08103403640062118
+    },
+    {
+      "candidate": "tau=32",
+      "parity_routed": 765,
+      "train_oof_episode_win_brier": 0.08151251566814251
+    },
+    {
+      "candidate": "tau=8",
+      "parity_routed": 765,
+      "train_oof_episode_win_brier": 0.08275432925027802
+    },
+    {
+      "candidate": "tau=2",
+      "parity_routed": 765,
+      "train_oof_episode_win_brier": 0.08510612612646118
+    },
+    {
+      "candidate": "independent_4cell",
+      "parity_routed": 765,
+      "train_oof_episode_win_brier": 0.08835081335887736
+    }
+  ],
+  "verification_passed": true
+}
