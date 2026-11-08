@@ -1,0 +1,48 @@
+{
+  "metric": "episode-equal observed-outcome Brier, because train true probability vectors are unavailable",
+  "scores": {
+    "additive": 0.5602460837092943,
+    "lag7": 0.5599486338427657,
+    "control": 0.5600043338495327
+  },
+  "selected": "lag7",
+  "folds_hash": "06faf91fdb74e2a4b58845b8104b2cdf823eadeef54b9327643193d1e92b245a",
+  "fold_seconds": [
+    25.459922541005653,
+    21.420166458003223,
+    22.700121542002307,
+    21.81421345799754
+  ],
+  "prior_strength": 40.0,
+  "configs": {
+    "additive": [],
+    "lag7": [
+      [
+        7,
+        1
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "control": [
+      [
+        1,
+        2
+      ],
+      [
+        4,
+        8
+      ]
+    ]
+  }
+}

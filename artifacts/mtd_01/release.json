@@ -1,0 +1,24 @@
+{
+  "candidate": "fixed .75 frozen mean stack + .25 changepoint MTD",
+  "status": "experimental candidate; active champion unchanged; not submitted",
+  "oof_procedure_points": 31.902299010902958,
+  "deployed_ensemble_independent_validation_score": null,
+  "checker": "VALID FORMAT: 1536 queries",
+  "clean_archive_reproduction": {
+    "byte_identical": true,
+    "seconds": 97.776343000005
+  },
+  "sha256": {
+    "submission.csv": "c8ac8e53f96bcca7aa1dc34fd67752b263555bd176e1117386338240fd93deeb",
+    "entry.zip": "5efcc9c7b10129cffec9a522c3f49eb92f70826aaab8dd4b211fd6aa862e374b"
+  },
+  "upstream_commit": "3c1fb8b53e76194e1812216fd8ded5fbda32f2e7",
+  "inference_command": "python predict.py --data /data --out /output/submission.csv --model model --mtd mtd.json",
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ]
+}

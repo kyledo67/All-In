@@ -1,0 +1,51 @@
+{
+  "method": "fixed depth4/L2=8 observable CatBoost, 2 saved seeds, saved 214/307 tree counts; only historical cutoff density changes",
+  "sparse": 0.5568852927983962,
+  "dense": 0.555511688571092,
+  "folds": [
+    {
+      "fold": 0,
+      "held_episodes": 24,
+      "rows": {
+        "sparse": 2372,
+        "dense": 13619
+      }
+    },
+    {
+      "fold": 1,
+      "held_episodes": 24,
+      "rows": {
+        "sparse": 2237,
+        "dense": 12366
+      }
+    },
+    {
+      "fold": 2,
+      "held_episodes": 24,
+      "rows": {
+        "sparse": 2397,
+        "dense": 13756
+      }
+    },
+    {
+      "fold": 3,
+      "held_episodes": 24,
+      "rows": {
+        "sparse": 2396,
+        "dense": 13845
+      }
+    }
+  ],
+  "cache_ids": {
+    "sparse_0": "9685f0b9b64752d26626",
+    "dense_0": "c6d660214061552758d7",
+    "sparse_1": "18bfd7005f465c05ce4b",
+    "dense_1": "5b9b7619a0d7c1757323",
+    "sparse_2": "a950034dacc5f3b47a97",
+    "dense_2": "4f1473f2d38b545aaa09",
+    "sparse_3": "240aef8c17eca5fb26bf",
+    "dense_3": "ddeb99d3383829d1c8c0"
+  },
+  "no_validation_targets_used": true,
+  "seconds": 188.94457658300234
+}
