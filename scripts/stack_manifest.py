@@ -55,7 +55,6 @@ RAW_SOURCES = {
     'artifacts/endpoint_family/predictions/oof_tail_train.csv': 'tail rescale with TRAIN-estimated constants',
     'artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv': 'tail rescale, train constants, add-1 smoothed',
     'artifacts/projection/predictions/oof_tail_projection_train.csv': 'exact tail projection, TRAIN constants',
-    'artifacts/endpoint_predictor/predictions/oof_beta_hard.csv': 'conjugate endpoint predictor arm, train EM',
     'artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv': 'conjugate Dirichlet r, tau from train surrogate',
     'artifacts/win_head/predictions/oof_population_alpha1.csv': 'dense win head, population only',
     'artifacts/win_head/predictions/oof_local_main_alpha1.csv': 'dense win head, local main effects',
@@ -69,6 +68,14 @@ FOLD_FITTED_PREFIXES = (
     'artifacts/finalist_parity/', 'artifacts/finalist_beta/', 'artifacts/parity_prior/',
     'artifacts/phase2/predictions/oof_', 'artifacts/stacking/', 'artifacts/separable/',
     'artifacts/memory_envelope/',
+    # endpoint_predictor.py selects its blend weight g per fold by minimizing a loss
+    # computed against validation truth (scripts/endpoint_predictor.py line ~216), so
+    # every file it writes is validation-target fitted on the same fold map. Its docstring
+    # claims "the truth is NOT used to fit them"; the code contradicts the docstring, and
+    # the code is what counts. This entry was previously mis-declared RAW and was admitted
+    # to the pool declaration only; the file name it declared does not exist on disk, so
+    # the tested pool of 30 never contained it and no measured result is affected.
+    'artifacts/endpoint_predictor/',
 )
 DEPLOY_FIT_FILES = (
     'artifacts/win_head_release_exact/validation_submission.csv',

@@ -102,7 +102,7 @@ def main():
         w = np.zeros(len(ids))
         for c in sorted(set(groups.values())):
             ces = {x for i, x in enumerate(ep) if x in es and groups[ids[i]] == c}
-            b = np.mean([np.mean(np.sum((ref_arr[ep == x] - truth[ep == x]) ** 2, axis=1)) for x in ces])
+            b = np.mean([np.mean(np.sum((ref_arr[ep == x] - truth[ep == x]) ** 2, axis=1)) for x in sorted(ces)])
             for x in ces:
                 w[ep == x] = 1 / (4 * len(ces) * sum(ep == x) * max(b, 1e-9))
         return w

@@ -177,7 +177,7 @@ def main():
             if not ces:
                 continue
             b = np.mean([np.mean(np.sum((ref_arr[ep == e] - truth[ep == e]) ** 2, axis=1))
-                         for e in ces])
+                         for e in sorted(ces)])
             for e in ces:
                 w[ep == e] = 1 / (4 * len(ces) * sum(ep == e) * max(b, 1e-9))
         return w

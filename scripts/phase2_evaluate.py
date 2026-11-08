@@ -16,7 +16,7 @@ def row_weights(es):
  w=np.zeros(len(ids))
  for c in sorted(set(groups.values())):
   ces={e for i,e in enumerate(ep) if e in es and groups[ids[i]]==c}
-  b=np.mean([np.mean(np.sum((ref[ep==e]-truth[ep==e])**2,axis=1)) for e in ces])
+  b=np.mean([np.mean(np.sum((ref[ep==e]-truth[ep==e])**2,axis=1)) for e in sorted(ces)])
   for e in ces:w[ep==e]=1/(4*len(ces)*sum(ep==e)*max(b,1e-9))
  return w
 hmm=load(Path('artifacts/final/validation_predictions.csv'))

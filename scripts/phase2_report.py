@@ -26,7 +26,7 @@ save(O/'hmm_feature_ablation_bootstrap.json',comparison)
 category={}
 for cond,official in DG['official']['by_condition'].items():
  rr=[r for r in rows if r['condition']==cond];es={r['episode'] for r in rr}
- values=np.mean([np.mean([r['category_error'] for r in rr if r['episode']==e],axis=0) for e in es],axis=0)
+ values=np.mean([np.mean([r['category_error'] for r in rr if r['episode']==e],axis=0) for e in sorted(es)],axis=0)
  category[cond]={'error_by_category':values.tolist(),'ratio_contribution_by_category':(values/max(official['reference_error'],1e-9)).tolist()}
 save(O/'category_contributions.json',category)
 with (O/'per_episode.csv').open() as f:r=list(csv.DictReader(f))

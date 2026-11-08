@@ -38,6 +38,18 @@ exploratory development, and the accumulated selection is not corrected by any i
 import os
 os.environ.setdefault('MPLCONFIGDIR', '/tmp/all-in-mpl')
 os.environ.setdefault('OMP_NUM_THREADS', '2')
+# DETERMINISM. Two runs of this script with an identical pool previously produced identical
+# scores to about 1e-6 points but DIFFERENT selected pool sizes (fold 1 kq 12 vs 20, fold 3
+# kq 30 vs 20) and byte-different output CSVs. There is no RNG here: simplex_fit starts from
+# a fixed uniform point and every set iterated is a set of ints or is sorted. The cause is
+# threaded BLAS, whose reduction order varies run to run, perturbing the matrix M in
+# fit_heads at the 1e-16 level; argmin over M and argmin over the near-tied kq grid then
+# flip discretely. Accelerate and OpenBLAS do not honour OMP_NUM_THREADS, so their own
+# thread counts are pinned to 1 to make every reduction order fixed. This must be set
+# before numpy is imported.
+for _v in ('VECLIB_MAXIMUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS',
+           'NUMEXPR_NUM_THREADS'):
+    os.environ.setdefault(_v, '1')
 import argparse
 import glob
 import hashlib
@@ -165,7 +177,7 @@ def main():
             if not ces:
                 continue
             b = np.mean([np.mean(np.sum((ref_arr[ep == e] - truth[ep == e]) ** 2, axis=1))
-                         for e in ces])
+                         for e in sorted(ces)])
             for e in ces:
                 w[ep == e] = 1 / (4 * len(ces) * sum(ep == e) * max(b, 1e-9))
         return w

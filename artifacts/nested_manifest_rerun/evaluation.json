@@ -1,0 +1,730 @@
+{
+  "duplicate_q_head_groups": [
+    [
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+      "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+      "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+      "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv"
+    ]
+  ],
+  "duplicate_r_head_groups": [
+    [
+      "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/two_head_01/validation.csv"
+    ],
+    [
+      "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+      "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+      "artifacts/hier_beta/predictions/oof_tau2.csv",
+      "artifacts/hier_beta/predictions/oof_tau32.csv",
+      "artifacts/hier_beta/predictions/oof_tau8.csv"
+    ],
+    [
+      "artifacts/pair_dict/predictions/oof_compact_average.csv",
+      "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+      "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+      "artifacts/win_head/predictions/oof_local_main_alpha1.csv",
+      "artifacts/win_head/predictions/oof_population_alpha1.csv"
+    ]
+  ],
+  "exposure": "Conditional exploratory development on 96 repeatedly reused episodes.",
+  "fold_provenance": [
+    {
+      "fold": 0,
+      "kq": 12,
+      "kr": 30,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.07136359455888788,
+        "mean_total_variation": 0.008985247396707315,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.01055172765087873,
+          "p1": 0.010551727650878695,
+          "p2": 0.07136359455888788,
+          "p20": 0.034897137305359816,
+          "p5": 0.061794086541180376
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.0011913200310597386,
+          "p1": 0.0011913200310597358,
+          "p2": 0.005953712329141758,
+          "p20": 0.0025260687995768767,
+          "p5": 0.007108073602576522
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+        "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+        "artifacts/hier_beta/predictions/oof_tau8.csv",
+        "artifacts/hier_beta/predictions/oof_tau2.csv",
+        "artifacts/hier_beta/predictions/oof_independent_4cell.csv"
+      ],
+      "q_weights": [
+        0.5288783978514989,
+        0.1366879296979822,
+        0.20965274031795056,
+        0.0,
+        2.3198114842927155e-19,
+        0.0,
+        0.0,
+        2.6500749243830875e-18,
+        0.0,
+        0.0,
+        2.801924964132324e-17,
+        0.12478093213256837
+      ],
+      "r_members": [
+        "artifacts/win_head/predictions/oof_population_alpha1.csv",
+        "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+        "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+        "artifacts/pair_dict/predictions/oof_compact_average.csv",
+        "artifacts/win_head/predictions/oof_local_main_alpha1.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+        "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+        "artifacts/hier_beta/predictions/oof_tau2.csv",
+        "artifacts/hier_beta/predictions/oof_tau8.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+        "artifacts/final/validation_predictions.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv"
+      ],
+      "r_weights": [
+        8.915175456054267e-18,
+        1.2732164981976055e-18,
+        0.0,
+        3.888356358723467e-18,
+        8.771012505953713e-18,
+        0.42096216728239466,
+        1.365265103309684e-16,
+        8.362214739392578e-17,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.5445104587727206e-18,
+        0.034403418443541806,
+        0.03440322613691275,
+        0.034403304952479126,
+        0.034403316884771454,
+        0.03440328549077083,
+        0.03440322879264258,
+        0.06244933172690728,
+        2.900557676215829e-18,
+        0.10917437086844972,
+        0.0,
+        4.359789958751082e-19,
+        1.5824852634736702e-18,
+        3.8794392981292e-18,
+        7.484671252679702e-17,
+        2.928325734637442e-17,
+        0.20099434942112954
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315798,
+          0.4736842105263152,
+          0.15789473684210556
+        ],
+        "steady": [
+          0.8000000000000003,
+          0.19600000000000026,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "fold": 1,
+      "kq": 20,
+      "kr": 30,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.08310084234720053,
+        "mean_total_variation": 0.009343405726124562,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.010697903611885773,
+          "p1": 0.010697903611885773,
+          "p2": 0.08310084234720053,
+          "p20": 0.03570124003379349,
+          "p5": 0.06600565386655799
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.0013087629254249767,
+          "p1": 0.001308762925424971,
+          "p2": 0.0058931642346880956,
+          "p20": 0.002421022225747891,
+          "p5": 0.007755099140963187
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+        "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/hier_beta/predictions/oof_tau8.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/hier_beta/predictions/oof_tau2.csv",
+        "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+        "artifacts/pair_dict/predictions/oof_compact_average.csv",
+        "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/win_head/predictions/oof_local_main_alpha1.csv"
+      ],
+      "q_weights": [
+        0.1993855128496044,
+        0.343895797207087,
+        4.30674166729245e-17,
+        1.326135958045014e-19,
+        4.0276178413925566e-17,
+        1.0293991407981512e-17,
+        1.4910718017211474e-17,
+        6.981960235319189e-18,
+        0.09014249358778788,
+        0.2787283939970065,
+        0.0,
+        0.0878478023585141,
+        1.2919052390640996e-17,
+        0.0,
+        2.2853743010309074e-18,
+        1.9870757667875445e-17,
+        0.0,
+        0.0,
+        9.259552421147198e-18,
+        0.0
+      ],
+      "r_members": [
+        "artifacts/win_head/predictions/oof_population_alpha1.csv",
+        "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+        "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+        "artifacts/pair_dict/predictions/oof_compact_average.csv",
+        "artifacts/win_head/predictions/oof_local_main_alpha1.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/hier_beta/predictions/oof_tau2.csv",
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+        "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+        "artifacts/hier_beta/predictions/oof_tau8.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/final/validation_predictions.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv"
+      ],
+      "r_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3121138059360225,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.037899574899514565,
+        0.03789963426867605,
+        0.03789967273440764,
+        0.03789958867867536,
+        0.03789964635642262,
+        0.0378998211117967,
+        0.0,
+        0.0,
+        0.0,
+        0.06334599982860438,
+        0.0,
+        0.22669206745927212,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.17045018872660814
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130457,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315796,
+          0.47368421052631515,
+          0.15789473684210545
+        ],
+        "steady": [
+          0.8000000000000005,
+          0.19600000000000017,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "fold": 2,
+      "kq": 30,
+      "kr": 8,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.05758889780375462,
+        "mean_total_variation": 0.010092431620454603,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.008559451292790732,
+          "p1": 0.008559451292790787,
+          "p2": 0.05758889780375462,
+          "p20": 0.02859932595052539,
+          "p5": 0.0478456781552421
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.001203499290119291,
+          "p1": 0.0012034992901192845,
+          "p2": 0.006425865751104507,
+          "p20": 0.002691360363790723,
+          "p5": 0.00866063854577541
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+        "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/hier_beta/predictions/oof_tau8.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/hier_beta/predictions/oof_tau2.csv",
+        "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+        "artifacts/pair_dict/predictions/oof_compact_average.csv",
+        "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/final/validation_predictions.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv",
+        "artifacts/win_head/predictions/oof_population_alpha1.csv",
+        "artifacts/win_head/predictions/oof_local_main_alpha1.csv"
+      ],
+      "q_weights": [
+        0.3940398494904497,
+        1.3902351763284825e-17,
+        6.358422225153854e-17,
+        0.0,
+        1.6720430378799881e-18,
+        4.286579636169836e-17,
+        0.0,
+        0.08070818374940125,
+        0.0,
+        0.4077445330327161,
+        0.0,
+        0.11750743372743286,
+        4.528831059084566e-17,
+        0.0,
+        0.0,
+        6.039344913923159e-19,
+        0.0,
+        1.5984358747635896e-17,
+        0.0,
+        4.717126483259196e-18,
+        0.0,
+        0.0,
+        1.2942663434045703e-18,
+        1.069802612382181e-18,
+        0.0,
+        1.0101714928954781e-17,
+        6.904165553069799e-18,
+        2.4485181406280048e-17,
+        2.1387581918171076e-18,
+        2.151463686025922e-18
+      ],
+      "r_members": [
+        "artifacts/win_head/predictions/oof_population_alpha1.csv",
+        "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+        "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+        "artifacts/pair_dict/predictions/oof_compact_average.csv",
+        "artifacts/win_head/predictions/oof_local_main_alpha1.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv"
+      ],
+      "r_weights": [
+        0.11866034949205975,
+        0.11866022047191885,
+        0.11866022173358443,
+        0.1186602765659552,
+        0.11865996102977917,
+        0.4066989707067025,
+        0.0,
+        5.659535340374333e-17
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315799,
+          0.4736842105263152,
+          0.15789473684210553
+        ],
+        "steady": [
+          0.8000000000000008,
+          0.19600000000000012,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "fold": 3,
+      "kq": 20,
+      "kr": 30,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.07853093080404691,
+        "mean_total_variation": 0.01073074021156631,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.01348623703574553,
+          "p1": 0.01348623703574553,
+          "p2": 0.07853093080404691,
+          "p20": 0.03911017909489631,
+          "p5": 0.06835192655749933
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.001394689486770819,
+          "p1": 0.0013946894867708191,
+          "p2": 0.007156244426940636,
+          "p20": 0.003084317180878397,
+          "p5": 0.008431539841771961
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+        "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/hier_beta/predictions/oof_tau8.csv",
+        "artifacts/hier_beta/predictions/oof_tau2.csv",
+        "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+        "artifacts/pair_dict/predictions/oof_compact_average.csv",
+        "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/two_head_01/validation.csv"
+      ],
+      "q_weights": [
+        0.3629869943827485,
+        0.13999021582247037,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.36852544528547654,
+        2.235150541214647e-17,
+        0.0,
+        0.1284973445093047,
+        0.0,
+        0.0,
+        0.0,
+        3.873693426030728e-18,
+        0.0,
+        4.030712158627994e-18,
+        0.0,
+        0.0
+      ],
+      "r_members": [
+        "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+        "artifacts/win_head/predictions/oof_population_alpha1.csv",
+        "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+        "artifacts/pair_dict/predictions/oof_compact_average.csv",
+        "artifacts/win_head/predictions/oof_local_main_alpha1.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+        "artifacts/projection/predictions/oof_tail_projection_train.csv",
+        "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+        "artifacts/hier_beta/predictions/oof_tau8.csv",
+        "artifacts/hier_beta/predictions/oof_tau2.csv",
+        "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+        "artifacts/hier_beta/predictions/oof_tau32.csv",
+        "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+        "artifacts/final/validation_predictions.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv"
+      ],
+      "r_weights": [
+        0.0,
+        0.0,
+        0.0,
+        1.1104021594155951e-17,
+        0.0,
+        0.36754966560125657,
+        2.0417752017073684e-16,
+        0.0,
+        0.0,
+        0.0,
+        1.0821770191633331e-17,
+        0.0,
+        3.7237658092223715e-18,
+        0.03727782663770318,
+        0.037277142493161566,
+        0.03727712969732461,
+        0.03727725676146874,
+        0.03727794781788983,
+        0.03727799088511964,
+        0.0,
+        0.0,
+        0.0,
+        0.2376016672968261,
+        0.0,
+        1.8545354303342537e-18,
+        5.212188467166171e-18,
+        0.0,
+        0.0,
+        0.0,
+        0.17118337280924967
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315801,
+          0.4736842105263152,
+          0.1578947368421055
+        ],
+        "steady": [
+          0.800000000000001,
+          0.19600000000000006,
+          0.004000000000000003
+        ]
+      }
+    }
+  ],
+  "gains_over_protected": {
+    "separable": 0.31331462335325,
+    "separable_projected": 0.415566240433229,
+    "separable_rescaled": 0.41675856190348526
+  },
+  "paired_vs_protected": {
+    "separable": [
+      -0.013835332856421289,
+      -0.0003547580881087848
+    ],
+    "separable_projected": [
+      -0.01595804339736797,
+      -0.0023934831768174505
+    ],
+    "separable_rescaled": [
+      -0.015875015825675357,
+      -0.0023697130884944247
+    ]
+  },
+  "pool_excluded_by_provenance": [],
+  "pool_members": [
+    "artifacts/beta_cells/predictions/oof_beta_average.csv",
+    "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+    "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+    "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+    "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+    "artifacts/dense_catboost_01/validation_dense.csv",
+    "artifacts/dense_catboost_01/validation_sparse.csv",
+    "artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv",
+    "artifacts/endpoint_family/predictions/oof_tail_train.csv",
+    "artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv",
+    "artifacts/final/validation_predictions.csv",
+    "artifacts/hier_beta/predictions/oof_independent_4cell.csv",
+    "artifacts/hier_beta/predictions/oof_pooled_endpoint.csv",
+    "artifacts/hier_beta/predictions/oof_tau2.csv",
+    "artifacts/hier_beta/predictions/oof_tau32.csv",
+    "artifacts/hier_beta/predictions/oof_tau8.csv",
+    "artifacts/mtd_pairs_01/validation_additive.csv",
+    "artifacts/mtd_pairs_01/validation_control.csv",
+    "artifacts/mtd_pairs_01/validation_lag7.csv",
+    "artifacts/pair_dict/predictions/oof_compact_average.csv",
+    "artifacts/pair_dict/predictions/oof_compact_hard.csv",
+    "artifacts/projection/predictions/oof_tail_projection_train.csv",
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+    "artifacts/two_head_01/validation.csv",
+    "artifacts/win_head/predictions/oof_local_interactions_alpha1.csv",
+    "artifacts/win_head/predictions/oof_local_main_alpha1.csv",
+    "artifacts/win_head/predictions/oof_population_alpha1.csv"
+  ],
+  "pool_mode": "explicit RAW manifest",
+  "pool_size": 30,
+  "pool_skipped": [],
+  "protocol": "Separable head stacking, then the structured tail projection, on archived forecasts only.\n\nPREREGISTERED, fixed before any held-fold number below was read.\n\nTwo ideas, both from the stated protocol and both using only archived predictions:\n\n1. SEPARABLE STACKING. The official query loss at a fixed conditional r is\n       L(q) = (1 + ||r||^2) q^2 - 2 (u + r.t_+) q + const,\n   so the five-vector loss is a quadratic in q for any given r, and the q and r heads are\n   separable. Stacking five-vectors mixes both heads with one weight vector; stacking the\n   heads separately gives each its own convex weights. Concretely:\n       q_stack = convex combination of archived q heads\n       r_stack = convex combination of archived r heads\n       p       = (1 - q_stack, q_stack * r_stack)\n   Both weight vectors are fitted on each outer fold's FITTING episodes against the exact\n   official weighted squared error, alternating once (fit r given q, then q given r), with\n   the pool size for each head chosen by inner complete-episode folds.\n\n2. STRUCTURED PROJECTION OF THE STACKED OUTPUT. A convex combination of five-vectors need\n   not keep the fixed type-specific tail split, even when every member has it, because the\n   mixing weights interact with each member's win mass. Each final five-vector is therefore\n   projected onto conv{e_0, e_1, (0,0,v_type)} by the exact Euclidean projection, with v\n   cross-fitted from fitting-side episodes only. The preserve-a rescale is reported\n   alongside, since it previously beat the exact projection at matched constants.\n\nPool: archived forecasts, EXCLUDING the privileged arrays and excluding this script's and\nthe stacking script's own outputs. Re-stacking on previous held-fold outputs is a\nself-feedback loop that inflates the score on these same 96 episodes by construction; that\nmistake was made once and is now blocked.\n\nComparator: the protected candidate at 53.532918, and the clean augmented stacking at\n53.869175. Advancement requires points to improve AND the paired interval against the\nprotected forecast to lie below zero, applied per arm.\n\nThese 96 episodes underpin the whole project. Every number here is conditional\nexploratory development, and the accumulated selection is not corrected by any interval.\n",
+  "qualified_arms": {
+    "separable": 0.31331462335325,
+    "separable_projected": 0.415566240433229,
+    "separable_rescaled": 0.41675856190348526
+  },
+  "results": {
+    "protected": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.14575610520224477,
+        "stable": 0.08563840608796552
+      },
+      "points": 53.532917808538166
+    },
+    "separable": {
+      "R": 0.11428408804445717,
+      "by_condition": {
+        "drift": 0.10815252704849959,
+        "shared_change": 0.12018236469744664,
+        "short_history": 0.15172294038453724,
+        "stable": 0.07707852004734518
+      },
+      "points": 53.846232431891416
+    },
+    "separable_projected": {
+      "R": 0.1121721223071881,
+      "by_condition": {
+        "drift": 0.10658389974532752,
+        "shared_change": 0.1181452134346031,
+        "short_history": 0.14809534022056137,
+        "stable": 0.07586403582826037
+      },
+      "points": 53.948484048971395
+    },
+    "separable_rescaled": {
+      "R": 0.11214754261015807,
+      "by_condition": {
+        "drift": 0.10628139033067056,
+        "shared_change": 0.11859212533954931,
+        "short_history": 0.14827209912973438,
+        "stable": 0.075444555640678
+      },
+      "points": 53.94967637044165
+    }
+  },
+  "seconds": 148.33264679202694
+}
