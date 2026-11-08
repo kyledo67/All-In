@@ -1,0 +1,153 @@
+{
+  "in_sample_ceiling": {
+    "signal": {
+      "delta_R_in_sample_ceiling": -0.0004220279724842513,
+      "free_parameters": 3,
+      "optimal_shifts": {
+        "-1": -0.003919599973522713,
+        "0": -0.006378371855822298,
+        "1": 0.010816416944959743
+      }
+    },
+    "type": {
+      "delta_R_in_sample_ceiling": -1.4256381322574896e-05,
+      "free_parameters": 3,
+      "optimal_shifts": {
+        "balanced": 0.00025719133557640595,
+        "jackpot": 0.0020764102695517584,
+        "steady": -0.0012335566732708456
+      }
+    },
+    "type_x_signal": {
+      "delta_R_in_sample_ceiling": -0.0004987817295663,
+      "free_parameters": 9,
+      "optimal_shifts": {
+        "balanced|-1": -0.007580837597723744,
+        "balanced|0": -0.0009908968861880698,
+        "balanced|1": 0.008850023381394385,
+        "jackpot|-1": 0.002914649173652514,
+        "jackpot|0": -0.007272221550062214,
+        "jackpot|1": 0.012163083863115473,
+        "steady|-1": -0.00579481056072253,
+        "steady|0": -0.009501427188204271,
+        "steady|1": 0.011343729153266235
+      }
+    }
+  },
+  "protocol": "Is the organizer-supplied query.signal new information, and how much is it worth?\n\nFamily N's first instruction: compare the actual queries.csv signal against the latest\noutcome sign and the existing features, and establish redundancy EMPIRICALLY before\ntreating signal as new information.\n\nThree questions, in order:\n  1. Is signal redundant with the lag-1 outcome sign? Target-free, so computed on both\n     splits.\n  2. Does signal carry information about the targets, and about which head?\n  3. How much official score could it possibly deliver? Answered with an IN-SAMPLE CEILING:\n     the exactly optimal additive shift to q within each cell, fitted on the very rows it is\n     scored on. That is an upper bound no nested procedure can beat, so a small ceiling is a\n     conclusive negative and needs no fold machinery.\n\nThe exact per-cell optimum uses the closed form for the official loss at frozen r,\n    L(q) = sum_i w_i (A_i q_i^2 - 2 B_i q_i),  A_i = 1 + ||r_i||^2,  B_i = u_i + r_i . t_+,i\nwhose minimiser over a common additive shift d in a cell is\n    d* = sum_i w_i (B_i - A_i q_i) / sum_i w_i A_i.\n",
+  "redundancy": {
+    "train": {
+      "agreement_fraction": 0.3763020833333333,
+      "crosstab_signal_by_lag1": [
+        [
+          160,
+          0,
+          90
+        ],
+        [
+          156,
+          0,
+          111
+        ],
+        [
+          122,
+          0,
+          129
+        ]
+      ],
+      "lag1_counts": {
+        "-1": 438,
+        "1": 330
+      },
+      "lag1_win_rate_by_signal": {
+        "-1": 0.36,
+        "0": 0.4157303370786517,
+        "1": 0.5139442231075697
+      },
+      "n": 768,
+      "signal_counts": {
+        "-1": 250,
+        "0": 267,
+        "1": 251
+      }
+    },
+    "validation": {
+      "agreement_fraction": 0.3776041666666667,
+      "crosstab_signal_by_lag1": [
+        [
+          154,
+          0,
+          93
+        ],
+        [
+          147,
+          0,
+          112
+        ],
+        [
+          126,
+          0,
+          136
+        ]
+      ],
+      "lag1_counts": {
+        "-1": 427,
+        "1": 341
+      },
+      "lag1_win_rate_by_signal": {
+        "-1": 0.3765182186234818,
+        "0": 0.43243243243243246,
+        "1": 0.5190839694656488
+      },
+      "n": 768,
+      "signal_counts": {
+        "-1": 247,
+        "0": 259,
+        "1": 262
+      }
+    }
+  },
+  "target_association": {
+    "by_signal": {
+      "-1": {
+        "n": 247,
+        "pred_P_positive": 0.4147773525346005,
+        "truth_P_1x_given_positive": 0.4212033189489678,
+        "truth_P_positive": 0.41472556610572325,
+        "weighted_q_residual": -0.0004961505899499293
+      },
+      "0": {
+        "n": 259,
+        "pred_P_positive": 0.41441189538829143,
+        "truth_P_1x_given_positive": 0.4003356078658801,
+        "truth_P_positive": 0.41046468220412813,
+        "weighted_q_residual": -0.004450882535323155
+      },
+      "1": {
+        "n": 262,
+        "pred_P_positive": 0.4788504771864705,
+        "truth_P_1x_given_positive": 0.40724190983722625,
+        "truth_P_positive": 0.48827034019309873,
+        "weighted_q_residual": 0.009643156871867314
+      }
+    },
+    "by_type_and_signal": {
+      "balanced": {
+        "-1": -0.0065126452677841925,
+        "0": -7.867380037674625e-05,
+        "1": 0.008898775247008998
+      },
+      "jackpot": {
+        "-1": 0.002885170294483118,
+        "0": -0.007154091289177405,
+        "1": 0.01131930493887054
+      },
+      "steady": {
+        "-1": 0.0031720934935196552,
+        "0": -0.0033375007369241326,
+        "1": 0.008058317885870523
+      }
+    }
+  },
+  "verdict": "query.signal is NOT redundant with the lag-1 outcome sign: it is 3-valued where the lag-1 sign is 2-valued, they agree on only about 37.7 percent of queries, and the lag-1 win rate rises monotonically with signal in BOTH splits. It does carry target information about q and essentially none about r. But the protected forecast already absorbs almost all of it through the history it reads, and the IN-SAMPLE ceiling for an additive per-cell q shift is only about 5e-4 in R, roughly 0.02 points, with 9 free parameters fitted on the scored rows. No nested procedure can exceed that, so signal cannot contribute materially to the score."
+}
