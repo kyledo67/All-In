@@ -1,0 +1,296 @@
+{
+  "exposure": "Conditional exploratory development on 96 repeatedly inspected episodes; nested fitting creates no independent holdout.",
+  "fold_provenance": [
+    {
+      "fold": 0,
+      "inner_scores": {
+        "mixture_independent": {
+          "1.0": -7.222098351972836,
+          "10.0": -7.223181657593495,
+          "100.0": -7.224497444025742,
+          "inf": -7.222013506093468
+        },
+        "single_beta": {
+          "1.0": -7.222336329354471,
+          "10.0": -7.2243966675330675,
+          "100.0": -7.22677072227687,
+          "inf": -7.222013506093468
+        }
+      },
+      "lambda_mixture": 100.0,
+      "lambda_single_beta": 100.0,
+      "mixture_fit": {
+        "concentration": 0.49624217699625345,
+        "high": {
+          "balanced": 0.4753775156856261,
+          "jackpot": 0.3214221545301906,
+          "steady": 0.5857836566520642
+        },
+        "low": {
+          "balanced": 0.25937711794056484,
+          "jackpot": 0.2636299428186368,
+          "steady": 0.2976914733375595
+        },
+        "pi": {
+          "balanced": 0.05892907802842498,
+          "jackpot": 0.953860590839504,
+          "steady": 0.0072360454209753795
+        },
+        "rho": -0.9999999997102066
+      },
+      "single_beta_fit": {
+        "concentration": 0.49427532732171287,
+        "shipped_concentration": 0.5,
+        "shipped_type_means": {
+          "balanced": 0.4460431654676259,
+          "jackpot": 0.26785714285714285,
+          "steady": 0.575187969924812
+        },
+        "type_means": {
+          "balanced": 0.23721739325127147,
+          "jackpot": 0.28870753950539446,
+          "steady": 0.32102130406182244
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "inner_scores": {
+        "mixture_independent": {
+          "1.0": -7.592158042987626,
+          "10.0": -7.592311027572186,
+          "100.0": -7.592826053615611,
+          "inf": -7.592140004266793
+        },
+        "single_beta": {
+          "1.0": -7.592218064864552,
+          "10.0": -7.592738647869492,
+          "100.0": -7.593905568722733,
+          "inf": -7.592140004266793
+        }
+      },
+      "lambda_mixture": 100.0,
+      "lambda_single_beta": 100.0,
+      "mixture_fit": {
+        "concentration": 0.48546826465771964,
+        "high": {
+          "balanced": 0.4460431705479601,
+          "jackpot": 0.38424255393715656,
+          "steady": 0.5751879789420169
+        },
+        "low": {
+          "balanced": 0.41652066261911896,
+          "jackpot": 0.2678571426243151,
+          "steady": 0.5646139677415242
+        },
+        "pi": {
+          "balanced": 0.5022886469901177,
+          "jackpot": 0.4999323629605619,
+          "steady": 0.5020811644790583
+        },
+        "rho": -0.9999999999999885
+      },
+      "single_beta_fit": {
+        "concentration": 0.48319641004504676,
+        "shipped_concentration": 0.5,
+        "shipped_type_means": {
+          "balanced": 0.4460431654676259,
+          "jackpot": 0.26785714285714285,
+          "steady": 0.575187969924812
+        },
+        "type_means": {
+          "balanced": 0.4018645010110746,
+          "jackpot": 0.37713990828750804,
+          "steady": 0.563262289190251
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "inner_scores": {
+        "mixture_independent": {
+          "1.0": -7.823868560795437,
+          "10.0": -7.825265632604667,
+          "100.0": -7.824917321886212,
+          "inf": -7.823825054480947
+        },
+        "single_beta": {
+          "1.0": -7.824017593162626,
+          "10.0": -7.824954417885318,
+          "100.0": -7.82339680868392,
+          "inf": -7.823825054480947
+        }
+      },
+      "lambda_mixture": 10.0,
+      "lambda_single_beta": 10.0,
+      "mixture_fit": {
+        "concentration": 0.5011155445093702,
+        "high": {
+          "balanced": 0.44604316546895617,
+          "jackpot": 0.28480411204167944,
+          "steady": 0.5751921295811988
+        },
+        "low": {
+          "balanced": 0.4193933136269261,
+          "jackpot": 0.26785713592556526,
+          "steady": 0.5410294396064645
+        },
+        "pi": {
+          "balanced": 0.4773395106269663,
+          "jackpot": 0.46557737818923145,
+          "steady": 0.4960350781911406
+        },
+        "rho": -0.9999999999575142
+      },
+      "single_beta_fit": {
+        "concentration": 0.5010978759592956,
+        "shipped_concentration": 0.5,
+        "shipped_type_means": {
+          "balanced": 0.4460431654676259,
+          "jackpot": 0.26785714285714285,
+          "steady": 0.575187969924812
+        },
+        "type_means": {
+          "balanced": 0.39746939508834445,
+          "jackpot": 0.294628440601108,
+          "steady": 0.5183209238436156
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "inner_scores": {
+        "mixture_independent": {
+          "1.0": -7.493762995631323,
+          "10.0": -7.494909166617372,
+          "100.0": -7.5003646964662725,
+          "inf": -7.493618161208823
+        },
+        "single_beta": {
+          "1.0": -7.494235881947264,
+          "10.0": -7.498363038612432,
+          "100.0": -7.506239763705173,
+          "inf": -7.493618161208823
+        }
+      },
+      "lambda_mixture": 100.0,
+      "lambda_single_beta": 100.0,
+      "mixture_fit": {
+        "concentration": 0.5215898242776694,
+        "high": {
+          "balanced": 0.45510987867907987,
+          "jackpot": 0.28235994114978963,
+          "steady": 0.5751879699248286
+        },
+        "low": {
+          "balanced": 0.17680466236115794,
+          "jackpot": 0.26785714284631146,
+          "steady": 0.3103996342585174
+        },
+        "pi": {
+          "balanced": 0.07771619103647165,
+          "jackpot": 0.5256733846013599,
+          "steady": 0.4367972469097674
+        },
+        "rho": -0.9999999999951733
+      },
+      "single_beta_fit": {
+        "concentration": 0.5091551928121721,
+        "shipped_concentration": 0.5,
+        "shipped_type_means": {
+          "balanced": 0.4460431654676259,
+          "jackpot": 0.26785714285714285,
+          "steady": 0.575187969924812
+        },
+        "type_means": {
+          "balanced": 0.20072308037934014,
+          "jackpot": 0.2867051524486044,
+          "steady": 0.33133825052696214
+        }
+      }
+    }
+  ],
+  "paired": {
+    "mixture_coupled_vs_mixture_independent": {
+      "ci95_delta_R": [
+        -2.3498525267282477e-05,
+        3.084497611550051e-05
+      ],
+      "units": "difference in normalized error R; negative favours the FIRST named arm"
+    },
+    "mixture_coupled_vs_protected": {
+      "ci95_delta_R": [
+        -0.00014873469845886095,
+        0.0012311834852094827
+      ],
+      "units": "difference in normalized error R; negative favours the FIRST named arm"
+    },
+    "mixture_independent_vs_single_beta": {
+      "ci95_delta_R": [
+        -0.00027362889111381874,
+        0.0007502177070260925
+      ],
+      "units": "difference in normalized error R; negative favours the FIRST named arm"
+    },
+    "single_beta_vs_protected": {
+      "ci95_delta_R": [
+        -0.0006857983689204213,
+        0.001332850271416684
+      ],
+      "units": "difference in normalized error R; negative favours the FIRST named arm"
+    }
+  },
+  "parity_routed": 762,
+  "protected_reproduces_package_to": 3.3306690738754696e-16,
+  "protocol": "Four-arm prior-calibration ladder on the parity-routed queries.\n\nEach rung adds exactly one kind of freedom, so a gain can be attributed to the structure\nthat produced it rather than to \"a learned prior\" in general.\n\n  A protected    the shipped prior: one Beta(kappa*mu_type, kappa*(1-mu_type)) shared by\n                 both parity groups, each group's posterior mean taken independently.\n                 Zero fitted parameters. Reproduces the packaged forecast exactly.\n  B single_beta  the SAME single-Beta form, RECALIBRATED: one mean offset per machine type\n                 plus one shared concentration. 4 parameters. This is the cheap rung the\n                 earlier run skipped: it asks whether the shipped kappa and type means are\n                 simply mistuned, separately from whether two components are needed.\n  C mixture_ind  two-component Beta mixture marginals per type (low mean, high mean, mixing\n                 weight) plus one shared concentration, groups independent. 10 parameters.\n  D mixture_cpl  C's fitted marginals held FIXED, plus one shared coupling rho that changes\n                 only the dependence between the two groups. 11 parameters. Marginals are\n                 matched to C by construction, so D minus C isolates dependence.\n\nInterpretation: B-A is recalibration of the existing form. C-B is the value of a second\ncomponent. D-C is the value of cross-group dependence. Confounding the three is exactly\nwhat the earlier two-arm run did.\n\nPERMISSION. organizer/RULES.md line 9 \"Learn from the main training and validation data\";\nline 39 \"Public validation is available for model selection.\"\n\nFROZEN ACROSS ARMS. build_cache supplies each query's selected lag pair, template,\nhalf-life and decayed group counts from its proper pre-cutoff history; every arm reuses\nthem byte-identically. Non-parity routes keep the control q. The conditional positive\nvector r, its blend weight, tail constants and tail operation are frozen and numerically\nidentical in all four arms, so only the prior moves.\n\nOBJECTIVE. The exact official full-vector loss at frozen r,\n    L_i(q) = (1 + ||r_i||^2) q^2 - 2 (u_i + r_i . t_+,i) q + const,\nwith official episode and condition weighting and fitting-side reference normalization.\nNot unweighted win Brier.\n\nNESTING. Complete-episode outer folds frozen in advance. Every target-dependent parameter\nis fitted on outer fitting episodes only. Each arm's ridge strength is chosen on inner\ncomplete-episode folds carved from the outer fitting episodes, and all of that arm's\nparameters are refitted inside each inner training partition. D's marginal is frozen from\nC fitted on the same fitting partition before rho is estimated. Held-fold predictions are\nconcatenated and scored once.\n\nGRID, predeclared: lambda in {inf, 100, 10, 1}. lambda = inf reproduces arm A exactly, so\n\"no change\" is an available outcome for every rung.\n\nConditional exploratory development: the base recipe and these hypotheses were shaped by\nthe same 96 repeatedly inspected episodes. Nested fitting creates no independent holdout.\n",
+  "results": {
+    "mixture_coupled": {
+      "R": 0.12134965193638969,
+      "by_condition": {
+        "drift": 0.12142290786118252,
+        "shared_change": 0.13151327657422046,
+        "short_history": 0.14709880024214428,
+        "stable": 0.0853636230680115
+      },
+      "points": 53.50695021520691
+    },
+    "mixture_independent": {
+      "R": 0.12134631719916963,
+      "by_condition": {
+        "drift": 0.121433700001856,
+        "shared_change": 0.13150466968289767,
+        "short_history": 0.14708099292797502,
+        "stable": 0.08536590618394986
+      },
+      "points": 53.50710933787551
+    },
+    "protected": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.14575610520224477,
+        "stable": 0.08563840608796552
+      },
+      "points": 53.532917808538166
+    },
+    "single_beta": {
+      "R": 0.1211700010553734,
+      "by_condition": {
+        "drift": 0.12104068964306772,
+        "shared_change": 0.13180459949120457,
+        "short_history": 0.14633335208546175,
+        "stable": 0.08550136300175956
+      },
+      "points": 53.51552391120093
+    }
+  },
+  "rungs": {
+    "mixture_coupled_minus_mixture_independent": -0.0001591226685988545,
+    "mixture_coupled_minus_protected": -0.025967593331252203,
+    "mixture_independent_minus_single_beta": -0.008414573325417507,
+    "single_beta_minus_protected": -0.017393897337235842
+  },
+  "seconds": 155.9397326670005,
+  "total_queries": 768
+}

@@ -1,0 +1,192 @@
+{
+  "exposure": "Conditional exploratory development on 96 repeatedly inspected episodes; nested fitting creates no independent holdout.",
+  "fold_provenance": [
+    {
+      "adopted": true,
+      "coefficients_cat1_cat2": [
+        [
+          -0.03307403525263088,
+          0.0287248892909387,
+          -0.13055000423634266,
+          -0.0885714535362228,
+          0.15164159152590756,
+          -0.18711939779121803,
+          0.00532065294727145,
+          -1.0330925346204755e-08
+        ],
+        [
+          -0.006149642689632359,
+          -0.02150810395913524,
+          -0.16381716070746466,
+          -0.16535005609730719,
+          0.03743947450111711,
+          -0.21338041008797556,
+          0.12965557573035605,
+          -1.0330925346204755e-08
+        ]
+      ],
+      "fold": 0,
+      "inner_baseline": 0.398903269288449,
+      "inner_scores": {
+        "base6|0.1": 0.4005061959204802,
+        "base6|1.0": 0.3983259896695224,
+        "base6|10.0": 0.3919673331738778,
+        "base6|100.0": 0.39141954044080973,
+        "base6|inf": 0.398903269288449,
+        "extended8|0.1": 0.40050725963534634,
+        "extended8|1.0": 0.3983858939614351,
+        "extended8|10.0": 0.3920595252505507,
+        "extended8|100.0": 0.3904970859502108,
+        "extended8|inf": 0.398903269288449
+      },
+      "inner_selected": 0.3904970859502108,
+      "selected": "extended8|100.0"
+    },
+    {
+      "adopted": true,
+      "coefficients_cat1_cat2": [
+        [
+          0.11419663205964765,
+          -0.019807940427914172,
+          -0.11828437214155196,
+          0.030635310761241197,
+          0.07033688432003243,
+          -0.12409225785943848
+        ],
+        [
+          0.11955303208133998,
+          -0.013449166436140463,
+          -0.1244609653193507,
+          -0.03753121295186644,
+          0.015851329839614837,
+          -0.2059422872567831
+        ]
+      ],
+      "fold": 1,
+      "inner_baseline": 0.326304492737168,
+      "inner_scores": {
+        "base6|0.1": 0.32655254663375655,
+        "base6|1.0": 0.3237757140889973,
+        "base6|10.0": 0.3191043626213545,
+        "base6|100.0": 0.31684065476028733,
+        "base6|inf": 0.326304492737168,
+        "extended8|0.1": 0.3264654362604898,
+        "extended8|1.0": 0.3237996165450757,
+        "extended8|10.0": 0.3213062099595741,
+        "extended8|100.0": 0.3210875923711318,
+        "extended8|inf": 0.326304492737168
+      },
+      "inner_selected": 0.31684065476028733,
+      "selected": "base6|100.0"
+    },
+    {
+      "adopted": true,
+      "coefficients_cat1_cat2": [
+        [
+          -0.04806994818310884,
+          0.02409440738169956,
+          -0.01278691900958926,
+          -0.011776356074017722,
+          0.018498932346342596,
+          -0.08741875244520057
+        ],
+        [
+          0.062144649502145426,
+          -0.003964183517566317,
+          -0.00734876108916258,
+          -0.04288302458037019,
+          -0.013902116882047875,
+          -0.07467643846794651
+        ]
+      ],
+      "fold": 2,
+      "inner_baseline": 0.35281058900742923,
+      "inner_scores": {
+        "base6|0.1": 0.3500570314329038,
+        "base6|1.0": 0.34817757009357436,
+        "base6|10.0": 0.3436345667171461,
+        "base6|100.0": 0.34837192083497653,
+        "base6|inf": 0.35281058900742923,
+        "extended8|0.1": 0.35016614436794224,
+        "extended8|1.0": 0.348958900687137,
+        "extended8|10.0": 0.34532139835813636,
+        "extended8|100.0": 0.35002804874454707,
+        "extended8|inf": 0.35281058900742923
+      },
+      "inner_selected": 0.3436345667171461,
+      "selected": "base6|10.0"
+    },
+    {
+      "adopted": true,
+      "coefficients_cat1_cat2": [
+        [
+          -0.05208347922139879,
+          -0.010431447460000562,
+          -0.12322034576348367,
+          -0.07845272771769395,
+          0.14529349664201152,
+          -0.19455288829142622
+        ],
+        [
+          0.061406985728656535,
+          -0.07037702539112518,
+          -0.14318215906152207,
+          -0.12924618769802532,
+          0.09784679244338938,
+          -0.17450058930767193
+        ]
+      ],
+      "fold": 3,
+      "inner_baseline": 0.37848133200201356,
+      "inner_scores": {
+        "base6|0.1": 0.37923759150307673,
+        "base6|1.0": 0.3756916048805047,
+        "base6|10.0": 0.36478319110902657,
+        "base6|100.0": 0.35930021032484005,
+        "base6|inf": 0.37848133200201356,
+        "extended8|0.1": 0.3791964997953919,
+        "extended8|1.0": 0.3755567919593128,
+        "extended8|10.0": 0.36495225935501086,
+        "extended8|100.0": 0.3596194713151012,
+        "extended8|inf": 0.37848133200201356
+      },
+      "inner_selected": 0.35930021032484005,
+      "selected": "base6|100.0"
+    }
+  ],
+  "folds_adopted": 4,
+  "gain": 0.10378667412886244,
+  "max_abs_change_vs_protected": 0.09840042711341523,
+  "paired_vs_protected": {
+    "ci95_delta_R": [
+      -0.006121813451195555,
+      0.0017884821676295375
+    ],
+    "units": "difference in normalized error R; negative favours the residual fallback"
+  },
+  "protocol": "Bounded full-vector residual correction on top of the protected release, gated on the\nfitting side only.\n\nEverything measured so far corrects the POSITIVE PROBABILITY q at a frozen conditional\nvector r. This asks a different question: does a small, bounded correction to the whole\nfive-vector help, when the correction is allowed to move the zero mass and the 1x mass\nindependently rather than through a single q?\n\nFORM. The five categories are collapsed to three masses\n    m = (P(0), P(1), P({2,5,20}))\nbecause the two-endpoint study found the within-tail split among {2,5,20} constant to 1e-9\nper machine type. That split is taken from the protected release and FROZEN, so the tail is\nreallocated proportionally and never reshaped.\n\nThe correction is a residual in log space against the protected release's own masses b:\n    m = softmax(log b + X C),  C's reference row (category 0) fixed at zero.\nAt C = 0 this reproduces the protected forecast EXACTLY, so \"no change\" is representable\nand is also the lambda = inf endpoint of the grid.\n\nINPUTS, six, hence 2 free rows x 6 = 12 free coefficients:\n  1 intercept\n  2 indicator machine_type == 'balanced'\n  3 indicator machine_type == 'jackpot'\n  4 query signal: the queried row's lag-1 outcome coded +1 positive / -1 zero, and 0 when\n    tick cutoff-1 is ABSENT. Missing is its own state, not a loss.\n  5 queried-group evidence fraction: the share of the machine's decay-weighted evidence\n    that sits in the queried parity group, 1.0 for null/full routes where all evidence is\n    one cell.\n  6 opposite-group posterior mean: the other parity group's Beta posterior mean under the\n    shipped prior; for null/full routes the machine's overall posterior mean.\nInputs 5 and 6 are centred and scaled using FITTING-side statistics only.\n\nEXTENDED variant, eight inputs hence 16 coefficients, adds:\n  7 signed current-run length over ACTUAL ticks, capped at 8: +k if the k most recent\n    observed outcomes were all positive, -k if all zero. Actual tick differences, never\n    row offsets.\n  8 missingness flag: 1 if any of ticks cutoff-1 .. cutoff-8 is absent.\n\nOBJECTIVE. The official weighted full five-vector squared error with episode and condition\nweighting and fitting-side reference normalization. Not a surrogate.\n\nGATING. For each outer fold the arm is ADOPTED only if it beats the protected baseline on\ninner complete-episode folds carved from that fold's fitting episodes. If it does not, the\nouter held fold receives the protected forecast unchanged. The outer held targets never\ninfluence whether the correction is used, how strongly it is regularized, or which input\nset is chosen. The gate decision per fold is reported.\n\nNESTING. Complete-episode outer folds frozen in advance; all coefficients, the ridge\nstrength, the input-set choice, the feature scaling and the gate are fitted on outer\nfitting episodes only. Held-fold forecasts are concatenated and scored once.\n\nConditional exploratory development: shaped by the same 96 repeatedly inspected episodes;\nnested fitting creates no independent holdout.\n",
+  "results": {
+    "protected": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.14575610520224477,
+        "stable": 0.08563840608796552
+      },
+      "points": 53.532917808538166
+    },
+    "residual_fallback": {
+      "R": 0.11863695912543061,
+      "by_condition": {
+        "drift": 0.11161271686898415,
+        "shared_change": 0.13055268455856323,
+        "short_history": 0.14444946413087517,
+        "stable": 0.08793297094329988
+      },
+      "points": 53.63670448266703
+    }
+  },
+  "seconds": 8.398167500010459,
+  "tail_split_frozen": true
+}

@@ -40,6 +40,7 @@ os.environ.setdefault('MPLCONFIGDIR', '/tmp/all-in-mpl')
 os.environ.setdefault('OMP_NUM_THREADS', '2')
 import argparse
 import glob
+import hashlib
 import json
 import sys
 import time
@@ -54,6 +55,7 @@ from scipy.optimize import minimize
 from slot_model.simplex_project import project_to_hull, tail_family_vertices
 from slot_model.official_score import paired_bootstrap, score, scoring_inputs
 from slot_forecasting.io import load_inputs, read_submission, write_submission
+from scripts.stack_manifest import RAW_SOURCES, classify
 
 BLOCK = ('PRIVILEGED', 'privileged_envelope', 'true_r')
 SELF_DIRS = ('artifacts/stacking/', 'artifacts/separable/')
@@ -73,6 +75,12 @@ def main():
     parser.add_argument('--protected', type=Path,
                         default=ROOT / 'artifacts/win_head_release_exact/validation_submission.csv')
     parser.add_argument('--out', type=Path, default=ROOT / 'artifacts/separable')
+    parser.add_argument('--manifest', action='store_true',
+                        help='build the pool from the explicit RAW manifest in '
+                             'scripts/stack_manifest.py instead of directory globs. Only '
+                             'candidates whose provenance is RAW (train-only fitting) are '
+                             'admitted, so no member leaks an outer held fold through its '
+                             'FITTING-side values.')
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     start = time.perf_counter()
@@ -90,33 +98,58 @@ def main():
     vq, _ = load_inputs(args.data / 'validation')
     types = np.array([{q.query_id: q.machine_type for q in vq}[i] for i in ids])
 
+    sources = sorted(RAW_SOURCES) if args.manifest else sorted(
+        {f for pat in PATTERNS for f in glob.glob(pat)})
     seen, names, arrs, excluded = {}, [], [], []
-    for path in sorted({f for pat in PATTERNS for f in glob.glob(pat)}):
-        if any(t in path for t in BLOCK) or any(path.startswith(d) for d in SELF_DIRS):
+    dup_q, dup_r, skipped = {}, {}, []
+    for path in sources:
+        if args.manifest:
+            if classify(path) != 'RAW':
+                excluded.append(path)
+                continue
+        elif any(t in path for t in BLOCK) or any(path.startswith(d) for d in SELF_DIRS):
             excluded.append(path)
             continue
-        if 'reference' in path or 'diagnostics' in path:
+        if not args.manifest and ('reference' in path or 'diagnostics' in path):
             continue
         try:
             d = read_submission(path)
         except Exception:
+            skipped.append([path, 'unreadable'])
             continue
         if set(d) != want:
+            skipped.append([path, 'misaligned query set'])
             continue
         a = np.array([d[i] for i in ids])
         if not (np.isfinite(a).all() and a.min() >= -1e-12 and abs(a.sum(1) - 1).max() < 1e-6):
+            skipped.append([path, 'not on the simplex'])
             continue
-        key = hash(a.round(12).tobytes())
+        key = hashlib.sha256(a.round(12).tobytes()).hexdigest()
         if key in seen:
+            skipped.append([path, f'duplicate five-vector of {seen[key]}'])
             continue
         seen[key] = path
+        an = a / a.sum(axis=1, keepdims=True)
+        qh = 1.0 - an[:, 0]
+        rh = an[:, 1:] / np.maximum(qh, 1e-12)[:, None]
+        rh = rh / rh.sum(axis=1, keepdims=True)
+        hq = hashlib.sha256(qh.round(12).tobytes()).hexdigest()
+        hr = hashlib.sha256(rh.round(12).tobytes()).hexdigest()
+        dup_q.setdefault(hq, []).append(path)
+        dup_r.setdefault(hr, []).append(path)
         names.append(path)
-        arrs.append(a / a.sum(axis=1, keepdims=True))
+        arrs.append(an)
+    dup_q_groups = [v for v in dup_q.values() if len(v) > 1]
+    dup_r_groups = [v for v in dup_r.values() if len(v) > 1]
     P = np.stack(arrs)
     Q = 1.0 - P[:, :, 0]
     R = P[:, :, 1:] / np.maximum(Q, 1e-12)[:, :, None]
     R = R / R.sum(axis=2, keepdims=True)
-    print(f'pool {len(names)} distinct archived forecasts; {len(excluded)} blocked', flush=True)
+    print(f'pool {len(names)} distinct archived forecasts; {len(excluded)} blocked; '
+          f'{len(skipped)} skipped', flush=True)
+    print(f'  head duplication: {len(dup_q_groups)} q-head groups and {len(dup_r_groups)} '
+          f'r-head groups share an identical head, so they are not independent evidence',
+          flush=True)
 
     prot = read_submission(args.protected)
     prot = np.array([prot[q] for q in ids])
@@ -250,8 +283,26 @@ def main():
         held['separable'][outer] = base[outer]
         held['separable_projected'][outer] = proj[outer]
         held['separable_rescaled'][outer] = resc[outer]
+        # which coordinates does the projection actually move, and by how much
+        om = np.flatnonzero(outer)
+        dlt = np.abs(proj[om] - base[om])
+        active = dlt > 1e-9
         qidx, xq, ridx, xr = parts
         prov.append({'fold': fold, 'kq': kq, 'kr': kr,
+                     'projection_audit': {
+                         'rows_changed': int(np.any(active, axis=1).sum()),
+                         'rows_held': int(len(om)),
+                         'per_coordinate_rows_changed':
+                             dict(zip(('p0', 'p1', 'p2', 'p5', 'p20'),
+                                      active.sum(axis=0).tolist())),
+                         'per_coordinate_mean_abs_change':
+                             dict(zip(('p0', 'p1', 'p2', 'p5', 'p20'),
+                                      dlt.mean(axis=0).tolist())),
+                         'per_coordinate_max_abs_change':
+                             dict(zip(('p0', 'p1', 'p2', 'p5', 'p20'),
+                                      dlt.max(axis=0).tolist())),
+                         'max_abs_change_any_coordinate': float(dlt.max()),
+                         'mean_total_variation': float(dlt.sum(axis=1).mean() / 2)},
                      'q_members': [names[i] for i in qidx], 'q_weights': xq.tolist(),
                      'r_members': [names[i] for i in ridx], 'r_weights': xr.tolist(),
                      'tails': {t: v.tolist() for t, v in tails.items()}})
@@ -266,6 +317,12 @@ def main():
                  and pairs[k]['delta_loss_ratio_ci95'][1] < 0}
 
     report = {'protocol': __doc__, 'pool_size': len(names),
+              'pool_mode': 'explicit RAW manifest' if args.manifest else 'directory globs',
+              'pool_members': names,
+              'pool_excluded_by_provenance': excluded,
+              'pool_skipped': skipped,
+              'duplicate_q_head_groups': dup_q_groups,
+              'duplicate_r_head_groups': dup_r_groups,
               'results': {k: {'points': v['technical_points'], 'R': v['mean_loss_ratio'],
                               'by_condition': {c: x['loss_ratio'] for c, x in v['by_condition'].items()}}
                           for k, v in res.items()},
