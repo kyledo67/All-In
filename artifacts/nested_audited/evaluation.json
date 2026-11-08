@@ -1,0 +1,492 @@
+{
+  "duplicate_q_head_groups": [],
+  "duplicate_r_head_groups": [
+    [
+      "artifacts/beta_cells/predictions/oof_beta_average.csv",
+      "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+      "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+      "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+      "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+      "artifacts/two_head_01/validation.csv"
+    ]
+  ],
+  "exposure": "Conditional exploratory development on 96 repeatedly reused episodes.",
+  "fold_provenance": [
+    {
+      "fold": 0,
+      "kq": 2,
+      "kr": 20,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.10336682118403809,
+        "mean_total_variation": 0.012506683124847116,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.017336513918353155,
+          "p1": 0.01733651391835314,
+          "p2": 0.10336682118403809,
+          "p20": 0.05571765592980027,
+          "p5": 0.10063090045525255
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.0017707793200206516,
+          "p1": 0.0017707793200206507,
+          "p2": 0.007929524505831906,
+          "p20": 0.0037614572783339194,
+          "p5": 0.009780825825487102
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv"
+      ],
+      "q_weights": [
+        0.5275891084544587,
+        0.4724108915455413
+      ],
+      "r_members": [
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv"
+      ],
+      "r_weights": [
+        0.05800454490943357,
+        0.04115681799440175,
+        0.04115680302195799,
+        0.041157091249385436,
+        0.04115711999302352,
+        0.0411567317331654,
+        0.04115629645923945,
+        0.2828602381081658,
+        2.913581580317979e-18,
+        0.0,
+        0.0997864227878541,
+        0.10033512308293537,
+        0.0,
+        4.759054614148286e-18,
+        0.2120728106604376
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315798,
+          0.4736842105263152,
+          0.15789473684210556
+        ],
+        "steady": [
+          0.8000000000000003,
+          0.19600000000000026,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "fold": 1,
+      "kq": 5,
+      "kr": 20,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.11198175250015019,
+        "mean_total_variation": 0.013547353258391534,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.01481200730008747,
+          "p1": 0.01481200730008747,
+          "p2": 0.11198175250015019,
+          "p20": 0.03884421487538792,
+          "p5": 0.08646971022095004
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.0020821810894704022,
+          "p1": 0.002082181089470402,
+          "p2": 0.00839055041916057,
+          "p20": 0.0035395264058013533,
+          "p5": 0.011000267512880338
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv"
+      ],
+      "q_weights": [
+        0.4722128131628379,
+        0.09285313145482567,
+        0.2942113236358346,
+        0.14072273174650193,
+        1.1182001228420467e-17
+      ],
+      "r_members": [
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv"
+      ],
+      "r_weights": [
+        0.07401915899774297,
+        0.07401919330073684,
+        0.07401864133400243,
+        0.07401823917680025,
+        0.07401805604397949,
+        0.07401746401584515,
+        8.885225069826127e-18,
+        0.0,
+        0.0707124688851107,
+        2.0772130591110195e-17,
+        0.25551869889226964,
+        0.044226854254567294,
+        7.439224685321769e-17,
+        3.393649083702931e-19,
+        0.18543122509894522
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130457,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315796,
+          0.47368421052631515,
+          0.15789473684210545
+        ],
+        "steady": [
+          0.8000000000000005,
+          0.19600000000000017,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "fold": 2,
+      "kq": 8,
+      "kr": 20,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.09990316332094726,
+        "mean_total_variation": 0.01473672889747068,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.015584949829434702,
+          "p1": 0.015584949829434702,
+          "p2": 0.09990316332094726,
+          "p20": 0.06004097159923112,
+          "p5": 0.07853971786892047
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.0021169433924953392,
+          "p1": 0.002116943392495335,
+          "p2": 0.009035875259964325,
+          "p20": 0.0041434675273354,
+          "p5": 0.012060228222650966
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/two_head_01/validation.csv"
+      ],
+      "q_weights": [
+        0.31985716893684774,
+        0.11890778029047491,
+        0.4288876358067559,
+        0.1323474149659214,
+        0.0,
+        1.6537456830960883e-17,
+        1.0905972712372741e-17,
+        0.0
+      ],
+      "r_members": [
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv"
+      ],
+      "r_weights": [
+        0.06925303022750337,
+        0.03599946515811937,
+        0.03600071809652204,
+        0.03600056299806067,
+        0.036000263672998446,
+        0.036000540747131965,
+        0.03600042551196669,
+        0.1769448002285132,
+        0.0,
+        0.2250855822251446,
+        1.6527684995398493e-19,
+        0.09303969405257723,
+        0.0,
+        1.0920160514239254e-17,
+        0.21967491708146253
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315799,
+          0.4736842105263152,
+          0.15789473684210553
+        ],
+        "steady": [
+          0.8000000000000008,
+          0.19600000000000012,
+          0.004000000000000003
+        ]
+      }
+    },
+    {
+      "fold": 3,
+      "kq": 5,
+      "kr": 20,
+      "projection_audit": {
+        "max_abs_change_any_coordinate": 0.09918826378078632,
+        "mean_total_variation": 0.014291390443108482,
+        "per_coordinate_max_abs_change": {
+          "p0": 0.01574095976526864,
+          "p1": 0.01574095976526868,
+          "p2": 0.09918826378078632,
+          "p20": 0.0482892233664666,
+          "p5": 0.09117223534451319
+        },
+        "per_coordinate_mean_abs_change": {
+          "p0": 0.0019093253292625423,
+          "p1": 0.0019093253292625444,
+          "p2": 0.009525533328822508,
+          "p20": 0.004340685714695785,
+          "p5": 0.010897911184173588
+        },
+        "per_coordinate_rows_changed": {
+          "p0": 192,
+          "p1": 192,
+          "p2": 192,
+          "p20": 192,
+          "p5": 192
+        },
+        "rows_changed": 192,
+        "rows_held": 192
+      },
+      "q_members": [
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_cells/predictions/oof_beta_average.csv"
+      ],
+      "q_weights": [
+        0.4210856717605409,
+        0.08342464523931264,
+        0.3765337773812167,
+        0.11895590561892985,
+        9.968968984252276e-18
+      ],
+      "r_members": [
+        "artifacts/beta_cells/predictions/oof_beta_average.csv",
+        "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+        "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+        "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+        "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+        "artifacts/two_head_01/validation.csv",
+        "artifacts/dense_catboost_01/validation_sparse.csv",
+        "artifacts/dense_catboost_01/validation_dense.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+        "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+        "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+        "artifacts/mtd_pairs_01/validation_lag7.csv",
+        "artifacts/mtd_pairs_01/validation_control.csv",
+        "artifacts/mtd_pairs_01/validation_additive.csv"
+      ],
+      "r_weights": [
+        0.05010512385413021,
+        0.05010515428311999,
+        0.05010511572503078,
+        0.05010499890244831,
+        0.050105041672830225,
+        0.05010514070731627,
+        1.8763103270662837e-18,
+        0.20254225964834424,
+        0.2626275999410833,
+        0.0,
+        0.0,
+        0.04657567336506376,
+        1.2983298516201254e-16,
+        0.0,
+        0.18762389190063286
+      ],
+      "tails": {
+        "balanced": [
+          0.6956521739130456,
+          0.26086956521739085,
+          0.043478260869565355
+        ],
+        "jackpot": [
+          0.3684210526315801,
+          0.4736842105263152,
+          0.1578947368421055
+        ],
+        "steady": [
+          0.800000000000001,
+          0.19600000000000006,
+          0.004000000000000003
+        ]
+      }
+    }
+  ],
+  "gains_over_protected": {
+    "separable": 0.1637294602114423,
+    "separable_projected": 0.35320580108195543,
+    "separable_rescaled": 0.35928410414569356
+  },
+  "paired_vs_protected": {
+    "separable": [
+      -0.011451475148364736,
+      0.003366981083007549
+    ],
+    "separable_projected": [
+      -0.015300221772452697,
+      -0.0006043364718767535
+    ],
+    "separable_rescaled": [
+      -0.0154696023585542,
+      -0.0006864154494814424
+    ]
+  },
+  "pool_excluded_by_provenance": [],
+  "pool_members": [
+    "artifacts/beta_cells/predictions/oof_beta_average.csv",
+    "artifacts/beta_cells/predictions/oof_beta_hard.csv",
+    "artifacts/beta_memory/predictions/oof_beta_memory.csv",
+    "artifacts/beta_subsets/predictions/oof_parity_templates.csv",
+    "artifacts/beta_templates/predictions/oof_parity_templates.csv",
+    "artifacts/dense_catboost_01/validation_dense.csv",
+    "artifacts/dense_catboost_01/validation_sparse.csv",
+    "artifacts/mtd_pairs_01/validation_additive.csv",
+    "artifacts/mtd_pairs_01/validation_control.csv",
+    "artifacts/mtd_pairs_01/validation_lag7.csv",
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv",
+    "artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv",
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv",
+    "artifacts/tabpfn/predictions/tabpfn_observable_20261109.csv",
+    "artifacts/two_head_01/validation.csv"
+  ],
+  "pool_mode": "explicit RAW manifest",
+  "pool_size": 15,
+  "pool_skipped": [],
+  "protocol": "Separable head stacking, then the structured tail projection, on archived forecasts only.\n\nPREREGISTERED, fixed before any held-fold number below was read.\n\nTwo ideas, both from the stated protocol and both using only archived predictions:\n\n1. SEPARABLE STACKING. The official query loss at a fixed conditional r is\n       L(q) = (1 + ||r||^2) q^2 - 2 (u + r.t_+) q + const,\n   so the five-vector loss is a quadratic in q for any given r, and the q and r heads are\n   separable. Stacking five-vectors mixes both heads with one weight vector; stacking the\n   heads separately gives each its own convex weights. Concretely:\n       q_stack = convex combination of archived q heads\n       r_stack = convex combination of archived r heads\n       p       = (1 - q_stack, q_stack * r_stack)\n   Both weight vectors are fitted on each outer fold's FITTING episodes against the exact\n   official weighted squared error, alternating once (fit r given q, then q given r), with\n   the pool size for each head chosen by inner complete-episode folds.\n\n2. STRUCTURED PROJECTION OF THE STACKED OUTPUT. A convex combination of five-vectors need\n   not keep the fixed type-specific tail split, even when every member has it, because the\n   mixing weights interact with each member's win mass. Each final five-vector is therefore\n   projected onto conv{e_0, e_1, (0,0,v_type)} by the exact Euclidean projection, with v\n   cross-fitted from fitting-side episodes only. The preserve-a rescale is reported\n   alongside, since it previously beat the exact projection at matched constants.\n\nPool: archived forecasts, EXCLUDING the privileged arrays and excluding this script's and\nthe stacking script's own outputs. Re-stacking on previous held-fold outputs is a\nself-feedback loop that inflates the score on these same 96 episodes by construction; that\nmistake was made once and is now blocked.\n\nComparator: the protected candidate at 53.532918, and the clean augmented stacking at\n53.869175. Advancement requires points to improve AND the paired interval against the\nprotected forecast to lie below zero, applied per arm.\n\nThese 96 episodes underpin the whole project. Every number here is conditional\nexploratory development, and the accumulated selection is not corrected by any interval.\n",
+  "qualified_arms": {
+    "separable_projected": 0.35320580108195543,
+    "separable_rescaled": 0.35928410414569356
+  },
+  "results": {
+    "protected": {
+      "R": 0.120805710882256,
+      "by_condition": {
+        "drift": 0.12076667137596732,
+        "shared_change": 0.13106166086284637,
+        "short_history": 0.14575610520224477,
+        "stable": 0.08563840608796552
+      },
+      "points": 53.532917808538166
+    },
+    "separable": {
+      "R": 0.11738819929859622,
+      "by_condition": {
+        "drift": 0.10952879655691693,
+        "shared_change": 0.12081462555655074,
+        "short_history": 0.1564251268080806,
+        "stable": 0.08278424827283659
+      },
+      "points": 53.69664726874961
+    },
+    "separable_projected": {
+      "R": 0.11345919841390074,
+      "by_condition": {
+        "drift": 0.10686469146037489,
+        "shared_change": 0.11722024251033406,
+        "short_history": 0.14915628309361495,
+        "stable": 0.0805955765912791
+      },
+      "points": 53.88612360962012
+    },
+    "separable_rescaled": {
+      "R": 0.1133336154498194,
+      "by_condition": {
+        "drift": 0.1061526290280212,
+        "shared_change": 0.11797379563119496,
+        "short_history": 0.14911193890736013,
+        "stable": 0.08009609823270135
+      },
+      "points": 53.89220191268386
+    }
+  },
+  "seconds": 58.844501708983444
+}

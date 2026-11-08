@@ -29,7 +29,8 @@ ROOT = Path(__file__).resolve().parents[1]
 # Producing script -> provenance class. Classification was read off the sources:
 # a script that calls row_weights() fits against validation truth.
 RAW_SOURCES = {
-    # primitive component forecasts: train-fitted models predicting validation
+    # Independently audited and adversarially verified as RAW: no validation target enters
+    # construction, in either the q head or the r head.
     'artifacts/tabpfn/predictions/tabpfn_hmm_20261108.csv': 'TabPFN hmm variant, seed 20261108, trained on public/train',
     'artifacts/tabpfn/predictions/tabpfn_hmm_20261109.csv': 'TabPFN hmm variant, seed 20261109, trained on public/train',
     'artifacts/tabpfn/predictions/tabpfn_observable_20261108.csv': 'TabPFN observable variant, train-fitted',
@@ -40,28 +41,53 @@ RAW_SOURCES = {
     'artifacts/mtd_pairs_01/validation_additive.csv': 'additive MTD, train-fitted, pair family frozen on train OOF',
     'artifacts/mtd_pairs_01/validation_lag7.csv': 'lag-7 pair MTD, train-fitted',
     'artifacts/mtd_pairs_01/validation_control.csv': 'control pair MTD, train-fitted',
-    'artifacts/final/validation_predictions.csv': 'Dynamax shared HMM, train-fitted',
-    # conjugate / parity family: hyperparameters selected on the TRAIN surrogate only
     'artifacts/beta_cells/predictions/oof_beta_hard.csv': 'four-cell Beta, kappa from train surrogate',
     'artifacts/beta_cells/predictions/oof_beta_average.csv': 'four-cell Beta averaged, train surrogate',
     'artifacts/beta_templates/predictions/oof_parity_templates.csv': 'null/full/parity dictionary, train surrogate',
     'artifacts/beta_subsets/predictions/oof_parity_templates.csv': 'subset-parity dictionary, train surrogate',
     'artifacts/beta_memory/predictions/oof_beta_memory.csv': 'Beta-specific causal memory selection, per-machine history only',
-    'artifacts/hier_beta/predictions/oof_pooled_endpoint.csv': 'hierarchical Beta, pooled endpoint, train surrogate',
-    'artifacts/hier_beta/predictions/oof_tau32.csv': 'hierarchical Beta tau=32, train surrogate',
-    'artifacts/hier_beta/predictions/oof_tau8.csv': 'hierarchical Beta tau=8, train surrogate',
-    'artifacts/hier_beta/predictions/oof_tau2.csv': 'hierarchical Beta tau=2, train surrogate',
-    'artifacts/hier_beta/predictions/oof_independent_4cell.csv': 'independent four-cell control, train surrogate',
-    'artifacts/endpoint_family/predictions/oof_tail_train.csv': 'tail rescale with TRAIN-estimated constants',
-    'artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv': 'tail rescale, train constants, add-1 smoothed',
-    'artifacts/projection/predictions/oof_tail_projection_train.csv': 'exact tail projection, TRAIN constants',
-    'artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv': 'conjugate Dirichlet r, tau from train surrogate',
-    'artifacts/win_head/predictions/oof_population_alpha1.csv': 'dense win head, population only',
-    'artifacts/win_head/predictions/oof_local_main_alpha1.csv': 'dense win head, local main effects',
-    'artifacts/win_head/predictions/oof_local_interactions_alpha1.csv': 'dense win head, local interactions',
-    'artifacts/pair_dict/predictions/oof_compact_hard.csv': 'compact logistic pair dictionary, hard selection',
-    'artifacts/pair_dict/predictions/oof_compact_average.csv': 'compact logistic pair dictionary, averaged',
 }
+
+# REMOVED FROM RAW_SOURCES after an independent audit. Each was previously declared RAW and
+# each is target-fitted. The audit was adversarially verified; every finding was upheld.
+#
+#   artifacts/win_head/predictions/oof_population_alpha1.csv
+#   artifacts/win_head/predictions/oof_local_main_alpha1.csv
+#   artifacts/win_head/predictions/oof_local_interactions_alpha1.csv
+#   artifacts/pair_dict/predictions/oof_compact_hard.csv
+#   artifacts/pair_dict/predictions/oof_compact_average.csv
+#       FOLD_FITTED. The q head is train-fitted, but the r head is NOT estimated at all:
+#       scripts/win_head_evaluate.py:82-85 reads --reference (default
+#       artifacts/audit/oof_candidate_raw.csv) and takes proportions = base[:,1:]/q
+#       verbatim, and that reference is a per-fold TRUTH-FITTED simplex blend. compose_all
+#       at :191-192 then multiplies the fitted q by those target-derived proportions.
+#
+#   artifacts/hier_beta/predictions/oof_pooled_endpoint.csv
+#   artifacts/hier_beta/predictions/oof_tau32.csv
+#   artifacts/hier_beta/predictions/oof_tau8.csv
+#   artifacts/hier_beta/predictions/oof_tau2.csv
+#   artifacts/hier_beta/predictions/oof_independent_4cell.csv
+#   artifacts/endpoint_family/predictions/oof_tail_train.csv
+#   artifacts/endpoint_family/predictions/oof_tail_train_smoothed.csv
+#   artifacts/projection/predictions/oof_tail_projection_train.csv
+#   artifacts/dirichlet_r/predictions/oof_r_dirichlet.csv
+#       DEPLOY_FIT. Their r heads are built from validation target tail constants. The
+#       "_train" suffix described the tail CONSTANTS' source, not the whole forecast, and I
+#       read it as a guarantee about the file. It is not one.
+#
+#   artifacts/final/validation_predictions.csv
+#       DEPLOY_FIT. The HMM population is genuinely train-fitted, but predict.py:18-37
+#       branches on a 'deployment' string read from artifacts/experiment/holdout.json, and
+#       that string is a target-computed argmin: scripts/experiment.py:91-105 scores six
+#       candidates against validation/targets.csv and takes min over mean_loss_ratio, then
+#       audit() at :127-132 applies a truth-based paired-bootstrap gate. Different targets
+#       would have written a materially different file (upstream vs pooled_30 differ by max
+#       abs 0.1546). The development and holdout splits together cover all 96 validation
+#       episodes and cross-cut every outer stacking fold.
+#
+# The common channel is the r head. Many candidates never estimated a conditional payout
+# vector at all; they inherited one derived from validation truth. That is why r-side
+# stacking looked so productive.
 
 FOLD_FITTED_PREFIXES = (
     'artifacts/memory_policies/', 'artifacts/context_correction/', 'artifacts/finalist/',
@@ -76,6 +102,16 @@ FOLD_FITTED_PREFIXES = (
     # to the pool declaration only; the file name it declared does not exist on disk, so
     # the tested pool of 30 never contained it and no measured result is affected.
     'artifacts/endpoint_predictor/',
+    'artifacts/win_head/predictions/',
+    'artifacts/pair_dict/predictions/',
+    'artifacts/audit/oof_candidate_raw.csv',
+)
+DEPLOY_FIT_PREFIXES = (
+    'artifacts/hier_beta/predictions/',
+    'artifacts/endpoint_family/predictions/',
+    'artifacts/projection/predictions/',
+    'artifacts/dirichlet_r/predictions/',
+    'artifacts/final/validation_predictions.csv',
 )
 DEPLOY_FIT_FILES = (
     'artifacts/win_head_release_exact/validation_submission.csv',
@@ -95,7 +131,7 @@ def classify(path):
     p = str(path)
     if any(m in p for m in PRIVILEGED_MARKERS):
         return 'PRIVILEGED'
-    if p in DEPLOY_FIT_FILES:
+    if p in DEPLOY_FIT_FILES or any(p.startswith(x) for x in DEPLOY_FIT_PREFIXES):
         return 'DEPLOY_FIT'
     if any(p.startswith(pre) for pre in FOLD_FITTED_PREFIXES):
         return 'FOLD_FITTED'
