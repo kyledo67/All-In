@@ -1,0 +1,10 @@
+{
+  "deployed_candidate": "win_head_q_times_two_head_r",
+  "post_cutoff_bitwise_identical": true,
+  "adversarial_plays": 6144,
+  "fallbacks": 0,
+  "distinct_pairs": 4,
+  "null_selected": 75,
+  "simplex_ok": true,
+  "scope": "checks run against the SHIPPED pair-dictionary inference path, not the dense H=16 model"
+}

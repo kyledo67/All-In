@@ -215,9 +215,17 @@ def reference_vectors(variant, weights, rows, x, queries, history, model, thread
         return block, notes
     if variant != 'three_component':
         raise ValueError(f'Unknown reference variant {variant!r}')
-    components = {'two_head': two_head_component(rows, x, model),
-                  'mtd_lag7': mtd_component(rows, queries, history, model)}
+    # ORDER MATTERS, measured. TabPFN must run before CatBoost touches anything.
+    # With CatBoost's native runtime initialized first, the TabPFN forward pass deviated
+    # from the measured component CSVs by 3.975e-04 (max abs, 768 validation rows);
+    # running TabPFN first on the same saved context and the same bitwise-identical
+    # 189-column table reproduces them to 1.110e-16. CatBoost loads its own OpenMP
+    # runtime, which changes how torch partitions its intra-op work and therefore the
+    # reduction order inside the transformer. The components themselves are unchanged.
+    components = {}
     components['tabpfn_raw'], notes['tabpfn'] = tabpfn_component(rows, x, model, threads=threads)
+    components['two_head'] = two_head_component(rows, x, model)
+    components['mtd_lag7'] = mtd_component(rows, queries, history, model)
     if sorted(weights) != sorted(components):
         raise ValueError(f'Deployment weights {sorted(weights)} do not match '
                          f'the available components {sorted(components)}')

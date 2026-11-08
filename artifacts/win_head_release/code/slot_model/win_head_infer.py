@@ -39,6 +39,7 @@ import time
 from pathlib import Path
 
 import numpy as np
+from slot_model import pair_dict as PD
 
 from . import win_head as W
 from .features import causal_index
@@ -102,6 +103,66 @@ def win_probabilities(queries, index, beta_by_half_life, lam, fallback):
     return values, details
 
 
+def load_pair_dict(path):
+    """Read the frozen compact pair-dictionary settings and assert their shape."""
+    payload = json.loads(Path(path).read_text())
+    names = list(payload['candidates'])
+    if names != list(PD.candidate_names()):
+        raise ValueError('Saved pair-dictionary candidate set does not match slot_model.pair_dict')
+    log_prior = np.asarray(payload['log_prior'], dtype=np.float64)
+    if log_prior.shape != (len(PD.CANDIDATES),):
+        raise ValueError('Saved pair-identity log prior has the wrong length')
+    return float(payload['lam_scale']), float(payload['lam_intercept_scale']), log_prior, payload
+
+
+def pair_win_probabilities(queries, index, beta_by_half_life, lam, fallback,
+                           lam_scale, lam_intercept_scale, log_prior, select='hard'):
+    """Compact pair-model win probability per query, in the order of `queries`.
+
+    The per-machine half-life comes from the SAME verified averaging procedure used by
+    the dense model, so the only thing that differs here is the local model: four
+    coefficients for one lag pair instead of 37 coefficients for all of them.
+
+    `select='hard'` takes the single highest-evidence candidate, which is what scored
+    best on both the train surrogate and validation. `select='average'` averages
+    PROBABILITIES across all 29 candidates.
+    """
+    values = np.empty(len(queries), dtype=np.float64)
+    details = []
+    for i, query in enumerate(queries):
+        ticks = index[query.episode_id, query.machine_id]
+        phi, labels, _, used = W.design(ticks, query.cutoff, half_life=None)
+        star = W.query_row(ticks, query.cutoff)
+        if star is None or len(labels) == 0:
+            values[i] = fallback[i]
+            details.append({'transitions': int(len(labels)), 'fallback': True})
+            continue
+        by_type = {h: table.get(query.machine_type, np.zeros(W.DIM))
+                   for h, table in beta_by_half_life.items()}
+        _, mix = W.predict_q_averaged(by_type, phi, labels, used, query.cutoff, star,
+                                      lam, adapt='full')
+        picked = mix['selected_half_life']
+        half_life = None if picked == 0.0 else picked
+        weights = (np.ones(len(labels)) if not half_life else
+                   2.0 ** (-(query.cutoff - 1 - np.asarray(used, dtype=np.float64)) / half_life))
+        beta = by_type[half_life]
+        population = (phi @ beta, float(beta @ star))
+        omega, qs, _ = PD.machine_posterior(phi, labels, weights, star, population,
+                                            lam_scale * lam_intercept_scale, lam_scale,
+                                            log_prior=log_prior)
+        index_best = int(np.argmax(omega))
+        value = float(qs[index_best]) if select == 'hard' else PD.average(omega, qs)
+        detail = {'transitions': int(len(labels)), 'half_life': picked,
+                  'candidate': PD.candidate_names()[index_best],
+                  'max_weight': float(omega.max()), 'fallback': False}
+        if not np.isfinite(value) or not 0.0 < value < 1.0:
+            value = fallback[i]
+            detail['fallback'] = True
+        values[i] = value
+        details.append(detail)
+    return values, details
+
+
 def proportions(vectors):
     """Positive-payout proportions of a reference five-vector block.
 
@@ -154,9 +215,17 @@ def reference_vectors(variant, weights, rows, x, queries, history, model, thread
         return block, notes
     if variant != 'three_component':
         raise ValueError(f'Unknown reference variant {variant!r}')
-    components = {'two_head': two_head_component(rows, x, model),
-                  'mtd_lag7': mtd_component(rows, queries, history, model)}
+    # ORDER MATTERS, measured. TabPFN must run before CatBoost touches anything.
+    # With CatBoost's native runtime initialized first, the TabPFN forward pass deviated
+    # from the measured component CSVs by 3.975e-04 (max abs, 768 validation rows);
+    # running TabPFN first on the same saved context and the same bitwise-identical
+    # 189-column table reproduces them to 1.110e-16. CatBoost loads its own OpenMP
+    # runtime, which changes how torch partitions its intra-op work and therefore the
+    # reduction order inside the transformer. The components themselves are unchanged.
+    components = {}
     components['tabpfn_raw'], notes['tabpfn'] = tabpfn_component(rows, x, model, threads=threads)
+    components['two_head'] = two_head_component(rows, x, model)
+    components['mtd_lag7'] = mtd_component(rows, queries, history, model)
     if sorted(weights) != sorted(components):
         raise ValueError(f'Deployment weights {sorted(weights)} do not match '
                          f'the available components {sorted(components)}')
@@ -203,7 +272,19 @@ def predict(data, out, model, *, split='test', threads=2, diagnostics=None):
     beta, lam, selected = load_win_head(model / 'win_head' / deployment['win_head'])
     r = proportions(reference)
     reference_q = 1.0 - reference[:, 0]
-    q, details = win_probabilities(ordered, index, beta, lam, reference_q)
+    pair_name = deployment.get('pair_dict')
+    if pair_name:
+        scale, intercept_scale, log_prior, pair_payload = load_pair_dict(
+            model / 'win_head' / pair_name)
+        q, details = pair_win_probabilities(ordered, index, beta, lam, reference_q,
+                                            scale, intercept_scale, log_prior,
+                                            select=deployment.get('pair_select', 'hard'))
+        win_model = {'local_model': 'compact_pair_dictionary',
+                     'select': deployment.get('pair_select', 'hard'),
+                     'lam_scale': scale, 'candidates': len(log_prior)}
+    else:
+        q, details = win_probabilities(ordered, index, beta, lam, reference_q)
+        win_model = {'local_model': 'dense_37_coefficient'}
     blended = (1.0 - alpha) * reference_q + alpha * q
     vectors = np.array([W.compose(blended[i], r[i]) for i in range(len(ids))])
     if not np.isfinite(vectors).all() or vectors.min() < 0 or vectors.max() > 1:
@@ -216,6 +297,7 @@ def predict(data, out, model, *, split='test', threads=2, diagnostics=None):
     report = {'queries': len(ids), 'split': split, 'reference_variant': variant,
               'alpha': alpha, 'payout_order': list(PAYOUT_ORDER),
               'win_head': {k: selected[k] for k in sorted(selected)},
+              'win_model': win_model,
               'reference_notes': notes,
               'win_head_fallback_queries': fallbacks,
               'win_head_fallbacks': len(fallbacks),

@@ -92,14 +92,6 @@
   },
   "queries_with_zero_true_win_mass": 0,
   "r_identical_win_vs_candidate_maxabs": 2.220446049250313e-16,
-  "recompute_keys": [
-    "component_sha256_16",
-    "fold_weights",
-    "recomputed_R",
-    "recomputed_points",
-    "recorded_points",
-    "tabpfn_raw_vs_oof_max_abs"
-  ],
   "remaining_q_headroom_from_win_head": 16.587231715186576,
   "remaining_r_headroom_from_win_head": 1.0629677369123485,
   "tabpfn_oof_tabpfn_points": 31.914042054963435,

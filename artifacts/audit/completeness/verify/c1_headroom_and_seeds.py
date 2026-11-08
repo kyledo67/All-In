@@ -75,17 +75,9 @@ out['tabpfn_seed_spread_points'] = abs(out['tabpfn_seed_20261108_points'] - out[
 out['tabpfn_seed_maxabs_prob_diff'] = float(np.max(np.abs(seeds['20261108'] - seeds['20261109'])))
 out['tabpfn_seed_rms_prob_diff'] = float(np.sqrt(np.mean((seeds['20261108'] - seeds['20261109']) ** 2)))
 # What the candidate scores if one TabPFN seed is swapped for the other, weights unchanged.
-import csv
-w = json.loads((ROOT / 'artifacts/audit/recompute.json').read_text())
-out['recompute_keys'] = sorted(w)
-
 # per-condition comparison candidate vs frozen blend
 blend = load('artifacts/phase2/predictions/oof_ensemble.csv')
 out['A_frozen_blend_points'] = pts(blend)
-per = {}
-for cond in sorted(set(groups.values())):
-    m = np.array([groups[q] == cond for q in ids])
-    bc = np.mean([np.mean(np.sum((reference_arr := np.array([reference[q] for q in ids]))[m] - truth[m], axis=1) ** 0) ])  # placeholder
 per = {}
 ref_arr = np.array([reference[q] for q in ids])
 ep = np.array([next(t.episode_id for t in targets if t.query_id == q) for q in ids])

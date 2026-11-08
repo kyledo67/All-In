@@ -1,6 +1,7 @@
 {
   "alpha": 1.0,
   "candidate": "win_head_q_times_three_component_r",
+  "local_win_model": "dense",
   "payout_order": [
     0,
     1,

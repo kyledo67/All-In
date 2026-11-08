@@ -2,8 +2,8 @@
 
     python predict.py --data /data --out /output/submission.csv
 
-Environment variables are pinned before numpy/torch are imported so the organizer's
-two-core budget is respected and no library tries to write a cache into the read-only
+Environment variables are pinned before numpy or any native library is imported, so
+the organizer's two-core budget is respected and no library tries to write a cache into the read-only
 /submission mount.
 """
 import argparse
