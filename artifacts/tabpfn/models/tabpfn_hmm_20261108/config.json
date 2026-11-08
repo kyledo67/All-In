@@ -1,0 +1,28 @@
+{
+  "classes_present": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "context_rows": 3134,
+  "context_sha256": "cd2c985bc48c62624fada3306e3d4684081fd6a8a65bfd22f078f6985b897ca2",
+  "device": "cpu",
+  "feature_names": null,
+  "features": 189,
+  "ignore_pretraining_limits": false,
+  "max_train_rows": 10000,
+  "n_estimators": 1,
+  "seed": 20261108,
+  "subsample": {
+    "budget": 10000,
+    "kept_rows": 3134,
+    "offered_rows": 3134,
+    "seed": 20261108,
+    "subsampled": false
+  },
+  "threads": 2,
+  "variant": "hmm",
+  "weight_handling": "unweighted context rows; CatBoost Pool weights not applicable to TabPFN"
+}

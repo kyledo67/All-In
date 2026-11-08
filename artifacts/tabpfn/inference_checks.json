@@ -1,0 +1,24 @@
+{
+  "all_finite": true,
+  "components": 2,
+  "max_abs_deviation": 1.1102230246251565e-16,
+  "max_sum_error": 2.220446049250313e-16,
+  "min_probability": 0.0001844598711049727,
+  "model": "/Users/ayan/Downloads/All-In/artifacts/blend_release/model/tabpfn",
+  "offline": true,
+  "payout_order": [
+    0,
+    1,
+    2,
+    5,
+    20
+  ],
+  "reproduces_evaluated_predictions": true,
+  "rows": 768,
+  "seconds": 469.77258508402156,
+  "seeds": [
+    20261108,
+    20261109
+  ],
+  "variant": "hmm"
+}

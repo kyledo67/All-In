@@ -1,0 +1,21 @@
+{
+  "context_rows": 3134,
+  "context_sha256": "cd2c985bc48c62624fada3306e3d4684081fd6a8a65bfd22f078f6985b897ca2",
+  "features": 189,
+  "fit_seconds": 0.39772666699718684,
+  "max_sum_error": 2.220446049250313e-16,
+  "n_estimators": 1,
+  "name": "tabpfn_hmm_20261108",
+  "probability_min": 5.5835919121023455e-05,
+  "seed": 20261108,
+  "subsample": {
+    "budget": 10000,
+    "kept_rows": 3134,
+    "offered_rows": 3134,
+    "seed": 20261108,
+    "subsampled": false
+  },
+  "validation_inference_seconds": 245.27410070801852,
+  "variant": "hmm",
+  "weight_handling": "unweighted context rows; CatBoost Pool weights not applicable to TabPFN"
+}

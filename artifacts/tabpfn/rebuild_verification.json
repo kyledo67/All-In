@@ -1,0 +1,15 @@
+{
+  "conclusion": "JAX-free feature rebuild reproduces every committed CatBoost prediction",
+  "max_abs_deviation": 4.440892098500626e-16,
+  "per_model": {
+    "cb_hmm_0_20261108": 4.440892098500626e-16,
+    "cb_hmm_0_20261109": 2.220446049250313e-16,
+    "cb_hmm_1_20261108": 3.3306690738754696e-16,
+    "cb_hmm_1_20261109": 3.3306690738754696e-16,
+    "cb_observable_0_20261108": 3.3306690738754696e-16,
+    "cb_observable_0_20261109": 2.220446049250313e-16,
+    "cb_observable_1_20261108": 2.220446049250313e-16,
+    "cb_observable_1_20261109": 3.3306690738754696e-16
+  },
+  "tolerance": 1e-09
+}

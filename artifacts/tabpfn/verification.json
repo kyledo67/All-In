@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "check": "simplex floor and normalization",
+      "detail": "min 1.00e-06, max sum error 2.2e-16",
+      "passed": true
+    },
+    {
+      "check": "subsample deterministic",
+      "detail": "80 rows reproduced exactly",
+      "passed": true
+    },
+    {
+      "check": "subsample independent of row order",
+      "detail": "10 episodes chosen either way",
+      "passed": true
+    },
+    {
+      "check": "subsample keeps whole episodes",
+      "detail": "no episode split across the cut",
+      "passed": true
+    },
+    {
+      "check": "subsample responds to seed",
+      "detail": "a different seed selects differently",
+      "passed": true
+    },
+    {
+      "check": "feature ceiling enforced",
+      "detail": "251 features exceeds the 250 ceiling; add a pruning adapter",
+      "passed": true
+    },
+    {
+      "check": "determinism across fits",
+      "detail": "max |p1-p2| = 0.0e+00 over 40 rows",
+      "passed": true
+    },
+    {
+      "check": "seed changes the forward pass",
+      "detail": "max |p1-p3| = 1.08e-01",
+      "passed": true
+    },
+    {
+      "check": "output is a valid simplex",
+      "detail": "shape (40, 5), min 3.26e-03, max sum error 2.2e-16",
+      "passed": true
+    },
+    {
+      "check": "save/load round trip",
+      "detail": "max |p-p_loaded| = 0.0e+00, context 240 rows",
+      "passed": true
+    },
+    {
+      "check": "context hash is enforced",
+      "detail": "Saved TabPFN context does not match its recorded hash",
+      "passed": true
+    },
+    {
+      "check": "absent payout still yields a column",
+      "detail": "class 4 absent from 188 context rows; column max 1.0e-06",
+      "passed": true
+    },
+    {
+      "check": "ran offline",
+      "detail": "HF_HUB_OFFLINE=1 throughout; checkpoint read from artifacts/tabpfn/checkpoints",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "passed": true,
+  "scope": "wrapper contract on synthetic tables; not a competition score",
+  "seconds": 4.018192041985458
+}
